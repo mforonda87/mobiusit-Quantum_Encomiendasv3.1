@@ -1,0 +1,45 @@
+<!-- Esta primera parte reemplazaria HtmlTag -->
+
+<!--  parte que remplaza el decorador Label -->
+<div class="form_row clearfix">
+	
+	
+    <?php
+				$attribs = $this->element->getAttribs ();
+				$label = $this->element->getLabel ();
+				//nuevo, verificamos si el elemento es requerido, 
+				//entonces agregamos un elemento en html al final de la etiqueta
+				
+
+				// le hemos quitado los atributos para que no coja el evento de campo  	
+				//    	echo $this->formLabel($this->element->getName(), $label, $attribs);
+				if(!$this->element instanceof Zend_Form_Element_Hidden){
+				$aa = array('onclick'=>'$("#'.$this->element->getName().'").focus') ;
+				echo $this->formLabel ( $this->element->getName (), $label ,$aa);
+				}
+				?>
+    
+    <?php
+				echo $this->content?>
+    <?php
+				if ($this->element->isRequired ()) {
+					$attribs ['escape'] = false;
+					echo ' <span class="required">*</span>';
+				}
+				?>
+    
+	<!-- 
+    	parte que reemplaza Errors
+    	observen que estoy poniendo los errores 
+    	con simples saltos de linea en lugar de lista
+     -->
+	<?php
+	if ($this->element->getMessages ()) {
+		?>
+	<span class="errors">
+		<?=implode ( '<br />', $this->element->getMessages () )?>
+	</span>
+	<?php
+	}
+	?>
+</div>

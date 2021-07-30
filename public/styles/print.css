@@ -1,0 +1,96 @@
+body {
+    font-size: 9px;
+    font-family: "Times New Roman", Times, serif;
+    margin: 0px;
+}
+
+
+.cabecera {
+    display: inline;
+    width: 350px;
+}
+
+.firmas {
+    float: left;
+}
+
+.porciento25 {
+    float: left;
+    width: 24%;
+    padding: 1px;
+    margin-top: 2px;
+}
+
+.porciento75 {
+    float: left;
+    width: 74%;
+    margin-top: 2px;
+}
+
+.borders {
+    border: 1px solid #8f8f8f;
+    margin-top: 10px;
+    margin-right: 5px;
+    padding-right: 5px;
+    color: #383838;
+/*    width: 100%;*/
+}
+
+CAPTION {
+    background-color: #8f8f8f;
+    border-bottom-width: 0;
+    color: #FFFFFF;
+    font-size: 12px;
+    font-weight: bold;
+    /*	margin-bottom: -10px;*/
+}
+
+tr {
+    font-family: "Times New Roman", Times, serif;
+    font-size: 8px;
+    text-transform: uppercase;
+}
+table.borders th {
+    background-color: #8f8f8f;
+    border: 1px solid #8f8f8f;
+    color: #FFFFFF;
+    font-family: "Times New Roman", Times, serif;
+    font-size: 8px;
+    padding: 1px 6px;
+    text-align: left;
+}
+table.borders tr.capitalize {
+    text-transform: capitalize;
+    text-align: center;
+}
+table.borders tr.montos {
+    font-size: 10px;
+    font-weight: bold;
+}
+table.borders td.wrap {
+    white-space: pre-wrap;
+}
+th {
+    background-color: #8f8f8f;
+    border: 1px solid #8f8f8f;
+    color: #FFFFFF;
+    font-family: "Times New Roman", Times, serif;
+    font-size: 11px;
+    padding: 1px 6px;
+    text-align: left;
+}
+
+.par {
+    background-color: #757449;
+}
+.impar {
+    background-color: #E2DF9A;
+}
+
+.numeric, td.numeric{
+    padding-left:10px;
+    padding-right:5px;
+    text-align:right;
+    font-weight: bold;
+    font-size: 10px;
+}

@@ -1,0 +1,75 @@
+2021-04-30T11:58:01-04:00 ERR (3): []
+2021-04-30T11:58:03-04:00 ERR (3): [{"nombre":"ALAN POOL","nit":"4458310","tipo":"normal"},{"nombre":"ALEJANDRO ALARCON ","nit":"4455106","tipo":"normal"},{"nombre":"ALEX COSSIO","nit":"4454210","tipo":"normal"},{"nombre":"ALVARO SORIA ","nit":"4450595","tipo":"normal"},{"nombre":"ANCALLE","nit":"4453489","tipo":"normal"},{"nombre":"ANGEL SANCHEZ ","nit":"4453401015","tipo":"normal"},{"nombre":"ANGEL  TORRICO ","nit":"4454963","tipo":"normal"},{"nombre":"ANTONIO  TORRICO","nit":"4456095017","tipo":"normal"},{"nombre":"ARMINDA CANACHO ","nit":"4457732","tipo":"normal"},{"nombre":"ARMINDA REVOLLO ARNEZ ","nit":"4457709016","tipo":"normal"},{"nombre":"BENJAMIN DURAN LLANOS","nit":"4457532","tipo":"normal"},{"nombre":"BERTHA AGUDO","nit":"4452037","tipo":"normal"},{"nombre":"BETTY MERCADO","nit":"4457863","tipo":"normal"},{"nombre":"BONILLA","nit":"4453843","tipo":"normal"},{"nombre":"BORIS  SALVATIERRA ","nit":"4451503","tipo":"normal"},{"nombre":" CALIZAYA","nit":"4452527010","tipo":"normal"},{"nombre":"CALLE ","nit":"4450205011","tipo":"normal"},{"nombre":"CAMACHO ","nit":"4458789016","tipo":"normal"},{"nombre":"CAMAPERO","nit":"4451649","tipo":"normal"},{"nombre":"CARLA AMAYA ","nit":"4456272","tipo":"normal"}]
+2021-04-30T11:58:43-04:00 INFO (6): exception 'Zend_Db_Exception' with message 'No existe una dosificacion Activa' in /var/www/test/Encomiendas/application/models/EncomiendaModel.php:761
+Stack trace:
+#0 /var/www/test/Encomiendas/application/models/EncomiendaModel.php(815): App_Model_EncomiendaModel->validarDosificacion(false)
+#1 /var/www/test/Encomiendas/application/controllers/RecepcionController.php(181): App_Model_EncomiendaModel->txSaveManual(Array, Array, Object(stdClass), 'ciu-100')
+#2 /var/www/test/Encomiendas/library/Zend/Controller/Action.php(513): RecepcionController->saveAction()
+#3 /var/www/test/Encomiendas/library/Zend/Controller/Dispatcher/Standard.php(289): Zend_Controller_Action->dispatch('saveAction')
+#4 /var/www/test/Encomiendas/library/Zend/Controller/Front.php(954): Zend_Controller_Dispatcher_Standard->dispatch(Object(Zend_Controller_Request_Http), Object(Zend_Controller_Response_Http))
+#5 /var/www/test/Encomiendas/library/Zend/Application/Bootstrap/Bootstrap.php(97): Zend_Controller_Front->dispatch()
+#6 /var/www/test/Encomiendas/library/Zend/Application.php(366): Zend_Application_Bootstrap_Bootstrap->run()
+#7 /var/www/test/Encomiendas/public/index.php(26): Zend_Application->run()
+#8 {main}
+2021-04-30T11:58:43-04:00 INFO (6): exception 'Zend_Db_Exception' with message 'No existe una dosificacion Activa' in /var/www/test/Encomiendas/application/models/EncomiendaModel.php:931
+Stack trace:
+#0 /var/www/test/Encomiendas/application/controllers/RecepcionController.php(181): App_Model_EncomiendaModel->txSaveManual(Array, Array, Object(stdClass), 'ciu-100')
+#1 /var/www/test/Encomiendas/library/Zend/Controller/Action.php(513): RecepcionController->saveAction()
+#2 /var/www/test/Encomiendas/library/Zend/Controller/Dispatcher/Standard.php(289): Zend_Controller_Action->dispatch('saveAction')
+#3 /var/www/test/Encomiendas/library/Zend/Controller/Front.php(954): Zend_Controller_Dispatcher_Standard->dispatch(Object(Zend_Controller_Request_Http), Object(Zend_Controller_Response_Http))
+#4 /var/www/test/Encomiendas/library/Zend/Application/Bootstrap/Bootstrap.php(97): Zend_Controller_Front->dispatch()
+#5 /var/www/test/Encomiendas/library/Zend/Application.php(366): Zend_Application_Bootstrap_Bootstrap->run()
+#6 /var/www/test/Encomiendas/public/index.php(26): Zend_Application->run()
+#7 {main}
+2021-04-30T12:00:41-04:00 INFO (6): Guarndando la encomienda
+2021-04-30T12:01:32-04:00 ERR (3): [{"nombre":"ANDREA FLOWER VASQUEZ","nit":"3326931","tipo":"normal"},{"nombre":"ANGEL LUNA JEMIO","nit":"332764","tipo":"normal"},{"nombre":"BANEXPORT ","nit":"332704022","tipo":"normal"},{"nombre":"BARBARA FLORES ","nit":"3329713","tipo":"normal"},{"nombre":"CANEZO","nit":"33226065","tipo":"normal"},{"nombre":"CASTRILLO","nit":"3329147015","tipo":"normal"},{"nombre":"FIORILO","nit":"3321001012","tipo":"normal"},{"nombre":"FRIDER JIMENEZ SANJINEZ","nit":"3327993","tipo":"normal"},{"nombre":"GLORIA CAMARGO SERRANO","nit":"33222393014","tipo":"normal"},{"nombre":"GLORIA CAMARGO SERRANO ","nit":"3322393014","tipo":"normal"},{"nombre":"GUIDO VICU\u00f1A ","nit":"3324056011","tipo":"normal"},{"nombre":"HILDA URGEL","nit":"3326182","tipo":"normal"},{"nombre":"JENNY HELEN ESCALERA POLO","nit":"3322988","tipo":"normal"},{"nombre":"JOSELINE LOPEZ ","nit":"3329527015","tipo":"normal"},{"nombre":"JOSE MAMANI","nit":"3322494","tipo":"normal"},{"nombre":"JUAN CARLOS OBLITAS","nit":"3324404","tipo":"normal"},{"nombre":"LIDIA GONZALES ","nit":"3322950","tipo":"normal"},{"nombre":"LIPA","nit":"3323755","tipo":"normal"},{"nombre":"LOPEZ ","nit":"3320302019","tipo":"normal"},{"nombre":"LUIS MAURICIO PAZ","nit":"3329441","tipo":"normal"}]
+2021-04-30T12:01:32-04:00 ERR (3): [{"nombre":"NATIVIDAD LARICO PEREZ ","nit":"3325584","tipo":"normal"},{"nombre":"ORLANDO RODRIGUEZ ","nit":"3325808","tipo":"normal"},{"nombre":"RUFINO GUTIERREZ ","nit":"3325642","tipo":"normal"},{"nombre":"TITO  FREDY  LARUTA YUJRA","nit":"3325629","tipo":"normal"},{"nombre":"VIDANGOS","nit":"3325182","tipo":"normal"}]
+2021-04-30T12:01:38-04:00 ERR (3): [{"nombre":"ABECIA","nit":"4384229","tipo":"normal"},{"nombre":"ABRAHAM AMERICO VILLCA ","nit":"4324527","tipo":"normal"},{"nombre":"ADEMAR GARCIA ","nit":"430173","tipo":"normal"},{"nombre":"AGUSTIN ZEGARRA ","nit":"4321786","tipo":"normal"},{"nombre":"ALAN CAMACHO","nit":"4325065","tipo":"normal"},{"nombre":"ALEJANDRO ARELLANO VALLEJO","nit":"4394627","tipo":"normal"},{"nombre":"ALEJANDRO FERNANDEZ","nit":"4394566","tipo":"normal"},{"nombre":"ALEX SALAZAR HINOJOSA ","nit":"4385735","tipo":"normal"},{"nombre":"ALEX  ZAMBRANA  VILLARROEL","nit":"4304510","tipo":"normal"},{"nombre":"ALFREDO CHURA ","nit":"4316811","tipo":"normal"},{"nombre":"ALFREDO  CONDORI","nit":"4310681","tipo":"normal"},{"nombre":"ALFREDO FLORES ","nit":"4398930","tipo":"normal"},{"nombre":"ALIAGA","nit":"4304624016","tipo":"normal"},{"nombre":"ALVARO SAAVEDRA ","nit":"4314093011","tipo":"normal"},{"nombre":"AMERICO CARRIZALES","nit":"4310039","tipo":"normal"},{"nombre":"AMERICO  RENZO  PONCE RODRIGUEZ","nit":"4398904","tipo":"normal"},{"nombre":"ANA MORALES","nit":"4300726","tipo":"normal"},{"nombre":"ANDRES ZURITA CASTRO","nit":"4391814","tipo":"normal"},{"nombre":"ANTEZANA ","nit":"4381430013","tipo":"normal"},{"nombre":"ANTONIA FLORES ZUBIETA","nit":"43849003014","tipo":"normal"}]
+2021-04-30T12:01:44-04:00 ERR (3): [{"nombre":"ABDEL TICONA ALARCON ","nit":"3406979","tipo":"normal"},{"nombre":"ABDON CARLOS SIERRA POVEDA","nit":"3490210","tipo":"normal"},{"nombre":"ABDON IRIGOYEN ","nit":"3449679","tipo":"normal"},{"nombre":"ADOLFO  VILLARROEL  GONZALES","nit":"3453129","tipo":"normal"},{"nombre":"ADRIAN MEDRANO ","nit":"3478860","tipo":"normal"},{"nombre":"AGUSTIN LUCIA  VIDAL ","nit":"3435421","tipo":"normal"},{"nombre":"ALBERTO  COCA ","nit":"3440659016","tipo":"normal"},{"nombre":"ALBERTO RIVERA","nit":"3445739","tipo":"normal"},{"nombre":"ALCAZAR","nit":"3436953","tipo":"normal"},{"nombre":"ALEMAN ","nit":"3473218","tipo":"normal"},{"nombre":"ALEXANDRO BOHRT ","nit":"3453231","tipo":"normal"},{"nombre":"ALEX MANZANEDA","nit":"3486311","tipo":"normal"},{"nombre":"ALEX MARTINEZ","nit":"3410644016","tipo":"normal"},{"nombre":"ALISON ENCINAS ","nit":"3464876","tipo":"normal"},{"nombre":"ALVAREZ","nit":"3445691","tipo":"normal"},{"nombre":"ALVAREZ ","nit":"3499160016","tipo":"normal"},{"nombre":"AMURRIO","nit":"3471148","tipo":"normal"},{"nombre":"ANA PAREDES ","nit":"3476700","tipo":"normal"},{"nombre":"ANDRES JUSTINIANO ","nit":"3486724017","tipo":"normal"},{"nombre":"ANDRES LAURA MENESES","nit":"3482597","tipo":"normal"}]
+2021-04-30T12:03:12-04:00 INFO (6): exception 'PDOException' with message 'SQLSTATE[23505]: Unique violation: 7 ERROR:  duplicate key value violates unique constraint "factura_encomienda_dosificacion_numero_factura_key"
+DETAIL:  Key (dosificacion, numero_factura)=(dfa-224, 0) already exists.' in /var/www/test/Encomiendas/library/Zend/Db/Statement/Pdo.php:228
+Stack trace:
+#0 /var/www/test/Encomiendas/library/Zend/Db/Statement/Pdo.php(228): PDOStatement->execute(Array)
+#1 /var/www/test/Encomiendas/library/Zend/Db/Statement.php(300): Zend_Db_Statement_Pdo->_execute(Array)
+#2 /var/www/test/Encomiendas/library/Zend/Db/Adapter/Abstract.php(468): Zend_Db_Statement->execute(Array)
+#3 /var/www/test/Encomiendas/library/Zend/Db/Adapter/Pdo/Abstract.php(238): Zend_Db_Adapter_Abstract->query('INSERT INTO "fa...', Array)
+#4 /var/www/test/Encomiendas/library/Zend/Db/Adapter/Abstract.php(546): Zend_Db_Adapter_Pdo_Abstract->query('INSERT INTO "fa...', Array)
+#5 /var/www/test/Encomiendas/library/Zend/Db/Table/Abstract.php(1056): Zend_Db_Adapter_Abstract->insert('factura_encomie...', Array)
+#6 /var/www/test/Encomiendas/application/models/EncomiendaModel.php(838): Zend_Db_Table_Abstract->insert(Array)
+#7 /var/www/test/Encomiendas/application/controllers/RecepcionController.php(181): App_Model_EncomiendaModel->txSaveManual(Array, Array, Object(stdClass), 'ciu-100')
+#8 /var/www/test/Encomiendas/library/Zend/Controller/Action.php(513): RecepcionController->saveAction()
+#9 /var/www/test/Encomiendas/library/Zend/Controller/Dispatcher/Standard.php(289): Zend_Controller_Action->dispatch('saveAction')
+#10 /var/www/test/Encomiendas/library/Zend/Controller/Front.php(954): Zend_Controller_Dispatcher_Standard->dispatch(Object(Zend_Controller_Request_Http), Object(Zend_Controller_Response_Http))
+#11 /var/www/test/Encomiendas/library/Zend/Application/Bootstrap/Bootstrap.php(97): Zend_Controller_Front->dispatch()
+#12 /var/www/test/Encomiendas/library/Zend/Application.php(366): Zend_Application_Bootstrap_Bootstrap->run()
+#13 /var/www/test/Encomiendas/public/index.php(26): Zend_Application->run()
+#14 {main}
+
+Next exception 'Zend_Db_Statement_Exception' with message 'SQLSTATE[23505]: Unique violation: 7 ERROR:  duplicate key value violates unique constraint "factura_encomienda_dosificacion_numero_factura_key"
+DETAIL:  Key (dosificacion, numero_factura)=(dfa-224, 0) already exists.' in /var/www/test/Encomiendas/library/Zend/Db/Statement/Pdo.php:234
+Stack trace:
+#0 /var/www/test/Encomiendas/library/Zend/Db/Statement.php(300): Zend_Db_Statement_Pdo->_execute(Array)
+#1 /var/www/test/Encomiendas/library/Zend/Db/Adapter/Abstract.php(468): Zend_Db_Statement->execute(Array)
+#2 /var/www/test/Encomiendas/library/Zend/Db/Adapter/Pdo/Abstract.php(238): Zend_Db_Adapter_Abstract->query('INSERT INTO "fa...', Array)
+#3 /var/www/test/Encomiendas/library/Zend/Db/Adapter/Abstract.php(546): Zend_Db_Adapter_Pdo_Abstract->query('INSERT INTO "fa...', Array)
+#4 /var/www/test/Encomiendas/library/Zend/Db/Table/Abstract.php(1056): Zend_Db_Adapter_Abstract->insert('factura_encomie...', Array)
+#5 /var/www/test/Encomiendas/application/models/EncomiendaModel.php(838): Zend_Db_Table_Abstract->insert(Array)
+#6 /var/www/test/Encomiendas/application/controllers/RecepcionController.php(181): App_Model_EncomiendaModel->txSaveManual(Array, Array, Object(stdClass), 'ciu-100')
+#7 /var/www/test/Encomiendas/library/Zend/Controller/Action.php(513): RecepcionController->saveAction()
+#8 /var/www/test/Encomiendas/library/Zend/Controller/Dispatcher/Standard.php(289): Zend_Controller_Action->dispatch('saveAction')
+#9 /var/www/test/Encomiendas/library/Zend/Controller/Front.php(954): Zend_Controller_Dispatcher_Standard->dispatch(Object(Zend_Controller_Request_Http), Object(Zend_Controller_Response_Http))
+#10 /var/www/test/Encomiendas/library/Zend/Application/Bootstrap/Bootstrap.php(97): Zend_Controller_Front->dispatch()
+#11 /var/www/test/Encomiendas/library/Zend/Application.php(366): Zend_Application_Bootstrap_Bootstrap->run()
+#12 /var/www/test/Encomiendas/public/index.php(26): Zend_Application->run()
+#13 {main}
+2021-04-30T12:03:12-04:00 INFO (6): exception 'Zend_Db_Exception' with message 'La factura ya fue registrada por favor ingrese un numero de factura no registrado' in /var/www/test/Encomiendas/application/models/EncomiendaModel.php:931
+Stack trace:
+#0 /var/www/test/Encomiendas/application/controllers/RecepcionController.php(181): App_Model_EncomiendaModel->txSaveManual(Array, Array, Object(stdClass), 'ciu-100')
+#1 /var/www/test/Encomiendas/library/Zend/Controller/Action.php(513): RecepcionController->saveAction()
+#2 /var/www/test/Encomiendas/library/Zend/Controller/Dispatcher/Standard.php(289): Zend_Controller_Action->dispatch('saveAction')
+#3 /var/www/test/Encomiendas/library/Zend/Controller/Front.php(954): Zend_Controller_Dispatcher_Standard->dispatch(Object(Zend_Controller_Request_Http), Object(Zend_Controller_Response_Http))
+#4 /var/www/test/Encomiendas/library/Zend/Application/Bootstrap/Bootstrap.php(97): Zend_Controller_Front->dispatch()
+#5 /var/www/test/Encomiendas/library/Zend/Application.php(366): Zend_Application_Bootstrap_Bootstrap->run()
+#6 /var/www/test/Encomiendas/public/index.php(26): Zend_Application->run()
+#7 {main}
+2021-04-30T12:03:20-04:00 INFO (6): Guarndando la encomienda

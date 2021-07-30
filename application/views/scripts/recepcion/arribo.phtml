@@ -1,0 +1,63 @@
+
+<script type="text/javascript" src="<?= $this->baseUrl() ?>/scripts/libs/arribo.js"></script>
+<?php
+$webService = App_Util_Statics::$webService;
+$session = Zend_Registry::get(App_Util_Statics::$SESSION);
+$idCiudadVendedor = base64_encode($session->ciudadID); //base64_encode(App_Util_Statics::$SISTEM_DEFAULTS["Id_Ciudad_Sistema"])
+?>
+<div class="contentBox height500">
+    <div class="contentBox">
+        <form name="encomiendasForm" id="encomiendasForm" method="post" enctype="application/x-www-form-urlencoded" action="#">
+            <input type="hidden" value="<?= $idCiudadVendedor ?>" id="CiudadDestino"/>
+            <label class="porciento33">
+                <span>C. Origen:</span>
+                <select name="ciudadOrigen" id="ciudadOrigen">;
+                    <?php
+                    foreach ($this->ciudades as $id => $nombre) {
+                        $nombre = strtolower($nombre);
+                        echo"<option value='" . $webService[$nombre]["ip"] . $webService["route"] . "/" . base64_encode($id) . "'>" . $nombre . "</option>";
+                    }
+                    ?>
+                </select>
+            </label>
+            <label class="porciento33">
+                <?php
+                $date = date( "Y-m-d" );
+$ayer = date( "Y-m-d", strtotime( "-1 day", strtotime( $date ) ) );  
+                ?>
+                <span>Fecha:</span>
+                <input type="text" id="fechaEnvio" name="fechaEnvio" maxlength="9" size="10" value="<?=$ayer?>"/>
+            </label>
+            <label class="porciento33">
+                <span>Interno:</span>
+                <input type="text" name="guia" maxlength="15" size="10" value="0"/>
+            </label>
+            <label class="porciento33">
+                <span>Chofer:</span>
+                <input type="text" id="remitente" name="remitente" maxlength="100" size="14"/>
+            </label>
+            <div class="center_align">
+                <input type="button" value="Buscar" name="buscar" id="buscar" onclick="listarEncomiendas('ARRIBO')"/>
+            </div>
+        </form>
+    </div>
+    <div class="contentBox height360">
+        <div class="titleHead">Lista de Manifiestos </div>
+        <table id="listManifiestos" class="tableManifiesto">
+            <thead>
+                <tr>
+                    <th>Envia</th>
+                    <th>Fecha</th>
+                    <th>Bus</th>
+                    <th>Chofer</th>
+                    <th>Destino</th>
+                    <th>No Enc. restante</th>
+                    <th>Accion</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td colspan="5">Presione Buscar para listar los manifiestos</td></tr>
+            </tbody>
+        </table>
+    </div>
+</div>

@@ -1,0 +1,1 @@
+2020-12-09T15:00:55-04:00 ERR (3): cliente select SELECT "cl"."nombre", "cl"."nit", "cl"."tipo" FROM "cliente" AS "cl" ORDER BY "nombre" ASC

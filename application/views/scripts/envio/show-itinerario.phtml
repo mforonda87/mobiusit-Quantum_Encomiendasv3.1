@@ -1,0 +1,63 @@
+<script>
+    $(document).ready(
+            function () {
+                $('#fechaViaje').datepicker({
+                    dateFormat: "yy-mm-dd",
+                    changeMonth: true,
+                    changeYear: true
+                }, $.datepicker.regional['es']);
+            }
+    );
+</script>
+<div class="contentBox height200 width120">
+    <div class="contentBox">
+        <div style="display:block">
+            <label class="form_row">
+                <span>Origen</span><span> <?= $this->ciudadOrigen ?></span>
+                <input id="origenViaje" type="hidden" value="<?=$this->ciudadOrigenId?>"/>
+            </label>
+        </div>        
+        <div style="display:block">
+            <label class="form_row">
+                <span>Destino</span>
+                <select name="destinos" id="destinoViaje" onchange="changeDestino()">
+<?php
+foreach ($this->destinos as $destino) {
+    echo "<option value='" . $destino->llegada . "'>" . $destino->destino . "</option>";
+}
+?>
+                </select>
+            </label>
+        </div>
+        <div style="display:block">
+            <label class="form_row">
+                <span>Fecha</span>
+                <input type="date" id="fechaViaje" value="<?= date("Y-m-d"); ?>"/>
+            </label>
+        </div>
+        <div style="display:block">
+            <label class="form_row">
+                <span>Hora</span>
+                <select name="hora" id="horaViaje">
+<?php
+foreach ($this->itinerario as $hora) {
+    echo "<option value='" . $hora->hora_salida . "'>" . $hora->hora_salida . "</option>";
+}
+?>
+                </select>
+            </label>
+        </div>
+        <div style="display:block">
+            <label class="form_row">
+                <span>Bus</span>
+                <select name="bus" id="busViaje">
+<?php
+foreach ($this->buses as $bus) {
+    echo "<option value='" . base64_encode($bus->id_bus) . "'>" . $bus->numero . "</option>";
+}
+?>
+                </select>
+            </label>
+        </div>
+    </div>    
+</div>

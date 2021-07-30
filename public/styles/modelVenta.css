@@ -1,0 +1,191 @@
+@CHARSET "UTF-8"; .model {
+    height: 620px;
+    overflow-y: auto;
+    width: 230px;
+    float: left;
+}
+.datosViaje{
+    float: left;
+    width: 39%;
+}
+#tableForModel{
+    border:medium none;
+    border-collapse:collapse;
+}
+.item {
+    width: 37px;
+    height: 33px;
+    text-align: center;
+    font-size: 12px;
+    cursor: pointer;
+    font-weight: bold;
+}
+#tableForModel tr td.item span{
+    padding-right: 1px;
+}
+.vacante {
+    background: url(/VentasWEB/public/images/place8.png) no-repeat center;
+} .venta {
+    background: url(/VentasWEB/public/images/placeVenta.png) no-repeat center;
+    color: #ffffff;
+} .vendido {
+    background: url(/Equipajes/public/images/vendido.png) no-repeat center;
+} .anularEquipaje {
+    background: url(/Equipajes/public/images/mini/anularEquipaje.png) no-repeat;
+}
+.reserva {
+    background: url(/VentasWEB/public/images/reserva.png) no-repeat center;
+} .libre {
+    background: url(/VentasWEB/public/images/libre.png) no-repeat center;
+} .televisor {
+    background: url(/VentasWEB/public/images/tv30x30.png) no-repeat center center;
+} .direccion {
+    background: url(/VentasWEB/public/images/direccion30x30.png) no-repeat center center;
+} .entrada {
+    background: url(/VentasWEB/public/images/entrada30x30.png) no-repeat center center;
+}
+.piso {
+    background: url(/VentasWEB/public/images/piso.png) no-repeat;
+} .choferes {
+    font-size: 10px;
+    text-transform: capitalize;
+    width: 295px;
+}
+.choferes span{
+    text-transform: capitalize;
+    font-size:10px;
+}
+.itemSelected{
+    background-color:#01FF00;/*#FF6F66;*/
+}
+
+li.vacante {
+    background: url(/VentasWEB/public/images/mini/vacante.png) no-repeat;
+} li.venta {
+    background: url(/VentasWEB/public/images/mini/venta.png) no-repeat;
+} li.reserva {
+    background: url(/VentasWEB/public/images/mini/reserva.png) no-repeat;
+} li.libre {
+    background: url(/VentasWEB/public/images/mini/libre.png) no-repeat;
+} li.manual {
+    background: url(/VentasWEB/public/images/mini/ventaManual.png) no-repeat;
+}
+td.imgData{
+    padding-bottom:4px;
+    padding-left:20px;
+    padding-top:4px;
+}
+td.imgVacante {
+    background: url(/VentasWEB/public/images/mini/vacante.png) no-repeat ;
+} td.imgVenta {
+    background: url(/VentasWEB/public/images/mini/venta.png) no-repeat ;
+} td.imgReserva {
+    background: url(/VentasWEB/public/images/mini/reserva.png) no-repeat ;
+} td.imgLibre {
+    background: url(/VentasWEB/public/images/mini/libre.png) no-repeat ;
+} td.imgManual {
+    background: url(/VentasWEB/public/images/mini/ventaManual.png) no-repeat ;
+}
+
+.mayusculas{
+    text-transform: uppercase;
+}
+
+.reservedForSale{
+    font-size:8px;
+    background-color:red;
+}
+
+#editorModel{
+    border:1px solid #000;    
+}
+#editorModel tr td {
+    width:30px;
+    height:30px;
+    border:1px solid;
+    margin:1px;
+    text-align:center;
+}
+.itemB{
+    background-position:center 1px;
+    border:1px solid;
+    cursor:pointer;
+    height:50px;
+    text-align:center;
+    width:76px;
+}
+.titleBottom{
+    margin-left:10px;
+    margin-top:30px;
+    position:absolute;
+    text-align:center;
+}
+.selectedB{
+    background-color:#FFFFCC;
+}
+.inProcess {
+    color:red;
+    font-size:8px;
+}
+.itinerarioList{
+    width: 220px;
+    margin:0 10px;
+    float:left;
+}
+.modelContent{
+    width: 430px;
+}
+
+.contentModelData{
+    min-height: 300px;
+    height: 600px;
+}
+
+.hideDoMore{
+    display: none;
+    z-index: 100;
+    position: absolute;
+    background-color: #FFF;
+}
+
+#personalList{
+    width: 100%;
+}
+#moreFunctions{
+    border: 1px solid #DEDEDE;
+}
+#moreFunctions ul li {
+
+}
+#moreFunctions ul li:hover {
+    background-color: #6D84B4;
+    border-bottom: 1px solid #3B5998;
+    border-top: 1px solid #3B5998;
+    color:white;
+}
+#moreFunctions ul li a {
+    padding: 2px 5px 1px 5px;
+    text-transform:capitalize;    
+}
+#moreFunctions ul li a:hover {
+    color:white;
+}
+
+#datosFactura{
+    display: none;
+}
+#datosFactura div {
+    margin: 2px;
+}
+#datosFactura div span.label{
+    width: 80px;
+}
+#datosFactura div span.data{
+    width: 200px;
+}
+#datosFactura div span.sep{
+    width: 5px;
+}
+.cursor {
+    background-color: #5B79A5;
+}

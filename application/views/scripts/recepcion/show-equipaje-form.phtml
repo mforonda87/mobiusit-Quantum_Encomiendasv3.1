@@ -1,0 +1,76 @@
+<?php
+$numAsientos = $this->numAsientos;
+$precioAsiento = $this->precioAsiento;
+$precio_X_kilo = $this->precio_X_kilo;
+$allAsientos = $this->allAsientos;
+$tipo = $this->tipo;
+$dataA = $this->dataA;
+?>
+<div class="contentBox" style="width: 95%;">
+    <div>Franquicia : <?= ($numAsientos * $precioAsiento) ?> Kgrs.<div>
+            <input id='pesoMax' type='hidden' value='<?= ($numAsientos * $precioAsiento) ?>'/> 
+            <input id='precio_X_kilo' type='hidden' value='<?= $precio_X_kilo ?>'/> 
+            <table class='borders' id='equipajesList'> 
+                <thead> 
+                    <tr><th>Asiento</th><th>Ticket</th><th>Descripcion</th><th>Peso</th><th>extras</th></tr> 
+                </thead> 
+                </tbody> 
+                <?php
+                foreach ($allAsientos as $asi) {
+                    $imagen = "217bc0_11x11_icon_plus.gif";
+                    $accion = "addAsiento(this)";
+                    if ($tipo == "quitar") {
+                        $imagen = "217bc0_11x11_icon_minus.gif";
+                        $accion = "deleteEquipaje(\"" . base64_encode($asi->id_equipaje) . "\");";
+                    }
+
+                    $aux = "<tr>
+                 <td><input type='hidden' name='idAsiento' value='$asi->id_asiento'/>$asi->numero</td>
+                 <td><input type='text' size='5' class='numeric' name='ticketN' value='" . $asi->ticket . "'/></td>
+                 <td><input type='text' name='detalleTikect' value='" . $asi->detalle . "'/></td>
+                 <td><input type='text' size='5' class='numeric' name='pesoK' value='" . $asi->peso . "'/></td>
+                 <td><select name='tipoEquipaje' onchange='calcularPeso();'>
+                    <option value='peso'>Peso</option>
+                    <option value='Valor'>Valor</option>
+                    <option value='Volumen'>Volumen</option>
+                    </select>
+                    </td>
+                 <td>
+                    <input type='hidden' name='idEquipaje' value='$asi->id_equipaje'/>
+                    <a href='#' onclick='$accion'><img src='" . $this->baseUrl . "/images/$imagen'/></a>
+                 </td>
+                </tr> ";
+                    if ($asi->id_equipaje != "" && $tipo == "quitar") {
+                        echo $aux;
+                    } elseif ($tipo != "quitar") {
+                        echo $aux;
+                    }
+                }
+                ?>
+
+                </tbody> 
+                <tfoot> 
+                    <tr><td colspan='3'>Total peso acumulado</td><td id='total'>0</td></tr> 
+                </tfoot> 
+            </table> 
+
+            <div id='datosFactura'>
+                <fieldset><legend>Datos factura Excedente</legend>
+                    <div>
+                        <span class='label left'> Nombre </span>
+                        <span class='sep'>: </span>
+                        <span class='data'><input type='text' id='nombreFactura' value='<?=$dataA->nombre?>'/></span>
+                    </div>
+                    <div>
+                        <span class='label left'> N.I.T  </span>
+                        <span class='sep'>: </span>
+                        <span class='data'><input type='text' id='nitFactura' value='<?=$dataA->nit?>'/></span>
+                    </div>
+                    <div>
+                        <span class='label left'> Total  Excedente</span>
+                        <span class='sep'>: </span>
+                        <span class='data'><input type='text' id='precioExcedente' value='0' disabled/> Bs.</span>
+                    </div>
+                </fieldset>
+            </div>
+        </div>

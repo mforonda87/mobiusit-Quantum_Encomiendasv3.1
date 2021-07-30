@@ -1,0 +1,19 @@
+2020-12-06T07:34:16-04:00 ERR (3): cliente select SELECT "cl"."nombre", "cl"."nit", "cl"."tipo" FROM "cliente" AS "cl" ORDER BY "nombre" ASC
+2020-12-06T07:35:42-04:00 ERR (3): cliente select SELECT "cl"."nombre", "cl"."nit", "cl"."tipo" FROM "cliente" AS "cl" WHERE (cl.nombre like '%NaN%') AND (cl.nit like '52154225%') AND (cl.tipo = 'Corporativo') ORDER BY "nombre" ASC
+2020-12-06T07:39:09-04:00 ERR (3): cliente select SELECT "cl"."nombre", "cl"."nit", "cl"."tipo" FROM "cliente" AS "cl" ORDER BY "nombre" ASC
+2020-12-06T07:49:48-04:00 ERR (3): cliente select SELECT "cl"."nombre", "cl"."nit", "cl"."tipo" FROM "cliente" AS "cl" WHERE (cl.nombre like '%NaN%') AND (cl.nit like '52154225%') AND (cl.tipo = 'Corporativo') ORDER BY "nombre" ASC
+2020-12-06T08:14:57-04:00 ERR (3): cliente select SELECT "cl"."nombre", "cl"."nit", "cl"."tipo" FROM "cliente" AS "cl" ORDER BY "nombre" ASC
+2020-12-06T08:15:53-04:00 ERR (3): cliente select SELECT "cl"."nombre", "cl"."nit", "cl"."tipo" FROM "cliente" AS "cl" WHERE (cl.nombre like '%NaN%') AND (cl.nit like '5252525254%') AND (cl.tipo = 'Corporativo') ORDER BY "nombre" ASC
+2020-12-06T08:17:47-04:00 ERR (3): cliente select SELECT "cl"."nombre", "cl"."nit", "cl"."tipo" FROM "cliente" AS "cl" ORDER BY "nombre" ASC
+2020-12-06T08:18:14-04:00 ERR (3): cliente select SELECT "cl"."nombre", "cl"."nit", "cl"."tipo" FROM "cliente" AS "cl" ORDER BY "nombre" ASC
+2020-12-06T08:19:24-04:00 ERR (3): cliente select SELECT "cl"."nombre", "cl"."nit", "cl"."tipo" FROM "cliente" AS "cl" ORDER BY "nombre" ASC
+2020-12-06T08:19:56-04:00 ERR (3): cliente select SELECT "cl"."nombre", "cl"."nit", "cl"."tipo" FROM "cliente" AS "cl" WHERE (cl.nombre like '%carlo%') AND (cl.nit like '4525252555%') AND (cl.tipo = 'Corporativo') ORDER BY "nombre" ASC
+2020-12-06T10:10:00-04:00 ERR (3): cliente select SELECT "cl"."nombre", "cl"."nit", "cl"."tipo" FROM "cliente" AS "cl" ORDER BY "nombre" ASC
+2020-12-06T23:43:10-04:00 ERR (3): cliente select SELECT "cl"."nombre", "cl"."nit", "cl"."tipo" FROM "cliente" AS "cl" ORDER BY "nombre" ASC
+2020-12-06T23:43:23-04:00 ERR (3): cliente select SELECT "cl"."nombre", "cl"."nit", "cl"."tipo" FROM "cliente" AS "cl" ORDER BY "nombre" ASC
+2020-12-06T23:43:26-04:00 ERR (3): cliente select SELECT "cl"."nombre", "cl"."nit", "cl"."tipo" FROM "cliente" AS "cl" WHERE (cl.tipo = 'Corporativo') ORDER BY "nombre" ASC
+2020-12-06T23:44:19-04:00 ERR (3): cliente select SELECT "cl"."nombre", "cl"."nit", "cl"."tipo" FROM "cliente" AS "cl" WHERE (cl.nombre like '%mon%') AND (cl.tipo = 'Corporativo') ORDER BY "nombre" ASC
+2020-12-06T23:44:25-04:00 ERR (3): cliente select SELECT "cl"."nombre", "cl"."nit", "cl"."tipo" FROM "cliente" AS "cl" WHERE (cl.nombre like '%montan%') AND (cl.tipo = 'Corporativo') ORDER BY "nombre" ASC
+2020-12-06T23:44:41-04:00 ERR (3): cliente select SELECT "cl"."nombre", "cl"."nit", "cl"."tipo" FROM "cliente" AS "cl" WHERE (cl.nombre like '%montan%') AND (cl.tipo = 'Corporativo') ORDER BY "nombre" ASC
+2020-12-06T23:44:49-04:00 ERR (3): cliente select SELECT "cl"."nombre", "cl"."nit", "cl"."tipo" FROM "cliente" AS "cl" WHERE (cl.nombre like '%montan%') ORDER BY "nombre" ASC
+2020-12-06T23:45:00-04:00 ERR (3): cliente select SELECT "cl"."nombre", "cl"."nit", "cl"."tipo" FROM "cliente" AS "cl" ORDER BY "nombre" ASC

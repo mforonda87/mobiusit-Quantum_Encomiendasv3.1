@@ -1,0 +1,1 @@
+SELECT DISTINCT "h"."hora" AS "hora_salida", "h"."id_hora_salida" FROM "hora_salida" AS "h" INNER JOIN "destino" AS "d" ON h.destino=d.id_destino WHERE (d.salida='ciu-100' and d.llegada='ciu-103' ) ORDER BY "h"."hora" ASC

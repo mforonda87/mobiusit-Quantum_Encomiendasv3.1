@@ -1,0 +1,93 @@
+2021-04-22T19:53:09-04:00 ERR (3): [{"nombre":"ABDON APAZA ","nit":"237468","tipo":"normal"},{"nombre":"ABDON APAZA ","nit":"2373468","tipo":"normal"},{"nombre":"ADDA BARRERA ","nit":"2348158","tipo":"normal"},{"nombre":"ADOLFO SEBALLOS","nit":"2358382","tipo":"normal"},{"nombre":"AGUA INMACULADA SRL","nit":"238314023","tipo":"normal"},{"nombre":" ALARCON ","nit":"2362886","tipo":"normal"},{"nombre":"ALBERTO CLAROS ","nit":"2377058018","tipo":"normal"},{"nombre":"ALBERTO MACHACA CALSINA","nit":"2353807","tipo":"normal"},{"nombre":"ALBINA  CONDORI DE ARCANI","nit":"2359767","tipo":"normal"},{"nombre":"ALBINA GUZMAN ","nit":"2301761","tipo":"normal"},{"nombre":"ALCAZAR","nit":"2362824","tipo":"normal"},{"nombre":"ALDO SALLES","nit":"2339716","tipo":"normal"},{"nombre":"ALFONSO CUSSI PACO","nit":"2324599","tipo":"normal"},{"nombre":"ALFREDO TORREZ","nit":"2389813","tipo":"normal"},{"nombre":"ALFRED SALGUERO","nit":"2310590","tipo":"normal"},{"nombre":"ALVARADO ","nit":"2384566","tipo":"normal"},{"nombre":"AMONZABEL","nit":"2344414","tipo":"normal"},{"nombre":"ANA MARIA VILLEGAS VARGAS","nit":"2394817","tipo":"normal"},{"nombre":"ANDRE MACRINI N\/T","nit":"23853676","tipo":"normal"},{"nombre":"ANGELICA MERY QUISPE ","nit":"2318157","tipo":"normal"}]
+2021-04-22T19:53:10-04:00 ERR (3): [{"nombre":"ALFONSO CUSSI PACO","nit":"2324599","tipo":"normal"},{"nombre":"MARIA ESTELA REYNAGA ","nit":"2324642","tipo":"normal"},{"nombre":"MELVIN CUELLAR DE SOLANO","nit":"2324166","tipo":"normal"},{"nombre":"VALDIVIA","nit":"2324966","tipo":"normal"}]
+2021-04-22T19:53:16-04:00 ERR (3): cliente select SELECT "cl"."id_cliente" AS "id", "cl"."nombre", "cl"."nit", "cl"."tipo", "cl"."deuda" FROM "cliente" AS "cl" ORDER BY "nombre" ASC LIMIT 20
+2021-04-22T19:53:21-04:00 ERR (3): cliente select SELECT "cl"."id_cliente" AS "id", "cl"."nombre", "cl"."nit", "cl"."tipo", "cl"."deuda" FROM "cliente" AS "cl" WHERE (cl.tipo = 'Coorporativo') ORDER BY "nombre" ASC LIMIT 20
+2021-04-22T19:53:37-04:00 ERR (3): [{"nombre":"CAROL ARCE FIEL","nit":"4545646","tipo":"normal"},{"nombre":"JULIO PALACIOS","nit":"45454545","tipo":"Coorporativo"}]
+2021-04-22T19:54:09-04:00 ERR (3): Error inserting client#0 /var/www/test/Encomiendas/library/Zend/Db/Statement.php(300): Zend_Db_Statement_Pdo->_execute(Array)
+#1 /var/www/test/Encomiendas/library/Zend/Db/Adapter/Abstract.php(468): Zend_Db_Statement->execute(Array)
+#2 /var/www/test/Encomiendas/library/Zend/Db/Adapter/Pdo/Abstract.php(238): Zend_Db_Adapter_Abstract->query('INSERT INTO "cl...', Array)
+#3 /var/www/test/Encomiendas/library/Zend/Db/Adapter/Abstract.php(546): Zend_Db_Adapter_Pdo_Abstract->query('INSERT INTO "cl...', Array)
+#4 /var/www/test/Encomiendas/library/Zend/Db/Table/Abstract.php(1056): Zend_Db_Adapter_Abstract->insert('cliente', Array)
+#5 /var/www/test/Encomiendas/application/controllers/RecepcionController.php(155): Zend_Db_Table_Abstract->insert(Array)
+#6 /var/www/test/Encomiendas/library/Zend/Controller/Action.php(513): RecepcionController->saveAction()
+#7 /var/www/test/Encomiendas/library/Zend/Controller/Dispatcher/Standard.php(289): Zend_Controller_Action->dispatch('saveAction')
+#8 /var/www/test/Encomiendas/library/Zend/Controller/Front.php(954): Zend_Controller_Dispatcher_Standard->dispatch(Object(Zend_Controller_Request_Http), Object(Zend_Controller_Response_Http))
+#9 /var/www/test/Encomiendas/library/Zend/Application/Bootstrap/Bootstrap.php(97): Zend_Controller_Front->dispatch()
+#10 /var/www/test/Encomiendas/library/Zend/Application.php(366): Zend_Application_Bootstrap_Bootstrap->run()
+#11 /var/www/test/Encomiendas/public/index.php(26): Zend_Application->run()
+#12 {main}
+2021-04-22T19:54:09-04:00 INFO (6): Saving Corporate dataCoorporativo
+2021-04-22T19:54:09-04:00 INFO (6): Finding by nit 45454545
+2021-04-22T19:55:35-04:00 ERR (3): cliente select SELECT "cl"."id_cliente" AS "id", "cl"."nombre", "cl"."nit", "cl"."tipo", "cl"."deuda" FROM "cliente" AS "cl" ORDER BY "nombre" ASC LIMIT 20
+2021-04-22T19:55:41-04:00 ERR (3): cliente select SELECT "cl"."id_cliente" AS "id", "cl"."nombre", "cl"."nit", "cl"."tipo", "cl"."deuda" FROM "cliente" AS "cl" WHERE (cl.tipo = 'Coorporativo') ORDER BY "nombre" ASC LIMIT 20
+2021-04-22T19:55:49-04:00 ERR (3): [{"nombre":"ABEL COLQUE","nit":"4537659","tipo":"normal"},{"nombre":"ABRAHAM CHOQUE VIZA","nit":"4521680","tipo":"normal"},{"nombre":"ACRIMPORT S.R.L.","nit":"4513171019","tipo":"normal"},{"nombre":"ACU\u00d1A","nit":"4508173010","tipo":"normal"},{"nombre":"ADALID MALDONADO","nit":"4524217","tipo":"normal"},{"nombre":"ADRIAZOLA","nit":"4508523018","tipo":"normal"},{"nombre":"AGUILAR","nit":"4535379","tipo":"normal"},{"nombre":"AGUILAR","nit":"4501797","tipo":"normal"},{"nombre":"AGUILAR","nit":"4528412","tipo":"normal"},{"nombre":"ALAIN ALARCON ","nit":"4526386","tipo":"normal"},{"nombre":"ALARCON","nit":"4500752","tipo":"normal"},{"nombre":"ALBA","nit":"4527271","tipo":"normal"},{"nombre":"ALBA ","nit":"4537320","tipo":"normal"},{"nombre":"ALBERTO RIVERA ","nit":"4507901","tipo":"normal"},{"nombre":"ALCIDES RIVERA SELAES","nit":"452199","tipo":"normal"},{"nombre":"ALCOCER","nit":"4529189010","tipo":"normal"},{"nombre":"ALEJANDRO  ARIMOZA","nit":"4571341011","tipo":"normal"},{"nombre":"ALEJANDRO CANELAS ","nit":"4505110","tipo":"normal"},{"nombre":"ALEJANDRO  CRUZ  TAQUICHIRI","nit":"4503506","tipo":"normal"},{"nombre":"ALEMAN ","nit":"4502338014","tipo":"normal"}]
+2021-04-22T19:55:50-04:00 ERR (3): [{"nombre":"CAROL ARCE FIEL","nit":"4545646","tipo":"normal"},{"nombre":"JULIO PALACIOS","nit":"45454545","tipo":"Coorporativo"}]
+2021-04-22T19:56:25-04:00 ERR (3): Error inserting client#0 /var/www/test/Encomiendas/library/Zend/Db/Statement.php(300): Zend_Db_Statement_Pdo->_execute(Array)
+#1 /var/www/test/Encomiendas/library/Zend/Db/Adapter/Abstract.php(468): Zend_Db_Statement->execute(Array)
+#2 /var/www/test/Encomiendas/library/Zend/Db/Adapter/Pdo/Abstract.php(238): Zend_Db_Adapter_Abstract->query('INSERT INTO "cl...', Array)
+#3 /var/www/test/Encomiendas/library/Zend/Db/Adapter/Abstract.php(546): Zend_Db_Adapter_Pdo_Abstract->query('INSERT INTO "cl...', Array)
+#4 /var/www/test/Encomiendas/library/Zend/Db/Table/Abstract.php(1056): Zend_Db_Adapter_Abstract->insert('cliente', Array)
+#5 /var/www/test/Encomiendas/application/controllers/RecepcionController.php(155): Zend_Db_Table_Abstract->insert(Array)
+#6 /var/www/test/Encomiendas/library/Zend/Controller/Action.php(513): RecepcionController->saveAction()
+#7 /var/www/test/Encomiendas/library/Zend/Controller/Dispatcher/Standard.php(289): Zend_Controller_Action->dispatch('saveAction')
+#8 /var/www/test/Encomiendas/library/Zend/Controller/Front.php(954): Zend_Controller_Dispatcher_Standard->dispatch(Object(Zend_Controller_Request_Http), Object(Zend_Controller_Response_Http))
+#9 /var/www/test/Encomiendas/library/Zend/Application/Bootstrap/Bootstrap.php(97): Zend_Controller_Front->dispatch()
+#10 /var/www/test/Encomiendas/library/Zend/Application.php(366): Zend_Application_Bootstrap_Bootstrap->run()
+#11 /var/www/test/Encomiendas/public/index.php(26): Zend_Application->run()
+#12 {main}
+2021-04-22T19:56:25-04:00 INFO (6): Saving Corporate dataCoorporativo
+2021-04-22T19:56:25-04:00 INFO (6): Finding by nit 45454545
+2021-04-22T19:57:13-04:00 ERR (3): [{"nombre":"ABEL COLQUE","nit":"4537659","tipo":"normal"},{"nombre":"ABRAHAM CHOQUE VIZA","nit":"4521680","tipo":"normal"},{"nombre":"ACRIMPORT S.R.L.","nit":"4513171019","tipo":"normal"},{"nombre":"ACU\u00d1A","nit":"4508173010","tipo":"normal"},{"nombre":"ADALID MALDONADO","nit":"4524217","tipo":"normal"},{"nombre":"ADRIAZOLA","nit":"4508523018","tipo":"normal"},{"nombre":"AGUILAR","nit":"4535379","tipo":"normal"},{"nombre":"AGUILAR","nit":"4501797","tipo":"normal"},{"nombre":"AGUILAR","nit":"4528412","tipo":"normal"},{"nombre":"ALAIN ALARCON ","nit":"4526386","tipo":"normal"},{"nombre":"ALARCON","nit":"4500752","tipo":"normal"},{"nombre":"ALBA","nit":"4527271","tipo":"normal"},{"nombre":"ALBA ","nit":"4537320","tipo":"normal"},{"nombre":"ALBERTO RIVERA ","nit":"4507901","tipo":"normal"},{"nombre":"ALCIDES RIVERA SELAES","nit":"452199","tipo":"normal"},{"nombre":"ALCOCER","nit":"4529189010","tipo":"normal"},{"nombre":"ALEJANDRO  ARIMOZA","nit":"4571341011","tipo":"normal"},{"nombre":"ALEJANDRO CANELAS ","nit":"4505110","tipo":"normal"},{"nombre":"ALEJANDRO  CRUZ  TAQUICHIRI","nit":"4503506","tipo":"normal"},{"nombre":"ALEMAN ","nit":"4502338014","tipo":"normal"}]
+2021-04-22T19:57:14-04:00 ERR (3): [{"nombre":"CAROL ARCE FIEL","nit":"4545646","tipo":"normal"},{"nombre":"JULIO PALACIOS","nit":"45454545","tipo":"Coorporativo"}]
+2021-04-22T19:57:55-04:00 ERR (3): Error inserting client#0 /var/www/test/Encomiendas/library/Zend/Db/Statement.php(300): Zend_Db_Statement_Pdo->_execute(Array)
+#1 /var/www/test/Encomiendas/library/Zend/Db/Adapter/Abstract.php(468): Zend_Db_Statement->execute(Array)
+#2 /var/www/test/Encomiendas/library/Zend/Db/Adapter/Pdo/Abstract.php(238): Zend_Db_Adapter_Abstract->query('INSERT INTO "cl...', Array)
+#3 /var/www/test/Encomiendas/library/Zend/Db/Adapter/Abstract.php(546): Zend_Db_Adapter_Pdo_Abstract->query('INSERT INTO "cl...', Array)
+#4 /var/www/test/Encomiendas/library/Zend/Db/Table/Abstract.php(1056): Zend_Db_Adapter_Abstract->insert('cliente', Array)
+#5 /var/www/test/Encomiendas/application/controllers/RecepcionController.php(155): Zend_Db_Table_Abstract->insert(Array)
+#6 /var/www/test/Encomiendas/library/Zend/Controller/Action.php(513): RecepcionController->saveAction()
+#7 /var/www/test/Encomiendas/library/Zend/Controller/Dispatcher/Standard.php(289): Zend_Controller_Action->dispatch('saveAction')
+#8 /var/www/test/Encomiendas/library/Zend/Controller/Front.php(954): Zend_Controller_Dispatcher_Standard->dispatch(Object(Zend_Controller_Request_Http), Object(Zend_Controller_Response_Http))
+#9 /var/www/test/Encomiendas/library/Zend/Application/Bootstrap/Bootstrap.php(97): Zend_Controller_Front->dispatch()
+#10 /var/www/test/Encomiendas/library/Zend/Application.php(366): Zend_Application_Bootstrap_Bootstrap->run()
+#11 /var/www/test/Encomiendas/public/index.php(26): Zend_Application->run()
+#12 {main}
+2021-04-22T19:57:55-04:00 INFO (6): Saving Corporate dataCoorporativo
+2021-04-22T19:57:55-04:00 INFO (6): Finding by nit 45454545
+2021-04-22T19:59:05-04:00 ERR (3): cliente select SELECT "cl"."id_cliente" AS "id", "cl"."nombre", "cl"."nit", "cl"."tipo", "cl"."deuda" FROM "cliente" AS "cl" ORDER BY "nombre" ASC LIMIT 20
+2021-04-22T19:59:10-04:00 ERR (3): cliente select SELECT "cl"."id_cliente" AS "id", "cl"."nombre", "cl"."nit", "cl"."tipo", "cl"."deuda" FROM "cliente" AS "cl" WHERE (cl.tipo = 'Coorporativo') ORDER BY "nombre" ASC LIMIT 20
+2021-04-22T19:59:56-04:00 INFO (6): SELECT "d"."id_datos_factura", "d"."sucursal", "d"."autorizacion", "d"."llave", "d"."inicio", "d"."numero_factura", "d"."fecha_limite", "d"."autoimpresor", "d"."estado", "d"."fin", "d"."leyenda_secundaria" FROM "datos_factura" AS "d" WHERE (llave<>'Manual') AND (fecha_limite>='2021-04-22') AND (estado='Activo') AND (sucursal='suc-103') AND (sistema='ENCOMIENDA')
+2021-04-22T20:00:52-04:00 ERR (3): cliente select SELECT "cl"."id_cliente" AS "id", "cl"."nombre", "cl"."nit", "cl"."tipo", "cl"."deuda" FROM "cliente" AS "cl" WHERE (cl.tipo = 'Coorporativo') ORDER BY "nombre" ASC LIMIT 20
+2021-04-22T20:06:37-04:00 ERR (3): []
+2021-04-22T20:06:38-04:00 ERR (3): []
+2021-04-22T20:07:27-04:00 ERR (3): Error inserting client#0 /var/www/test/Encomiendas/library/Zend/Db/Statement.php(300): Zend_Db_Statement_Pdo->_execute(Array)
+#1 /var/www/test/Encomiendas/library/Zend/Db/Adapter/Abstract.php(468): Zend_Db_Statement->execute(Array)
+#2 /var/www/test/Encomiendas/library/Zend/Db/Adapter/Pdo/Abstract.php(238): Zend_Db_Adapter_Abstract->query('INSERT INTO "cl...', Array)
+#3 /var/www/test/Encomiendas/library/Zend/Db/Adapter/Abstract.php(546): Zend_Db_Adapter_Pdo_Abstract->query('INSERT INTO "cl...', Array)
+#4 /var/www/test/Encomiendas/library/Zend/Db/Table/Abstract.php(1056): Zend_Db_Adapter_Abstract->insert('cliente', Array)
+#5 /var/www/test/Encomiendas/application/controllers/RecepcionController.php(155): Zend_Db_Table_Abstract->insert(Array)
+#6 /var/www/test/Encomiendas/library/Zend/Controller/Action.php(513): RecepcionController->saveAction()
+#7 /var/www/test/Encomiendas/library/Zend/Controller/Dispatcher/Standard.php(289): Zend_Controller_Action->dispatch('saveAction')
+#8 /var/www/test/Encomiendas/library/Zend/Controller/Front.php(954): Zend_Controller_Dispatcher_Standard->dispatch(Object(Zend_Controller_Request_Http), Object(Zend_Controller_Response_Http))
+#9 /var/www/test/Encomiendas/library/Zend/Application/Bootstrap/Bootstrap.php(97): Zend_Controller_Front->dispatch()
+#10 /var/www/test/Encomiendas/library/Zend/Application.php(366): Zend_Application_Bootstrap_Bootstrap->run()
+#11 /var/www/test/Encomiendas/public/index.php(26): Zend_Application->run()
+#12 {main}
+2021-04-22T20:07:27-04:00 INFO (6): SELECT "d"."id_datos_factura", "d"."sucursal", "d"."autorizacion", "d"."llave", "d"."inicio", "d"."numero_factura", "d"."fecha_limite", "d"."autoimpresor", "d"."estado", "d"."fin", "d"."leyenda_secundaria" FROM "datos_factura" AS "d" WHERE (llave<>'Manual') AND (fecha_limite>='2021-04-22') AND (estado='Activo') AND (sucursal='suc-103') AND (sistema='ENCOMIENDA')
+2021-04-22T21:12:40-04:00 ERR (3): []
+2021-04-22T21:12:40-04:00 ERR (3): []
+2021-04-22T21:12:41-04:00 ERR (3): []
+2021-04-22T21:13:34-04:00 ERR (3): Error inserting client#0 /var/www/test/Encomiendas/library/Zend/Db/Statement.php(300): Zend_Db_Statement_Pdo->_execute(Array)
+#1 /var/www/test/Encomiendas/library/Zend/Db/Adapter/Abstract.php(468): Zend_Db_Statement->execute(Array)
+#2 /var/www/test/Encomiendas/library/Zend/Db/Adapter/Pdo/Abstract.php(238): Zend_Db_Adapter_Abstract->query('INSERT INTO "cl...', Array)
+#3 /var/www/test/Encomiendas/library/Zend/Db/Adapter/Abstract.php(546): Zend_Db_Adapter_Pdo_Abstract->query('INSERT INTO "cl...', Array)
+#4 /var/www/test/Encomiendas/library/Zend/Db/Table/Abstract.php(1056): Zend_Db_Adapter_Abstract->insert('cliente', Array)
+#5 /var/www/test/Encomiendas/application/controllers/RecepcionController.php(155): Zend_Db_Table_Abstract->insert(Array)
+#6 /var/www/test/Encomiendas/library/Zend/Controller/Action.php(513): RecepcionController->saveAction()
+#7 /var/www/test/Encomiendas/library/Zend/Controller/Dispatcher/Standard.php(289): Zend_Controller_Action->dispatch('saveAction')
+#8 /var/www/test/Encomiendas/library/Zend/Controller/Front.php(954): Zend_Controller_Dispatcher_Standard->dispatch(Object(Zend_Controller_Request_Http), Object(Zend_Controller_Response_Http))
+#9 /var/www/test/Encomiendas/library/Zend/Application/Bootstrap/Bootstrap.php(97): Zend_Controller_Front->dispatch()
+#10 /var/www/test/Encomiendas/library/Zend/Application.php(366): Zend_Application_Bootstrap_Bootstrap->run()
+#11 /var/www/test/Encomiendas/public/index.php(26): Zend_Application->run()
+#12 {main}
+2021-04-22T21:13:34-04:00 INFO (6): SELECT "d"."id_datos_factura", "d"."sucursal", "d"."autorizacion", "d"."llave", "d"."inicio", "d"."numero_factura", "d"."fecha_limite", "d"."autoimpresor", "d"."estado", "d"."fin", "d"."leyenda_secundaria" FROM "datos_factura" AS "d" WHERE (llave<>'Manual') AND (fecha_limite>='2021-04-22') AND (estado='Activo') AND (sucursal='suc-103') AND (sistema='ENCOMIENDA')

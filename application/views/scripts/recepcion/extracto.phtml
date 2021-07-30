@@ -1,0 +1,51 @@
+<?php
+if ($this->ajax == false) {
+    ?>
+    <script>
+        $(document).ready(
+        function(){
+            $('#fechaExtracto').datepicker( {
+                dateFormat : "yy-mm-dd",
+                changeMonth : true,
+                changeYear : true,
+                onSelect: function(dateText, inst) {
+                    $.ajax( {
+                        cache :false,
+                        url :BaseUrl + '/recepcion/extracto/fecha/'+dateText+"/ajax/true",
+                        dataType :"html",
+                        success : function(msg) {
+                            $("#extractoContent").html(msg);
+                                
+                        }
+                    });
+                        
+                }
+            }, $.datepicker.regional['es']);
+
+                    
+        }
+    );
+    </script>
+    <div class="contentBox">
+        <input type="text" name="fechaExtracto" id="fechaExtracto" value="<?= $this->date ?>" />
+    </div>
+<?php }
+?>
+<div id="extractoContent" class="contentBox">
+    <table class='borders'>
+        <tr><th colspan='6'><?= $this->configuracion[App_Util_Statics::$nombreEmpresa] ?></th></tr>
+        <tr><th colspan='2'>Fecha </th><td><?= $this->date ?></td>
+            <th>Ciudad</th><td colspan='2'><?= $this->user->ciudadName ?></td></tr>
+        <tr><th colspan='2'>Vendedor:</th><td><?= $this->user->person->identificador ?></td>
+            <th>Suc</th><td colspan='2'><?= $this->user->sucursalName ?></td></tr>
+        <tr><th colspan='2'>F. Imp.</th><td><?= date("Y/M/d") ?></td>
+            <th>H. Imp</th><td colspan='2'><?= date("H:i") ?></td></tr>
+        <tr><th colspan='6'>Detalle de Ingresos</th></tr>
+        <tr class='montos'><td colspan='5'>Total ingreso</td><td class='numeric'><?= $this->ingresos ?></td></tr>
+        <tr class='montos'><td colspan='5'>Total egresos</td><td class='numeric'><?= $this->egresos ?></td></tr>
+        <tr class='montos'><th colspan='5'>Total Entregar</th><td class='numeric'><?= ($this->ingresos - $this->egresos) ?></td></tr>
+    </table>
+</div>
+<div id="detalleContent" >
+
+</div>

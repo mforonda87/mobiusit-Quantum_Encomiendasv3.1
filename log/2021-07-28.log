@@ -1,0 +1,104 @@
+2021-07-28T21:42:03-04:00 ERR (3): exception 'Zend_Controller_Dispatcher_Exception' with message 'Invalid controller specified (images)' in /var/www/test/Encomiendas/library/Zend/Controller/Dispatcher/Standard.php:242
+Stack trace:
+#0 /var/www/test/Encomiendas/library/Zend/Controller/Front.php(954): Zend_Controller_Dispatcher_Standard->dispatch(Object(Zend_Controller_Request_Http), Object(Zend_Controller_Response_Http))
+#1 /var/www/test/Encomiendas/library/Zend/Application/Bootstrap/Bootstrap.php(97): Zend_Controller_Front->dispatch()
+#2 /var/www/test/Encomiendas/library/Zend/Application.php(366): Zend_Application_Bootstrap_Bootstrap->run()
+#3 /var/www/test/Encomiendas/public/index.php(26): Zend_Application->run()
+#4 {main}
+2021-07-28T21:45:48-04:00 ERR (3): cliente select SELECT "cl"."id_cliente" AS "id", "cl"."nombre", "cl"."nit", "cl"."tipo", "cl"."deuda" FROM "cliente" AS "cl" ORDER BY "nombre" ASC LIMIT 20
+2021-07-28T21:56:20-04:00 ERR (3): [{"nombre":" INTURIAS","nit":"3534443","tipo":"normal"},{"nombre":"LOPEZ","nit":"3534436","tipo":"normal"},{"nombre":"MARCELINO GUTIERREZ HUARACHI","nit":"3534880","tipo":"normal"},{"nombre":"QUIROZ","nit":"3534556","tipo":"normal"}]
+2021-07-28T21:56:21-04:00 ERR (3): []
+2021-07-28T21:57:58-04:00 ERR (3): Error inserting client#0 /var/www/test/Encomiendas/library/Zend/Db/Statement.php(300): Zend_Db_Statement_Pdo->_execute(Array)
+#1 /var/www/test/Encomiendas/library/Zend/Db/Adapter/Abstract.php(468): Zend_Db_Statement->execute(Array)
+#2 /var/www/test/Encomiendas/library/Zend/Db/Adapter/Pdo/Abstract.php(238): Zend_Db_Adapter_Abstract->query('INSERT INTO "cl...', Array)
+#3 /var/www/test/Encomiendas/library/Zend/Db/Adapter/Abstract.php(546): Zend_Db_Adapter_Pdo_Abstract->query('INSERT INTO "cl...', Array)
+#4 /var/www/test/Encomiendas/library/Zend/Db/Table/Abstract.php(1056): Zend_Db_Adapter_Abstract->insert('cliente', Array)
+#5 /var/www/test/Encomiendas/application/controllers/RecepcionController.php(155): Zend_Db_Table_Abstract->insert(Array)
+#6 /var/www/test/Encomiendas/library/Zend/Controller/Action.php(513): RecepcionController->saveAction()
+#7 /var/www/test/Encomiendas/library/Zend/Controller/Dispatcher/Standard.php(289): Zend_Controller_Action->dispatch('saveAction')
+#8 /var/www/test/Encomiendas/library/Zend/Controller/Front.php(954): Zend_Controller_Dispatcher_Standard->dispatch(Object(Zend_Controller_Request_Http), Object(Zend_Controller_Response_Http))
+#9 /var/www/test/Encomiendas/library/Zend/Application/Bootstrap/Bootstrap.php(97): Zend_Controller_Front->dispatch()
+#10 /var/www/test/Encomiendas/library/Zend/Application.php(366): Zend_Application_Bootstrap_Bootstrap->run()
+#11 /var/www/test/Encomiendas/public/index.php(26): Zend_Application->run()
+#12 {main}
+2021-07-28T21:57:58-04:00 INFO (6): SELECT "d"."id_datos_factura", "d"."sucursal", "d"."autorizacion", "d"."llave", "d"."inicio", "d"."numero_factura", "d"."fecha_limite", "d"."autoimpresor", "d"."estado", "d"."fin", "d"."leyenda_secundaria" FROM "datos_factura" AS "d" WHERE (llave<>'Manual') AND (fecha_limite>='2021-07-28') AND (estado='Activo') AND (sucursal='suc-103') AND (sistema='ENCOMIENDA')
+2021-07-28T22:08:54-04:00 ERR (3): [{"nombre":"ADOLFO  UZQUIANO ","nit":"3348300019","tipo":"normal"},{"nombre":"AMADOR ROJAS","nit":"334622","tipo":"normal"},{"nombre":"BECERRA DE LA ROCA ","nit":"3342386","tipo":"normal"},{"nombre":"CANEDO","nit":"3346648","tipo":"normal"},{"nombre":"CHACON","nit":"3348022","tipo":"normal"},{"nombre":"CHUQUIMIA","nit":"3348571017","tipo":"normal"},{"nombre":"CORNEJO","nit":"3343196012","tipo":"normal"},{"nombre":"CRISTIAN VEGA ","nit":"3341051","tipo":"normal"},{"nombre":"DANIEL ROJAS ","nit":"3345780015","tipo":"normal"},{"nombre":"DAVID VISCARRA ","nit":"3349401","tipo":"normal"},{"nombre":"EMPRESA DE TRANSPORTE LANDER SRL ","nit":"334338028","tipo":"normal"},{"nombre":"FANNY ZACONETA","nit":"3342924","tipo":"normal"},{"nombre":"FELIX QUISPE CHAMBI","nit":"3345973","tipo":"normal"},{"nombre":"GONZALES","nit":"3343602","tipo":"normal"},{"nombre":"GRUPO INMOBILIARIO SERMON SRL","nit":"334942020","tipo":"normal"},{"nombre":"GRUPO NAFERD S.R.L.","nit":"334424023","tipo":"normal"},{"nombre":"GUMERCINDO CALLIZAYA","nit":"3345733","tipo":"normal"},{"nombre":"JANETH VARGAS ","nit":"3344026","tipo":"normal"},{"nombre":"JIMENA URQUIOLA ","nit":"3347754","tipo":"normal"},{"nombre":"JPCORPO TECNOLOGIA AVANZADA S.R.L.","nit":"334218026","tipo":"normal"}]
+2021-07-28T22:08:55-04:00 ERR (3): [{"nombre":"MAURICIO  FERNANDO  ORIHUELA  VARGAS","nit":"4453346015","tipo":"normal"}]
+2021-07-28T22:09:56-04:00 ERR (3): exception 'Zend_Controller_Dispatcher_Exception' with message 'Invalid controller specified (images)' in /var/www/test/Encomiendas/library/Zend/Controller/Dispatcher/Standard.php:242
+Stack trace:
+#0 /var/www/test/Encomiendas/library/Zend/Controller/Front.php(954): Zend_Controller_Dispatcher_Standard->dispatch(Object(Zend_Controller_Request_Http), Object(Zend_Controller_Response_Http))
+#1 /var/www/test/Encomiendas/library/Zend/Application/Bootstrap/Bootstrap.php(97): Zend_Controller_Front->dispatch()
+#2 /var/www/test/Encomiendas/library/Zend/Application.php(366): Zend_Application_Bootstrap_Bootstrap->run()
+#3 /var/www/test/Encomiendas/public/index.php(26): Zend_Application->run()
+#4 {main}
+2021-07-28T22:09:56-04:00 ERR (3): exception 'Zend_Controller_Dispatcher_Exception' with message 'Invalid controller specified (styles)' in /var/www/test/Encomiendas/library/Zend/Controller/Dispatcher/Standard.php:242
+Stack trace:
+#0 /var/www/test/Encomiendas/library/Zend/Controller/Front.php(954): Zend_Controller_Dispatcher_Standard->dispatch(Object(Zend_Controller_Request_Http), Object(Zend_Controller_Response_Http))
+#1 /var/www/test/Encomiendas/library/Zend/Application/Bootstrap/Bootstrap.php(97): Zend_Controller_Front->dispatch()
+#2 /var/www/test/Encomiendas/library/Zend/Application.php(366): Zend_Application_Bootstrap_Bootstrap->run()
+#3 /var/www/test/Encomiendas/public/index.php(26): Zend_Application->run()
+#4 {main}
+2021-07-28T22:09:56-04:00 ERR (3): exception 'Zend_Controller_Dispatcher_Exception' with message 'Invalid controller specified (images)' in /var/www/test/Encomiendas/library/Zend/Controller/Dispatcher/Standard.php:242
+Stack trace:
+#0 /var/www/test/Encomiendas/library/Zend/Controller/Front.php(954): Zend_Controller_Dispatcher_Standard->dispatch(Object(Zend_Controller_Request_Http), Object(Zend_Controller_Response_Http))
+#1 /var/www/test/Encomiendas/library/Zend/Application/Bootstrap/Bootstrap.php(97): Zend_Controller_Front->dispatch()
+#2 /var/www/test/Encomiendas/library/Zend/Application.php(366): Zend_Application_Bootstrap_Bootstrap->run()
+#3 /var/www/test/Encomiendas/public/index.php(26): Zend_Application->run()
+#4 {main}
+2021-07-28T22:09:58-04:00 ERR (3): Error inserting client#0 /var/www/test/Encomiendas/library/Zend/Db/Statement.php(300): Zend_Db_Statement_Pdo->_execute(Array)
+#1 /var/www/test/Encomiendas/library/Zend/Db/Adapter/Abstract.php(468): Zend_Db_Statement->execute(Array)
+#2 /var/www/test/Encomiendas/library/Zend/Db/Adapter/Pdo/Abstract.php(238): Zend_Db_Adapter_Abstract->query('INSERT INTO "cl...', Array)
+#3 /var/www/test/Encomiendas/library/Zend/Db/Adapter/Abstract.php(546): Zend_Db_Adapter_Pdo_Abstract->query('INSERT INTO "cl...', Array)
+#4 /var/www/test/Encomiendas/library/Zend/Db/Table/Abstract.php(1056): Zend_Db_Adapter_Abstract->insert('cliente', Array)
+#5 /var/www/test/Encomiendas/application/controllers/RecepcionController.php(155): Zend_Db_Table_Abstract->insert(Array)
+#6 /var/www/test/Encomiendas/library/Zend/Controller/Action.php(513): RecepcionController->saveAction()
+#7 /var/www/test/Encomiendas/library/Zend/Controller/Dispatcher/Standard.php(289): Zend_Controller_Action->dispatch('saveAction')
+#8 /var/www/test/Encomiendas/library/Zend/Controller/Front.php(954): Zend_Controller_Dispatcher_Standard->dispatch(Object(Zend_Controller_Request_Http), Object(Zend_Controller_Response_Http))
+#9 /var/www/test/Encomiendas/library/Zend/Application/Bootstrap/Bootstrap.php(97): Zend_Controller_Front->dispatch()
+#10 /var/www/test/Encomiendas/library/Zend/Application.php(366): Zend_Application_Bootstrap_Bootstrap->run()
+#11 /var/www/test/Encomiendas/public/index.php(26): Zend_Application->run()
+#12 {main}
+2021-07-28T22:10:19-04:00 ERR (3): Error inserting client#0 /var/www/test/Encomiendas/library/Zend/Db/Statement.php(300): Zend_Db_Statement_Pdo->_execute(Array)
+#1 /var/www/test/Encomiendas/library/Zend/Db/Adapter/Abstract.php(468): Zend_Db_Statement->execute(Array)
+#2 /var/www/test/Encomiendas/library/Zend/Db/Adapter/Pdo/Abstract.php(238): Zend_Db_Adapter_Abstract->query('INSERT INTO "cl...', Array)
+#3 /var/www/test/Encomiendas/library/Zend/Db/Adapter/Abstract.php(546): Zend_Db_Adapter_Pdo_Abstract->query('INSERT INTO "cl...', Array)
+#4 /var/www/test/Encomiendas/library/Zend/Db/Table/Abstract.php(1056): Zend_Db_Adapter_Abstract->insert('cliente', Array)
+#5 /var/www/test/Encomiendas/application/controllers/RecepcionController.php(155): Zend_Db_Table_Abstract->insert(Array)
+#6 /var/www/test/Encomiendas/library/Zend/Controller/Action.php(513): RecepcionController->saveAction()
+#7 /var/www/test/Encomiendas/library/Zend/Controller/Dispatcher/Standard.php(289): Zend_Controller_Action->dispatch('saveAction')
+#8 /var/www/test/Encomiendas/library/Zend/Controller/Front.php(954): Zend_Controller_Dispatcher_Standard->dispatch(Object(Zend_Controller_Request_Http), Object(Zend_Controller_Response_Http))
+#9 /var/www/test/Encomiendas/library/Zend/Application/Bootstrap/Bootstrap.php(97): Zend_Controller_Front->dispatch()
+#10 /var/www/test/Encomiendas/library/Zend/Application.php(366): Zend_Application_Bootstrap_Bootstrap->run()
+#11 /var/www/test/Encomiendas/public/index.php(26): Zend_Application->run()
+#12 {main}
+2021-07-28T22:11:45-04:00 ERR (3): Error inserting client#0 /var/www/test/Encomiendas/library/Zend/Db/Statement.php(300): Zend_Db_Statement_Pdo->_execute(Array)
+#1 /var/www/test/Encomiendas/library/Zend/Db/Adapter/Abstract.php(468): Zend_Db_Statement->execute(Array)
+#2 /var/www/test/Encomiendas/library/Zend/Db/Adapter/Pdo/Abstract.php(238): Zend_Db_Adapter_Abstract->query('INSERT INTO "cl...', Array)
+#3 /var/www/test/Encomiendas/library/Zend/Db/Adapter/Abstract.php(546): Zend_Db_Adapter_Pdo_Abstract->query('INSERT INTO "cl...', Array)
+#4 /var/www/test/Encomiendas/library/Zend/Db/Table/Abstract.php(1056): Zend_Db_Adapter_Abstract->insert('cliente', Array)
+#5 /var/www/test/Encomiendas/application/controllers/RecepcionController.php(155): Zend_Db_Table_Abstract->insert(Array)
+#6 /var/www/test/Encomiendas/library/Zend/Controller/Action.php(513): RecepcionController->saveAction()
+#7 /var/www/test/Encomiendas/library/Zend/Controller/Dispatcher/Standard.php(289): Zend_Controller_Action->dispatch('saveAction')
+#8 /var/www/test/Encomiendas/library/Zend/Controller/Front.php(954): Zend_Controller_Dispatcher_Standard->dispatch(Object(Zend_Controller_Request_Http), Object(Zend_Controller_Response_Http))
+#9 /var/www/test/Encomiendas/library/Zend/Application/Bootstrap/Bootstrap.php(97): Zend_Controller_Front->dispatch()
+#10 /var/www/test/Encomiendas/library/Zend/Application.php(366): Zend_Application_Bootstrap_Bootstrap->run()
+#11 /var/www/test/Encomiendas/public/index.php(26): Zend_Application->run()
+#12 {main}
+2021-07-28T22:15:07-04:00 ERR (3): []
+2021-07-28T22:15:44-04:00 ERR (3): Error inserting client#0 /var/www/test/Encomiendas/library/Zend/Db/Statement.php(300): Zend_Db_Statement_Pdo->_execute(Array)
+#1 /var/www/test/Encomiendas/library/Zend/Db/Adapter/Abstract.php(468): Zend_Db_Statement->execute(Array)
+#2 /var/www/test/Encomiendas/library/Zend/Db/Adapter/Pdo/Abstract.php(238): Zend_Db_Adapter_Abstract->query('INSERT INTO "cl...', Array)
+#3 /var/www/test/Encomiendas/library/Zend/Db/Adapter/Abstract.php(546): Zend_Db_Adapter_Pdo_Abstract->query('INSERT INTO "cl...', Array)
+#4 /var/www/test/Encomiendas/library/Zend/Db/Table/Abstract.php(1056): Zend_Db_Adapter_Abstract->insert('cliente', Array)
+#5 /var/www/test/Encomiendas/application/controllers/RecepcionController.php(155): Zend_Db_Table_Abstract->insert(Array)
+#6 /var/www/test/Encomiendas/library/Zend/Controller/Action.php(513): RecepcionController->saveAction()
+#7 /var/www/test/Encomiendas/library/Zend/Controller/Dispatcher/Standard.php(289): Zend_Controller_Action->dispatch('saveAction')
+#8 /var/www/test/Encomiendas/library/Zend/Controller/Front.php(954): Zend_Controller_Dispatcher_Standard->dispatch(Object(Zend_Controller_Request_Http), Object(Zend_Controller_Response_Http))
+#9 /var/www/test/Encomiendas/library/Zend/Application/Bootstrap/Bootstrap.php(97): Zend_Controller_Front->dispatch()
+#10 /var/www/test/Encomiendas/library/Zend/Application.php(366): Zend_Application_Bootstrap_Bootstrap->run()
+#11 /var/www/test/Encomiendas/public/index.php(26): Zend_Application->run()
+#12 {main}
+2021-07-28T22:15:44-04:00 INFO (6): SELECT "d"."id_datos_factura", "d"."sucursal", "d"."autorizacion", "d"."llave", "d"."inicio", "d"."numero_factura", "d"."fecha_limite", "d"."autoimpresor", "d"."estado", "d"."fin", "d"."leyenda_secundaria" FROM "datos_factura" AS "d" WHERE (llave<>'Manual') AND (fecha_limite>='2021-07-28') AND (estado='Activo') AND (sucursal='suc-103') AND (sistema='ENCOMIENDA')
+2021-07-28T22:16:32-04:00 ERR (3): []
+2021-07-28T22:17:40-04:00 ERR (3): []
+2021-07-28T22:19:18-04:00 ERR (3): cliente select SELECT "cl"."id_cliente" AS "id", "cl"."nombre", "cl"."nit", "cl"."tipo", "cl"."deuda" FROM "cliente" AS "cl" ORDER BY "nombre" ASC LIMIT 20

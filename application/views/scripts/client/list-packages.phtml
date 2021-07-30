@@ -1,0 +1,35 @@
+<table id="listPackages" class="listManifiestos">
+    <thead>
+        <tr>
+            <th>Guia</th>
+            <th>Detalle</th>
+            <th>Fecha Recepcion</th>
+            <th>Fecha Entrega</th>
+            <th>Deuda</th>
+            <th>Acciones</th>
+        </tr>
+    </thead>
+    <?php
+    if (count($this->packages) > 0) {
+        echo '<tbody>';
+        foreach ($this->packages as $package) {
+            ?>
+            <tr>
+                <td><?php echo $package['guia']; ?></td>
+                <td><?php echo $package['detalle']; ?></td>
+                <td><?php echo $package['fecha_recepcion']; ?></td>
+                <td><?php echo $package['fecha_entrega']; ?></td>
+                <td><?php echo $package['monto']; ?></td>
+                <td><input type="checkbox" name="facturable" value="<?php echo $package['encomienda']?>" /></td>
+            </tr>
+            <?php
+        }
+        echo '</tbody>';
+    } else {
+
+        echo '<tbody>
+                <tr><td colspan="5">Presione Buscar para listar los encomiendas</td></tr>
+              </tbody>';
+    }
+    ?>
+</table>

@@ -1,0 +1,215 @@
+<script>
+    $(document).ready(
+            function() {
+                $('#fechaExtracto').datepicker({
+                    dateFormat: "yy-mm-dd",
+                    changeMonth: true,
+                    changeYear: true,
+                    onSelect: function(dateText, inst) {
+                        $.ajax({
+                            beforeSend: function() {
+                                $("#middleForm").block();
+                            },
+                            cache: false,
+                            url: BaseUrl + '/recepcion/change-form/content/Extracto/fecha/' + dateText,
+                            dataType: "html",
+                            success: function(msg) {
+                                $("#middleForm").html(msg);
+                            },
+                            complete: function() {
+                                $.fn.block.close();
+                            }
+                        });
+                    }
+                }, $.datepicker.regional['es']);
+
+                $('#imprimirExtracto').click(function() {
+                    var tableClone = $("#extractoContent").clone();
+                    tableClone.find("tr").each(function() {
+                        $(this).find("td:eq(4),th:eq(4)").remove();
+                        $(this).find("td:eq(4),th:eq(4)").remove();
+                        $(this).find("td:eq(4),th:eq(4)").remove();
+                        $(this).find("td:eq(4),th:eq(4)").remove();
+                        $(this).find("td:eq(3),th:eq(2)").remove();
+                    });
+                    tableClone.find("td.ui-dialog-titlebar").css("font-weight", "bold");
+                    tableClone.find("table").css("width", "100%");
+                    tableClone.find("td.total").attr("colspan", 3);
+                    imprimirRecibo($("#extractoHeader").html() + tableClone.html());
+                });
+            }
+    );
+</script>
+<div id="extractoHeader" style="display: none;">
+    <table class='borders' style="width: 100%">
+        <tr><th colspan='5'><?= $this->configuracion[App_Util_Statics::$nombreEmpresa] ?></th></tr>
+        <tr>
+            <th>Fecha </th><td><?= $this->date ?></td>
+            <th>Ciudad</th><td colspan='2'><?= $this->user->ciudadName ?></td>
+        </tr>
+        <tr>
+            <th>Vendedor:</th><td><?= $this->user->person->identificador ?></td>
+            <th>Suc</th><td colspan='2'><?= $this->user->sucursalName ?></td></tr>
+        <tr>
+            <th>F. Imp.</th><td><?= date("Y/M/d") ?></td>
+            <th>H. Imp</th><td colspan='2'><?= date("H:i") ?></td></tr>
+        <tr><th colspan='5'>Detalle de Ingresos</th></tr>        
+    </table>
+</div>
+<div class='contentBox height450'>
+    <div class="contentBox">
+        <label>Fecha :<span><input id="fechaExtracto" type="text" value="<?= $this->date ?>"/></span></label>
+    </div>
+    <div class="contentBox height360" id="extractoContent">
+        <table class="borders">
+            <tr>
+                <th>Guia</th>
+                <th>No Fac</th>
+                <th>NIT</th>
+                <th>Nombre</th>
+                <th>Vendio</th>
+                <th>fecha Venta</th>
+                <th>Devolvio</th>
+                <th>fecha Dev</th>
+                <th>Total</th>
+            </tr>
+            <?php
+            $totalByTipo = 0;
+            $totalExtracto = 0;
+            if (count($this->porPagar) > 0 || count($this->normales) > 0) {
+                if (count($this->porPagar) > 0) {
+                    $row = 1;
+                    echo "<tr> <td colspan='9' class='ui-dialog-titlebar ui-widget-header center_align'>Por Pagar</td></tr>";
+                    $tipo = "";
+                    $totalizar = 0;
+                    foreach ($this->porPagar as $factura) {
+                        $class = $row % 2 == 0 ? "par" : "impar";
+                        $class = $factura->estado == 'Anulado' ? "ui-state-error" : $class;
+
+                        echo '<tr>';
+//                    echo '<td class="'.$class.'">' . $factura->estado . '</td>';
+                        echo '<td class="' . $class . '">' . $factura->guia . '</td>';
+                        echo '<td class="' . $class . '">' . $factura->numero_factura . '</td>';
+                        echo '<td class="' . $class . '">' . $factura->nit . '</td>';
+                        echo '<td class="' . $class . '">' . $factura->nombre . '</td>';
+                        echo '<td class="' . $class . '">' . $factura->vendio . '</td>';
+                        echo '<td class="' . $class . '">' . $factura->fecha . '</td>';
+                        echo '<td class="' . $class . '">' . $factura->devolvio . '</td>';
+                        echo '<td class="' . $class . '"> ' . $factura->fechaDevolvio . '</td>';
+                        $total = $factura->total;
+                        if ($factura->vendedor == $factura->idDevolvio && $factura->fecha == $factura->fechaDevolvio) {
+                            $total = 0;
+                        }
+                        if ($factura->vendedor == $factura->idDevolvio && $factura->fecha != $factura->fechaDevolvio) {
+                            $total = 0;
+                        }
+
+                        if ($factura->vendedor != $factura->idDevolvio && $factura->idDevolvio != null) {
+                            $total = -$total;
+                        }
+                        echo '<td class="' . $class . ' numeric">' . $total . '</td>';
+                        echo '</tr>';
+
+                        $totalByTipo += $total;
+
+                        $totalExtracto+=$total;
+                        $row ++;
+                    }
+                    echo "<tr><td colspan='8' class='ui-state-highlight center_align total'>Total Por pagar </td><td class='ui-state-highlight numeric'>$totalByTipo</td></tr>";
+                }
+
+                if (count($this->normales) > 0) {
+                    $row = 1;
+                    echo "<tr><td colspan='9' class='ui-dialog-titlebar ui-widget-header center_align'>Normales</td></tr>";
+                    $tipo = "";
+                    $totalizar = 0;
+                    $totalByTipo = 0;
+                    foreach ($this->normales as $factura) {
+                        $class = $row % 2 == 0 ? "par" : "impar";
+                        $class = $factura->estado == 'Anulado' ? "ui-state-error" : $class;
+
+                        echo '<tr>';
+//                    echo '<td class="'.$class.'">' . $factura->estado . '</td>';
+                        echo '<td class="' . $class . '">' . $factura->guia . '</td>';
+                        echo '<td class="' . $class . '">' . $factura->numero_factura . '</td>';
+                        echo '<td class="' . $class . '">' . $factura->nit . '</td>';
+                        echo '<td class="' . $class . '">' . $factura->nombre . '</td>';
+                        echo '<td class="' . $class . '">' . $factura->vendio . '</td>';
+                        echo '<td class="' . $class . '">' . $factura->fecha . '</td>';
+                        echo '<td class="' . $class . '">' . $factura->devolvio . '</td>';
+                        echo '<td class="' . $class . '"> ' . $factura->fechaDevolvio . '</td>';
+                        $total = $factura->total;
+                        if ($factura->vendedor == $factura->idDevolvio && $factura->fecha == $factura->fechaDevolvio) {
+                            $total = 0;
+                        }
+                        if ($factura->vendedor == $factura->idDevolvio && $factura->fecha != $factura->fechaDevolvio) {
+                            $total = 0;
+                        }
+
+                        if ($factura->vendedor != $factura->idDevolvio && $factura->idDevolvio != null) {
+                            $total = -$total;
+                        }
+                        echo '<td class="' . $class . ' numeric">' . $total . '</td>';
+                        echo '</tr>';
+
+                        $totalByTipo+=$total;
+
+                        $totalExtracto+=$total;
+                        $row++;
+                    }
+                    echo "<tr><td colspan='8' class='ui-state-highlight center_align total'>Total Normales</td><td class='ui-state-highlight numeric'>$totalByTipo</td></tr>";
+                }
+
+                if (count($this->porAnular) > 0) {
+                    $row = 1;
+                    echo "<tr><td colspan='9' class='ui-dialog-titlebar ui-widget-header center_align'>Por Anular</td></tr>";
+                    $tipo = "";
+                    $totalizar = 0;
+                    $totalByTipo = 0;
+                    foreach ($this->porAnular as $factura) {
+                        $class = $row % 2 == 0 ? "par" : "impar";
+                        $class = $factura->estado == 'Anulado' ? "ui-state-error" : $class;
+
+                        echo '<tr>';
+//                    echo '<td class="'.$class.'">' . $factura->estado . '</td>';
+                        echo '<td class="' . $class . '">' . $factura->guia . '</td>';
+                        echo '<td class="' . $class . '">' . $factura->numero_factura . '</td>';
+                        echo '<td class="' . $class . '">' . $factura->nit . '</td>';
+                        echo '<td class="' . $class . '">' . $factura->nombre . '</td>';
+                        echo '<td class="' . $class . '">' . $factura->vendio . '</td>';
+                        echo '<td class="' . $class . '">' . $factura->fecha . '</td>';
+                        echo '<td class="' . $class . '">' . $factura->devolvio . '</td>';
+                        echo '<td class="' . $class . '"> ' . $factura->fechaDevolvio . '</td>';
+                        $total = $factura->total;
+                        if ($factura->vendedor == $factura->idDevolvio && $factura->fecha == $factura->fechaDevolvio) {
+                            $total = 0;
+                        }
+                        if ($factura->vendedor == $factura->idDevolvio && $factura->fecha != $factura->fechaDevolvio) {
+                            $total = 0;
+                        }
+
+                        if ($factura->vendedor != $factura->idDevolvio && $factura->idDevolvio != null) {
+                            $total = -$total;
+                        }
+                        echo '<td class="' . $class . ' numeric">' . $total . '</td>';
+                        echo '</tr>';
+
+                        $totalByTipo+=$total;
+
+                        $totalExtracto+=$total;
+                        $row++;
+                    }
+                    echo "<tr><td colspan='8' class='ui-state-highlight center_align total'>Total Por Anular</td><td class='ui-state-highlight numeric'>$totalByTipo</td></tr>";
+                }
+
+                echo "<tr><td colspan='8' class='ui-state-highlight center_align total' >Total Entregar</td><td class='ui-state-highlight numeric'>$totalExtracto</td></tr>";
+            } else {
+                echo '<tr><td colspan="9">No existe informacion de ventas</td></tr>';
+            }
+            ?>
+        </table>
+    </div>
+    <div>
+        <input id="imprimirExtracto" type="button" value="imprimirExtracto" />
+    </div>
+</div>

@@ -1,0 +1,6 @@
+2020-12-28T12:57:31-04:00 ERR (3): cliente select SELECT "cl"."id_cliente" AS "id", "cl"."nombre", "cl"."nit", "cl"."tipo", "cl"."deuda" FROM "cliente" AS "cl" ORDER BY "nombre" ASC LIMIT 20
+2020-12-28T12:58:47-04:00 ERR (3): cliente select SELECT "cl"."id_cliente" AS "id", "cl"."nombre", "cl"."nit", "cl"."tipo", "cl"."deuda" FROM "cliente" AS "cl" ORDER BY "nombre" ASC LIMIT 20
+2020-12-28T12:59:55-04:00 ERR (3): cliente select SELECT "cl"."id_cliente" AS "id", "cl"."nombre", "cl"."nit", "cl"."tipo", "cl"."deuda" FROM "cliente" AS "cl" ORDER BY "nombre" ASC LIMIT 20
+2020-12-28T13:01:04-04:00 ERR (3): []
+2020-12-28T13:01:05-04:00 ERR (3): []
+2020-12-28T13:02:24-04:00 ERR (3): cliente select SELECT "cl"."id_cliente" AS "id", "cl"."nombre", "cl"."nit", "cl"."tipo", "cl"."deuda" FROM "cliente" AS "cl" ORDER BY "nombre" ASC LIMIT 20

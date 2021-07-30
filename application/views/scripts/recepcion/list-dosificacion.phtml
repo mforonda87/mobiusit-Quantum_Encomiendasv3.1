@@ -1,0 +1,29 @@
+
+<div class='contentBox'>
+    <?php if ($this->dosificaciones) { ?>
+        <div class='row'>
+            <label for='dosificacionesList' class="labelForm">Dosificacion :</label>
+            <select id='dosificacionesList' name='dosificacionesList'>
+                <?php foreach ($this->dosificaciones as $id => $nombre) { ?>
+                    <option value='<?= $id ?>'><?= $nombre ?></option>";
+                <?php } ?>
+            </select> <br/>
+        </div>
+        <div class='row'>
+            <label for='Nit' class="labelForm">N.I.T :</label>
+            <input type='text' id='nitFactura' name='Nit' value="0"/><br/>
+        </div>
+        <div class='row'>
+            <label for='nombreFactura' class="labelForm">Nombre :</label>
+            <input type='text' id='nombreFactura' name='nombreFactura' value="<?=$this->nombre?>"/><br/>
+        </div>
+    <?php } ?>
+    <div class='row'>
+        <label for='numeroFactura' class="labelForm">Numero Factura :</label>
+        <input type='text' id='numeroFactura' name='numeroFactura' value="0"/><br/>
+    </div>
+    <div class='row'>
+        <label for='fechaFactura' class="labelForm">Fecha :</label>
+        <input type='text' id='fechaFactura' name='fecha' value='<?= date("Y-m-d") ?>'/>
+    </div>
+</div>

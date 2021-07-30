@@ -1,0 +1,123 @@
+
+<?php
+$webService = App_Util_Statics::$webService;
+?>
+<div class="contentBox height500">
+    <div class="contentBox">
+        <form name="encomiendasForm" id="encomiendasForm" method="post" enctype="application/x-www-form-urlencoded" action="#">
+            <input type="hidden" value="<?= base64_encode(App_Util_Statics::$SISTEM_DEFAULTS["Id_Ciudad_Sistema"])
+?>" id="CiudadDestino"/>
+            <label class="porciento33">
+                <span>C. Origen:</span>
+                <select name="ciudadOrigen" id="ciudadOrigen">;
+                    <?php
+                    foreach ($this->ciudades as $id => $nombre) {
+                        $nombre = strtolower($nombre);
+                        echo"<option value='" . $webService[$nombre]["ip"] . $webService["route"] . "' id='" . base64_encode($id) . "'>" . ucwords($nombre) . "</option>";
+                    }
+                    ?>
+                </select>
+            </label>
+            <label class="porciento33">
+                <span>Fecha:</span>
+                <input type="text" id="fechaEnvio" name="fechaEnvio" maxlength="9" size="10" value=""/>
+            </label>
+            <label class="porciento33">
+                <span>Guia:</span>
+                <input type="text" id="guia" maxlength="15" size="10" value="0"/>
+            </label>
+            <label class="porciento33">
+                <span>Tipo:</span>
+                <select id="tipoEncomienda" name='tipo'>
+                    <option value="<?= base64_encode("NORMAL") ?>">NORMAL</option>
+                    <option value="<?= base64_encode("POR PAGAR") ?>">POR PAGAR</option>
+                    <option value="<?= base64_encode("INTERNO") ?>">SERVICIO INTERNO</option>
+                    <option value="<?= base64_encode("GIRO") ?>">GIRO</option>
+                </select>
+            </label>
+            <label class="porciento33">
+                <span>Remitente:</span>
+                <input type="text" id="remitente" name="remitente" maxlength="100" size="15"/>
+            </label>
+            <label class="porciento33">
+                <span>Destinatario:</span>
+                <input type="text" id="destinatario" name="destinatario" maxlength="100" size="15"/>
+            </label>
+            <br/>
+            <button name="buscar" id="buscar" onclick="recibirLlistaEncomiendas('');return false;" class="ui-button ui-widget ui-state-default ui-corner-all">
+                <span class="ui-button-text padding6px">Buscar</span>
+            </button>
+            <!--<input type="button" value="Buscar" name="buscar" id="buscar" onclick="recibirLlistaEncomiendas('')"/>-->
+        </form>
+    </div>
+    <div class="contentBox height360">
+        <div class="titleHead">Lista de Encomiendas </div>
+        <div id="contentEncomiendaList">
+            <table id="listEncEntregar" class="listManifiestos">
+                <thead>
+                    <tr>
+                        <th>Fecha</th>
+                        <th>Guia</th>
+                        <th>Remitente</th>
+                        <th>Destinatario</th>
+                        <th>Detalle</th>
+                        <th>Tipo</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td colspan="5">Presione Buscar para listar las encomiendas</td></tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+<div style='position: absolute; margin: 15% 0 0 5%;'>
+    <div id="dialogEntrega">
+        <form action="#" id="entregaForm">
+            <div id="facturado" class="contentBox">
+                <label class="w270">
+                    <span class="width150">Nombre Factura:</span>
+                    <input type="text" id="nombreFactura" maxlength="50" size="20" value=""/>
+                </label>                
+                <label class="w270">
+                    <span class="width150">NIT Factura. :</span>
+                    <input type="text" id="nitFactura" name="nitFactura" maxlength="15" size="20"/>
+                </label>
+                <label class="w270">
+                    <span class="width150">Total ......:</span>
+                    <input type="text" id="totalFactura" name="totalFactura" maxlength="15" size="20" readonly="true"/>
+                </label>
+            </div>
+            <div class="contentBox">
+                <label class="w270">
+                    <span class="width150">Consignatario:</span>
+                    <input type="text" id="consignatario" name="receptor" maxlength="50" size="20"/>
+                </label>
+
+                <label class="w270">
+                    <span class="width150">C.I.............:</span>
+                    <input type="text" id="carnet" name="ci" maxlength="15" size="20"/>
+                </label>
+                <label class="w270">
+                    <span class="width200">Detalle  Entrega.:</span>
+                    <input type="text" id="detalle_entrega" name="detalle_entrega" size="20"/>
+                </label>
+            </div>
+            <input type="hidden" id="ecmedSlce" name="encomienda" maxlength="15" size="20"/>
+            <input type="hidden" id="tipoEncomienda" name="tipoEncomienda"  maxlength="15" size="20"/>
+        </form>
+    </div>
+</div>
+

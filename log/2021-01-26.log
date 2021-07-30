@@ -1,0 +1,113 @@
+2021-01-26T10:08:27-04:00 ERR (3): cliente select SELECT "cl"."id_cliente" AS "id", "cl"."nombre", "cl"."nit", "cl"."tipo", "cl"."deuda" FROM "cliente" AS "cl" ORDER BY "nombre" ASC LIMIT 20
+2021-01-26T10:09:22-04:00 ERR (3): []
+2021-01-26T10:09:23-04:00 ERR (3): []
+2021-01-26T10:09:24-04:00 ERR (3): []
+2021-01-26T10:09:25-04:00 ERR (3): []
+2021-01-26T10:09:32-04:00 ERR (3): [{"nombre":"AGREDA ","nit":"810860017","tipo":"normal"},{"nombre":"ARIEL NAVIA ","nit":"8109654","tipo":"Coorporativo"},{"nombre":"CARLOS VILLAR GOMEZ ","nit":"8105709","tipo":"normal"},{"nombre":"CARMEN DE ZURITA ","nit":"810838","tipo":"normal"},{"nombre":"CASSAB","nit":"810704015","tipo":"normal"},{"nombre":"GLADYS URIONA SANDOVAL","nit":"810094","tipo":"normal"},{"nombre":"JESUS VILLARREAL ","nit":"810301","tipo":"normal"},{"nombre":"JOEL CABALLERO CAMACHO","nit":"810033","tipo":"normal"},{"nombre":"LUIS ALBERTO  MERCADO","nit":"810813","tipo":"normal"},{"nombre":"TORRICO","nit":"81072015","tipo":"normal"}]
+2021-01-26T10:09:38-04:00 ERR (3): [{"nombre":"AGREDA ","nit":"810860017","tipo":"normal"},{"nombre":"ARIEL NAVIA ","nit":"8109654","tipo":"Coorporativo"},{"nombre":"CARLOS VILLAR GOMEZ ","nit":"8105709","tipo":"normal"},{"nombre":"CARMEN DE ZURITA ","nit":"810838","tipo":"normal"},{"nombre":"CASSAB","nit":"810704015","tipo":"normal"},{"nombre":"GLADYS URIONA SANDOVAL","nit":"810094","tipo":"normal"},{"nombre":"JESUS VILLARREAL ","nit":"810301","tipo":"normal"},{"nombre":"JOEL CABALLERO CAMACHO","nit":"810033","tipo":"normal"},{"nombre":"LUIS ALBERTO  MERCADO","nit":"810813","tipo":"normal"},{"nombre":"TORRICO","nit":"81072015","tipo":"normal"}]
+2021-01-26T10:10:29-04:00 ERR (3): Error inserting client#0 /var/www/test/Encomiendas/library/Zend/Db/Statement.php(300): Zend_Db_Statement_Pdo->_execute(Array)
+#1 /var/www/test/Encomiendas/library/Zend/Db/Adapter/Abstract.php(468): Zend_Db_Statement->execute(Array)
+#2 /var/www/test/Encomiendas/library/Zend/Db/Adapter/Pdo/Abstract.php(238): Zend_Db_Adapter_Abstract->query('INSERT INTO "cl...', Array)
+#3 /var/www/test/Encomiendas/library/Zend/Db/Adapter/Abstract.php(546): Zend_Db_Adapter_Pdo_Abstract->query('INSERT INTO "cl...', Array)
+#4 /var/www/test/Encomiendas/library/Zend/Db/Table/Abstract.php(1056): Zend_Db_Adapter_Abstract->insert('cliente', Array)
+#5 /var/www/test/Encomiendas/application/controllers/RecepcionController.php(155): Zend_Db_Table_Abstract->insert(Array)
+#6 /var/www/test/Encomiendas/library/Zend/Controller/Action.php(513): RecepcionController->saveAction()
+#7 /var/www/test/Encomiendas/library/Zend/Controller/Dispatcher/Standard.php(289): Zend_Controller_Action->dispatch('saveAction')
+#8 /var/www/test/Encomiendas/library/Zend/Controller/Front.php(954): Zend_Controller_Dispatcher_Standard->dispatch(Object(Zend_Controller_Request_Http), Object(Zend_Controller_Response_Http))
+#9 /var/www/test/Encomiendas/library/Zend/Application/Bootstrap/Bootstrap.php(97): Zend_Controller_Front->dispatch()
+#10 /var/www/test/Encomiendas/library/Zend/Application.php(366): Zend_Application_Bootstrap_Bootstrap->run()
+#11 /var/www/test/Encomiendas/public/index.php(26): Zend_Application->run()
+#12 {main}
+2021-01-26T10:10:30-04:00 INFO (6): Saving Corporate dataCoorporativo
+2021-01-26T10:10:30-04:00 INFO (6): Finding by nit 8109654
+2021-01-26T10:26:57-04:00 ERR (3): cliente select SELECT "cl"."id_cliente" AS "id", "cl"."nombre", "cl"."nit", "cl"."tipo", "cl"."deuda" FROM "cliente" AS "cl" ORDER BY "nombre" ASC LIMIT 20
+2021-01-26T10:27:01-04:00 ERR (3): exception 'Zend_Controller_Dispatcher_Exception' with message 'Invalid controller specified (images)' in /var/www/test/Encomiendas/library/Zend/Controller/Dispatcher/Standard.php:242
+Stack trace:
+#0 /var/www/test/Encomiendas/library/Zend/Controller/Front.php(954): Zend_Controller_Dispatcher_Standard->dispatch(Object(Zend_Controller_Request_Http), Object(Zend_Controller_Response_Http))
+#1 /var/www/test/Encomiendas/library/Zend/Application/Bootstrap/Bootstrap.php(97): Zend_Controller_Front->dispatch()
+#2 /var/www/test/Encomiendas/library/Zend/Application.php(366): Zend_Application_Bootstrap_Bootstrap->run()
+#3 /var/www/test/Encomiendas/public/index.php(26): Zend_Application->run()
+#4 {main}
+2021-01-26T10:27:01-04:00 ERR (3): exception 'Zend_Controller_Dispatcher_Exception' with message 'Invalid controller specified (styles)' in /var/www/test/Encomiendas/library/Zend/Controller/Dispatcher/Standard.php:242
+Stack trace:
+#0 /var/www/test/Encomiendas/library/Zend/Controller/Front.php(954): Zend_Controller_Dispatcher_Standard->dispatch(Object(Zend_Controller_Request_Http), Object(Zend_Controller_Response_Http))
+#1 /var/www/test/Encomiendas/library/Zend/Application/Bootstrap/Bootstrap.php(97): Zend_Controller_Front->dispatch()
+#2 /var/www/test/Encomiendas/library/Zend/Application.php(366): Zend_Application_Bootstrap_Bootstrap->run()
+#3 /var/www/test/Encomiendas/public/index.php(26): Zend_Application->run()
+#4 {main}
+2021-01-26T10:27:02-04:00 ERR (3): exception 'Zend_Controller_Dispatcher_Exception' with message 'Invalid controller specified (images)' in /var/www/test/Encomiendas/library/Zend/Controller/Dispatcher/Standard.php:242
+Stack trace:
+#0 /var/www/test/Encomiendas/library/Zend/Controller/Front.php(954): Zend_Controller_Dispatcher_Standard->dispatch(Object(Zend_Controller_Request_Http), Object(Zend_Controller_Response_Http))
+#1 /var/www/test/Encomiendas/library/Zend/Application/Bootstrap/Bootstrap.php(97): Zend_Controller_Front->dispatch()
+#2 /var/www/test/Encomiendas/library/Zend/Application.php(366): Zend_Application_Bootstrap_Bootstrap->run()
+#3 /var/www/test/Encomiendas/public/index.php(26): Zend_Application->run()
+#4 {main}
+2021-01-26T10:27:21-04:00 ERR (3): exception 'Zend_Controller_Dispatcher_Exception' with message 'Invalid controller specified (images)' in /var/www/test/Encomiendas/library/Zend/Controller/Dispatcher/Standard.php:242
+Stack trace:
+#0 /var/www/test/Encomiendas/library/Zend/Controller/Front.php(954): Zend_Controller_Dispatcher_Standard->dispatch(Object(Zend_Controller_Request_Http), Object(Zend_Controller_Response_Http))
+#1 /var/www/test/Encomiendas/library/Zend/Application/Bootstrap/Bootstrap.php(97): Zend_Controller_Front->dispatch()
+#2 /var/www/test/Encomiendas/library/Zend/Application.php(366): Zend_Application_Bootstrap_Bootstrap->run()
+#3 /var/www/test/Encomiendas/public/index.php(26): Zend_Application->run()
+#4 {main}
+2021-01-26T10:28:09-04:00 ERR (3): exception 'Zend_Controller_Dispatcher_Exception' with message 'Invalid controller specified (images)' in /var/www/test/Encomiendas/library/Zend/Controller/Dispatcher/Standard.php:242
+Stack trace:
+#0 /var/www/test/Encomiendas/library/Zend/Controller/Front.php(954): Zend_Controller_Dispatcher_Standard->dispatch(Object(Zend_Controller_Request_Http), Object(Zend_Controller_Response_Http))
+#1 /var/www/test/Encomiendas/library/Zend/Application/Bootstrap/Bootstrap.php(97): Zend_Controller_Front->dispatch()
+#2 /var/www/test/Encomiendas/library/Zend/Application.php(366): Zend_Application_Bootstrap_Bootstrap->run()
+#3 /var/www/test/Encomiendas/public/index.php(26): Zend_Application->run()
+#4 {main}
+2021-01-26T10:46:57-04:00 ERR (3): [{"nombre":"AGREDA ","nit":"810860017","tipo":"normal"},{"nombre":"ARIEL NAVIA ","nit":"8109654","tipo":"Coorporativo"},{"nombre":"CARLOS VILLAR GOMEZ ","nit":"8105709","tipo":"normal"},{"nombre":"CARMEN DE ZURITA ","nit":"810838","tipo":"normal"},{"nombre":"CASSAB","nit":"810704015","tipo":"normal"},{"nombre":"GLADYS URIONA SANDOVAL","nit":"810094","tipo":"normal"},{"nombre":"JESUS VILLARREAL ","nit":"810301","tipo":"normal"},{"nombre":"JOEL CABALLERO CAMACHO","nit":"810033","tipo":"normal"},{"nombre":"LUIS ALBERTO  MERCADO","nit":"810813","tipo":"normal"},{"nombre":"TORRICO","nit":"81072015","tipo":"normal"}]
+2021-01-26T10:47:35-04:00 ERR (3): Error inserting client#0 /var/www/test/Encomiendas/library/Zend/Db/Statement.php(300): Zend_Db_Statement_Pdo->_execute(Array)
+#1 /var/www/test/Encomiendas/library/Zend/Db/Adapter/Abstract.php(468): Zend_Db_Statement->execute(Array)
+#2 /var/www/test/Encomiendas/library/Zend/Db/Adapter/Pdo/Abstract.php(238): Zend_Db_Adapter_Abstract->query('INSERT INTO "cl...', Array)
+#3 /var/www/test/Encomiendas/library/Zend/Db/Adapter/Abstract.php(546): Zend_Db_Adapter_Pdo_Abstract->query('INSERT INTO "cl...', Array)
+#4 /var/www/test/Encomiendas/library/Zend/Db/Table/Abstract.php(1056): Zend_Db_Adapter_Abstract->insert('cliente', Array)
+#5 /var/www/test/Encomiendas/application/controllers/RecepcionController.php(155): Zend_Db_Table_Abstract->insert(Array)
+#6 /var/www/test/Encomiendas/library/Zend/Controller/Action.php(513): RecepcionController->saveAction()
+#7 /var/www/test/Encomiendas/library/Zend/Controller/Dispatcher/Standard.php(289): Zend_Controller_Action->dispatch('saveAction')
+#8 /var/www/test/Encomiendas/library/Zend/Controller/Front.php(954): Zend_Controller_Dispatcher_Standard->dispatch(Object(Zend_Controller_Request_Http), Object(Zend_Controller_Response_Http))
+#9 /var/www/test/Encomiendas/library/Zend/Application/Bootstrap/Bootstrap.php(97): Zend_Controller_Front->dispatch()
+#10 /var/www/test/Encomiendas/library/Zend/Application.php(366): Zend_Application_Bootstrap_Bootstrap->run()
+#11 /var/www/test/Encomiendas/public/index.php(26): Zend_Application->run()
+#12 {main}
+2021-01-26T10:47:35-04:00 INFO (6): Saving Corporate dataCoorporativo
+2021-01-26T10:47:35-04:00 INFO (6): Finding by nit 8109654
+2021-01-26T12:05:24-04:00 ERR (3): []
+2021-01-26T12:05:24-04:00 ERR (3): []
+2021-01-26T12:05:28-04:00 ERR (3): []
+2021-01-26T12:06:22-04:00 ERR (3): Error inserting client#0 /var/www/test/Encomiendas/library/Zend/Db/Statement.php(300): Zend_Db_Statement_Pdo->_execute(Array)
+#1 /var/www/test/Encomiendas/library/Zend/Db/Adapter/Abstract.php(468): Zend_Db_Statement->execute(Array)
+#2 /var/www/test/Encomiendas/library/Zend/Db/Adapter/Pdo/Abstract.php(238): Zend_Db_Adapter_Abstract->query('INSERT INTO "cl...', Array)
+#3 /var/www/test/Encomiendas/library/Zend/Db/Adapter/Abstract.php(546): Zend_Db_Adapter_Pdo_Abstract->query('INSERT INTO "cl...', Array)
+#4 /var/www/test/Encomiendas/library/Zend/Db/Table/Abstract.php(1056): Zend_Db_Adapter_Abstract->insert('cliente', Array)
+#5 /var/www/test/Encomiendas/application/controllers/RecepcionController.php(155): Zend_Db_Table_Abstract->insert(Array)
+#6 /var/www/test/Encomiendas/library/Zend/Controller/Action.php(513): RecepcionController->saveAction()
+#7 /var/www/test/Encomiendas/library/Zend/Controller/Dispatcher/Standard.php(289): Zend_Controller_Action->dispatch('saveAction')
+#8 /var/www/test/Encomiendas/library/Zend/Controller/Front.php(954): Zend_Controller_Dispatcher_Standard->dispatch(Object(Zend_Controller_Request_Http), Object(Zend_Controller_Response_Http))
+#9 /var/www/test/Encomiendas/library/Zend/Application/Bootstrap/Bootstrap.php(97): Zend_Controller_Front->dispatch()
+#10 /var/www/test/Encomiendas/library/Zend/Application.php(366): Zend_Application_Bootstrap_Bootstrap->run()
+#11 /var/www/test/Encomiendas/public/index.php(26): Zend_Application->run()
+#12 {main}
+2021-01-26T12:06:22-04:00 INFO (6): SELECT "d"."id_datos_factura", "d"."sucursal", "d"."autorizacion", "d"."llave", "d"."inicio", "d"."numero_factura", "d"."fecha_limite", "d"."autoimpresor", "d"."estado", "d"."fin", "d"."leyenda_secundaria" FROM "datos_factura" AS "d" WHERE (llave<>'Manual') AND (fecha_limite>='2021-01-26') AND (estado='Activo') AND (sucursal='suc-103') AND (sistema='ENCOMIENDA')
+2021-01-26T13:12:39-04:00 ERR (3): [{"nombre":"COSTAS","nit":"3433900011","tipo":"normal"},{"nombre":"GUILLERMO  ALVAREZ","nit":"3433238","tipo":"normal"},{"nombre":"ROGER IVAN COSTAS HEREDIA ","nit":"3433987","tipo":"normal"},{"nombre":"VELASQUEZ","nit":"3433820","tipo":"normal"}]
+2021-01-26T13:12:39-04:00 ERR (3): []
+2021-01-26T13:12:41-04:00 ERR (3): [{"nombre":"COSTAS","nit":"3433900011","tipo":"normal"},{"nombre":"GUILLERMO  ALVAREZ","nit":"3433238","tipo":"normal"},{"nombre":"ROGER IVAN COSTAS HEREDIA ","nit":"3433987","tipo":"normal"},{"nombre":"VELASQUEZ","nit":"3433820","tipo":"normal"}]
+2021-01-26T13:13:17-04:00 ERR (3): Error inserting client#0 /var/www/test/Encomiendas/library/Zend/Db/Statement.php(300): Zend_Db_Statement_Pdo->_execute(Array)
+#1 /var/www/test/Encomiendas/library/Zend/Db/Adapter/Abstract.php(468): Zend_Db_Statement->execute(Array)
+#2 /var/www/test/Encomiendas/library/Zend/Db/Adapter/Pdo/Abstract.php(238): Zend_Db_Adapter_Abstract->query('INSERT INTO "cl...', Array)
+#3 /var/www/test/Encomiendas/library/Zend/Db/Adapter/Abstract.php(546): Zend_Db_Adapter_Pdo_Abstract->query('INSERT INTO "cl...', Array)
+#4 /var/www/test/Encomiendas/library/Zend/Db/Table/Abstract.php(1056): Zend_Db_Adapter_Abstract->insert('cliente', Array)
+#5 /var/www/test/Encomiendas/application/controllers/RecepcionController.php(155): Zend_Db_Table_Abstract->insert(Array)
+#6 /var/www/test/Encomiendas/library/Zend/Controller/Action.php(513): RecepcionController->saveAction()
+#7 /var/www/test/Encomiendas/library/Zend/Controller/Dispatcher/Standard.php(289): Zend_Controller_Action->dispatch('saveAction')
+#8 /var/www/test/Encomiendas/library/Zend/Controller/Front.php(954): Zend_Controller_Dispatcher_Standard->dispatch(Object(Zend_Controller_Request_Http), Object(Zend_Controller_Response_Http))
+#9 /var/www/test/Encomiendas/library/Zend/Application/Bootstrap/Bootstrap.php(97): Zend_Controller_Front->dispatch()
+#10 /var/www/test/Encomiendas/library/Zend/Application.php(366): Zend_Application_Bootstrap_Bootstrap->run()
+#11 /var/www/test/Encomiendas/public/index.php(26): Zend_Application->run()
+#12 {main}
+2021-01-26T13:13:17-04:00 INFO (6): SELECT "d"."id_datos_factura", "d"."sucursal", "d"."autorizacion", "d"."llave", "d"."inicio", "d"."numero_factura", "d"."fecha_limite", "d"."autoimpresor", "d"."estado", "d"."fin", "d"."leyenda_secundaria" FROM "datos_factura" AS "d" WHERE (llave<>'Manual') AND (fecha_limite>='2021-01-26') AND (estado='Activo') AND (sucursal='suc-103') AND (sistema='ENCOMIENDA')
+2021-01-26T14:25:46-04:00 ERR (3): cliente select SELECT "cl"."id_cliente" AS "id", "cl"."nombre", "cl"."nit", "cl"."tipo", "cl"."deuda" FROM "cliente" AS "cl" ORDER BY "nombre" ASC LIMIT 20
+2021-01-26T14:25:53-04:00 ERR (3): cliente select SELECT "cl"."id_cliente" AS "id", "cl"."nombre", "cl"."nit", "cl"."tipo", "cl"."deuda" FROM "cliente" AS "cl" WHERE (cl.tipo = 'Coorporativo') ORDER BY "nombre" ASC LIMIT 20
+2021-01-26T14:26:05-04:00 INFO (6): SELECT "d"."id_datos_factura", "d"."sucursal", "d"."autorizacion", "d"."llave", "d"."inicio", "d"."numero_factura", "d"."fecha_limite", "d"."autoimpresor", "d"."estado", "d"."fin", "d"."leyenda_secundaria" FROM "datos_factura" AS "d" WHERE (llave<>'Manual') AND (fecha_limite>='2021-01-26') AND (estado='Activo') AND (sucursal='suc-103') AND (sistema='ENCOMIENDA')
+2021-01-26T16:38:34-04:00 ERR (3): cliente select SELECT "cl"."id_cliente" AS "id", "cl"."nombre", "cl"."nit", "cl"."tipo", "cl"."deuda" FROM "cliente" AS "cl" ORDER BY "nombre" ASC LIMIT 20
+2021-01-26T16:38:40-04:00 ERR (3): cliente select SELECT "cl"."id_cliente" AS "id", "cl"."nombre", "cl"."nit", "cl"."tipo", "cl"."deuda" FROM "cliente" AS "cl" WHERE (cl.tipo = 'Coorporativo') ORDER BY "nombre" ASC LIMIT 20

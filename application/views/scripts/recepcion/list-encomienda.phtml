@@ -1,0 +1,24 @@
+<table class="listManifiestos">
+    <tr>
+        <th>Guia</th>
+        <th>Remitente</th>
+        <th>Destinatario</th>
+        <th>total</th>
+    </tr>
+    <?php
+    if(count($this->manifiestos)>0){
+    foreach ($this->manifiestos as $manifiesto) {
+        echo "<tr>
+                <td>$manifiesto->guia</td>
+                <td>$manifiesto->remitente</td>
+                <td>$manifiesto->destinatario</td>
+                <td>$manifiesto->total</td>
+            </tr>";
+    }
+    }else{
+        echo "<tr>
+                <td colspan='4'>Este manifiesto no registro encomiendas</td>
+            </tr>";
+    }
+    ?>
+</table>

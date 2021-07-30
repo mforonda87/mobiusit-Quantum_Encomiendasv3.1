@@ -1,0 +1,55 @@
+<?php
+$this->headLink()->appendStylesheet($this->baseUrl() . '/styles/jquery.autoComplete.css');
+
+$this->jQuery()->addJavascriptFile($this->baseUrl() . '/scripts/jquery/ui.core.pack.js');
+$this->jQuery()->addJavascriptFile($this->baseUrl() . '/scripts/jquery/ui.accordion.pack.js');
+//    $this->jQuery()->addJavascriptFile($this->baseUrl () . '/scripts/jquery/jquery.dialog.pack.js' );
+$this->jQuery()->addJavascriptFile($this->baseUrl() . '/scripts/jquery/jquery.numeric.js');
+$this->jQuery()->addJavascriptFile($this->baseUrl() . '/scripts/jquery/jquery.autoComplete.pack.js');
+$this->jQuery()->addJavascriptFile($this->baseUrl() . '/scripts/libs/recepcion.js');
+//echo "Base URL " . $this->baseUrl();
+//    $function = "(.numeric).numeric();";
+//    echo $function;
+//    $this->jQuery()->addOnload($function);
+?>
+<script type="text/javascript">
+    var arrayDefault = <?=$this->predef?>;
+    var clientesDefault = <?=$this->clientes?>;
+    
+</script>
+<APPLET name="printerSystem" archive="/Encomiendas/public/PrintDocEncomienda.jar" code="printer.AppletImpresionEncomienda.class" width=0 height=0></APPLET>
+<div>
+    <input type="hidden" id="selectedViaje" value="0"/>
+    <input type="hidden" id="selectedBus" value="0"/>
+    <input type="hidden" id="selectedHora" value="0"/>
+    <input type="hidden" id="selectedDestino" value="0"/>
+    <input type="hidden" id="selectedIdBus" value="0"/>
+</div>
+<div class="centroEncomienda">
+
+    <div class="width245 inline-block">
+        <div class="contentBox height450">
+            <?php
+            echo $this->viajes;
+            $session = Zend_Registry::get(App_Util_Statics::$SESSION);
+            ?>
+        </div>
+    </div>
+    <div class="width480 inline-block">
+        <div class="contentBox"><?=new App_Form_Recepcion($this->sucursales, $this->ciudades)
+            ?></div>
+        <div class="contentBox">
+
+        </div>
+    </div>
+    <div class="width245 inline-block">
+        <div class="contentBox height450">
+       <?=new App_Form_FiltroEncomienda($this->ciudades, $this->encomiendas)
+            ?>
+            <div>
+                <input type="button" id="ImprimirListaEncomienda" value="Imp Manifiesto"/>
+                <input type="button" id="registrarEncomiendasManifiesto" value="Registrar"/>
+            </div>
+        </div>
+    </div>
+</div>

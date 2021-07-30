@@ -1,0 +1,136 @@
+<?php
+/**
+ * Default Layout
+ *
+ * @author
+ * @version
+ */
+echo '<?xml version="1.0" encoding="UTF-8" ?>';
+echo $this->doctype();
+$baseUrl = $this->baseUrl();
+
+$confSistModel = new App_Model_ConfiguracionSistema();
+$nombreEmpresa = $confSistModel->getByKey(App_Util_Statics::$nombreEmpresa);
+?>
+<html>
+    <head>
+        <link rel="stylesheet" href="<?= $this->baseUrl() ?>/styles/default.css"	type="text/css" media="screen">
+        <link rel="stylesheet" href="<?= $this->baseUrl() ?>/styles/jquery.jscrollpane.css"	type="text/css" media="screen">
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <link rel="shortcut icon"  href="<?= $this->baseUrl() ?>/images/QuantumE.png"  />
+
+        <?php
+        echo $this->headLink();
+        $this->jQuery()->addJavascriptFile($this->baseUrl() . '/scripts/jquery/jquery.corner.js');
+        $this->jQuery()->addJavascriptFile($this->baseUrl() . '/scripts/jquery/jquery.mousewheel.js');
+        $this->jQuery()->addJavascriptFile($this->baseUrl() . '/scripts/jquery/jquery.jscrollpane.min.js');
+        echo $this->jQuery();
+        echo $this->headScript();
+        ?>
+        <!--[if IE 6]>
+        <script type="text/javascript">
+            $(document).ready(function()
+            {
+
+               resizeContainer();
+               function resizeContainer()
+               {
+                   $(".content_rounded").each(function(){
+                       var obj = $(this);
+
+                       obj.parent().css("width",obj.css("width"));
+                   });
+               }
+            });
+        </script>
+        <![endif]-->
+        <link rel="shortcut icon" href="<?= $this->baseUrl() ?>/images/IconoQuantum.png"/>
+        <script type="text/javascript" src="<?= $this->baseUrl() ?>/scripts/jquery/jquery.tooltip.pack.js"></script>
+        <script type="text/javascript">
+            var BaseUrl = "<?php echo $baseUrl; ?>";
+            jQuery.log = function(mensaje) {
+                if(window.console) {
+                    console.log(mensaje);
+                } 
+            };
+        </script>
+
+    </head>
+    <body>
+        <div class="header_bar">
+            <div class="topContent">
+                <div class="header_logo">
+                    <a class="logo" ><span class="spanTitle">Quantum |</span><span class="spanTitle spanTitleName">Encomiendas</span></a>
+                    <a class="empresaName" ><span class="spanTitle"><?= $nombreEmpresa->value ?></span></a>
+                </div>
+                <div class="devsite_menubar">
+                    <?php
+                    $session = Zend_Registry::get(App_Util_Statics::$SESSION);
+                    $person = $session->person;
+                    $otherfunctions = "";
+                    if (!empty($session->username)) {
+                        $date = new Zend_Date();
+                        $date->setTimezone('America/Argentina/Buenos_Aires');
+                        $fecha = $date->get(Zend_Date::DATE_FULL);
+                        $otherfunctions = "<div id='moreFunctions' class='hideDoMore'><ul>";
+                        ?>
+                        <div class="contentHeader">
+                            <div class="data_menu inline">
+                                <div class="barra_menu">
+                                    <div class="menu_core">
+                                        <span class="menu_item"><img src="<?= $this->baseUrl() . "/images/user.png" ?>" alt="Usuario" title="Usuario"/></span>
+                                    </div>
+                                    <div class="menu_core">
+                                        <span class="menu_item"><?php echo $person->nombres . " " . $person->apellido_paterno . " (" . $person->identificador . ")"; ?></span>
+                                    </div>
+                                    <div class="menu_core">
+                                        <span class="menu_item"><img src="<?= $this->baseUrl() . "/images/sucursal.png" ?>" alt="Usuario"/></span>
+                                    </div>
+                                    <div class="menu_core">
+                                        <span class="menu_item"><?php echo $session->sucursalName; ?></span>
+                                    </div>
+                                    <div class="menu_core">
+                                        <span class="menu_item"><img src="<?= $this->baseUrl() . "/images/translations.gif" ?>" alt="Sucursal"/></span>
+                                    </div>
+                                    <div class="menu_core">
+                                        <span class="menu_item"><?php echo $session->ciudadName; ?></span>
+                                    </div>
+                                    <div class="menu_core">
+                                        <span class="menu_item"><img id="dateSelected" src="<?= $this->baseUrl() . "/images/event.gif" ?>" alt="Fecha" title="Fecha Actual"/></span>
+                                    </div>
+                                    <div class="menu_core">
+                                        <span class="menu_item" id="dateSetSelected"><?php echo $fecha; ?></span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="data_menu_close inline">
+                                <div class="menu_core">
+                                    <span class="menu_item"><img src="<?= $this->baseUrl() . "/images/close.png" ?>" alt="Cerrar"/></span>
+                                </div>
+                                <div class="menu_core">
+                                    <span class="menu_item"><a href="<?= $this->baseUrl() . "/index/logout/" ?>">Cerrar Session</a></span>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                    <?php
+                }
+                ?>
+            </div>
+        </div>
+
+        <div class="middle-container clearfix">
+            <?php echo $this->layout()->content ?>
+        </div>
+        <div class="footer_border_bottom">
+            <div class="copyright"><a target="_blank" href="http://quantum.net.bo/Quantum/">Quantum</a>
+                @  2008-<?= date("Y"); ?> | Mobius IT Solutions</div>
+            <ul class="clearfix">
+                <li class="first"><a href="#" id="dev">Desarrolladores</a></li>
+                <li><a href="#" id="ayuda">Ayuda</a></li>
+                <li><a href="#" id="lic">Licencia</a></li>
+            </ul>
+        </div>
+    </body>
+</html>	

@@ -1,0 +1,74 @@
+<script>
+    $(document).ready(
+            function () {
+                $("#chofer").autocomplete({
+                    minLength: 2,
+                    source: function (request, response) {
+                        loadFrom(request, response);
+                    },
+                    select: function (event, ui) {                        
+                        $("#selectedChoferId").val(ui.item.value.id);
+                        $("#chofer").val(ui.item.value.nombre);
+                        return false;
+                    }
+                });
+                $("#relevo").autocomplete({
+                    minLength: 2,
+                    source: function (request, response) {
+                        loadFrom(request, response);
+                    },
+                    select: function (event, ui) {
+                        $("#selectedRelevoId").val(ui.item.value.id);
+                        $("#relevo").val(ui.item.value.nombre);
+                        return false;
+                    }
+                });
+                $("#ayudante").autocomplete({
+                    minLength: 2,
+                    source: function (request, response) {
+                        loadFrom(request, response);
+                    },
+                    select: function (event, ui) {
+                        $("#selectedAyudanteId").val(ui.item.value.id);
+                        $("#ayudante").val(ui.item.value.nombre);
+                        return false;
+                    }
+                });
+                function loadFrom(request, response) {
+                    $.ajax({
+                        url: BaseUrl + "/envio/list-drivers/",
+                        type: "GET",
+                        dataType: "json",
+                        data: {
+                            search: request.term
+                        },
+                        success: function (data) {
+                            response(data);
+                        }
+                    });
+                }
+            });
+</script>
+<div class="contentBox height200 width120">
+    <div class="contentBox">
+        <div style="display:block">
+            <label class="form_row">
+                <span>Chofer</span>
+                <input id="chofer" type="text" value="<?= $this->chofer ?>" />                
+                <input id="selectedChoferId" type="hidden" value="<?= $this->chofer_id ?>" />                
+            </label>
+        </div>        
+        <div style="display:block">
+            <label class="form_row">
+                <span>Relevo</span>
+                <input id="relevo" type="text" value="<?= $this->relevo ?>" />
+            </label>
+        </div>
+        <div style="display:block">
+            <label class="form_row">
+                <span>Ayudante</span>
+                <input type="text" id="ayudante" value="<?= $this->ayudante ?>"/>
+            </label>
+        </div>        
+    </div>    
+</div>

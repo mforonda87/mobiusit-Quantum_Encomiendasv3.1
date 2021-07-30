@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="44509111-67a4-4015-ba91-f53140b46afa" name="encomiendas" url="http://200.87.172.134/test/Encomiendas">
+        <fileTransfer rootFolder="/var/www/test/Encomiendas" accessType="SFTP" host="200.87.172.134" port="1022" sshConfigId="bc4fff1f-416a-49bf-baab-be1fe63667ca" sshConfig="pedro.murillo@200.87.172.134:1022 password">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" passiveMode="true" shareSSLContext="true" />
+          </advancedOptions>
+        </fileTransfer>
+      </webServer>
+    </option>
+  </component>
+</project>

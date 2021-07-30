@@ -1,0 +1,61 @@
+<?php
+/**
+ * Default home page view
+ *
+ * @author
+ * @version
+ */
+echo '<?xml version="1.0" encoding="UTF-8" ?>';
+echo $this->headTitle;
+$this->placeholder('title')->set('Acceso del sistema');
+$session = Zend_Registry::get(App_Util_Statics::$SESSION);
+
+if (empty($session->username)) {
+    echo "<br>";
+    ?>
+    <script>
+        $(function() {
+            
+            $("#username").focus();
+            
+        });
+        function doLogin(){
+            $("#LoginForm").hide();
+            $("#logining").show();
+            $("#titleLogin").hide();
+        }
+    </script>
+    <div class="clearfix">
+        <div style="margin-top: 20px;"><h2><?= App_Util_Statics::$MainFrameTitle ?></h2></div>
+        <br/>
+        <div>
+            <?php
+            if ($this->message != "") {
+                echo '<div class="ui-widget">
+		    <div class="ui-state-error ui-corner-all">
+	              <p>
+		        <span class="ui-icon ui-icon-info"></span>';
+                echo $this->message;
+                echo '    </p>
+		    </div>
+		  </div>';
+            }
+            $content = '<h3 class="title">' . App_Util_Statics::$loginTitle . '</h3>
+                    <div>' . $this->form . '</div>';
+            $content.="<div id='logining' class='logining'>
+			Validando datos de Usuario<br/><br/>
+                <img src='" . $this->baseUrl() . "/images/ajax-loader.gif' alt='Validando Usuario'/>
+            </div>";
+            $login = new App_Form_ComponentRoundedBean($content, "");
+            echo $login->show();
+            echo "<div class='roundedDiv' style='margin-left:10px;'>";
+            $confSistModel = new App_Model_ConfiguracionSistema();
+            $nombre = $confSistModel->getByKey(App_Util_Statics::$nombreEmpresa);
+            $detalleMainFrame = str_replace("%s", $nombre->value, App_Util_Statics::$detailMainFrame);
+            $detail = new App_Form_ComponentRoundedBean($detalleMainFrame, "white width530");
+            echo $detail->show();
+            echo "</div>";
+            ?>
+        </div>
+    </div>
+<?php } ?>

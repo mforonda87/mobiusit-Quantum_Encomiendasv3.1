@@ -1,0 +1,86 @@
+<div  style="width: 700px;">
+    <div id="infoViaje">
+        <div class="inline" style="width: 30%;">
+            <h3>infomacion de choferes</h3>
+            <ul id="choferesContent"></ul>
+        </div>
+        <div class="inline" style="width: 30%;">
+            <h3>informacion del bus</h3>
+            <ul id="busContent"></ul>
+        </div>
+        <div class="inline" style="width: 30%;">
+            <h3>fecha y hora</h3>
+            <ul id="fechaContent"></ul>
+        </div>
+    </div>
+    <div id="informacionDiv">
+        <div class="inline"  style="max-width: 190px;">
+            <div id="itineraioList">
+                <?= $this->itinerario ?>
+            </div>
+        </div>
+        <div class="inline" style="max-width: 480px;">
+
+            <div id="infoEncomiendas">
+                <?php
+                if (count($this->encomiendas) > 0) {
+                    $i = 0;
+                    $destino = "";
+                    foreach ($this->encomiendas as $key => $encomiendas) {
+                        ?>
+                        <h3><?= $key ?></h3>
+                        <div>
+                            <table id="ListadoEncomiendas" style="width: 100%;" class="borders">
+                                <thead>
+                                    <tr>
+                                        <th>Enviar</th>
+                                        <th>Guia</th>
+                                        <th>Detalle</th>
+                                        <th>Precio</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <?php
+                                    $tipoEncomienda = "";
+                                    foreach ($encomiendas as $enc) {
+                                        $i % 2 == 0 ? $clss = "par" : $clss = "impar";
+                                        if ($tipoEncomienda != $enc['tipo']) {
+                                            echo "<tr>";
+                                            echo "<th class='$clss' colspan='4'>" . strtoupper($enc['tipo']) . "</th>";
+                                            echo "</tr>";
+                                            $tipoEncomienda = $enc['tipo'];
+                                        }
+                                        
+                                        if ($destino != $enc['destino']) {
+                                            echo "<tr>";
+                                            echo "<th class='$clss' colspan='4'>" . $enc['destino'] . "</th>";
+                                            echo "</tr>";
+                                            $destino = $enc['destino'];
+                                        }
+                                        echo "<tr>";
+                                        echo "<td class='$clss'><input type='checkbox' name='enviarEncomienda' value='" . $enc['id_encomienda'] . "'/></td>";
+                                        echo "<td class='$clss'>" . $enc['guia'] . "</td>";
+                                        echo "<td class='$clss'>" . $enc['detalle'] . "</td>";
+                                        echo "<td class='$clss'>" . $enc['total'] . "</td>";
+                                        echo "</tr>";
+                                        $i++;
+                                    }
+                                    ?>
+                                </tbody>
+                            </table>
+                        </div>
+                        <?php
+                    }
+                } else {
+                    echo "<div class='ui-state-highligth'>No se encontraron encomiendas recibidas </div>";
+                }
+                ?>
+
+            </div>
+        </div>
+        <div>
+    <!--            <input type="button" value="Imp. Lista" class="boton" onclick="//imprimirRecibo($('#ListadoEncomiendas').html());"/>-->
+    <!--            <input type="button" value="Registrar envio" id="registrarEnvio"/>-->
+        </div>
+    </div>
+</div>

@@ -1,0 +1,42 @@
+
+<div class="contentBox">
+
+    <form name="encomiendasForm" id="encomiendasForm" method="post" enctype="application/x-www-form-urlencoded" action="' . $this->baseUrl . '/recepcion/">
+        <input type="hidden" name="idfactura" value="<?=$this->factura->id_factura?>"/>
+        <div class="row">
+            <label for="fechaFactura" class="labelForm">Fecha        </label>
+            <input type="text" name="fechaFactura" id="fechaFactura" value="<?= $this->factura->fecha ?>" disabled="disabled"/>
+        </div>
+        <div class="row">
+            <label for="horaFactura" class="labelForm">Hora        </label>
+            <input type="text" name="horaFactura" id="horaFactura" value="<?= $this->factura->nit ?>" disabled="disabled"/>
+        </div>
+        <div class="row">
+            <label for="nitFactura" class="labelForm">N.I.T        </label>
+            <input type="text" name="nitFactura" id="nitFactura" class="numeric" value="<?= $this->factura->nit ?>" disabled="disabled"/>
+        </div>
+        <div class="row">
+            <label for="nombreFactura" class="labelForm">Nombre</label>
+            <input type="text" name="nombreFactura" id="nombreFactura" value="<?= $this->factura->nombre ?>" disabled="disabled"/>
+        </div>
+        <div class="row">
+            <label for="numeroFactura" class="labelForm">Factura No</label>
+            <input type="text" name="numeroFactura" id="numeroFactura" value=""/>
+        </div>
+        <div class="row">
+            <label for="dosificacion" class="labelForm">Dosificacion.</label>
+            <select id="dosificacion" name="dosificacion">
+                <?php
+                foreach ($this->dosificaciones as $key => $value) {
+                    echo "<option value='" . $key . "'>" . $value . "</option>";
+                }
+                ?>
+            </select> 
+        </div>
+        <div class="row" id="rowmontoDeclarado" style="display: none;">
+            <label for="montoDeclarado" class="labelForm">Valor Declarado</label>
+            <input type="text" name="montoDeclarado" id="montoDeclarado" />
+        </div>
+    </form>
+
+</div>

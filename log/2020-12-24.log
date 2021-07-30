@@ -1,0 +1,303 @@
+2020-12-24T07:03:56-04:00 ERR (3): [{"nombre":"GOMEZ","nit":"2525780018","tipo":"normal"},{"nombre":"JUAN  POZO  MONRROY","nit":"2525068","tipo":"normal"},{"nombre":"paolo","nit":"25252525","tipo":"Coorporativo"},{"nombre":"paolo","nit":"25252526","tipo":"Coorporativo"},{"nombre":"paolo","nit":"25252527","tipo":"Coorporativo"},{"nombre":"paolo","nit":"25252528","tipo":"Coorporativo"}]
+2020-12-24T07:04:25-04:00 ERR (3): Error inserting client#0 /var/www/test/Encomiendas/library/Zend/Db/Statement.php(300): Zend_Db_Statement_Pdo->_execute(Array)
+#1 /var/www/test/Encomiendas/library/Zend/Db/Adapter/Abstract.php(468): Zend_Db_Statement->execute(Array)
+#2 /var/www/test/Encomiendas/library/Zend/Db/Adapter/Pdo/Abstract.php(238): Zend_Db_Adapter_Abstract->query('INSERT INTO "cl...', Array)
+#3 /var/www/test/Encomiendas/library/Zend/Db/Adapter/Abstract.php(546): Zend_Db_Adapter_Pdo_Abstract->query('INSERT INTO "cl...', Array)
+#4 /var/www/test/Encomiendas/library/Zend/Db/Table/Abstract.php(1056): Zend_Db_Adapter_Abstract->insert('cliente', Array)
+#5 /var/www/test/Encomiendas/application/controllers/RecepcionController.php(155): Zend_Db_Table_Abstract->insert(Array)
+#6 /var/www/test/Encomiendas/library/Zend/Controller/Action.php(513): RecepcionController->saveAction()
+#7 /var/www/test/Encomiendas/library/Zend/Controller/Dispatcher/Standard.php(289): Zend_Controller_Action->dispatch('saveAction')
+#8 /var/www/test/Encomiendas/library/Zend/Controller/Front.php(954): Zend_Controller_Dispatcher_Standard->dispatch(Object(Zend_Controller_Request_Http), Object(Zend_Controller_Response_Http))
+#9 /var/www/test/Encomiendas/library/Zend/Application/Bootstrap/Bootstrap.php(97): Zend_Controller_Front->dispatch()
+#10 /var/www/test/Encomiendas/library/Zend/Application.php(366): Zend_Application_Bootstrap_Bootstrap->run()
+#11 /var/www/test/Encomiendas/public/index.php(26): Zend_Application->run()
+#12 {main}
+2020-12-24T07:09:22-04:00 ERR (3): [{"nombre":"GOMEZ","nit":"2525780018","tipo":"normal"},{"nombre":"JUAN  POZO  MONRROY","nit":"2525068","tipo":"normal"},{"nombre":"paolo","nit":"25252525","tipo":"Coorporativo"},{"nombre":"paolo","nit":"25252526","tipo":"Coorporativo"},{"nombre":"paolo","nit":"25252527","tipo":"Coorporativo"},{"nombre":"paolo","nit":"25252528","tipo":"Coorporativo"}]
+2020-12-24T07:09:41-04:00 ERR (3): Error inserting client#0 /var/www/test/Encomiendas/library/Zend/Db/Statement.php(300): Zend_Db_Statement_Pdo->_execute(Array)
+#1 /var/www/test/Encomiendas/library/Zend/Db/Adapter/Abstract.php(468): Zend_Db_Statement->execute(Array)
+#2 /var/www/test/Encomiendas/library/Zend/Db/Adapter/Pdo/Abstract.php(238): Zend_Db_Adapter_Abstract->query('INSERT INTO "cl...', Array)
+#3 /var/www/test/Encomiendas/library/Zend/Db/Adapter/Abstract.php(546): Zend_Db_Adapter_Pdo_Abstract->query('INSERT INTO "cl...', Array)
+#4 /var/www/test/Encomiendas/library/Zend/Db/Table/Abstract.php(1056): Zend_Db_Adapter_Abstract->insert('cliente', Array)
+#5 /var/www/test/Encomiendas/application/controllers/RecepcionController.php(155): Zend_Db_Table_Abstract->insert(Array)
+#6 /var/www/test/Encomiendas/library/Zend/Controller/Action.php(513): RecepcionController->saveAction()
+#7 /var/www/test/Encomiendas/library/Zend/Controller/Dispatcher/Standard.php(289): Zend_Controller_Action->dispatch('saveAction')
+#8 /var/www/test/Encomiendas/library/Zend/Controller/Front.php(954): Zend_Controller_Dispatcher_Standard->dispatch(Object(Zend_Controller_Request_Http), Object(Zend_Controller_Response_Http))
+#9 /var/www/test/Encomiendas/library/Zend/Application/Bootstrap/Bootstrap.php(97): Zend_Controller_Front->dispatch()
+#10 /var/www/test/Encomiendas/library/Zend/Application.php(366): Zend_Application_Bootstrap_Bootstrap->run()
+#11 /var/www/test/Encomiendas/public/index.php(26): Zend_Application->run()
+#12 {main}
+2020-12-24T07:09:41-04:00 INFO (6): tipo encomienda to be savedCoorporativo
+2020-12-24T07:11:08-04:00 ERR (3): [{"nombre":"GOMEZ","nit":"2525780018","tipo":"normal"},{"nombre":"JUAN  POZO  MONRROY","nit":"2525068","tipo":"normal"},{"nombre":"paolo","nit":"25252525","tipo":"Coorporativo"},{"nombre":"paolo","nit":"25252526","tipo":"Coorporativo"},{"nombre":"paolo","nit":"25252527","tipo":"Coorporativo"},{"nombre":"paolo","nit":"25252528","tipo":"Coorporativo"}]
+2020-12-24T07:11:26-04:00 ERR (3): Error inserting client#0 /var/www/test/Encomiendas/library/Zend/Db/Statement.php(300): Zend_Db_Statement_Pdo->_execute(Array)
+#1 /var/www/test/Encomiendas/library/Zend/Db/Adapter/Abstract.php(468): Zend_Db_Statement->execute(Array)
+#2 /var/www/test/Encomiendas/library/Zend/Db/Adapter/Pdo/Abstract.php(238): Zend_Db_Adapter_Abstract->query('INSERT INTO "cl...', Array)
+#3 /var/www/test/Encomiendas/library/Zend/Db/Adapter/Abstract.php(546): Zend_Db_Adapter_Pdo_Abstract->query('INSERT INTO "cl...', Array)
+#4 /var/www/test/Encomiendas/library/Zend/Db/Table/Abstract.php(1056): Zend_Db_Adapter_Abstract->insert('cliente', Array)
+#5 /var/www/test/Encomiendas/application/controllers/RecepcionController.php(155): Zend_Db_Table_Abstract->insert(Array)
+#6 /var/www/test/Encomiendas/library/Zend/Controller/Action.php(513): RecepcionController->saveAction()
+#7 /var/www/test/Encomiendas/library/Zend/Controller/Dispatcher/Standard.php(289): Zend_Controller_Action->dispatch('saveAction')
+#8 /var/www/test/Encomiendas/library/Zend/Controller/Front.php(954): Zend_Controller_Dispatcher_Standard->dispatch(Object(Zend_Controller_Request_Http), Object(Zend_Controller_Response_Http))
+#9 /var/www/test/Encomiendas/library/Zend/Application/Bootstrap/Bootstrap.php(97): Zend_Controller_Front->dispatch()
+#10 /var/www/test/Encomiendas/library/Zend/Application.php(366): Zend_Application_Bootstrap_Bootstrap->run()
+#11 /var/www/test/Encomiendas/public/index.php(26): Zend_Application->run()
+#12 {main}
+2020-12-24T07:11:26-04:00 INFO (6): tipo encomienda to be savedCoorporativo
+2020-12-24T07:11:26-04:00 INFO (6): updating coorporativo
+2020-12-24T07:11:26-04:00 ERR (3): exception 'PDOException' with message 'SQLSTATE[42804]: Datatype mismatch: 7 ERROR:  argument of WHERE must be type boolean, not type integer
+LINE 1: UPDATE "cliente" SET "0" = $1 WHERE (deuda)
+                                             ^' in /var/www/test/Encomiendas/library/Zend/Db/Statement/Pdo.php:228
+Stack trace:
+#0 /var/www/test/Encomiendas/library/Zend/Db/Statement/Pdo.php(228): PDOStatement->execute(Array)
+#1 /var/www/test/Encomiendas/library/Zend/Db/Statement.php(300): Zend_Db_Statement_Pdo->_execute(Array)
+#2 /var/www/test/Encomiendas/library/Zend/Db/Adapter/Abstract.php(468): Zend_Db_Statement->execute(Array)
+#3 /var/www/test/Encomiendas/library/Zend/Db/Adapter/Pdo/Abstract.php(238): Zend_Db_Adapter_Abstract->query('UPDATE "cliente...', Array)
+#4 /var/www/test/Encomiendas/library/Zend/Db/Adapter/Abstract.php(604): Zend_Db_Adapter_Pdo_Abstract->query('UPDATE "cliente...', Array)
+#5 /var/www/test/Encomiendas/library/Zend/Db/Table/Abstract.php(1113): Zend_Db_Adapter_Abstract->update('cliente', Array, Array)
+#6 /var/www/test/Encomiendas/application/models/EncomiendaModel.php(178): Zend_Db_Table_Abstract->update(Array, Array)
+#7 /var/www/test/Encomiendas/application/controllers/RecepcionController.php(187): App_Model_EncomiendaModel->txSave(Array, Array, Object(stdClass), 'Cochabamba')
+#8 /var/www/test/Encomiendas/library/Zend/Controller/Action.php(513): RecepcionController->saveAction()
+#9 /var/www/test/Encomiendas/library/Zend/Controller/Dispatcher/Standard.php(289): Zend_Controller_Action->dispatch('saveAction')
+#10 /var/www/test/Encomiendas/library/Zend/Controller/Front.php(954): Zend_Controller_Dispatcher_Standard->dispatch(Object(Zend_Controller_Request_Http), Object(Zend_Controller_Response_Http))
+#11 /var/www/test/Encomiendas/library/Zend/Application/Bootstrap/Bootstrap.php(97): Zend_Controller_Front->dispatch()
+#12 /var/www/test/Encomiendas/library/Zend/Application.php(366): Zend_Application_Bootstrap_Bootstrap->run()
+#13 /var/www/test/Encomiendas/public/index.php(26): Zend_Application->run()
+#14 {main}
+
+Next exception 'Zend_Db_Statement_Exception' with message 'SQLSTATE[42804]: Datatype mismatch: 7 ERROR:  argument of WHERE must be type boolean, not type integer
+LINE 1: UPDATE "cliente" SET "0" = $1 WHERE (deuda)
+                                             ^' in /var/www/test/Encomiendas/library/Zend/Db/Statement/Pdo.php:234
+Stack trace:
+#0 /var/www/test/Encomiendas/library/Zend/Db/Statement.php(300): Zend_Db_Statement_Pdo->_execute(Array)
+#1 /var/www/test/Encomiendas/library/Zend/Db/Adapter/Abstract.php(468): Zend_Db_Statement->execute(Array)
+#2 /var/www/test/Encomiendas/library/Zend/Db/Adapter/Pdo/Abstract.php(238): Zend_Db_Adapter_Abstract->query('UPDATE "cliente...', Array)
+#3 /var/www/test/Encomiendas/library/Zend/Db/Adapter/Abstract.php(604): Zend_Db_Adapter_Pdo_Abstract->query('UPDATE "cliente...', Array)
+#4 /var/www/test/Encomiendas/library/Zend/Db/Table/Abstract.php(1113): Zend_Db_Adapter_Abstract->update('cliente', Array, Array)
+#5 /var/www/test/Encomiendas/application/models/EncomiendaModel.php(178): Zend_Db_Table_Abstract->update(Array, Array)
+#6 /var/www/test/Encomiendas/application/controllers/RecepcionController.php(187): App_Model_EncomiendaModel->txSave(Array, Array, Object(stdClass), 'Cochabamba')
+#7 /var/www/test/Encomiendas/library/Zend/Controller/Action.php(513): RecepcionController->saveAction()
+#8 /var/www/test/Encomiendas/library/Zend/Controller/Dispatcher/Standard.php(289): Zend_Controller_Action->dispatch('saveAction')
+#9 /var/www/test/Encomiendas/library/Zend/Controller/Front.php(954): Zend_Controller_Dispatcher_Standard->dispatch(Object(Zend_Controller_Request_Http), Object(Zend_Controller_Response_Http))
+#10 /var/www/test/Encomiendas/library/Zend/Application/Bootstrap/Bootstrap.php(97): Zend_Controller_Front->dispatch()
+#11 /var/www/test/Encomiendas/library/Zend/Application.php(366): Zend_Application_Bootstrap_Bootstrap->run()
+#12 /var/www/test/Encomiendas/public/index.php(26): Zend_Application->run()
+#13 {main}
+2020-12-24T07:11:26-04:00 INFO (6): exception 'Zend_Db_Exception' with message 'SQLSTATE[42804]: Datatype mismatch: 7 ERROR:  argument of WHERE must be type boolean, not type integer
+LINE 1: UPDATE "cliente" SET "0" = $1 WHERE (deuda)
+                                             ^' in /var/www/test/Encomiendas/application/models/EncomiendaModel.php:292
+Stack trace:
+#0 /var/www/test/Encomiendas/application/controllers/RecepcionController.php(187): App_Model_EncomiendaModel->txSave(Array, Array, Object(stdClass), 'Cochabamba')
+#1 /var/www/test/Encomiendas/library/Zend/Controller/Action.php(513): RecepcionController->saveAction()
+#2 /var/www/test/Encomiendas/library/Zend/Controller/Dispatcher/Standard.php(289): Zend_Controller_Action->dispatch('saveAction')
+#3 /var/www/test/Encomiendas/library/Zend/Controller/Front.php(954): Zend_Controller_Dispatcher_Standard->dispatch(Object(Zend_Controller_Request_Http), Object(Zend_Controller_Response_Http))
+#4 /var/www/test/Encomiendas/library/Zend/Application/Bootstrap/Bootstrap.php(97): Zend_Controller_Front->dispatch()
+#5 /var/www/test/Encomiendas/library/Zend/Application.php(366): Zend_Application_Bootstrap_Bootstrap->run()
+#6 /var/www/test/Encomiendas/public/index.php(26): Zend_Application->run()
+#7 {main}
+2020-12-24T07:12:27-04:00 ERR (3): Error inserting client#0 /var/www/test/Encomiendas/library/Zend/Db/Statement.php(300): Zend_Db_Statement_Pdo->_execute(Array)
+#1 /var/www/test/Encomiendas/library/Zend/Db/Adapter/Abstract.php(468): Zend_Db_Statement->execute(Array)
+#2 /var/www/test/Encomiendas/library/Zend/Db/Adapter/Pdo/Abstract.php(238): Zend_Db_Adapter_Abstract->query('INSERT INTO "cl...', Array)
+#3 /var/www/test/Encomiendas/library/Zend/Db/Adapter/Abstract.php(546): Zend_Db_Adapter_Pdo_Abstract->query('INSERT INTO "cl...', Array)
+#4 /var/www/test/Encomiendas/library/Zend/Db/Table/Abstract.php(1056): Zend_Db_Adapter_Abstract->insert('cliente', Array)
+#5 /var/www/test/Encomiendas/application/controllers/RecepcionController.php(155): Zend_Db_Table_Abstract->insert(Array)
+#6 /var/www/test/Encomiendas/library/Zend/Controller/Action.php(513): RecepcionController->saveAction()
+#7 /var/www/test/Encomiendas/library/Zend/Controller/Dispatcher/Standard.php(289): Zend_Controller_Action->dispatch('saveAction')
+#8 /var/www/test/Encomiendas/library/Zend/Controller/Front.php(954): Zend_Controller_Dispatcher_Standard->dispatch(Object(Zend_Controller_Request_Http), Object(Zend_Controller_Response_Http))
+#9 /var/www/test/Encomiendas/library/Zend/Application/Bootstrap/Bootstrap.php(97): Zend_Controller_Front->dispatch()
+#10 /var/www/test/Encomiendas/library/Zend/Application.php(366): Zend_Application_Bootstrap_Bootstrap->run()
+#11 /var/www/test/Encomiendas/public/index.php(26): Zend_Application->run()
+#12 {main}
+2020-12-24T07:12:27-04:00 INFO (6): tipo encomienda to be savedCoorporativo
+2020-12-24T07:12:27-04:00 INFO (6): updating coorporativo
+2020-12-24T07:12:27-04:00 ERR (3): exception 'PDOException' with message 'SQLSTATE[42703]: Undefined column: 7 ERROR:  column "views" does not exist
+LINE 1: UPDATE "cliente" SET "deuda" = views + 10 WHERE (nit='252525...
+                                       ^' in /var/www/test/Encomiendas/library/Zend/Db/Statement/Pdo.php:228
+Stack trace:
+#0 /var/www/test/Encomiendas/library/Zend/Db/Statement/Pdo.php(228): PDOStatement->execute(Array)
+#1 /var/www/test/Encomiendas/library/Zend/Db/Statement.php(300): Zend_Db_Statement_Pdo->_execute(Array)
+#2 /var/www/test/Encomiendas/library/Zend/Db/Adapter/Abstract.php(468): Zend_Db_Statement->execute(Array)
+#3 /var/www/test/Encomiendas/library/Zend/Db/Adapter/Pdo/Abstract.php(238): Zend_Db_Adapter_Abstract->query('UPDATE "cliente...', Array)
+#4 /var/www/test/Encomiendas/library/Zend/Db/Adapter/Abstract.php(604): Zend_Db_Adapter_Pdo_Abstract->query('UPDATE "cliente...', Array)
+#5 /var/www/test/Encomiendas/library/Zend/Db/Table/Abstract.php(1113): Zend_Db_Adapter_Abstract->update('cliente', Array, Array)
+#6 /var/www/test/Encomiendas/application/models/EncomiendaModel.php(178): Zend_Db_Table_Abstract->update(Array, Array)
+#7 /var/www/test/Encomiendas/application/controllers/RecepcionController.php(187): App_Model_EncomiendaModel->txSave(Array, Array, Object(stdClass), 'Cochabamba')
+#8 /var/www/test/Encomiendas/library/Zend/Controller/Action.php(513): RecepcionController->saveAction()
+#9 /var/www/test/Encomiendas/library/Zend/Controller/Dispatcher/Standard.php(289): Zend_Controller_Action->dispatch('saveAction')
+#10 /var/www/test/Encomiendas/library/Zend/Controller/Front.php(954): Zend_Controller_Dispatcher_Standard->dispatch(Object(Zend_Controller_Request_Http), Object(Zend_Controller_Response_Http))
+#11 /var/www/test/Encomiendas/library/Zend/Application/Bootstrap/Bootstrap.php(97): Zend_Controller_Front->dispatch()
+#12 /var/www/test/Encomiendas/library/Zend/Application.php(366): Zend_Application_Bootstrap_Bootstrap->run()
+#13 /var/www/test/Encomiendas/public/index.php(26): Zend_Application->run()
+#14 {main}
+
+Next exception 'Zend_Db_Statement_Exception' with message 'SQLSTATE[42703]: Undefined column: 7 ERROR:  column "views" does not exist
+LINE 1: UPDATE "cliente" SET "deuda" = views + 10 WHERE (nit='252525...
+                                       ^' in /var/www/test/Encomiendas/library/Zend/Db/Statement/Pdo.php:234
+Stack trace:
+#0 /var/www/test/Encomiendas/library/Zend/Db/Statement.php(300): Zend_Db_Statement_Pdo->_execute(Array)
+#1 /var/www/test/Encomiendas/library/Zend/Db/Adapter/Abstract.php(468): Zend_Db_Statement->execute(Array)
+#2 /var/www/test/Encomiendas/library/Zend/Db/Adapter/Pdo/Abstract.php(238): Zend_Db_Adapter_Abstract->query('UPDATE "cliente...', Array)
+#3 /var/www/test/Encomiendas/library/Zend/Db/Adapter/Abstract.php(604): Zend_Db_Adapter_Pdo_Abstract->query('UPDATE "cliente...', Array)
+#4 /var/www/test/Encomiendas/library/Zend/Db/Table/Abstract.php(1113): Zend_Db_Adapter_Abstract->update('cliente', Array, Array)
+#5 /var/www/test/Encomiendas/application/models/EncomiendaModel.php(178): Zend_Db_Table_Abstract->update(Array, Array)
+#6 /var/www/test/Encomiendas/application/controllers/RecepcionController.php(187): App_Model_EncomiendaModel->txSave(Array, Array, Object(stdClass), 'Cochabamba')
+#7 /var/www/test/Encomiendas/library/Zend/Controller/Action.php(513): RecepcionController->saveAction()
+#8 /var/www/test/Encomiendas/library/Zend/Controller/Dispatcher/Standard.php(289): Zend_Controller_Action->dispatch('saveAction')
+#9 /var/www/test/Encomiendas/library/Zend/Controller/Front.php(954): Zend_Controller_Dispatcher_Standard->dispatch(Object(Zend_Controller_Request_Http), Object(Zend_Controller_Response_Http))
+#10 /var/www/test/Encomiendas/library/Zend/Application/Bootstrap/Bootstrap.php(97): Zend_Controller_Front->dispatch()
+#11 /var/www/test/Encomiendas/library/Zend/Application.php(366): Zend_Application_Bootstrap_Bootstrap->run()
+#12 /var/www/test/Encomiendas/public/index.php(26): Zend_Application->run()
+#13 {main}
+2020-12-24T07:12:27-04:00 INFO (6): exception 'Zend_Db_Exception' with message 'SQLSTATE[42703]: Undefined column: 7 ERROR:  column "views" does not exist
+LINE 1: UPDATE "cliente" SET "deuda" = views + 10 WHERE (nit='252525...
+                                       ^' in /var/www/test/Encomiendas/application/models/EncomiendaModel.php:292
+Stack trace:
+#0 /var/www/test/Encomiendas/application/controllers/RecepcionController.php(187): App_Model_EncomiendaModel->txSave(Array, Array, Object(stdClass), 'Cochabamba')
+#1 /var/www/test/Encomiendas/library/Zend/Controller/Action.php(513): RecepcionController->saveAction()
+#2 /var/www/test/Encomiendas/library/Zend/Controller/Dispatcher/Standard.php(289): Zend_Controller_Action->dispatch('saveAction')
+#3 /var/www/test/Encomiendas/library/Zend/Controller/Front.php(954): Zend_Controller_Dispatcher_Standard->dispatch(Object(Zend_Controller_Request_Http), Object(Zend_Controller_Response_Http))
+#4 /var/www/test/Encomiendas/library/Zend/Application/Bootstrap/Bootstrap.php(97): Zend_Controller_Front->dispatch()
+#5 /var/www/test/Encomiendas/library/Zend/Application.php(366): Zend_Application_Bootstrap_Bootstrap->run()
+#6 /var/www/test/Encomiendas/public/index.php(26): Zend_Application->run()
+#7 {main}
+2020-12-24T07:12:58-04:00 ERR (3): Error inserting client#0 /var/www/test/Encomiendas/library/Zend/Db/Statement.php(300): Zend_Db_Statement_Pdo->_execute(Array)
+#1 /var/www/test/Encomiendas/library/Zend/Db/Adapter/Abstract.php(468): Zend_Db_Statement->execute(Array)
+#2 /var/www/test/Encomiendas/library/Zend/Db/Adapter/Pdo/Abstract.php(238): Zend_Db_Adapter_Abstract->query('INSERT INTO "cl...', Array)
+#3 /var/www/test/Encomiendas/library/Zend/Db/Adapter/Abstract.php(546): Zend_Db_Adapter_Pdo_Abstract->query('INSERT INTO "cl...', Array)
+#4 /var/www/test/Encomiendas/library/Zend/Db/Table/Abstract.php(1056): Zend_Db_Adapter_Abstract->insert('cliente', Array)
+#5 /var/www/test/Encomiendas/application/controllers/RecepcionController.php(155): Zend_Db_Table_Abstract->insert(Array)
+#6 /var/www/test/Encomiendas/library/Zend/Controller/Action.php(513): RecepcionController->saveAction()
+#7 /var/www/test/Encomiendas/library/Zend/Controller/Dispatcher/Standard.php(289): Zend_Controller_Action->dispatch('saveAction')
+#8 /var/www/test/Encomiendas/library/Zend/Controller/Front.php(954): Zend_Controller_Dispatcher_Standard->dispatch(Object(Zend_Controller_Request_Http), Object(Zend_Controller_Response_Http))
+#9 /var/www/test/Encomiendas/library/Zend/Application/Bootstrap/Bootstrap.php(97): Zend_Controller_Front->dispatch()
+#10 /var/www/test/Encomiendas/library/Zend/Application.php(366): Zend_Application_Bootstrap_Bootstrap->run()
+#11 /var/www/test/Encomiendas/public/index.php(26): Zend_Application->run()
+#12 {main}
+2020-12-24T07:12:58-04:00 INFO (6): tipo encomienda to be savedCoorporativo
+2020-12-24T07:12:58-04:00 INFO (6): updating coorporativo
+2020-12-24T07:12:58-04:00 ERR (3): exception 'PDOException' with message 'SQLSTATE[42703]: Undefined column: 7 ERROR:  column "dauda" does not exist
+LINE 1: UPDATE "cliente" SET "deuda" = dauda + 10 WHERE (nit='252525...
+                                       ^' in /var/www/test/Encomiendas/library/Zend/Db/Statement/Pdo.php:228
+Stack trace:
+#0 /var/www/test/Encomiendas/library/Zend/Db/Statement/Pdo.php(228): PDOStatement->execute(Array)
+#1 /var/www/test/Encomiendas/library/Zend/Db/Statement.php(300): Zend_Db_Statement_Pdo->_execute(Array)
+#2 /var/www/test/Encomiendas/library/Zend/Db/Adapter/Abstract.php(468): Zend_Db_Statement->execute(Array)
+#3 /var/www/test/Encomiendas/library/Zend/Db/Adapter/Pdo/Abstract.php(238): Zend_Db_Adapter_Abstract->query('UPDATE "cliente...', Array)
+#4 /var/www/test/Encomiendas/library/Zend/Db/Adapter/Abstract.php(604): Zend_Db_Adapter_Pdo_Abstract->query('UPDATE "cliente...', Array)
+#5 /var/www/test/Encomiendas/library/Zend/Db/Table/Abstract.php(1113): Zend_Db_Adapter_Abstract->update('cliente', Array, Array)
+#6 /var/www/test/Encomiendas/application/models/EncomiendaModel.php(178): Zend_Db_Table_Abstract->update(Array, Array)
+#7 /var/www/test/Encomiendas/application/controllers/RecepcionController.php(187): App_Model_EncomiendaModel->txSave(Array, Array, Object(stdClass), 'Cochabamba')
+#8 /var/www/test/Encomiendas/library/Zend/Controller/Action.php(513): RecepcionController->saveAction()
+#9 /var/www/test/Encomiendas/library/Zend/Controller/Dispatcher/Standard.php(289): Zend_Controller_Action->dispatch('saveAction')
+#10 /var/www/test/Encomiendas/library/Zend/Controller/Front.php(954): Zend_Controller_Dispatcher_Standard->dispatch(Object(Zend_Controller_Request_Http), Object(Zend_Controller_Response_Http))
+#11 /var/www/test/Encomiendas/library/Zend/Application/Bootstrap/Bootstrap.php(97): Zend_Controller_Front->dispatch()
+#12 /var/www/test/Encomiendas/library/Zend/Application.php(366): Zend_Application_Bootstrap_Bootstrap->run()
+#13 /var/www/test/Encomiendas/public/index.php(26): Zend_Application->run()
+#14 {main}
+
+Next exception 'Zend_Db_Statement_Exception' with message 'SQLSTATE[42703]: Undefined column: 7 ERROR:  column "dauda" does not exist
+LINE 1: UPDATE "cliente" SET "deuda" = dauda + 10 WHERE (nit='252525...
+                                       ^' in /var/www/test/Encomiendas/library/Zend/Db/Statement/Pdo.php:234
+Stack trace:
+#0 /var/www/test/Encomiendas/library/Zend/Db/Statement.php(300): Zend_Db_Statement_Pdo->_execute(Array)
+#1 /var/www/test/Encomiendas/library/Zend/Db/Adapter/Abstract.php(468): Zend_Db_Statement->execute(Array)
+#2 /var/www/test/Encomiendas/library/Zend/Db/Adapter/Pdo/Abstract.php(238): Zend_Db_Adapter_Abstract->query('UPDATE "cliente...', Array)
+#3 /var/www/test/Encomiendas/library/Zend/Db/Adapter/Abstract.php(604): Zend_Db_Adapter_Pdo_Abstract->query('UPDATE "cliente...', Array)
+#4 /var/www/test/Encomiendas/library/Zend/Db/Table/Abstract.php(1113): Zend_Db_Adapter_Abstract->update('cliente', Array, Array)
+#5 /var/www/test/Encomiendas/application/models/EncomiendaModel.php(178): Zend_Db_Table_Abstract->update(Array, Array)
+#6 /var/www/test/Encomiendas/application/controllers/RecepcionController.php(187): App_Model_EncomiendaModel->txSave(Array, Array, Object(stdClass), 'Cochabamba')
+#7 /var/www/test/Encomiendas/library/Zend/Controller/Action.php(513): RecepcionController->saveAction()
+#8 /var/www/test/Encomiendas/library/Zend/Controller/Dispatcher/Standard.php(289): Zend_Controller_Action->dispatch('saveAction')
+#9 /var/www/test/Encomiendas/library/Zend/Controller/Front.php(954): Zend_Controller_Dispatcher_Standard->dispatch(Object(Zend_Controller_Request_Http), Object(Zend_Controller_Response_Http))
+#10 /var/www/test/Encomiendas/library/Zend/Application/Bootstrap/Bootstrap.php(97): Zend_Controller_Front->dispatch()
+#11 /var/www/test/Encomiendas/library/Zend/Application.php(366): Zend_Application_Bootstrap_Bootstrap->run()
+#12 /var/www/test/Encomiendas/public/index.php(26): Zend_Application->run()
+#13 {main}
+2020-12-24T07:12:58-04:00 INFO (6): exception 'Zend_Db_Exception' with message 'SQLSTATE[42703]: Undefined column: 7 ERROR:  column "dauda" does not exist
+LINE 1: UPDATE "cliente" SET "deuda" = dauda + 10 WHERE (nit='252525...
+                                       ^' in /var/www/test/Encomiendas/application/models/EncomiendaModel.php:292
+Stack trace:
+#0 /var/www/test/Encomiendas/application/controllers/RecepcionController.php(187): App_Model_EncomiendaModel->txSave(Array, Array, Object(stdClass), 'Cochabamba')
+#1 /var/www/test/Encomiendas/library/Zend/Controller/Action.php(513): RecepcionController->saveAction()
+#2 /var/www/test/Encomiendas/library/Zend/Controller/Dispatcher/Standard.php(289): Zend_Controller_Action->dispatch('saveAction')
+#3 /var/www/test/Encomiendas/library/Zend/Controller/Front.php(954): Zend_Controller_Dispatcher_Standard->dispatch(Object(Zend_Controller_Request_Http), Object(Zend_Controller_Response_Http))
+#4 /var/www/test/Encomiendas/library/Zend/Application/Bootstrap/Bootstrap.php(97): Zend_Controller_Front->dispatch()
+#5 /var/www/test/Encomiendas/library/Zend/Application.php(366): Zend_Application_Bootstrap_Bootstrap->run()
+#6 /var/www/test/Encomiendas/public/index.php(26): Zend_Application->run()
+#7 {main}
+2020-12-24T07:13:15-04:00 ERR (3): Error inserting client#0 /var/www/test/Encomiendas/library/Zend/Db/Statement.php(300): Zend_Db_Statement_Pdo->_execute(Array)
+#1 /var/www/test/Encomiendas/library/Zend/Db/Adapter/Abstract.php(468): Zend_Db_Statement->execute(Array)
+#2 /var/www/test/Encomiendas/library/Zend/Db/Adapter/Pdo/Abstract.php(238): Zend_Db_Adapter_Abstract->query('INSERT INTO "cl...', Array)
+#3 /var/www/test/Encomiendas/library/Zend/Db/Adapter/Abstract.php(546): Zend_Db_Adapter_Pdo_Abstract->query('INSERT INTO "cl...', Array)
+#4 /var/www/test/Encomiendas/library/Zend/Db/Table/Abstract.php(1056): Zend_Db_Adapter_Abstract->insert('cliente', Array)
+#5 /var/www/test/Encomiendas/application/controllers/RecepcionController.php(155): Zend_Db_Table_Abstract->insert(Array)
+#6 /var/www/test/Encomiendas/library/Zend/Controller/Action.php(513): RecepcionController->saveAction()
+#7 /var/www/test/Encomiendas/library/Zend/Controller/Dispatcher/Standard.php(289): Zend_Controller_Action->dispatch('saveAction')
+#8 /var/www/test/Encomiendas/library/Zend/Controller/Front.php(954): Zend_Controller_Dispatcher_Standard->dispatch(Object(Zend_Controller_Request_Http), Object(Zend_Controller_Response_Http))
+#9 /var/www/test/Encomiendas/library/Zend/Application/Bootstrap/Bootstrap.php(97): Zend_Controller_Front->dispatch()
+#10 /var/www/test/Encomiendas/library/Zend/Application.php(366): Zend_Application_Bootstrap_Bootstrap->run()
+#11 /var/www/test/Encomiendas/public/index.php(26): Zend_Application->run()
+#12 {main}
+2020-12-24T07:13:15-04:00 INFO (6): tipo encomienda to be savedCoorporativo
+2020-12-24T07:13:15-04:00 INFO (6): updating coorporativo
+2020-12-24T07:13:36-04:00 ERR (3): cliente select SELECT "cl"."id_cliente" AS "id", "cl"."nombre", "cl"."nit", "cl"."tipo", "cl"."deuda" FROM "cliente" AS "cl" ORDER BY "nombre" ASC LIMIT 20
+2020-12-24T07:13:48-04:00 ERR (3): cliente select SELECT "cl"."id_cliente" AS "id", "cl"."nombre", "cl"."nit", "cl"."tipo", "cl"."deuda" FROM "cliente" AS "cl" WHERE (cl.tipo = 'Coorporativo') ORDER BY "nombre" ASC LIMIT 20
+2020-12-24T07:21:15-04:00 ERR (3): cliente select SELECT "cl"."id_cliente" AS "id", "cl"."nombre", "cl"."nit", "cl"."tipo", "cl"."deuda" FROM "cliente" AS "cl" ORDER BY "nombre" ASC LIMIT 20
+2020-12-24T07:21:27-04:00 ERR (3): cliente select SELECT "cl"."id_cliente" AS "id", "cl"."nombre", "cl"."nit", "cl"."tipo", "cl"."deuda" FROM "cliente" AS "cl" WHERE (cl.tipo = 'Coorporativo') ORDER BY "nombre" ASC LIMIT 20
+2020-12-24T08:59:36-04:00 ERR (3): cliente select SELECT "cl"."id_cliente" AS "id", "cl"."nombre", "cl"."nit", "cl"."tipo", "cl"."deuda" FROM "cliente" AS "cl" ORDER BY "nombre" ASC LIMIT 20
+2020-12-24T10:11:38-04:00 ERR (3): [{"nombre":"GOMEZ","nit":"2525780018","tipo":"normal"},{"nombre":"JUAN  POZO  MONRROY","nit":"2525068","tipo":"normal"},{"nombre":"paolo","nit":"25252526","tipo":"Coorporativo"},{"nombre":"paolo","nit":"25252527","tipo":"Coorporativo"},{"nombre":"paolo","nit":"25252528","tipo":"Coorporativo"},{"nombre":"paolo","nit":"25252525","tipo":"Coorporativo"}]
+2020-12-24T10:12:00-04:00 ERR (3): Error inserting client#0 /var/www/test/Encomiendas/library/Zend/Db/Statement.php(300): Zend_Db_Statement_Pdo->_execute(Array)
+#1 /var/www/test/Encomiendas/library/Zend/Db/Adapter/Abstract.php(468): Zend_Db_Statement->execute(Array)
+#2 /var/www/test/Encomiendas/library/Zend/Db/Adapter/Pdo/Abstract.php(238): Zend_Db_Adapter_Abstract->query('INSERT INTO "cl...', Array)
+#3 /var/www/test/Encomiendas/library/Zend/Db/Adapter/Abstract.php(546): Zend_Db_Adapter_Pdo_Abstract->query('INSERT INTO "cl...', Array)
+#4 /var/www/test/Encomiendas/library/Zend/Db/Table/Abstract.php(1056): Zend_Db_Adapter_Abstract->insert('cliente', Array)
+#5 /var/www/test/Encomiendas/application/controllers/RecepcionController.php(155): Zend_Db_Table_Abstract->insert(Array)
+#6 /var/www/test/Encomiendas/library/Zend/Controller/Action.php(513): RecepcionController->saveAction()
+#7 /var/www/test/Encomiendas/library/Zend/Controller/Dispatcher/Standard.php(289): Zend_Controller_Action->dispatch('saveAction')
+#8 /var/www/test/Encomiendas/library/Zend/Controller/Front.php(954): Zend_Controller_Dispatcher_Standard->dispatch(Object(Zend_Controller_Request_Http), Object(Zend_Controller_Response_Http))
+#9 /var/www/test/Encomiendas/library/Zend/Application/Bootstrap/Bootstrap.php(97): Zend_Controller_Front->dispatch()
+#10 /var/www/test/Encomiendas/library/Zend/Application.php(366): Zend_Application_Bootstrap_Bootstrap->run()
+#11 /var/www/test/Encomiendas/public/index.php(26): Zend_Application->run()
+#12 {main}
+2020-12-24T10:15:08-04:00 ERR (3): Error inserting client#0 /var/www/test/Encomiendas/library/Zend/Db/Statement.php(300): Zend_Db_Statement_Pdo->_execute(Array)
+#1 /var/www/test/Encomiendas/library/Zend/Db/Adapter/Abstract.php(468): Zend_Db_Statement->execute(Array)
+#2 /var/www/test/Encomiendas/library/Zend/Db/Adapter/Pdo/Abstract.php(238): Zend_Db_Adapter_Abstract->query('INSERT INTO "cl...', Array)
+#3 /var/www/test/Encomiendas/library/Zend/Db/Adapter/Abstract.php(546): Zend_Db_Adapter_Pdo_Abstract->query('INSERT INTO "cl...', Array)
+#4 /var/www/test/Encomiendas/library/Zend/Db/Table/Abstract.php(1056): Zend_Db_Adapter_Abstract->insert('cliente', Array)
+#5 /var/www/test/Encomiendas/application/controllers/RecepcionController.php(155): Zend_Db_Table_Abstract->insert(Array)
+#6 /var/www/test/Encomiendas/library/Zend/Controller/Action.php(513): RecepcionController->saveAction()
+#7 /var/www/test/Encomiendas/library/Zend/Controller/Dispatcher/Standard.php(289): Zend_Controller_Action->dispatch('saveAction')
+#8 /var/www/test/Encomiendas/library/Zend/Controller/Front.php(954): Zend_Controller_Dispatcher_Standard->dispatch(Object(Zend_Controller_Request_Http), Object(Zend_Controller_Response_Http))
+#9 /var/www/test/Encomiendas/library/Zend/Application/Bootstrap/Bootstrap.php(97): Zend_Controller_Front->dispatch()
+#10 /var/www/test/Encomiendas/library/Zend/Application.php(366): Zend_Application_Bootstrap_Bootstrap->run()
+#11 /var/www/test/Encomiendas/public/index.php(26): Zend_Application->run()
+#12 {main}
+2020-12-24T10:15:08-04:00 INFO (6): Saving Corporate dataCoorporativo
+2020-12-24T10:15:08-04:00 ERR (3): exception 'PDOException' with message 'There is already an active transaction' in /var/www/test/Encomiendas/library/Zend/Db/Adapter/Pdo/Abstract.php:305
+Stack trace:
+#0 /var/www/test/Encomiendas/library/Zend/Db/Adapter/Pdo/Abstract.php(305): PDO->beginTransaction()
+#1 /var/www/test/Encomiendas/library/Zend/Db/Adapter/Abstract.php(484): Zend_Db_Adapter_Pdo_Abstract->_beginTransaction()
+#2 /var/www/test/Encomiendas/application/models/EncomiendaCoorporativa.php(29): Zend_Db_Adapter_Abstract->beginTransaction()
+#3 /var/www/test/Encomiendas/application/models/EncomiendaModel.php(236): App_Model_EncomiendaCoorporativa->insertTX(Object(Zend_Db_Table_Row), '25252528')
+#4 /var/www/test/Encomiendas/application/controllers/RecepcionController.php(187): App_Model_EncomiendaModel->txSave(Array, Array, Object(stdClass), 'Cochabamba')
+#5 /var/www/test/Encomiendas/library/Zend/Controller/Action.php(513): RecepcionController->saveAction()
+#6 /var/www/test/Encomiendas/library/Zend/Controller/Dispatcher/Standard.php(289): Zend_Controller_Action->dispatch('saveAction')
+#7 /var/www/test/Encomiendas/library/Zend/Controller/Front.php(954): Zend_Controller_Dispatcher_Standard->dispatch(Object(Zend_Controller_Request_Http), Object(Zend_Controller_Response_Http))
+#8 /var/www/test/Encomiendas/library/Zend/Application/Bootstrap/Bootstrap.php(97): Zend_Controller_Front->dispatch()
+#9 /var/www/test/Encomiendas/library/Zend/Application.php(366): Zend_Application_Bootstrap_Bootstrap->run()
+#10 /var/www/test/Encomiendas/public/index.php(26): Zend_Application->run()
+#11 {main}
+2020-12-24T10:16:27-04:00 ERR (3): Error inserting client#0 /var/www/test/Encomiendas/library/Zend/Db/Statement.php(300): Zend_Db_Statement_Pdo->_execute(Array)
+#1 /var/www/test/Encomiendas/library/Zend/Db/Adapter/Abstract.php(468): Zend_Db_Statement->execute(Array)
+#2 /var/www/test/Encomiendas/library/Zend/Db/Adapter/Pdo/Abstract.php(238): Zend_Db_Adapter_Abstract->query('INSERT INTO "cl...', Array)
+#3 /var/www/test/Encomiendas/library/Zend/Db/Adapter/Abstract.php(546): Zend_Db_Adapter_Pdo_Abstract->query('INSERT INTO "cl...', Array)
+#4 /var/www/test/Encomiendas/library/Zend/Db/Table/Abstract.php(1056): Zend_Db_Adapter_Abstract->insert('cliente', Array)
+#5 /var/www/test/Encomiendas/application/controllers/RecepcionController.php(155): Zend_Db_Table_Abstract->insert(Array)
+#6 /var/www/test/Encomiendas/library/Zend/Controller/Action.php(513): RecepcionController->saveAction()
+#7 /var/www/test/Encomiendas/library/Zend/Controller/Dispatcher/Standard.php(289): Zend_Controller_Action->dispatch('saveAction')
+#8 /var/www/test/Encomiendas/library/Zend/Controller/Front.php(954): Zend_Controller_Dispatcher_Standard->dispatch(Object(Zend_Controller_Request_Http), Object(Zend_Controller_Response_Http))
+#9 /var/www/test/Encomiendas/library/Zend/Application/Bootstrap/Bootstrap.php(97): Zend_Controller_Front->dispatch()
+#10 /var/www/test/Encomiendas/library/Zend/Application.php(366): Zend_Application_Bootstrap_Bootstrap->run()
+#11 /var/www/test/Encomiendas/public/index.php(26): Zend_Application->run()
+#12 {main}
+2020-12-24T10:16:27-04:00 INFO (6): Saving Corporate dataCoorporativo
+2020-12-24T10:16:44-04:00 ERR (3): cliente select SELECT "cl"."id_cliente" AS "id", "cl"."nombre", "cl"."nit", "cl"."tipo", "cl"."deuda" FROM "cliente" AS "cl" ORDER BY "nombre" ASC LIMIT 20
+2020-12-24T10:16:49-04:00 ERR (3): cliente select SELECT "cl"."id_cliente" AS "id", "cl"."nombre", "cl"."nit", "cl"."tipo", "cl"."deuda" FROM "cliente" AS "cl" WHERE (cl.tipo = 'Coorporativo') ORDER BY "nombre" ASC LIMIT 20

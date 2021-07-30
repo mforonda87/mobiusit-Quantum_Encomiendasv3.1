@@ -1,0 +1,51 @@
+2020-12-30T06:10:58-04:00 ERR (3): cliente select SELECT "cl"."id_cliente" AS "id", "cl"."nombre", "cl"."nit", "cl"."tipo", "cl"."deuda" FROM "cliente" AS "cl" ORDER BY "nombre" ASC LIMIT 20
+2020-12-30T06:11:05-04:00 ERR (3): cliente select SELECT "cl"."id_cliente" AS "id", "cl"."nombre", "cl"."nit", "cl"."tipo", "cl"."deuda" FROM "cliente" AS "cl" WHERE (cl.tipo = 'Coorporativo') ORDER BY "nombre" ASC LIMIT 20
+2020-12-30T06:40:58-04:00 ERR (3): cliente select SELECT "cl"."id_cliente" AS "id", "cl"."nombre", "cl"."nit", "cl"."tipo", "cl"."deuda" FROM "cliente" AS "cl" ORDER BY "nombre" ASC LIMIT 20
+2020-12-30T06:41:03-04:00 ERR (3): cliente select SELECT "cl"."id_cliente" AS "id", "cl"."nombre", "cl"."nit", "cl"."tipo", "cl"."deuda" FROM "cliente" AS "cl" WHERE (cl.tipo = 'Coorporativo') ORDER BY "nombre" ASC LIMIT 20
+2020-12-30T07:09:23-04:00 ERR (3): cliente select SELECT "cl"."id_cliente" AS "id", "cl"."nombre", "cl"."nit", "cl"."tipo", "cl"."deuda" FROM "cliente" AS "cl" ORDER BY "nombre" ASC LIMIT 20
+2020-12-30T07:09:27-04:00 ERR (3): cliente select SELECT "cl"."id_cliente" AS "id", "cl"."nombre", "cl"."nit", "cl"."tipo", "cl"."deuda" FROM "cliente" AS "cl" WHERE (cl.tipo = 'Coorporativo') ORDER BY "nombre" ASC LIMIT 20
+2020-12-30T07:09:43-04:00 ERR (3): exception 'Zend_View_Exception' with message 'script 'client/pay-packages.phtml' not found in path (/var/www/test/Encomiendas/application/views/scripts/)' in /var/www/test/Encomiendas/library/Zend/View/Abstract.php:976
+Stack trace:
+#0 /var/www/test/Encomiendas/library/Zend/View/Abstract.php(876): Zend_View_Abstract->_script('client/pay-pack...')
+#1 /var/www/test/Encomiendas/library/Zend/Controller/Action/Helper/ViewRenderer.php(897): Zend_View_Abstract->render('client/pay-pack...')
+#2 /var/www/test/Encomiendas/library/Zend/Controller/Action/Helper/ViewRenderer.php(918): Zend_Controller_Action_Helper_ViewRenderer->renderScript('client/pay-pack...', NULL)
+#3 /var/www/test/Encomiendas/library/Zend/Controller/Action/Helper/ViewRenderer.php(957): Zend_Controller_Action_Helper_ViewRenderer->render()
+#4 /var/www/test/Encomiendas/library/Zend/Controller/Action/HelperBroker.php(277): Zend_Controller_Action_Helper_ViewRenderer->postDispatch()
+#5 /var/www/test/Encomiendas/library/Zend/Controller/Action.php(523): Zend_Controller_Action_HelperBroker->notifyPostDispatch()
+#6 /var/www/test/Encomiendas/library/Zend/Controller/Dispatcher/Standard.php(289): Zend_Controller_Action->dispatch('payPackagesActi...')
+#7 /var/www/test/Encomiendas/library/Zend/Controller/Front.php(954): Zend_Controller_Dispatcher_Standard->dispatch(Object(Zend_Controller_Request_Http), Object(Zend_Controller_Response_Http))
+#8 /var/www/test/Encomiendas/library/Zend/Application/Bootstrap/Bootstrap.php(97): Zend_Controller_Front->dispatch()
+#9 /var/www/test/Encomiendas/library/Zend/Application.php(366): Zend_Application_Bootstrap_Bootstrap->run()
+#10 /var/www/test/Encomiendas/public/index.php(26): Zend_Application->run()
+#11 {main}
+2020-12-30T07:13:45-04:00 ERR (3): exception 'Zend_View_Exception' with message 'script 'client/pay-packages.phtml' not found in path (/var/www/test/Encomiendas/application/views/scripts/)' in /var/www/test/Encomiendas/library/Zend/View/Abstract.php:976
+Stack trace:
+#0 /var/www/test/Encomiendas/library/Zend/View/Abstract.php(876): Zend_View_Abstract->_script('client/pay-pack...')
+#1 /var/www/test/Encomiendas/library/Zend/Controller/Action/Helper/ViewRenderer.php(897): Zend_View_Abstract->render('client/pay-pack...')
+#2 /var/www/test/Encomiendas/library/Zend/Controller/Action/Helper/ViewRenderer.php(918): Zend_Controller_Action_Helper_ViewRenderer->renderScript('client/pay-pack...', NULL)
+#3 /var/www/test/Encomiendas/library/Zend/Controller/Action/Helper/ViewRenderer.php(957): Zend_Controller_Action_Helper_ViewRenderer->render()
+#4 /var/www/test/Encomiendas/library/Zend/Controller/Action/HelperBroker.php(277): Zend_Controller_Action_Helper_ViewRenderer->postDispatch()
+#5 /var/www/test/Encomiendas/library/Zend/Controller/Action.php(523): Zend_Controller_Action_HelperBroker->notifyPostDispatch()
+#6 /var/www/test/Encomiendas/library/Zend/Controller/Dispatcher/Standard.php(289): Zend_Controller_Action->dispatch('payPackagesActi...')
+#7 /var/www/test/Encomiendas/library/Zend/Controller/Front.php(954): Zend_Controller_Dispatcher_Standard->dispatch(Object(Zend_Controller_Request_Http), Object(Zend_Controller_Response_Http))
+#8 /var/www/test/Encomiendas/library/Zend/Application/Bootstrap/Bootstrap.php(97): Zend_Controller_Front->dispatch()
+#9 /var/www/test/Encomiendas/library/Zend/Application.php(366): Zend_Application_Bootstrap_Bootstrap->run()
+#10 /var/www/test/Encomiendas/public/index.php(26): Zend_Application->run()
+#11 {main}
+2020-12-30T07:23:29-04:00 ERR (3): [{"nombre":"ABAD MERIDA ","nit":"2522290","tipo":"normal"},{"nombre":"ALVARO PAZ ","nit":"2521674","tipo":"normal"},{"nombre":"ANDRES  SANCHEZ  AGUIRRE","nit":"2527637018","tipo":"normal"},{"nombre":"ARISTIDES VILLARROEL","nit":"252910","tipo":"normal"},{"nombre":"ASENCIO  CONDORI  ","nit":"2521778","tipo":"normal"},{"nombre":"BONIFACIO  ESPINOZA","nit":"2529316","tipo":"normal"},{"nombre":"CECILIA CLAURE RODRIGUEZ","nit":"25217201","tipo":"normal"},{"nombre":"CELSO OMAR SENZANO PE\u00f1A","nit":"2521964","tipo":"normal"},{"nombre":"CESAR DELGADILLO VARGAS","nit":"2520105","tipo":"normal"},{"nombre":"COAQUIRA ","nit":"2528439013","tipo":"normal"},{"nombre":"DARLENE RAMOS PEREZ","nit":"2523465","tipo":"normal"},{"nombre":"DENNIS RODRIGUEZ VEIZAGA","nit":"2520579","tipo":"normal"},{"nombre":"DORA  CAMACHO ","nit":"2520075","tipo":"normal"},{"nombre":"FRANCISCO VARGAS","nit":"2520198","tipo":"normal"},{"nombre":"GABY MU\u00f1OZ","nit":"2520565","tipo":"normal"},{"nombre":"GOMEZ","nit":"2525780018","tipo":"normal"},{"nombre":"GREGORIO  SUXO LOPEZ","nit":"2528192014","tipo":"normal"},{"nombre":"GUADALUPE VARGAS ","nit":"2529324","tipo":"normal"},{"nombre":"HIPOLITO AGUILAR QUIUCHACA","nit":"2523712","tipo":"normal"},{"nombre":"ISRAEL   GUACHALLA ","nit":"2521262","tipo":"normal"}]
+2020-12-30T07:23:36-04:00 ERR (3): [{"nombre":"GOMEZ","nit":"2525780018","tipo":"normal"},{"nombre":"JUAN  POZO  MONRROY","nit":"2525068","tipo":"normal"},{"nombre":"paolo","nit":"25252526","tipo":"Coorporativo"},{"nombre":"paolo","nit":"25252527","tipo":"Coorporativo"},{"nombre":"paolo","nit":"25252528","tipo":"Coorporativo"},{"nombre":"paolo","nit":"25252525","tipo":"Coorporativo"}]
+2020-12-30T07:24:10-04:00 ERR (3): Error inserting client#0 /var/www/test/Encomiendas/library/Zend/Db/Statement.php(300): Zend_Db_Statement_Pdo->_execute(Array)
+#1 /var/www/test/Encomiendas/library/Zend/Db/Adapter/Abstract.php(468): Zend_Db_Statement->execute(Array)
+#2 /var/www/test/Encomiendas/library/Zend/Db/Adapter/Pdo/Abstract.php(238): Zend_Db_Adapter_Abstract->query('INSERT INTO "cl...', Array)
+#3 /var/www/test/Encomiendas/library/Zend/Db/Adapter/Abstract.php(546): Zend_Db_Adapter_Pdo_Abstract->query('INSERT INTO "cl...', Array)
+#4 /var/www/test/Encomiendas/library/Zend/Db/Table/Abstract.php(1056): Zend_Db_Adapter_Abstract->insert('cliente', Array)
+#5 /var/www/test/Encomiendas/application/controllers/RecepcionController.php(155): Zend_Db_Table_Abstract->insert(Array)
+#6 /var/www/test/Encomiendas/library/Zend/Controller/Action.php(513): RecepcionController->saveAction()
+#7 /var/www/test/Encomiendas/library/Zend/Controller/Dispatcher/Standard.php(289): Zend_Controller_Action->dispatch('saveAction')
+#8 /var/www/test/Encomiendas/library/Zend/Controller/Front.php(954): Zend_Controller_Dispatcher_Standard->dispatch(Object(Zend_Controller_Request_Http), Object(Zend_Controller_Response_Http))
+#9 /var/www/test/Encomiendas/library/Zend/Application/Bootstrap/Bootstrap.php(97): Zend_Controller_Front->dispatch()
+#10 /var/www/test/Encomiendas/library/Zend/Application.php(366): Zend_Application_Bootstrap_Bootstrap->run()
+#11 /var/www/test/Encomiendas/public/index.php(26): Zend_Application->run()
+#12 {main}
+2020-12-30T07:24:10-04:00 INFO (6): Saving Corporate dataCoorporativo
+2020-12-30T07:24:10-04:00 INFO (6): Finding by nit 25252526

@@ -1,0 +1,182 @@
+<script type="text/javascript" src="<?= $this->baseUrl() ?>/scripts/libs/envio.js"></script>
+<div  class="contentBox">
+    <div  class="ui-dialog-titlebar ui-widget-header ui-corner-top ui-helper-clearfix">Informacion de un viaje</div>
+    <div  class="contentBox">
+        <div id="infoViaje">
+            <div class="inline" style="width: 30%;">
+                <span class="add-viaje">
+                    <a onclick="editarChoferes()" title="Editar Choferes"> 
+                        <img src="<?= $this->baseUrl() ?>/images/edit_pen_alone.gif" alt="Editar Choferes"/>
+                    </a>
+                </span>
+                <h3>infomacion de choferes
+                </h3>
+                <ul id="choferesContent"></ul>
+            </div>
+            <div class="inline" style="width: 30%;">
+                <h3>informacion del bus</h3>
+                <ul id="busContent"></ul>
+            </div>
+            <div class="inline" style="width: 30%;">
+                <h3>fecha y hora</h3>
+                <ul id="fechaContent"></ul>
+            </div>
+        </div>
+    </div>
+    <div id="informacionDiv height500">
+        <div class="inline width20Percent">
+            <div  class="ui-dialog-titlebar ui-widget-header ui-corner-top ui-helper-clearfix">Itinerario de viajes
+                <span class="add-viaje">
+                    <a onclick="crearViaje()" title="Registrar Viaje"> 
+                        <img src="<?= $this->baseUrl() ?>/images/217bc0_11x11_icon_plus.gif" alt="Registrar viaje"/>
+                    </a>
+                </span>
+            </div>
+
+            <div class="itinerarioList contentBox height450">
+                <?= $this->itinerario ?>
+            </div>
+        </div>
+        <div class="inline width77Percent height450">
+            <div  class="ui-dialog-titlebar ui-widget-header ui-corner-top ui-helper-clearfix">Informacion de encomiendas</div>
+            <div class="contentBox inline width43Percent">
+                <div id="infoEncomiendas" class="height450" style="overflow: auto;">
+                    <table id="ListadoEncomiendasManifiesto" style="width: 100%;" class="borders">
+                        <thead>
+                            <tr>
+                                <th><input type="checkbox" id="selectAll" onclick="selectAllDestino('none', this)"/></th>
+                                <th>Guia</th>
+                                <th>Detalle</th>
+                            </tr>
+                        </thead>
+                        <?php
+                        if (count($this->encomiendasManifiesto) > 0) {
+                            $i = 0;
+                            $destino = "";
+                            foreach ($this->encomiendasManifiesto as $key => $encomiendas) {
+                                ?>
+                                <tbody>
+                                    <?php
+                                    $tipoEncomienda = "";
+                                    foreach ($encomiendas as $enc) {
+                                        $i % 2 == 0 ? $clss = "par" : $clss = "impar";
+                                        if ($tipoEncomienda != $enc['tipo']) {
+                                            echo "<tr>";
+                                            echo "<th class='$clss' colspan='4'>" . strtoupper($enc['tipo']) . "</th>";
+                                            echo "</tr>";
+                                            $tipoEncomienda = $enc['tipo'];
+                                        }
+
+                                        if ($destino != $enc['destino']) {
+                                            echo "<tr>";
+                                            echo "<th class='$clss' colspan='4'>" . $enc['destino'] . "</th>";
+                                            echo "</tr>";
+                                            $destino = $enc['destino'];
+                                        }
+                                        echo "<tr>";
+                                        echo "<td class='$clss'>" . $enc['detalle'] . "</td>";
+                                        echo "</tr>";
+                                        $i++;
+                                    }
+                                    ?>
+                                </tbody>
+                                <?php
+                            }
+                        } else {
+                            echo "<tr><td colspan='3' class='notFound'><div class='ui-state-highligth'>No se encontraron encomiendas asignadas </div></td></tr>";
+                        }
+                        ?>
+                    </table>
+                </div>
+                <!--                <div class="contentBox">
+                                    <input id="numeroCopias" type="text" value="2" class="numeric"/>
+                                    <input id="imprimirManifiesto" type="button" value="imprimir manifiesto" />
+                                </div>-->
+            </div>
+            <div id="arrows" class="contentBox inline height450 width28 padding5px">
+                <a href="#" id="asignar" title="Asignar encomiendas">
+                    <img src="<?= $this->baseUrl() ?>/images/fancy_nav_left.png" />
+                </a>
+                <a href="#" id="quitar" title="Quitar encomiendas">
+                    <img src="<?= $this->baseUrl() ?>/images/fancy_nav_right.png" />
+                </a>
+                <br/>
+                <input id="numeroCopias" type="text" value="3" class="numeric" size="1" maxlength="2"/>
+                <a href="#" id="imprimirManifiesto" title="print">
+                    <img src="<?= $this->baseUrl() ?>/images/Imprimir.png" />
+                </a>
+            </div>
+            <div class="contentBox inline height450 width43Percent">
+                <div id="infoEncomiendasManifiesto">
+                    <?php
+                    if (count($this->encomiendas) > 0) {
+                        $i = 0;
+                        $destino = "";
+                        foreach ($this->encomiendas as $key => $encomiendas) {
+                            ?>
+                            <h3 ciudad="<?= $encomiendas[0]['ciudad_de'] ?>"><?= $key ?></h3>
+                            <div>
+                                <div style="height: 350px;">
+                                    <table id="ListadoEncomiendas" style="width: 100%;" class="borders">
+                                        <thead>
+                                            <tr>
+                                                <th><input type="checkbox" id="selectAll" onclick="selectAllDestino('<?= $key ?>', this)"/></th>
+                                                <th>Guia</th>
+                                                <th>Detalle</th>
+        <!--                                                <th>Precio</th>-->
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <?php
+                                            $tipoEncomienda = "";
+                                            foreach ($encomiendas as $enc) {
+                                                $i % 2 == 0 ? $clss = "par" : $clss = "impar";
+                                                if ($tipoEncomienda != $enc['tipo']) {
+                                                    echo "<tr>";
+                                                    echo "<th class='$clss' colspan='4'>" . strtoupper($enc['tipo']) . "</th>";
+                                                    echo "</tr>";
+                                                    $tipoEncomienda = $enc['tipo'];
+                                                }
+
+                                                if ($destino != $enc['destino']) {
+                                                    echo "<tr>";
+                                                    echo "<th class='$clss' colspan='4'>" . $enc['destino'] . "</th>";
+                                                    echo "</tr>";
+                                                    $destino = $enc['destino'];
+                                                }
+                                                echo "<tr>";
+                                                echo "<td class='$clss'>";
+                                                echo "<input type='checkbox' name='enviarEncomienda' value='" . $enc['id_item_encomienda'] . "'/>";
+                                                echo "<input type='hidden' name='idEncomienda' value='" . $enc['id_encomienda'] . "'/>";
+                                                echo "</td>";
+                                                echo "<td class='$clss'>" . $enc['guia'] . "</td>";
+                                                echo "<td class='$clss'>" . $enc['detalle'] . "</td>";
+//                                                echo "<td class='$clss'>" . $enc['total'] . "</td>";
+                                                echo "</tr>";
+                                                $i++;
+                                            }
+                                            ?>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                            <?php
+                        }
+                    } else {
+
+                        echo "<h3>Lista</h3>";
+                        echo "<div>";
+                        echo "  <div class='ui-state-highligth'>No se encontraron encomiendas recibidas </div>";
+                        echo "</div>";
+                    }
+                    ?>
+
+                </div>
+            </div>
+        </div>
+        <div>
+    <!--            <input type="button" value="Imp. Lista" class="boton" onclick="//imprimirRecibo($('#ListadoEncomiendas').html());"/>-->
+    <!--            <input type="button" value="Registrar envio" id="registrarEnvio"/>-->
+        </div>
+    </div>
+</div>

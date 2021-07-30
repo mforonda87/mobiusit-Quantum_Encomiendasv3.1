@@ -1,0 +1,23 @@
+
+<div class="contentBox">
+
+    <form name="encomiendasForm" id="encomiendasForm" method="post" enctype="application/x-www-form-urlencoded" action="' . $this->baseUrl . '/recepcion/">
+        <div class="row">
+            <label for="nitFactura" class="labelForm">N.I.T        </label>
+            <input type="text" name="nitFactura" id="nitFactura" class="numeric" value="0"/>
+        </div>
+        <div class="row">
+            <label for="nombreFactura" class="labelForm">Nombre</label>
+            <input type="text" name="nombreFactura" id="nombreFactura" value="<?= $this->nombre ?>"/>
+        </div>
+        <div class="row">
+            <label for="declarado" class="labelForm">Declarado.</label>
+            <input type="checkbox" name="declarado" id="declarado" />
+        </div>
+        <div class="row" id="rowmontoDeclarado" style="display: none;">
+            <label for="montoDeclarado" class="labelForm">Valor Declarado</label>
+            <input type="text" name="montoDeclarado" id="montoDeclarado" />
+        </div>
+    </form>
+
+</div>

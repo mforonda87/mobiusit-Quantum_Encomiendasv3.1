@@ -1,0 +1,33 @@
+<table id="listEncEntregar" class="listManifiestos">
+    <thead>
+        <tr>
+            <th>Nombre</th>
+            <th>NIT</th>
+            <th>Tipo</th>
+            <th>Deuda</th>
+            <th>Acciones</th>
+        </tr>
+    </thead>
+    <?php
+    if (count($this->clientes) > 0) {
+        echo '<tbody>';
+        foreach ($this->clientes as $package) {
+            ?>
+            <tr>
+                <td><?php echo $package['nombre']; ?></td>
+                <td><?php echo $package['nit']; ?></td>
+                <td><?php echo $package['tipo']; ?></td>
+                <td><?php echo $package['deuda']; ?></td>
+                <td></td>
+            </tr>
+            <?php
+        }
+        echo '</tbody>';
+    } else {
+
+        echo '<tbody>
+                            <tr><td colspan="5">Presione Buscar para listar los clientes</td></tr>
+                          </tbody>';
+    }
+    ?>
+</table>

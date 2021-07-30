@@ -1,0 +1,49 @@
+<div class="contentBox">
+    <div class="ui-dialog-titlebar ui-widget-header ui-corner-top ui-helper-clearfix">
+        Encomiendas recepcionadas por <?= $this->userName ?>
+    </div>
+    <table class="listManifiestos">
+        <tr>
+            <th>Guia</th>
+            <th>Detalle</th>
+            <th>Tipo</th>
+            <th>Estado</th>
+            <th>Total</th>
+        </tr>
+        <?php
+        if (count($this->lista) > 0) {
+            $total = 0;
+            foreach ($this->lista as $encomienda) {
+                echo "<tr>";
+                echo "<td>$encomienda->guia</td>";
+                echo "<td>$encomienda->detalle</td>";
+                echo "<td>$encomienda->tipo</td>";
+                echo "<td>$encomienda->estado</td>";
+
+                $totalEncomienda = $encomienda->total;
+                if ($encomienda->tipo == "POR PAGAR" || $encomienda->estado == "Anulado") {
+                    $totalEncomienda = 0;
+                }
+                echo "<td class='numeric'>$totalEncomienda</td>";
+
+                echo "</tr>";
+                if (strtoupper($encomienda->estado) == "ANULADO") {
+                    $total -=$totalEncomienda;
+                } else {
+                    $total +=$totalEncomienda;
+                }
+            }
+        } else {
+            echo "<tr>
+                <td colspan='4'>Este manifiesto no registro encomiendas</td>
+            </tr>";
+        }
+        ?>
+        <tfoot>
+            <tr>
+                <td colspan="4">Total</td>
+                <td><?= $total ?></td>
+            </tr>
+        </tfoot>
+    </table>
+</div>

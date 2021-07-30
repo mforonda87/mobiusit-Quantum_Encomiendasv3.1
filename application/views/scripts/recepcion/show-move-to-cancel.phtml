@@ -1,0 +1,89 @@
+<?php
+$encomienda = $this->encomienda;
+$factura = $this->factura;
+$active = $this->active;
+$errorType = $this->errorType;
+
+if ($active) {
+    ?>
+
+    <div class="contentBox">
+        <div class="ui-state-highlight">
+            <span class="ui-icon ui-icon-info"></span>
+            Si realmente desea mover para anular por favor
+            <br/> 
+            presione el boton <span class="ui-button-text">aceptar</span> abajo
+            <input type="hidden" id="idSucursalOrigenCancel" value="<?= $encomienda->idSucursalOrigen ?>">
+        </div>
+        <table class="listManifiestos">
+            <caption>Informacion de la Encomienda</caption>
+            <tr>
+                <th>Guia</th><td><?= $encomienda->guia ?></td>
+            </tr>
+            <tr>
+                <th>Detalle</th><td><?= $encomienda->detalle ?></td>
+            </tr>
+            <tr>
+                <th>Tipo</th><td><?= $encomienda->tipo ?></td>
+            </tr>
+            <tr>
+                <th>Total</th><td><?= $encomienda->total ?></td>
+            </tr>        
+            <tr>
+                <th>Origen</th><td><?= $encomienda->sucursal_origen . " -> " . $encomienda->ciudad_origen ?></td>
+
+            </tr>        
+            <tr>
+                <th>Destino </th><td><?= $encomienda->nombre_destino . " -> " . $encomienda->nombre_ciudad_destino ?></td>
+            </tr>        
+        </table>
+        <table class="listManifiestos">
+            <caption>Informacion de la Factura</caption>
+            <tr>
+                <th>Numero</th><td><?= $factura->numero_factura ?></td>
+            </tr>
+            <tr>
+                <th>Vendedor</th><td><?= $factura->identificador . "(" . $factura->nombres . ")" ?></td>
+            </tr>
+            <tr>
+                <th>Fecha</th><td><?= $factura->fecha ?></td>
+            </tr>
+            <tr>
+                <th>Tipo</th><td><?= $factura->tipo ?></td>
+            </tr>        
+        </table>
+    </div>
+    <?php
+} else {
+    switch ($errorType) {
+        case 1:
+            echo '<div class="ui-state-highlight">
+                        <span class="ui-icon ui-icon-info"></span>
+                        La encomienda que intenta anular no esta en la misma ciudad que el usuario actual
+                        <br/> por favor seleccione una encomienda de la misma ciudad.
+                    </div>';
+            break;
+        case 2:
+            echo '<div class="ui-state-highlight">
+                        <span class="ui-icon ui-icon-info"></span>
+                        La encomienda que intenta anular, ya se ha Recibido en destino o se ha entregado
+                        <br/> por lo tanto no puede ser movida para anular por favor.
+                        <br/> consulte con el administrador para anular esta factura.
+                    </div>';
+            break;
+        case 3:
+            $vendedor = $this->vendedor;
+            $actual = $this->actual;
+            echo '<div class="ui-state-highlight">
+                        <span class="ui-icon ui-icon-info"></span>
+                        La factura recepcionada por '.$vendedor.' no puede ser anulada por '.$actual.'
+                        <br/> por lo tanto la encomienda no puede ser movida para anular por favor.
+                        <br/> consulte con el administrador para anular esta factura.
+                    </div>';
+            break;
+
+        default:
+            break;
+    }
+}
+?>

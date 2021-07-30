@@ -1,0 +1,64 @@
+<script>
+    $(document).ready(
+            function () {
+                buscarClientes();
+            }
+    );
+</script>
+
+<div class="contentBox height500">
+    <div class="contentBox">
+        <form name="clientesForm" id="clientesForm" method="post" enctype="application/x-www-form-urlencoded" action="#">
+            <label class="porciento33">
+                <span>Nombre:</span>
+                <input type="text" id="search-clientName" name="nombreCliente" maxlength="100" size="20" value=""/>
+            </label>
+            <label class="porciento33">
+                <span>NIT:</span>
+                <input type="text" id="search-clientNIT" name="nitCliente" maxlength="10" size="10" value=""/>
+            </label>
+            <label class="porciento33">
+                <span>Tipo:</span>
+                <select type="text" id="search-clientType">
+                    <option value="all">Todos</option>
+                    <option value="Normal">Normal</option>
+                    <option value="Coorporativo">Corporativo</option>
+                </select>    
+            </label>
+
+            <br/>
+            <div class="centered">
+                <div class="inline">
+                    <button name="Nuevo" id="newClient" onclick="showClientDialog({id:'',nombre:'',nit:'', tipo:''});return false;" class="ui-button ui-widget ui-state-default ui-corner-all">
+                        <span class="ui-button-text padding6px">Nuevo Cliente</span>
+                    </button>   
+                </div>
+
+                <div class="inline">
+                    <button name="buscar" id="buscar" onclick="buscarClientes('');return false;" class="ui-button ui-widget ui-state-default ui-corner-all">
+                        <span class="ui-button-text padding6px">Buscar</span>
+                    </button>   
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="contentBox height360">
+        <div class="titleHead">Lista de Clientes </div>
+        <div id="contentEncomiendaList">
+            <table id="listEncEntregar" class="listManifiestos">
+                <thead>
+                    <tr>
+                        <th>Nombre</th>
+                        <th>NIT</th>
+                        <th>Tipo</th>
+                        <th>Deuda</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody id="clientListBody">
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

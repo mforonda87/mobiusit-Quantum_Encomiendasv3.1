@@ -1,0 +1,286 @@
+2020-12-11T06:22:02-04:00 ERR (3): exception 'Zend_Controller_Dispatcher_Exception' with message 'Invalid controller specified (images)' in /var/www/test/Encomiendas/library/Zend/Controller/Dispatcher/Standard.php:242
+Stack trace:
+#0 /var/www/test/Encomiendas/library/Zend/Controller/Front.php(954): Zend_Controller_Dispatcher_Standard->dispatch(Object(Zend_Controller_Request_Http), Object(Zend_Controller_Response_Http))
+#1 /var/www/test/Encomiendas/library/Zend/Application/Bootstrap/Bootstrap.php(97): Zend_Controller_Front->dispatch()
+#2 /var/www/test/Encomiendas/library/Zend/Application.php(366): Zend_Application_Bootstrap_Bootstrap->run()
+#3 /var/www/test/Encomiendas/public/index.php(26): Zend_Application->run()
+#4 {main}
+2020-12-11T06:22:37-04:00 ERR (3): exception 'Zend_View_Exception' with message 'script 'cliente/search.phtml' not found in path (/var/www/test/Encomiendas/application/views/scripts/)' in /var/www/test/Encomiendas/library/Zend/View/Abstract.php:976
+Stack trace:
+#0 /var/www/test/Encomiendas/library/Zend/View/Abstract.php(876): Zend_View_Abstract->_script('cliente/search....')
+#1 /var/www/test/Encomiendas/library/Zend/Controller/Action/Helper/ViewRenderer.php(897): Zend_View_Abstract->render('cliente/search....')
+#2 /var/www/test/Encomiendas/library/Zend/Controller/Action/Helper/ViewRenderer.php(918): Zend_Controller_Action_Helper_ViewRenderer->renderScript('cliente/search....', NULL)
+#3 /var/www/test/Encomiendas/library/Zend/Controller/Action/Helper/ViewRenderer.php(957): Zend_Controller_Action_Helper_ViewRenderer->render()
+#4 /var/www/test/Encomiendas/library/Zend/Controller/Action/HelperBroker.php(277): Zend_Controller_Action_Helper_ViewRenderer->postDispatch()
+#5 /var/www/test/Encomiendas/library/Zend/Controller/Action.php(523): Zend_Controller_Action_HelperBroker->notifyPostDispatch()
+#6 /var/www/test/Encomiendas/library/Zend/Controller/Dispatcher/Standard.php(289): Zend_Controller_Action->dispatch('searchAction')
+#7 /var/www/test/Encomiendas/library/Zend/Controller/Front.php(954): Zend_Controller_Dispatcher_Standard->dispatch(Object(Zend_Controller_Request_Http), Object(Zend_Controller_Response_Http))
+#8 /var/www/test/Encomiendas/library/Zend/Application/Bootstrap/Bootstrap.php(97): Zend_Controller_Front->dispatch()
+#9 /var/www/test/Encomiendas/library/Zend/Application.php(366): Zend_Application_Bootstrap_Bootstrap->run()
+#10 /var/www/test/Encomiendas/public/index.php(26): Zend_Application->run()
+#11 {main}
+2020-12-11T06:22:44-04:00 ERR (3): exception 'Zend_View_Exception' with message 'script 'cliente/search.phtml' not found in path (/var/www/test/Encomiendas/application/views/scripts/)' in /var/www/test/Encomiendas/library/Zend/View/Abstract.php:976
+Stack trace:
+#0 /var/www/test/Encomiendas/library/Zend/View/Abstract.php(876): Zend_View_Abstract->_script('cliente/search....')
+#1 /var/www/test/Encomiendas/library/Zend/Controller/Action/Helper/ViewRenderer.php(897): Zend_View_Abstract->render('cliente/search....')
+#2 /var/www/test/Encomiendas/library/Zend/Controller/Action/Helper/ViewRenderer.php(918): Zend_Controller_Action_Helper_ViewRenderer->renderScript('cliente/search....', NULL)
+#3 /var/www/test/Encomiendas/library/Zend/Controller/Action/Helper/ViewRenderer.php(957): Zend_Controller_Action_Helper_ViewRenderer->render()
+#4 /var/www/test/Encomiendas/library/Zend/Controller/Action/HelperBroker.php(277): Zend_Controller_Action_Helper_ViewRenderer->postDispatch()
+#5 /var/www/test/Encomiendas/library/Zend/Controller/Action.php(523): Zend_Controller_Action_HelperBroker->notifyPostDispatch()
+#6 /var/www/test/Encomiendas/library/Zend/Controller/Dispatcher/Standard.php(289): Zend_Controller_Action->dispatch('searchAction')
+#7 /var/www/test/Encomiendas/library/Zend/Controller/Front.php(954): Zend_Controller_Dispatcher_Standard->dispatch(Object(Zend_Controller_Request_Http), Object(Zend_Controller_Response_Http))
+#8 /var/www/test/Encomiendas/library/Zend/Application/Bootstrap/Bootstrap.php(97): Zend_Controller_Front->dispatch()
+#9 /var/www/test/Encomiendas/library/Zend/Application.php(366): Zend_Application_Bootstrap_Bootstrap->run()
+#10 /var/www/test/Encomiendas/public/index.php(26): Zend_Application->run()
+#11 {main}
+2020-12-11T06:26:27-04:00 ERR (3): exception 'Zend_View_Exception' with message 'script 'cliente/search.phtml' not found in path (/var/www/test/Encomiendas/application/views/scripts/)' in /var/www/test/Encomiendas/library/Zend/View/Abstract.php:976
+Stack trace:
+#0 /var/www/test/Encomiendas/library/Zend/View/Abstract.php(876): Zend_View_Abstract->_script('cliente/search....')
+#1 /var/www/test/Encomiendas/library/Zend/Controller/Action/Helper/ViewRenderer.php(897): Zend_View_Abstract->render('cliente/search....')
+#2 /var/www/test/Encomiendas/library/Zend/Controller/Action/Helper/ViewRenderer.php(918): Zend_Controller_Action_Helper_ViewRenderer->renderScript('cliente/search....', NULL)
+#3 /var/www/test/Encomiendas/library/Zend/Controller/Action/Helper/ViewRenderer.php(957): Zend_Controller_Action_Helper_ViewRenderer->render()
+#4 /var/www/test/Encomiendas/library/Zend/Controller/Action/HelperBroker.php(277): Zend_Controller_Action_Helper_ViewRenderer->postDispatch()
+#5 /var/www/test/Encomiendas/library/Zend/Controller/Action.php(523): Zend_Controller_Action_HelperBroker->notifyPostDispatch()
+#6 /var/www/test/Encomiendas/library/Zend/Controller/Dispatcher/Standard.php(289): Zend_Controller_Action->dispatch('searchAction')
+#7 /var/www/test/Encomiendas/library/Zend/Controller/Front.php(954): Zend_Controller_Dispatcher_Standard->dispatch(Object(Zend_Controller_Request_Http), Object(Zend_Controller_Response_Http))
+#8 /var/www/test/Encomiendas/library/Zend/Application/Bootstrap/Bootstrap.php(97): Zend_Controller_Front->dispatch()
+#9 /var/www/test/Encomiendas/library/Zend/Application.php(366): Zend_Application_Bootstrap_Bootstrap->run()
+#10 /var/www/test/Encomiendas/public/index.php(26): Zend_Application->run()
+#11 {main}
+2020-12-11T06:26:31-04:00 ERR (3): exception 'Zend_View_Exception' with message 'script 'cliente/search.phtml' not found in path (/var/www/test/Encomiendas/application/views/scripts/)' in /var/www/test/Encomiendas/library/Zend/View/Abstract.php:976
+Stack trace:
+#0 /var/www/test/Encomiendas/library/Zend/View/Abstract.php(876): Zend_View_Abstract->_script('cliente/search....')
+#1 /var/www/test/Encomiendas/library/Zend/Controller/Action/Helper/ViewRenderer.php(897): Zend_View_Abstract->render('cliente/search....')
+#2 /var/www/test/Encomiendas/library/Zend/Controller/Action/Helper/ViewRenderer.php(918): Zend_Controller_Action_Helper_ViewRenderer->renderScript('cliente/search....', NULL)
+#3 /var/www/test/Encomiendas/library/Zend/Controller/Action/Helper/ViewRenderer.php(957): Zend_Controller_Action_Helper_ViewRenderer->render()
+#4 /var/www/test/Encomiendas/library/Zend/Controller/Action/HelperBroker.php(277): Zend_Controller_Action_Helper_ViewRenderer->postDispatch()
+#5 /var/www/test/Encomiendas/library/Zend/Controller/Action.php(523): Zend_Controller_Action_HelperBroker->notifyPostDispatch()
+#6 /var/www/test/Encomiendas/library/Zend/Controller/Dispatcher/Standard.php(289): Zend_Controller_Action->dispatch('searchAction')
+#7 /var/www/test/Encomiendas/library/Zend/Controller/Front.php(954): Zend_Controller_Dispatcher_Standard->dispatch(Object(Zend_Controller_Request_Http), Object(Zend_Controller_Response_Http))
+#8 /var/www/test/Encomiendas/library/Zend/Application/Bootstrap/Bootstrap.php(97): Zend_Controller_Front->dispatch()
+#9 /var/www/test/Encomiendas/library/Zend/Application.php(366): Zend_Application_Bootstrap_Bootstrap->run()
+#10 /var/www/test/Encomiendas/public/index.php(26): Zend_Application->run()
+#11 {main}
+2020-12-11T06:27:39-04:00 ERR (3): exception 'Zend_Controller_Dispatcher_Exception' with message 'Invalid controller class ("ClienteController")' in /var/www/test/Encomiendas/library/Zend/Controller/Dispatcher/Standard.php:346
+Stack trace:
+#0 /var/www/test/Encomiendas/library/Zend/Controller/Dispatcher/Standard.php(256): Zend_Controller_Dispatcher_Standard->loadClass('ClienteControll...')
+#1 /var/www/test/Encomiendas/library/Zend/Controller/Front.php(954): Zend_Controller_Dispatcher_Standard->dispatch(Object(Zend_Controller_Request_Http), Object(Zend_Controller_Response_Http))
+#2 /var/www/test/Encomiendas/library/Zend/Application/Bootstrap/Bootstrap.php(97): Zend_Controller_Front->dispatch()
+#3 /var/www/test/Encomiendas/library/Zend/Application.php(366): Zend_Application_Bootstrap_Bootstrap->run()
+#4 /var/www/test/Encomiendas/public/index.php(26): Zend_Application->run()
+#5 {main}
+2020-12-11T06:28:01-04:00 ERR (3): exception 'Zend_Controller_Dispatcher_Exception' with message 'Invalid controller specified (client)' in /var/www/test/Encomiendas/library/Zend/Controller/Dispatcher/Standard.php:242
+Stack trace:
+#0 /var/www/test/Encomiendas/library/Zend/Controller/Front.php(954): Zend_Controller_Dispatcher_Standard->dispatch(Object(Zend_Controller_Request_Http), Object(Zend_Controller_Response_Http))
+#1 /var/www/test/Encomiendas/library/Zend/Application/Bootstrap/Bootstrap.php(97): Zend_Controller_Front->dispatch()
+#2 /var/www/test/Encomiendas/library/Zend/Application.php(366): Zend_Application_Bootstrap_Bootstrap->run()
+#3 /var/www/test/Encomiendas/public/index.php(26): Zend_Application->run()
+#4 {main}
+2020-12-11T06:28:07-04:00 ERR (3): exception 'Zend_Controller_Dispatcher_Exception' with message 'Invalid controller specified (client)' in /var/www/test/Encomiendas/library/Zend/Controller/Dispatcher/Standard.php:242
+Stack trace:
+#0 /var/www/test/Encomiendas/library/Zend/Controller/Front.php(954): Zend_Controller_Dispatcher_Standard->dispatch(Object(Zend_Controller_Request_Http), Object(Zend_Controller_Response_Http))
+#1 /var/www/test/Encomiendas/library/Zend/Application/Bootstrap/Bootstrap.php(97): Zend_Controller_Front->dispatch()
+#2 /var/www/test/Encomiendas/library/Zend/Application.php(366): Zend_Application_Bootstrap_Bootstrap->run()
+#3 /var/www/test/Encomiendas/public/index.php(26): Zend_Application->run()
+#4 {main}
+2020-12-11T06:29:22-04:00 ERR (3): exception 'Zend_View_Exception' with message 'script 'client/search.phtml' not found in path (/var/www/test/Encomiendas/application/views/scripts/)' in /var/www/test/Encomiendas/library/Zend/View/Abstract.php:976
+Stack trace:
+#0 /var/www/test/Encomiendas/library/Zend/View/Abstract.php(876): Zend_View_Abstract->_script('client/search.p...')
+#1 /var/www/test/Encomiendas/library/Zend/Controller/Action/Helper/ViewRenderer.php(897): Zend_View_Abstract->render('client/search.p...')
+#2 /var/www/test/Encomiendas/library/Zend/Controller/Action/Helper/ViewRenderer.php(918): Zend_Controller_Action_Helper_ViewRenderer->renderScript('client/search.p...', NULL)
+#3 /var/www/test/Encomiendas/library/Zend/Controller/Action/Helper/ViewRenderer.php(957): Zend_Controller_Action_Helper_ViewRenderer->render()
+#4 /var/www/test/Encomiendas/library/Zend/Controller/Action/HelperBroker.php(277): Zend_Controller_Action_Helper_ViewRenderer->postDispatch()
+#5 /var/www/test/Encomiendas/library/Zend/Controller/Action.php(523): Zend_Controller_Action_HelperBroker->notifyPostDispatch()
+#6 /var/www/test/Encomiendas/library/Zend/Controller/Dispatcher/Standard.php(289): Zend_Controller_Action->dispatch('searchAction')
+#7 /var/www/test/Encomiendas/library/Zend/Controller/Front.php(954): Zend_Controller_Dispatcher_Standard->dispatch(Object(Zend_Controller_Request_Http), Object(Zend_Controller_Response_Http))
+#8 /var/www/test/Encomiendas/library/Zend/Application/Bootstrap/Bootstrap.php(97): Zend_Controller_Front->dispatch()
+#9 /var/www/test/Encomiendas/library/Zend/Application.php(366): Zend_Application_Bootstrap_Bootstrap->run()
+#10 /var/www/test/Encomiendas/public/index.php(26): Zend_Application->run()
+#11 {main}
+2020-12-11T06:29:58-04:00 ERR (3): cliente select SELECT "cl"."nombre", "cl"."nit", "cl"."tipo" FROM "cliente" AS "cl" ORDER BY "nombre" ASC
+2020-12-11T06:30:02-04:00 ERR (3): cliente select SELECT "cl"."nombre", "cl"."nit", "cl"."tipo" FROM "cliente" AS "cl" ORDER BY "nombre" ASC
+2020-12-11T06:40:43-04:00 ERR (3): cliente select SELECT "cl"."nombre", "cl"."nit", "cl"."tipo" FROM "cliente" AS "cl" ORDER BY "nombre" ASC
+2020-12-11T06:40:47-04:00 ERR (3): cliente select SELECT "cl"."nombre", "cl"."nit", "cl"."tipo" FROM "cliente" AS "cl" ORDER BY "nombre" ASC
+2020-12-11T06:41:35-04:00 ERR (3): cliente select SELECT "cl"."nombre", "cl"."nit", "cl"."tipo" FROM "cliente" AS "cl" ORDER BY "nombre" ASC
+2020-12-11T06:41:45-04:00 ERR (3): cliente select SELECT "cl"."nombre", "cl"."nit", "cl"."tipo" FROM "cliente" AS "cl" ORDER BY "nombre" ASC
+2020-12-11T06:57:25-04:00 ERR (3): cliente select SELECT "cl"."nombre", "cl"."nit", "cl"."tipo" FROM "cliente" AS "cl" ORDER BY "nombre" ASC
+2020-12-11T07:04:47-04:00 ERR (3): cliente select SELECT "cl"."nombre", "cl"."nit", "cl"."tipo" FROM "cliente" AS "cl" ORDER BY "nombre" ASC
+2020-12-11T07:05:19-04:00 ERR (3): cliente select SELECT "cl"."nombre", "cl"."nit", "cl"."tipo" FROM "cliente" AS "cl" ORDER BY "nombre" ASC
+2020-12-11T07:08:23-04:00 ERR (3): cliente select SELECT "cl"."nombre", "cl"."nit", "cl"."tipo" FROM "cliente" AS "cl" ORDER BY "nombre" ASC
+2020-12-11T07:08:50-04:00 ERR (3): DB Transaction persisting client1
+2020-12-11T07:08:50-04:00 ERR (3): #0 /var/www/test/Encomiendas/library/Zend/Db/Statement.php(300): Zend_Db_Statement_Pdo->_execute(Array)
+#1 /var/www/test/Encomiendas/library/Zend/Db/Adapter/Abstract.php(468): Zend_Db_Statement->execute(Array)
+#2 /var/www/test/Encomiendas/library/Zend/Db/Adapter/Pdo/Abstract.php(238): Zend_Db_Adapter_Abstract->query('INSERT INTO "cl...', Array)
+#3 /var/www/test/Encomiendas/library/Zend/Db/Adapter/Abstract.php(546): Zend_Db_Adapter_Pdo_Abstract->query('INSERT INTO "cl...', Array)
+#4 /var/www/test/Encomiendas/library/Zend/Db/Table/Abstract.php(1056): Zend_Db_Adapter_Abstract->insert('cliente', Array)
+#5 /var/www/test/Encomiendas/application/models/Cliente.php(84): Zend_Db_Table_Abstract->insert(Array)
+#6 /var/www/test/Encomiendas/application/controllers/RecepcionController.php(1548): App_Model_Cliente->txSave(Array)
+#7 /var/www/test/Encomiendas/library/Zend/Controller/Action.php(513): RecepcionController->saveClientAction()
+#8 /var/www/test/Encomiendas/library/Zend/Controller/Dispatcher/Standard.php(289): Zend_Controller_Action->dispatch('saveClientActio...')
+#9 /var/www/test/Encomiendas/library/Zend/Controller/Front.php(954): Zend_Controller_Dispatcher_Standard->dispatch(Object(Zend_Controller_Request_Http), Object(Zend_Controller_Response_Http))
+#10 /var/www/test/Encomiendas/library/Zend/Application/Bootstrap/Bootstrap.php(97): Zend_Controller_Front->dispatch()
+#11 /var/www/test/Encomiendas/library/Zend/Application.php(366): Zend_Application_Bootstrap_Bootstrap->run()
+#12 /var/www/test/Encomiendas/public/index.php(26): Zend_Application->run()
+#13 {main}
+2020-12-11T07:08:50-04:00 ERR (3): exception 'Zend_Db_Exception' with message 'exception 'PDOException' with message 'SQLSTATE[23502]: Not null violation: 7 ERROR:  null value in column "nombre" violates not-null constraint' in /var/www/test/Encomiendas/library/Zend/Db/Statement/Pdo.php:228
+Stack trace:
+#0 /var/www/test/Encomiendas/library/Zend/Db/Statement/Pdo.php(228): PDOStatement->execute(Array)
+#1 /var/www/test/Encomiendas/library/Zend/Db/Statement.php(300): Zend_Db_Statement_Pdo->_execute(Array)
+#2 /var/www/test/Encomiendas/library/Zend/Db/Adapter/Abstract.php(468): Zend_Db_Statement->execute(Array)
+#3 /var/www/test/Encomiendas/library/Zend/Db/Adapter/Pdo/Abstract.php(238): Zend_Db_Adapter_Abstract->query('INSERT INTO "cl...', Array)
+#4 /var/www/test/Encomiendas/library/Zend/Db/Adapter/Abstract.php(546): Zend_Db_Adapter_Pdo_Abstract->query('INSERT INTO "cl...', Array)
+#5 /var/www/test/Encomiendas/library/Zend/Db/Table/Abstract.php(1056): Zend_Db_Adapter_Abstract->insert('cliente', Array)
+#6 /var/www/test/Encomiendas/application/models/Cliente.php(84): Zend_Db_Table_Abstract->insert(Array)
+#7 /var/www/test/Encomiendas/application/controllers/RecepcionController.php(1548): App_Model_Cliente->txSave(Array)
+#8 /var/www/test/Encomiendas/library/Zend/Controller/Action.php(513): RecepcionController->saveClientAction()
+#9 /var/www/test/Encomiendas/library/Zend/Controller/Dispatcher/Standard.php(289): Zend_Controller_Action->dispatch('saveClientActio...')
+#10 /var/www/test/Encomiendas/library/Zend/Controller/Front.php(954): Zend_Controller_Dispatcher_Standard->dispatch(Object(Zend_Controller_Request_Http), Object(Zend_Controller_Response_Http))
+#11 /var/www/test/Encomiendas/library/Zend/Application/Bootstrap/Bootstrap.php(97): Zend_Controller_Front->dispatch()
+#12 /var/www/test/Encomiendas/library/Zend/Application.php(366): Zend_Application_Bootstrap_Bootstrap->run()
+#13 /var/www/test/Encomiendas/public/index.php(26): Zend_Application->run()
+#14 {main}
+
+Next exception 'Zend_Db_Statement_Exception' with message 'SQLSTATE[23502]: Not null violation: 7 ERROR:  null value in column "nombre" violates not-null constraint' in /var/www/test/Encomiendas/library/Zend/Db/Statement/Pdo.php:234
+Stack trace:
+#0 /var/www/test/Encomiendas/library/Zend/Db/Statement.php(300): Zend_Db_Statement_Pdo->_execute(Array)
+#1 /var/www/test/Encomiendas/library/Zend/Db/Adapter/Abstract.php(468): Zend_Db_Statement->execute(Array)
+#2 /var/www/test/Encomiendas/library/Zend/Db/Adapter/Pdo/Abstract.php(238): Zend_Db_Adapter_Abstract->query('INSERT INTO "cl...', Array)
+#3 /var/www/test/Encomiendas/library/Zend/Db/Adapter/Abstract.php(546): Zend_Db_Adapter_Pdo_Abstract->query('INSERT INTO "cl...', Array)
+#4 /var/www/test/Encomiendas/library/Zend/Db/Table/Abstract.php(1056): Zend_Db_Adapter_Abstract->insert('cliente', Array)
+#5 /var/www/test/Encomiendas/application/models/Cliente.php(84): Zend_Db_Table_Abstract->insert(Array)
+#6 /var/www/test/Encomiendas/application/controllers/RecepcionController.php(1548): App_Model_Cliente->txSave(Array)
+#7 /var/www/test/Encomiendas/library/Zend/Controller/Action.php(513): RecepcionController->saveClientAction()
+#8 /var/www/test/Encomiendas/library/Zend/Controller/Dispatcher/Standard.php(289): Zend_Controller_Action->dispatch('saveClientActio...')
+#9 /var/www/test/Encomiendas/library/Zend/Controller/Front.php(954): Zend_Controller_Dispatcher_Standard->dispatch(Object(Zend_Controller_Request_Http), Object(Zend_Controller_Response_Http))
+#10 /var/www/test/Encomiendas/library/Zend/Application/Bootstrap/Bootstrap.php(97): Zend_Controller_Front->dispatch()
+#11 /var/www/test/Encomiendas/library/Zend/Application.php(366): Zend_Application_Bootstrap_Bootstrap->run()
+#12 /var/www/test/Encomiendas/public/index.php(26): Zend_Application->run()
+#13 {main}' in /var/www/test/Encomiendas/application/models/Cliente.php:96
+Stack trace:
+#0 /var/www/test/Encomiendas/application/controllers/RecepcionController.php(1548): App_Model_Cliente->txSave(Array)
+#1 /var/www/test/Encomiendas/library/Zend/Controller/Action.php(513): RecepcionController->saveClientAction()
+#2 /var/www/test/Encomiendas/library/Zend/Controller/Dispatcher/Standard.php(289): Zend_Controller_Action->dispatch('saveClientActio...')
+#3 /var/www/test/Encomiendas/library/Zend/Controller/Front.php(954): Zend_Controller_Dispatcher_Standard->dispatch(Object(Zend_Controller_Request_Http), Object(Zend_Controller_Response_Http))
+#4 /var/www/test/Encomiendas/library/Zend/Application/Bootstrap/Bootstrap.php(97): Zend_Controller_Front->dispatch()
+#5 /var/www/test/Encomiendas/library/Zend/Application.php(366): Zend_Application_Bootstrap_Bootstrap->run()
+#6 /var/www/test/Encomiendas/public/index.php(26): Zend_Application->run()
+#7 {main}
+2020-12-11T07:09:10-04:00 ERR (3): DB Transaction persisting client1
+2020-12-11T07:09:10-04:00 ERR (3): #0 /var/www/test/Encomiendas/library/Zend/Db/Statement.php(300): Zend_Db_Statement_Pdo->_execute(Array)
+#1 /var/www/test/Encomiendas/library/Zend/Db/Adapter/Abstract.php(468): Zend_Db_Statement->execute(Array)
+#2 /var/www/test/Encomiendas/library/Zend/Db/Adapter/Pdo/Abstract.php(238): Zend_Db_Adapter_Abstract->query('INSERT INTO "cl...', Array)
+#3 /var/www/test/Encomiendas/library/Zend/Db/Adapter/Abstract.php(546): Zend_Db_Adapter_Pdo_Abstract->query('INSERT INTO "cl...', Array)
+#4 /var/www/test/Encomiendas/library/Zend/Db/Table/Abstract.php(1056): Zend_Db_Adapter_Abstract->insert('cliente', Array)
+#5 /var/www/test/Encomiendas/application/models/Cliente.php(84): Zend_Db_Table_Abstract->insert(Array)
+#6 /var/www/test/Encomiendas/application/controllers/RecepcionController.php(1548): App_Model_Cliente->txSave(Array)
+#7 /var/www/test/Encomiendas/library/Zend/Controller/Action.php(513): RecepcionController->saveClientAction()
+#8 /var/www/test/Encomiendas/library/Zend/Controller/Dispatcher/Standard.php(289): Zend_Controller_Action->dispatch('saveClientActio...')
+#9 /var/www/test/Encomiendas/library/Zend/Controller/Front.php(954): Zend_Controller_Dispatcher_Standard->dispatch(Object(Zend_Controller_Request_Http), Object(Zend_Controller_Response_Http))
+#10 /var/www/test/Encomiendas/library/Zend/Application/Bootstrap/Bootstrap.php(97): Zend_Controller_Front->dispatch()
+#11 /var/www/test/Encomiendas/library/Zend/Application.php(366): Zend_Application_Bootstrap_Bootstrap->run()
+#12 /var/www/test/Encomiendas/public/index.php(26): Zend_Application->run()
+#13 {main}
+2020-12-11T07:09:10-04:00 ERR (3): exception 'Zend_Db_Exception' with message 'exception 'PDOException' with message 'SQLSTATE[23502]: Not null violation: 7 ERROR:  null value in column "nombre" violates not-null constraint' in /var/www/test/Encomiendas/library/Zend/Db/Statement/Pdo.php:228
+Stack trace:
+#0 /var/www/test/Encomiendas/library/Zend/Db/Statement/Pdo.php(228): PDOStatement->execute(Array)
+#1 /var/www/test/Encomiendas/library/Zend/Db/Statement.php(300): Zend_Db_Statement_Pdo->_execute(Array)
+#2 /var/www/test/Encomiendas/library/Zend/Db/Adapter/Abstract.php(468): Zend_Db_Statement->execute(Array)
+#3 /var/www/test/Encomiendas/library/Zend/Db/Adapter/Pdo/Abstract.php(238): Zend_Db_Adapter_Abstract->query('INSERT INTO "cl...', Array)
+#4 /var/www/test/Encomiendas/library/Zend/Db/Adapter/Abstract.php(546): Zend_Db_Adapter_Pdo_Abstract->query('INSERT INTO "cl...', Array)
+#5 /var/www/test/Encomiendas/library/Zend/Db/Table/Abstract.php(1056): Zend_Db_Adapter_Abstract->insert('cliente', Array)
+#6 /var/www/test/Encomiendas/application/models/Cliente.php(84): Zend_Db_Table_Abstract->insert(Array)
+#7 /var/www/test/Encomiendas/application/controllers/RecepcionController.php(1548): App_Model_Cliente->txSave(Array)
+#8 /var/www/test/Encomiendas/library/Zend/Controller/Action.php(513): RecepcionController->saveClientAction()
+#9 /var/www/test/Encomiendas/library/Zend/Controller/Dispatcher/Standard.php(289): Zend_Controller_Action->dispatch('saveClientActio...')
+#10 /var/www/test/Encomiendas/library/Zend/Controller/Front.php(954): Zend_Controller_Dispatcher_Standard->dispatch(Object(Zend_Controller_Request_Http), Object(Zend_Controller_Response_Http))
+#11 /var/www/test/Encomiendas/library/Zend/Application/Bootstrap/Bootstrap.php(97): Zend_Controller_Front->dispatch()
+#12 /var/www/test/Encomiendas/library/Zend/Application.php(366): Zend_Application_Bootstrap_Bootstrap->run()
+#13 /var/www/test/Encomiendas/public/index.php(26): Zend_Application->run()
+#14 {main}
+
+Next exception 'Zend_Db_Statement_Exception' with message 'SQLSTATE[23502]: Not null violation: 7 ERROR:  null value in column "nombre" violates not-null constraint' in /var/www/test/Encomiendas/library/Zend/Db/Statement/Pdo.php:234
+Stack trace:
+#0 /var/www/test/Encomiendas/library/Zend/Db/Statement.php(300): Zend_Db_Statement_Pdo->_execute(Array)
+#1 /var/www/test/Encomiendas/library/Zend/Db/Adapter/Abstract.php(468): Zend_Db_Statement->execute(Array)
+#2 /var/www/test/Encomiendas/library/Zend/Db/Adapter/Pdo/Abstract.php(238): Zend_Db_Adapter_Abstract->query('INSERT INTO "cl...', Array)
+#3 /var/www/test/Encomiendas/library/Zend/Db/Adapter/Abstract.php(546): Zend_Db_Adapter_Pdo_Abstract->query('INSERT INTO "cl...', Array)
+#4 /var/www/test/Encomiendas/library/Zend/Db/Table/Abstract.php(1056): Zend_Db_Adapter_Abstract->insert('cliente', Array)
+#5 /var/www/test/Encomiendas/application/models/Cliente.php(84): Zend_Db_Table_Abstract->insert(Array)
+#6 /var/www/test/Encomiendas/application/controllers/RecepcionController.php(1548): App_Model_Cliente->txSave(Array)
+#7 /var/www/test/Encomiendas/library/Zend/Controller/Action.php(513): RecepcionController->saveClientAction()
+#8 /var/www/test/Encomiendas/library/Zend/Controller/Dispatcher/Standard.php(289): Zend_Controller_Action->dispatch('saveClientActio...')
+#9 /var/www/test/Encomiendas/library/Zend/Controller/Front.php(954): Zend_Controller_Dispatcher_Standard->dispatch(Object(Zend_Controller_Request_Http), Object(Zend_Controller_Response_Http))
+#10 /var/www/test/Encomiendas/library/Zend/Application/Bootstrap/Bootstrap.php(97): Zend_Controller_Front->dispatch()
+#11 /var/www/test/Encomiendas/library/Zend/Application.php(366): Zend_Application_Bootstrap_Bootstrap->run()
+#12 /var/www/test/Encomiendas/public/index.php(26): Zend_Application->run()
+#13 {main}' in /var/www/test/Encomiendas/application/models/Cliente.php:96
+Stack trace:
+#0 /var/www/test/Encomiendas/application/controllers/RecepcionController.php(1548): App_Model_Cliente->txSave(Array)
+#1 /var/www/test/Encomiendas/library/Zend/Controller/Action.php(513): RecepcionController->saveClientAction()
+#2 /var/www/test/Encomiendas/library/Zend/Controller/Dispatcher/Standard.php(289): Zend_Controller_Action->dispatch('saveClientActio...')
+#3 /var/www/test/Encomiendas/library/Zend/Controller/Front.php(954): Zend_Controller_Dispatcher_Standard->dispatch(Object(Zend_Controller_Request_Http), Object(Zend_Controller_Response_Http))
+#4 /var/www/test/Encomiendas/library/Zend/Application/Bootstrap/Bootstrap.php(97): Zend_Controller_Front->dispatch()
+#5 /var/www/test/Encomiendas/library/Zend/Application.php(366): Zend_Application_Bootstrap_Bootstrap->run()
+#6 /var/www/test/Encomiendas/public/index.php(26): Zend_Application->run()
+#7 {main}
+2020-12-11T07:14:25-04:00 ERR (3): cliente select SELECT "cl"."nombre", "cl"."nit", "cl"."tipo" FROM "cliente" AS "cl" ORDER BY "nombre" ASC
+2020-12-11T07:17:50-04:00 ERR (3): cliente select SELECT "cl"."nombre", "cl"."nit", "cl"."tipo" FROM "cliente" AS "cl" ORDER BY "nombre" ASC
+2020-12-11T07:18:59-04:00 ERR (3): DB Transaction persisting client1
+2020-12-11T07:18:59-04:00 ERR (3): #0 /var/www/test/Encomiendas/library/Zend/Db/Statement.php(300): Zend_Db_Statement_Pdo->_execute(Array)
+#1 /var/www/test/Encomiendas/library/Zend/Db/Adapter/Abstract.php(468): Zend_Db_Statement->execute(Array)
+#2 /var/www/test/Encomiendas/library/Zend/Db/Adapter/Pdo/Abstract.php(238): Zend_Db_Adapter_Abstract->query('INSERT INTO "cl...', Array)
+#3 /var/www/test/Encomiendas/library/Zend/Db/Adapter/Abstract.php(546): Zend_Db_Adapter_Pdo_Abstract->query('INSERT INTO "cl...', Array)
+#4 /var/www/test/Encomiendas/library/Zend/Db/Table/Abstract.php(1056): Zend_Db_Adapter_Abstract->insert('cliente', Array)
+#5 /var/www/test/Encomiendas/application/models/Cliente.php(84): Zend_Db_Table_Abstract->insert(Array)
+#6 /var/www/test/Encomiendas/application/controllers/RecepcionController.php(1548): App_Model_Cliente->txSave(Array)
+#7 /var/www/test/Encomiendas/library/Zend/Controller/Action.php(513): RecepcionController->saveClientAction()
+#8 /var/www/test/Encomiendas/library/Zend/Controller/Dispatcher/Standard.php(289): Zend_Controller_Action->dispatch('saveClientActio...')
+#9 /var/www/test/Encomiendas/library/Zend/Controller/Front.php(954): Zend_Controller_Dispatcher_Standard->dispatch(Object(Zend_Controller_Request_Http), Object(Zend_Controller_Response_Http))
+#10 /var/www/test/Encomiendas/library/Zend/Application/Bootstrap/Bootstrap.php(97): Zend_Controller_Front->dispatch()
+#11 /var/www/test/Encomiendas/library/Zend/Application.php(366): Zend_Application_Bootstrap_Bootstrap->run()
+#12 /var/www/test/Encomiendas/public/index.php(26): Zend_Application->run()
+#13 {main}
+2020-12-11T07:18:59-04:00 ERR (3): exception 'Zend_Db_Exception' with message 'exception 'PDOException' with message 'SQLSTATE[23502]: Not null violation: 7 ERROR:  null value in column "nombre" violates not-null constraint' in /var/www/test/Encomiendas/library/Zend/Db/Statement/Pdo.php:228
+Stack trace:
+#0 /var/www/test/Encomiendas/library/Zend/Db/Statement/Pdo.php(228): PDOStatement->execute(Array)
+#1 /var/www/test/Encomiendas/library/Zend/Db/Statement.php(300): Zend_Db_Statement_Pdo->_execute(Array)
+#2 /var/www/test/Encomiendas/library/Zend/Db/Adapter/Abstract.php(468): Zend_Db_Statement->execute(Array)
+#3 /var/www/test/Encomiendas/library/Zend/Db/Adapter/Pdo/Abstract.php(238): Zend_Db_Adapter_Abstract->query('INSERT INTO "cl...', Array)
+#4 /var/www/test/Encomiendas/library/Zend/Db/Adapter/Abstract.php(546): Zend_Db_Adapter_Pdo_Abstract->query('INSERT INTO "cl...', Array)
+#5 /var/www/test/Encomiendas/library/Zend/Db/Table/Abstract.php(1056): Zend_Db_Adapter_Abstract->insert('cliente', Array)
+#6 /var/www/test/Encomiendas/application/models/Cliente.php(84): Zend_Db_Table_Abstract->insert(Array)
+#7 /var/www/test/Encomiendas/application/controllers/RecepcionController.php(1548): App_Model_Cliente->txSave(Array)
+#8 /var/www/test/Encomiendas/library/Zend/Controller/Action.php(513): RecepcionController->saveClientAction()
+#9 /var/www/test/Encomiendas/library/Zend/Controller/Dispatcher/Standard.php(289): Zend_Controller_Action->dispatch('saveClientActio...')
+#10 /var/www/test/Encomiendas/library/Zend/Controller/Front.php(954): Zend_Controller_Dispatcher_Standard->dispatch(Object(Zend_Controller_Request_Http), Object(Zend_Controller_Response_Http))
+#11 /var/www/test/Encomiendas/library/Zend/Application/Bootstrap/Bootstrap.php(97): Zend_Controller_Front->dispatch()
+#12 /var/www/test/Encomiendas/library/Zend/Application.php(366): Zend_Application_Bootstrap_Bootstrap->run()
+#13 /var/www/test/Encomiendas/public/index.php(26): Zend_Application->run()
+#14 {main}
+
+Next exception 'Zend_Db_Statement_Exception' with message 'SQLSTATE[23502]: Not null violation: 7 ERROR:  null value in column "nombre" violates not-null constraint' in /var/www/test/Encomiendas/library/Zend/Db/Statement/Pdo.php:234
+Stack trace:
+#0 /var/www/test/Encomiendas/library/Zend/Db/Statement.php(300): Zend_Db_Statement_Pdo->_execute(Array)
+#1 /var/www/test/Encomiendas/library/Zend/Db/Adapter/Abstract.php(468): Zend_Db_Statement->execute(Array)
+#2 /var/www/test/Encomiendas/library/Zend/Db/Adapter/Pdo/Abstract.php(238): Zend_Db_Adapter_Abstract->query('INSERT INTO "cl...', Array)
+#3 /var/www/test/Encomiendas/library/Zend/Db/Adapter/Abstract.php(546): Zend_Db_Adapter_Pdo_Abstract->query('INSERT INTO "cl...', Array)
+#4 /var/www/test/Encomiendas/library/Zend/Db/Table/Abstract.php(1056): Zend_Db_Adapter_Abstract->insert('cliente', Array)
+#5 /var/www/test/Encomiendas/application/models/Cliente.php(84): Zend_Db_Table_Abstract->insert(Array)
+#6 /var/www/test/Encomiendas/application/controllers/RecepcionController.php(1548): App_Model_Cliente->txSave(Array)
+#7 /var/www/test/Encomiendas/library/Zend/Controller/Action.php(513): RecepcionController->saveClientAction()
+#8 /var/www/test/Encomiendas/library/Zend/Controller/Dispatcher/Standard.php(289): Zend_Controller_Action->dispatch('saveClientActio...')
+#9 /var/www/test/Encomiendas/library/Zend/Controller/Front.php(954): Zend_Controller_Dispatcher_Standard->dispatch(Object(Zend_Controller_Request_Http), Object(Zend_Controller_Response_Http))
+#10 /var/www/test/Encomiendas/library/Zend/Application/Bootstrap/Bootstrap.php(97): Zend_Controller_Front->dispatch()
+#11 /var/www/test/Encomiendas/library/Zend/Application.php(366): Zend_Application_Bootstrap_Bootstrap->run()
+#12 /var/www/test/Encomiendas/public/index.php(26): Zend_Application->run()
+#13 {main}' in /var/www/test/Encomiendas/application/models/Cliente.php:96
+Stack trace:
+#0 /var/www/test/Encomiendas/application/controllers/RecepcionController.php(1548): App_Model_Cliente->txSave(Array)
+#1 /var/www/test/Encomiendas/library/Zend/Controller/Action.php(513): RecepcionController->saveClientAction()
+#2 /var/www/test/Encomiendas/library/Zend/Controller/Dispatcher/Standard.php(289): Zend_Controller_Action->dispatch('saveClientActio...')
+#3 /var/www/test/Encomiendas/library/Zend/Controller/Front.php(954): Zend_Controller_Dispatcher_Standard->dispatch(Object(Zend_Controller_Request_Http), Object(Zend_Controller_Response_Http))
+#4 /var/www/test/Encomiendas/library/Zend/Application/Bootstrap/Bootstrap.php(97): Zend_Controller_Front->dispatch()
+#5 /var/www/test/Encomiendas/library/Zend/Application.php(366): Zend_Application_Bootstrap_Bootstrap->run()
+#6 /var/www/test/Encomiendas/public/index.php(26): Zend_Application->run()
+#7 {main}
+2020-12-11T07:22:28-04:00 ERR (3): cliente select SELECT "cl"."nombre", "cl"."nit", "cl"."tipo" FROM "cliente" AS "cl" ORDER BY "nombre" ASC

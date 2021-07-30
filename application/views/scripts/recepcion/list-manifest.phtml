@@ -1,0 +1,27 @@
+
+<table class="listManifiestos">
+    <tr>
+        <th>Encargado</th>
+        <th>Origen</th>
+        <th>Destino</th>
+        <th>Chofer</th>
+        <th>Total</th>
+        <th>Ver</th>
+    </tr>
+    <?php
+    if (is_array($this->manifiestos)) {
+        foreach ($this->manifiestos as $manif) {
+            echo "<tr>
+                        <td>$manif->nombres</td>
+                        <td>$manif->origen</td>
+                        <td>$manif->destino</td>
+                        <td>$manif->chofer</td>
+                        <td class='numeric'>$manif->total</td>
+                        <td><a href='#' id='" . base64_encode($manif->id_manifiesto) . "' class='verManifiesto' title='Lista de Encomiendas'>
+                            <img src='" . $this->baseUrl() . "/images/icon-lista.png'/>
+                        </a></td>
+                    </tr>";
+        }
+    }
+    ?>
+</table>

@@ -1,0 +1,65 @@
+
+<?php
+$this->headLink()->appendStylesheet($this->baseUrl() . '/styles/jquery.autocomplete.css');
+$this->headLink()->appendStylesheet($this->baseUrl() . '/styles/jqModal.css');
+
+$this->jQuery()->addJavascriptFile($this->baseUrl() . '/scripts/jquery/jquery.poloche.block.js');
+$this->jQuery()->addJavascriptFile($this->baseUrl() . '/scripts/jquery/jquery.numeric.js');
+//$this->jQuery()->addJavascriptFile($this->baseUrl() . '/scripts/jquery/jquery.autocomplete.pack.js');
+$this->jQuery()->addJavascriptFile($this->baseUrl() . '/scripts/jquery/jquery.hotkeys.min.js');
+$this->jQuery()->addJavascriptFile($this->baseUrl() . '/scripts/jquery/jquery.jsonp-2.1.4.js');
+$this->jQuery()->addJavascriptFile($this->baseUrl() . '/scripts/libs/recepcion.js');
+$this->jQuery()->addJavascriptFile($this->baseUrl() . '/scripts/libs/entrega.js');
+?>
+<?php
+$session = Zend_Registry::get(App_Util_Statics::$SESSION);
+?>
+<script type="text/javascript">
+    var arrayDefault = <?= $this->predef ?>;
+    var clientesDefault = <?= $this->clientes ?>;
+    var userSucursal = <?= $this->userSucursal ?>;
+    var userCiudadID = "<?= $this->idCiudadOrigen ?>";
+    var defaultConfig = <?= Zend_Json::encode($session->configSYS) ?>;
+    var SYS_CONFIG = <?= $this->configuraciones ?>;    
+    var eventsFromDB = <?= Zend_Json::encode($this->events) ?>;
+//    console.log(events);
+    events = MergeRecursive(events,eventsFromDB);//$.extend({}, events, eventsFromDB);
+
+</script>
+<?php
+$session = Zend_Registry::get(App_Util_Statics::$SESSION);
+?>
+<APPLET name="printerSystem" 
+        archive="<?= $this->baseUrl(); ?>/PrintDocEncomienda.jar, <?= $this->baseUrl(); ?>/lib/core-3.1.0.jar, <?= $this->baseUrl(); ?>/lib/javase-2.0-SNAPSHOT.jar, <?= $this->baseUrl(); ?>/lib/core-2.0-SNAPSHOT.jar, <?= $this->baseUrl(); ?>/lib/javase-3.1.0.jar" 
+        code="printer.AppletImpresionEncomienda.class" width=0 height=0>
+<!--<div><p>El plugin de impresion java no esta instalado por favor instalelo</p></div>-->
+</APPLET>
+<div>
+    <input type="hidden" id="selectedViaje" value="0"/>
+    <input type="hidden" id="selectedBus" value="0"/>
+    <input type="hidden" id="selectedHora" value="0"/>
+    <input type="hidden" id="selectedDestino" value="0"/>
+    <input type="hidden" id="selectedIdBus" value="0"/>
+    <input type="hidden" id="<?= sha1("idUsuario") ?>" value="<?= base64_encode($session->person->identificador) ?>"/>
+    <input type="hidden" id="<?= sha1("idSucursal") ?>" value="<?= base64_encode($session->sucursalName) ?>"/>
+</div>
+<div class="centroEncomienda">
+    <div class="contenttab">
+        <ul class="menutab">
+            <li class="ui-widget-header itemtab"><a href="#" name="Recepcion">Recepcion</a></li>
+            <li class="ui-widget-header itemtab"><a href="#" name="Envio">Envio</a></li>
+            <li class="ui-widget-header itemtab"><a href="#" name="Arribo">Arribo</a></li>
+            <li class="ui-widget-header itemtab"><a href="#" name="Entrega">Entrega</a></li>
+            <li class="ui-widget-header itemtab"><a href="#" name="Equipaje">Equipaje</a></li>
+            <li class="ui-widget-header itemtab"><a href="#" name="Busqueda">Busqueda</a></li>
+            <li class="ui-widget-header itemtab"><a href="#" name="Clave">Clave</a></li>
+            <li class="ui-widget-header itemtab"><a href="#" name="Extracto">Extracto</a></li>
+            <li class="ui-widget-header itemtab"><a href="#" name="Clientes">Clientes</a></li>
+        </ul>
+    </div>
+   
+    <div id="middleForm" class="block">
+        <div class="contentBox height500"><?= new App_Form_Recepcion($this->sucursales, $this->ciudades, $this->baseUrl()) ?></div>
+    </div>
+
+</div>

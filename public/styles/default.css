@@ -1,0 +1,871 @@
+* {
+    margin:0;
+    padding:0;
+}
+/*html{
+    overflow-y:scroll;
+}*/
+h2  {
+    color:#000000;
+    font-size:18px;
+}
+
+h1, h2, h3, h4, h5 {
+    font-weight:bold;
+    text-align:center;
+}
+.content_header {
+    padding:15px 10px;
+    width:680px;
+}
+.clearfix{
+    display:block;
+}
+body {
+    color:#333333;
+    font-family:"Lucida Grande",Tahoma,Verdana,Arial,sans-serif;
+    font-size:11px;
+    background-image: url("../images/ui-lightness/ui-bg_diagonals-thick_20_666666_40x40.png");
+}
+/*************************  TITLE PAGINA ******************/
+.spanTitle{
+    color:White;
+    padding-left:70px;
+    font-size: 25px;
+    font-weight: bolder;
+    font-family:monospace;
+}
+.spanTitleName{
+    font-size: 17px;
+    padding-left:5px;
+    font-weight: normal;
+}
+.empresaName{
+    float: right;
+}
+/****************** menu bar **************/
+.header_bar{
+    /*background:none repeat scroll 0 0 #3B5998;*/
+    margin:0;
+    padding:0;
+    text-align:left;
+}
+.header_logo{
+    display:block;
+    height:29px;
+    margin:0 auto;
+    padding:0 0 0 9px;
+    width:968px;
+}
+.logo{
+    background:url("../images/encomiendasTitle.png") no-repeat scroll 0 0 transparent;
+    display:block;
+    height:61px;
+    position:absolute;
+    width:480px;
+}
+.devsite_menubar  {
+    background:none repeat scroll 0 0 #DFDFDF;
+    background-image: url("../images/ui-lightness/ui-bg_highlight-soft_75_ffe45c_1x50.png");
+    border-bottom:1px solid #C1C1C1;
+    font-size:11px;
+    height:29px;
+    margin:0;
+    padding:0;
+}
+.devsite_menubar div.contentHeader{
+    width: 980px;
+    border: 1px solid red;
+    margin: 0 auto;
+}
+.topContent{
+    background-color:#3B5998;
+}
+div.data_menu{
+    margin:0 auto;
+    padding:2px;
+    width:820px;
+}
+div.data_menu_close{
+    margin:0 auto;
+    padding:2px;
+    height: 20px;
+    /*    width:125px;*/
+}
+
+div.barra_menu{
+    padding-left:75px;
+}
+div.menu_core{
+    float:left;
+
+}
+span.menu_item{
+    display:block;
+    font-weight:bold;
+    height:24px;
+    line-height:24px;
+    outline:0 none;
+    padding:1px 11px 0;
+    z-index:102;
+}
+
+.top_nav{
+    font-size:11px;
+    margin:-2px auto 0;
+    padding:0 0 0;
+    position:relative;
+    width:980px;
+}
+.top_nav ul{
+    margin:0 6px 0 0;
+    padding:0;
+    text-align:center;
+}
+ul  {
+    list-style:none outside none;
+    margin-left:15px;
+}
+ol, ul, dl {
+    margin-bottom:15px;
+}
+.top_nav ul li {
+    background-image:none;
+    display:inline;
+    margin:2px;
+    padding:2px;
+}
+li, dt, dd {
+    font-size:12px;
+    line-height:1.5em;
+}
+.top_nav ul li a {
+    background-color:white;
+    border-bottom:1px solid #C1C1C1;
+    border-left:1px solid #C1C1C1;
+    border-right:1px solid #C1C1C1;
+    color:#444444;
+    font-size:11px;
+    font-weight:bold;
+    margin-left:3px;
+    padding:2px 5px 4px;
+    text-decoration:none;
+}
+a:link, a:visited {
+    color:#3B5998;
+    outline:medium none;
+    text-decoration:none;
+}
+/****************** HASTA AQUI MENU **********************/
+.middle-container{
+    margin:0 auto 25px;
+    padding:0;
+    text-align:left;    
+    width:980px;
+    /*    float: right;*/
+}
+.content {
+    background:none repeat scroll 0 0 #FFFFFF;
+    margin-top:20px;
+    padding:0;
+    text-align:justify;
+}
+.content_sidebar{
+    background:none repeat scroll 0 0 transparent;
+    background-color:#F7F7F7;
+    border-left:1px solid #CCC;
+    border-right:1px solid #CCC;    
+    width:278px;
+}
+
+.inline-block{
+    display: inline-block;
+    min-width: 200px;
+}
+.block{
+    display: block;
+    min-width: 200px;
+}
+.login_form{
+    clear:left;
+    margin:auto;
+    padding-top:15px;
+    text-align:left;
+    width:300px;
+}
+.form_row  {
+    padding:0 0 8px;
+    text-align:left;
+}
+.form_row label{
+    color:#333333;
+    cursor:pointer;
+    display:block;
+    float:left;
+    font-size:11px;
+    font-weight:bold;
+    padding:3px 0;
+    width:100px;
+}
+.center_align{
+    text-align:center;
+}
+/**** para hacer redondeos ***************/
+
+.ct1  {
+    background:none repeat scroll 0 0 #CCC;
+    border-left:1px solid #CCC;
+    border-right:1px solid #CCC;
+    height:1px;
+    margin:0 4px;
+}
+.ct2  {
+    background:none repeat scroll 0 0 #F7F7F7;
+    border-left:1px solid #CCC;
+    border-right:1px solid #CCC;
+    height:1px;
+    margin:0 3px;
+}
+.ct3  {
+    background:none repeat scroll 0 0 #F7F7F7;
+    border-left:1px solid #CCC;
+    border-right:1px solid #CCC;
+    height:1px;
+    margin:0 2px;
+}
+.ct4  {
+    background:none repeat scroll 0 0 #F7F7F7;
+    border-left:1px solid #CCC;
+    border-right:1px solid #CCC;
+    height:2px;
+    margin:0 1px;
+}
+
+.ct1, .ct2, .ct3, .ct4, .cb1, .cb2, .cb3, .cb4 {
+    display:block;
+    font-size:1px;
+    overflow:hidden;
+}
+.content_rounded{
+    background-color:#F7F7F7;
+    border-left:1px solid #CCC;
+    border-right:1px solid #CCC;
+    padding-left:5px;
+    padding-right:5px;
+    padding-bottom:20px;
+    padding-top:10px;
+    width:270px;
+}
+.content_rounded h3.title{
+    border-bottom:1px solid #D7D7D7;
+    font-size:12px;
+    line-height:1em;
+    margin-bottom:8px;
+    padding-bottom:3px;
+}
+div.round{
+    height:auto;
+    background:transparent;
+    margin-top:0px;
+    margin-right:10px;
+    margin-bottom:25px;
+    display: inline-block;
+    min-width: 200px;
+    /*    width: expression(document.body.clientWidth < 802? "800px"); */
+    vertical-align: top;
+    zoom: 1; /* IE7 (hasLayout)*/
+    *display: inline; /* IE */
+    _width: auto; /* IE6 */
+}
+div.round span{
+    /* IE6 */
+    width: expression(this.scrollWidth > 200? this.scrollWidth : "250px" );
+    min-width: 200px;
+}
+
+span.menu_item a {
+    color:#444444;
+    display:block;
+    font-weight:bold;
+    height:24px;
+    line-height:24px;
+    outline:0 none;
+    padding:0px 0px 0;
+    margin-left:-5px;
+    text-decoration:none;
+    z-index:102;
+}
+
+a:link, a:visited {
+    color:#3B5998;
+    outline:medium none;
+    text-decoration:none;
+}
+span.menu_item img {
+    display:block;
+    margin-right:-15px;
+    padding:5px 0;
+    z-index:102;
+}
+img {
+    border:medium none;
+}
+/*************** HASTA AQUI REDONDEA LAS COSAS **************/
+.white{
+    background-color:#FFF;
+}
+
+
+/**********************  PIE DE PAGINA   ********************************/
+.footer_border_bottom {
+    border: 1px solid #000;
+    background-color: #F7F7F7;
+    float: left;
+    position: inherit;
+    width: 95%;
+    padding-left: 10px;
+    padding-right: 10px;
+    height: 18px;
+    margin-top: 10px;
+    z-index:99;
+    bottom:0;
+    position:fixed;
+    right:2%;
+}
+ul.clearfix{
+    display:inline-block;
+    text-align:right;
+    width:49%;
+}
+
+.clearfix li {
+    list-style: none;
+    display: inline;
+    margin-left: 10px;
+}
+.copyright{
+    display:inline-block;
+    width:49%;
+}
+
+/*****************   hasta aqui pie de pagina *******************/
+midle-container{
+    margin:0 auto 25px;
+    padding:0;
+    text-align:left;
+    width:980px;
+}
+.content {
+    background:none repeat scroll 0 0 #FFFFFF;
+    margin-top:20px;
+    padding:0;
+    text-align:justify;
+}
+.content_sidebar{
+    background:none repeat scroll 0 0 transparent;
+    background-color:#F7F7F7;
+    border-left:1px solid #CCC;
+    border-right:1px solid #CCC;
+    width:278px;
+}
+.left{
+    /*    float:left;*/
+}
+.login_form{
+    clear:left;
+    margin:auto;
+    padding-top:15px;
+    text-align:left;
+    width:300px;
+}
+.form_row  {
+    padding:0 0 8px;
+    text-align:left;
+}
+.form_row label{
+    color:#333333;
+    cursor:pointer;
+    display:block;
+    float:left;
+    font-size:11px;
+    font-weight:bold;
+    padding:3px 0;
+    width:100px;
+}
+
+.logining{
+    display:none;
+    border:1px solid #000;
+    height:80px;
+    width:95%;
+    text-align:center;
+    color:#000;
+    padding:5px;
+}
+
+.width480{width:600px;}
+.width20Percent{width:20%;}
+.width77Percent{width:77%;}
+.width43Percent{width:43%;}
+.width750{width:750px;}
+.width850{width:850px;}
+.width200{width:200px;} 
+.width325{width:325px;} 
+.width305{width:305px;} 
+.width280{width:280px;} 
+.width105{width:105px;} 
+.width28{width:28px;} 
+
+
+.width245{
+    width:245px;
+    vertical-align:top;
+    height: 450px;
+}
+.width55{
+    width:55px;
+    vertical-align:top;
+    height: 450px;
+}
+.functions{
+    margin-right: 5px;
+    min-width: 100px;
+}
+.padding6px{
+    padding-left: 6px;
+}
+#arrows{
+    padding: 5px;
+}
+/*******************  CLASES PARA EL FORMULARIO DE RECEPCION  ************************/
+div.contentBox{
+    border:solid 1px #c6cfe1;
+    background-color: #dfe4ee;
+    padding:10px;
+    color:#333333;
+    /*    background-image: url("../images/ui-lightness/ui-bg_highlight-soft_100_eeeeee_1x100.png");*/
+    /*    margin-bottom:20px;*/
+}
+
+div.contentBox .input-text{
+    border:1px solid #3b6e22;
+    color:#666666;
+}
+
+div.contentBox label{
+    margin-bottom:2px;
+    color:#555555;
+    display: inline-block;
+}
+div.contentBox label.w270{
+    display: inline-block;
+    width: 270px;
+}
+div.contentBox label.w400{
+    display: inline-block;
+    width: 400px;
+}
+
+div.contentBox label span{
+    display: inline-block;
+    font-size: 14px;
+    font-weight: bold;
+    padding-right: 6px;
+    text-align: left;
+    width: 125px;
+}
+div.contentBox div span{
+    display:inline-block;
+    padding-right:6px;
+    text-align:right;
+    font-weight:bold;
+}
+
+div.contentBox div span.add-viaje{
+    float: right;
+    background-color: white;
+    border-radius: 8px;
+    text-align: center;
+    padding: 0px 2px;
+}
+div.contentBox div span.title1{
+    text-align:center;
+    width:100px;
+}
+div.contentBox div span.title2{
+    text-align:center;
+    width:400px;
+}
+div.contentBox input,div.contentBox select,div.contentBox textarea {
+    background-color:#DFE4EE;
+    border:1px solid;
+    background-image: url("../images/ui-lightness/ui-bg_gloss-wave_35_f6a828_50x10.png");
+}
+div.functions input{
+    background-color: #2F54FF;
+    border-right: 2px solid;
+    border-top: 2px solid;
+    height: 25px;
+    margin-bottom: 2px;
+    width: 100px;
+}
+div.functions input:hover{
+    color: #228ef1;
+}
+
+.numeric{
+    text-align: right;
+}
+div.contentBox label.total{
+    display:inline-block;
+    margin-left:327px;
+
+}
+
+.inline {
+    display:inline-block;
+    vertical-align:top;
+    zoom: 1; /* IE7 (hasLayout)*/
+    padding-left:10px;
+    *display: inline; /* IE */
+}
+
+.inline-line{
+    display:inline;
+    vertical-align:middle;
+    padding-left:10px;
+}
+
+div.row div{
+    display: inline-block
+}
+div.short{
+    width: 105px;
+    text-align: left;
+}
+div.short input{
+    width: 90px;
+}
+div.long{
+    width: 400px;
+}
+div.long input{
+    width: 395px;
+}
+div.total{
+    width: 322px;
+}
+/********************  SELECT ACORDION MENU VIJAJES  ***************************/
+.select-acordion{
+    width: 100%;
+}
+.select-acordion li{
+    font-size: 14px;
+    font-weight: bold;
+}
+.select-acordion li:hover{
+    font-size: 15px;
+}
+/********************  SELECT ACORDION MENU VIJAJES  ***************************/
+
+.roundedDiv{
+    min-width: 200px;
+    display: inline-block;
+    vertical-align: top;
+    zoom: 1; /* IE7 (hasLayout)*/
+    *display: inline; /* IE */
+    _width:  250px; /* IE6 */
+}
+
+.porciento49{
+    width: 49%;
+}
+div.contentBox label.porciento33{
+    width: 33%;
+}
+div.contentBox label.porciento33 span{
+    width: 100px;
+}
+.height450{
+    height:450px;
+}
+.height500{
+    height:505px;
+}
+/***********   TABLE CSS *****************/
+th{
+    white-space: nowrap;
+    text-align: center;
+}
+/***********   TABLE CSS *****************/
+.centroEncomienda{
+    /*width: 1000px;*/
+    margin: 0 auto;
+    font-size: 15px;
+    /*    border: 1px solid red;*/
+}
+
+#encomiendasForm input,#encomiendasForm textarea{
+    font-size: 14px;
+    text-transform: uppercase;
+    border: 1px solid gray;
+}
+.tableManifiesto{
+    width: 100%;
+}
+.width185{
+    height: 185px;
+}
+/*******************************************/
+.mensaje,#mensaje {
+    border: 1px solid #5B9BEB;
+    text-decoration: underline;
+    font-style: italic;
+    width: 80%;
+    background: #FFFFEF;
+    margin: auto;
+}
+/*********** tabs para el menu *************/
+.contenttab{
+    text-align:center;
+}
+.menutab{
+    margin-bottom:0;
+    margin-left:0;
+}
+li.itemtab{
+    border-left:1px solid #C6CFE1;
+    border-right:1px solid #C6CFE1;
+    border-top:1px solid #C6CFE1;
+    padding-bottom:2px;
+    padding-left:10px;
+    padding-right:10px;
+}
+li.itemtab a{
+    color: #666666;
+    font-weight: bold;
+}
+li.itemtab a:hover{
+    color: black;
+}
+.height360{
+    height: 360px;
+    overflow: auto;
+}
+.height68{
+    height: 68px;
+}
+.height200{
+    height: 200px;
+}
+div.titleHead{
+    font-size:12px;
+    font-weight:bold;
+    text-align:center;
+}
+a.accionManifiesto{
+    width: 16px;
+    height: 16px;
+    padding: 8px;
+    background: url(../images/listEncomienda.jpg);
+    background-repeat: no-repeat;
+    background-position: center center;
+}
+.listManifiestos{
+    border:1px solid #000000;
+    border-collapse:collapse;
+    border-spacing:0;
+    width: 100%;
+}
+.listManifiestos th,.listManifiestos td{
+    border-bottom:1px solid;
+    border-right:1px solid;
+    padding-left: 2px;
+    padding-right: 2px;
+}
+.listManifiestos th,.listManifiestos td.nowrap{
+    white-space:nowrap;
+}
+
+div.mainContentDiv{
+    display: none;
+}
+.headExpand{
+    width: 16px;
+    height: 16px;
+    background-image: url(../images/ui-icons_222222_256x240.png);
+    background-position: 192px -188px;
+    padding:6px 7px 0;
+    cursor: pointer;
+}
+.headCollapse{
+    width: 16px;
+    height: 16px;
+    background-image: url(../images/ui-icons_222222_256x240.png);
+    background-position: 159px -188px;
+    padding:6px 7px 0;
+    cursor: pointer;
+}
+.internalSubtitle{
+    text-align: center;
+    font-weight: bold;
+    border-top:1px solid #000000;
+    border-left:1px solid #000000;
+    border-right:1px solid #000000;
+}
+.internalSubtitleName{
+    width:90%;
+    display: inline-block;
+}
+#dialogEntrega{
+    display: none;
+}
+#messajePrinter{
+    width:250px;
+    height:100px;
+    background-color: red;
+}
+
+table.borders{
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+table.borders th{
+    border-bottom: 1px solid black;
+    border-right: 1px solid black;
+    padding: 0 5px;
+}
+table.borders td{
+    padding: 0 5px;
+}
+table.borders tfoot td{
+    border-top: 1px solid black;
+    border-right: 1px solid black;
+}
+table.form{
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+table.form th{
+    border-bottom: 1px solid black;
+    border-right: 1px solid black;
+    padding: 0 5px;
+}
+table.form td{
+    padding: 0 5px;
+}
+table.form tfoot td{
+    border-top: 1px solid black;
+    border-right: 1px solid black;
+}
+.printM{
+    padding-left: 10px;
+}
+.titlemanifiesto{
+    border: 1px solid black;
+    padding-left: 3px;
+    padding-right: 3px;
+}
+.dropactive{
+    border: 1px solid black;    
+}
+.drophover{	background-color: #fc9;}
+.listEncomiendasDrag{
+    padding: 15px 5px 5px 10px;
+    min-height: 250px;
+    min-width: 100px;
+    border: 1px solid #000;
+}
+.spanHandleDrag{
+    display: inline-block;
+    width: 25px;
+}
+.par{
+    background-color: #757449;
+}
+.impar{
+    background-color: #E2DF9A;
+}
+table tbody tr td:hover{
+    background-color: #E2F7CE; 
+}
+.itineraryManifest{
+    cursor: pointer;
+}
+#infoViaje div{
+    border: 1px solid #CCCCCC;
+    min-height: 70px;
+    min-width: 150px;
+    padding-right: 5px;    
+}
+
+.row{
+    margin: 1px;
+}
+div.contentBox span.width150{
+    width: 100px;
+}
+div.contentBox span.width120{
+    width: 120px;
+}
+#facturado{
+    display: none;    
+}
+.labelForm{
+    width: 120px;
+    display: inline-block;
+}
+#infoViaje div li{
+    list-style: circle;
+    display: block;
+}
+.itinerarioList div h3.ui-accordion-header a{
+    font-size: 12px;
+}
+.itinerarioList div div li{display: block;}
+
+table tr td a.event{
+    padding-left: 2px;
+    padding-right: 2px;
+}
+/*,tr.arribo*/
+table tr.poranular{
+    background-color: #F5DA81;
+} 
+table tr.entregado{
+    background-color: #F5A9A9;
+} 
+table tr.entregado td a.event{
+    background-color: transparent;     
+}
+.itinerarioList{
+    height: 495px;
+}
+div.centered{
+    height: 2em;
+    display: block;
+    text-align: center 
+}
+div.centered > *{
+    margin: 0;
+}
+label, span {
+    color: #000000;
+}
+
+.error input[type=text] {
+    background-color: #fce4e4;
+    border: 1px solid #cc0033;
+    outline: none;
+}
+
+.error .error-message {
+    display: inline-block;
+}
+
+span#warning{
+    width: 5px;
+    background-image: url(images/ui-icons_bd7b00_256x240);
+    background-position: -37px -143px;
+    height: 15px;
+}
