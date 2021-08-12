@@ -591,7 +591,9 @@ function registrarEncomienda(tipo, obj) {
                 var e = msg.encomienda;
                 if (msg.cabecera != "Manual") {
                     var printer = window.printer ? window.printer : document.printerSystem;
-
+                    console.log("ddddddddd");
+                    console.log(JSON.stringify(window.printer));
+                    console.log(JSON.stringify(document.printerSystem));
                     if (window.printer) {
                         printer.setDocument("facturaEncomienda");
                         printer.setJson(JSON.stringify(msg.empresa), "empresa");
@@ -603,6 +605,7 @@ function registrarEncomienda(tipo, obj) {
                             printer.setJson(JSON.stringify(itm), "item");
                         }
                     } else {
+                        /*
                         printer.setDocument("factura");
                         var c = msg.cabecera;
                         var emp = msg.empresa;
@@ -621,13 +624,16 @@ function registrarEncomienda(tipo, obj) {
                             var f = msg.factura;
                             printer.setFactura(f.fecha, f.hora, f.nombre, f.nit, f.numerofactura, f.autorizacion, f.codigoControl, f.fechaLimite, f.total, f.totalLiteral);
                         }
+                         */
+                        console.log(JSON.stringify(msg));
+                        printJS(msg.pdf_encomienda);
                     }
 
                     // printer.imprimir();
-                    printer.setDocument("guia");
-                    printer.imprimir();
+                    // printer.setDocument("guia");
+                    // printer.imprimir();
 
-                    printer.clean();
+                    // printer.clean();
 
                     removeDialog("#previewFacturacion");
                 }
@@ -1708,7 +1714,11 @@ function jsonP(service, params) {
         success: function (json) {
         },
         error: function (XHR, textStatus, errorThrown) {
-            console.log("error JSONP:", XHR, textStatus, errorThrown);
+            console.log("error JSONP:");
+            console.log(JSON.stringify(service));
+            console.log(JSON.stringify(XHR));
+            console.log(JSON.stringify(textStatus));
+            console.log(JSON.stringify(errorThrown));
         }
 
     });

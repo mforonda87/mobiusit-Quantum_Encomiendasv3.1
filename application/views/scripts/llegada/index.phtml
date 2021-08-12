@@ -17,7 +17,7 @@ $this->jQuery()->addJavascriptFile($this->baseUrl() . '/scripts/libs/recepcion.j
     var clientesDefault = <?=$this->clientes?>;
     
 </script>
-<APPLET name="printerSystem" archive="/Encomiendas/public/PrintDocEncomienda.jar" code="printer.AppletImpresionEncomienda.class" width=0 height=0></APPLET>
+<APPLET name="printerSystem" id="printerSystem" archive="/Encomiendas/public/PrintDocEncomienda.jar" code="printer.AppletImpresionEncomienda.class" width=0 height=0></APPLET>
 <div>
     <input type="hidden" id="selectedViaje" value="0"/>
     <input type="hidden" id="selectedBus" value="0"/>

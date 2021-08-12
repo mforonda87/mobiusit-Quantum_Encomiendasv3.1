@@ -2,12 +2,14 @@
 <?php
 $this->headLink()->appendStylesheet($this->baseUrl() . '/styles/jquery.autocomplete.css');
 $this->headLink()->appendStylesheet($this->baseUrl() . '/styles/jqModal.css');
+$this->headLink()->appendStylesheet($this->baseUrl() . '/scripts/printjs/print.min.css');
 
 $this->jQuery()->addJavascriptFile($this->baseUrl() . '/scripts/jquery/jquery.poloche.block.js');
 $this->jQuery()->addJavascriptFile($this->baseUrl() . '/scripts/jquery/jquery.numeric.js');
 //$this->jQuery()->addJavascriptFile($this->baseUrl() . '/scripts/jquery/jquery.autocomplete.pack.js');
 $this->jQuery()->addJavascriptFile($this->baseUrl() . '/scripts/jquery/jquery.hotkeys.min.js');
 $this->jQuery()->addJavascriptFile($this->baseUrl() . '/scripts/jquery/jquery.jsonp-2.1.4.js');
+$this->jQuery()->addJavascriptFile($this->baseUrl() . '/scripts/printjs/print.min.js');
 $this->jQuery()->addJavascriptFile($this->baseUrl() . '/scripts/libs/recepcion.js');
 $this->jQuery()->addJavascriptFile($this->baseUrl() . '/scripts/libs/entrega.js');
 ?>
@@ -61,5 +63,7 @@ $session = Zend_Registry::get(App_Util_Statics::$SESSION);
     <div id="middleForm" class="block">
         <div class="contentBox height500"><?= new App_Form_Recepcion($this->sucursales, $this->ciudades, $this->baseUrl()) ?></div>
     </div>
-
+    <button type="button" onclick="printJS('test/Encomiendas/public/sample.pdf')">
+        Print PDF
+    </button>
 </div>

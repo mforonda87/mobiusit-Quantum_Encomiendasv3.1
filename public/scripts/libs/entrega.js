@@ -221,7 +221,7 @@ function resultEntrega(json) {
                 }
             }
 
-            printer.imprimir();
+            //printer.imprimir();
             printer.clean();
             deleteRow();
             $("#entregaForm")[0].reset();
