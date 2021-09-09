@@ -1566,20 +1566,15 @@ class RecepcionController extends Zend_Controller_Action {
     }
 
     function generatePdfGuiaEncomienda($datos){
-        require_once('/var/www/test/Encomiendas/library/dompdf/autoload.inc.php');
+        require_once(__DIR__.'/../../library/dompdf/autoload.inc.php');
         $dompdf = new Dompdf\Dompdf();
-        $height = 440 + (count($datos['items'])*20);
+        $height = App_Util_Statics::$docPdfSizeH + (count($datos['items'])*30);
 
-        $dompdf->set_paper(array(0, 0, 200, $height), "portrait");
-//        $dompdf->set_paper(array(0, 0, 8.5 * 80, 13.5 * 80), "portrait");
-
-
-
+        $dompdf->set_paper(array(0, 0, App_Util_Statics::$docPdfSizeW, $height), "portrait");
         $dompdf->load_html($this->showGuiaEncomienda($datos));
 //        $dompdf->load_html($html);
         $dompdf->render();
         $output = $dompdf->output();
-//        die(dirname(__FILE__) .'/../public/generate_pdf/guia_encomiendas/rrrr.pdf');
         $dateNow = new DateTime();
         $nameFile = 'guia-encomienda-'.$dateNow->format('YmdHis').'.pdf';
         file_put_contents('../public/generate_pdf/guia_encomiendas/'.$nameFile, $output);
@@ -1593,5 +1588,103 @@ class RecepcionController extends Zend_Controller_Action {
         $view->datos = $datos;
 //        die('eee: '.APPLICATION_PATH);
         return $view->render('show-guia-encomienda.phtml');
+    }
+
+    function generatePdfReciboEntregaEncomienda($datos){
+        require_once(__DIR__.'/../../library/dompdf/autoload.inc.php');
+        $dompdf = new Dompdf\Dompdf();
+        $height = App_Util_Statics::$docPdfSizeH + (count($datos['items'])*20);
+
+        $dompdf->set_paper(array(0, 0, App_Util_Statics::$docPdfSizeW, $height), "portrait");
+        $dompdf->load_html($this->showGuiaEncomienda($datos));
+        $dompdf->render();
+        $output = $dompdf->output();
+        $dateNow = new DateTime();
+        $nameFile = 'recibo-entrega-encomienda-'.$dateNow->format('YmdHis').'.pdf';
+        file_put_contents('../public/generate_pdf/guia_encomiendas/'.$nameFile, $output);
+
+        return $this->_request->getBaseUrl().'/generate_pdf/guia_encomiendas/'.$nameFile;
+    }
+
+    function showEntregaEncomienda($datos) {
+        $view = new Zend_View();
+        $view->setScriptPath( APPLICATION_PATH . '/views/scripts/recepcion/' );
+        $view->datos = $datos;
+//        die('eee: '.APPLICATION_PATH);
+        return $view->render('show-entrega-encomienda.phtml');
+    }
+
+    function imprimirManifiestoAction(){
+        require_once(__DIR__.'/../../library/dompdf/autoload.inc.php');
+
+        $this->_helper->layout->disableLayout();
+        $datosM = $this->getRequest()->getParam("datosM");
+
+        $dompdf = new Dompdf\Dompdf();
+        $height = App_Util_Statics::$docPdfSizeH + (count($datosM['encomiendas'])*12);
+        $dompdf->set_paper(array(0, 0, App_Util_Statics::$docPdfSizeW, $height), "portrait");
+
+        $dompdf->load_html($this->showManifiestoEncomienda($datosM));
+
+        $dompdf->render();
+        $output = $dompdf->output();
+        $dateNow = new DateTime();
+        $nameFile = 'manifiesto-encomienda-'.$dateNow->format('YmdHis').'.pdf';
+        file_put_contents('../public/generate_pdf/manifiesto_encomiendas/'.$nameFile, $output);
+        echo json_encode($this->_request->getBaseUrl().'/generate_pdf/manifiesto_encomiendas/'.$nameFile);
+        exit;
+//        echo "test pedro";
+//        exit;
+    }
+
+    function showManifiestoEncomienda($datos) {
+        $view = new Zend_View();
+        $view->setScriptPath( APPLICATION_PATH . '/views/scripts/recepcion/' );
+        $confSistModel = new App_Model_ConfiguracionSistema();
+        $view->datos = $datos;
+        $view->fechaImpresion = new DateTime();
+        $view->nombreEmpresa = $confSistModel->getByKey(App_Util_Statics::$nombreEmpresa);
+//        die('eee: '.APPLICATION_PATH);
+        return $view->render('show-manifiesto-encomienda.phtml');
+    }
+
+    /**
+     * Search clientes by some of the fields
+    //     * @return JsonArray list of clientes found by filters
+     */
+    function generatePdfEntregaAction() {
+        $this->_helper->layout->disableLayout();
+        $this->_helper->viewRenderer->setNoRender();
+
+        $datos = $this->getRequest()->getParam("datos");
+
+//        var_dump($datos);
+//        die();
+
+        require_once(__DIR__.'/../../library/dompdf/autoload.inc.php');
+        $dompdf = new Dompdf\Dompdf();
+        $height = App_Util_Statics::$docPdfSizeH + (count($datos['items'])*20);
+
+        $dompdf->set_paper(array(0, 0, App_Util_Statics::$docPdfSizeW, $height), "portrait");
+        $dompdf->load_html($this->showGuiaEncomiendaEntrega($datos));
+        $dompdf->render();
+        $output = $dompdf->output();
+        $dateNow = new DateTime();
+        $nameFile = 'guia-encomienda-entrega-'.$dateNow->format('YmdHis').'.pdf';
+        file_put_contents('../public/generate_pdf/guia_encomiendas/'.$nameFile, $output);
+
+        $url = $this->_request->getBaseUrl().'/generate_pdf/guia_encomiendas/'.$nameFile;
+
+
+
+
+        echo Zend_Json::encode(array('estado' => 200, 'pdfUrl' => $url));
+    }
+    function showGuiaEncomiendaEntrega($datos) {
+        $view = new Zend_View();
+        $view->setScriptPath( APPLICATION_PATH . '/views/scripts/recepcion/' );
+        $view->datos = $datos;
+//        die('eee: '.APPLICATION_PATH);
+        return $view->render('show-entrega-encomienda-entrega.phtml');
     }
 }

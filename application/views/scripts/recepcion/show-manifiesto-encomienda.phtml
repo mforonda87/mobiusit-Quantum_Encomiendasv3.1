@@ -1,0 +1,126 @@
+<?php
+$total = 0;
+//foreach ($this->datos['items'] as $key => $item){
+//    $total += $item['monto'];
+//}
+?>
+<style>
+    @page { margin: 2px; }
+    body { margin: 2px; }
+
+    .pdf_main{
+        width: 100%;
+        padding: 5px;
+        /*background-color: #1d5987;*/
+    }
+    .pdf_head{
+        text-align: center;
+    }
+
+    .t_detalle{
+        width: 100%;
+        border-collapse: collapse;
+    }
+
+    .t_detalle, .t_detalle th, .t_detalle td{
+        border: 1px solid black;
+    }
+
+</style>
+<div class="pdf_main">
+    <div class="pdf_head">
+        <h3 style="<?= App_Util_Statics::$printFontH3; ?>">MANIFIESTO DE ENVIO</h3>
+        <h2 style="<?= App_Util_Statics::$printFontH2; ?>"><?= $this->nombreEmpresa->value ?></h2>
+    </div>
+    <div class="pdf_datos">
+        <p style="<?= App_Util_Statics::$printFontDatosP; ?>"><b>Chofer:</b> <?= $this->datos['manifiesto']['chofer'] ?></p>
+        <p style="<?= App_Util_Statics::$printFontDatosP; ?>"><b>Bus:</b> <?= $this->datos['manifiesto']['numBus'] ?></p>
+        <p style="<?= App_Util_Statics::$printFontDatosP; ?>"><b>Destino:</b> <?= $this->datos['manifiesto']['destino'] ?></p>
+        <p style="<?= App_Util_Statics::$printFontDatosP; ?>"><b>Enviado por:</b> <?= $this->datos['cabecera']['usuario'] ?></p>
+        <table style="width: 100%;">
+            <tr>
+                <td style="<?= App_Util_Statics::$printFontDatosP; ?> width: 50%;"><p><b>Fecha: </b><?= $this->datos['manifiesto']['fecha'] ?></p></td>
+                <td style="<?= App_Util_Statics::$printFontDatosP; ?> width: 50%; text-align: right"><p><b>Hora:</b><?= $this->datos['manifiesto']['hora'] ?></p></td>
+            </tr>
+        </table>
+        <p style="<?= App_Util_Statics::$printFontDatosP; ?> text-align: center;">Fecha imp: <?= $this->fechaImpresion->format('Y-m-d H:i:s') ?></p>
+    </div>
+    <div class="pdf_detalle">
+        <table class="t_detalle">
+            <thead>
+            <tr>
+                <th colspan="3" style="text-align: center; <?= App_Util_Statics::$printFontTableHeadP; ?>"><b>DETALLE</b></th>
+            </tr>
+            <tr style="text-align: center;">
+                <th style="<?= App_Util_Statics::$printFontTableHeadP; ?>">Guia</th>
+                <th style="<?= App_Util_Statics::$printFontTableHeadP; ?>">Detalle</th>
+                <th style="<?= App_Util_Statics::$printFontTableHeadP; ?>">Mont</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td colspan="3" style="text-align: center;"><h5 style="<?= App_Util_Statics::$printFontH5; ?> padding: 5px; margin: 0;">NORMAL</h5></td>
+            </tr>
+            <?php foreach ($this->datos['encomiendas'] as $key => $encomienda): ?>
+            <?php if(strcmp($encomienda['tipo'], 'NORMAL') == 0): ?>
+            <tr>
+                <td style="<?= App_Util_Statics::$printFontTableBodyP; ?>"><?= $encomienda['guia'] ?></td>
+                <td style="<?= App_Util_Statics::$printFontTableBodyP; ?>"><?= $encomienda['detalle'] ?></td>
+                <td style="<?= App_Util_Statics::$printFontTableBodyP; ?> text-align: right;"><?= $encomienda['total'] ?></td>
+            </tr>
+            <?php $total = $total + $encomienda['total'] ?>
+            <?php endif; ?>
+            <?php endforeach; ?>
+            <tr>
+                <td colspan="3" style="text-align: center;"><h5 style="<?= App_Util_Statics::$printFontH5; ?> padding: 5px; margin: 0;">GIRO</h5></td>
+            </tr>
+            <?php foreach ($this->datos['encomiendas'] as $key => $encomienda): ?>
+                <?php if(strcmp($encomienda['tipo'], 'GIRO') == 0): ?>
+                    <tr>
+                        <td style="<?= App_Util_Statics::$printFontTableBodyP; ?>"><?= $encomienda['guia'] ?></td>
+                        <td style="<?= App_Util_Statics::$printFontTableBodyP; ?>"><?= $encomienda['detalle'] ?></td>
+                        <td style="<?= App_Util_Statics::$printFontTableBodyP; ?> text-align: right;"><?= $encomienda['total'] ?></td>
+                    </tr>
+                    <?php $total = $total + $encomienda['total'] ?>
+                <?php endif; ?>
+            <?php endforeach; ?>
+            <tr>
+                <td colspan="3" style="text-align: center;"><h5 style="<?= App_Util_Statics::$printFontH5; ?> padding: 5px; margin: 0;">INTERNO</h5></td>
+            </tr>
+            <?php foreach ($this->datos['encomiendas'] as $key => $encomienda): ?>
+                <?php if(strcmp($encomienda['tipo'], 'INTERNO') == 0): ?>
+                    <tr>
+                        <td style="<?= App_Util_Statics::$printFontTableBodyP; ?>"><?= $encomienda['guia'] ?></td>
+                        <td style="<?= App_Util_Statics::$printFontTableBodyP; ?>"><?= $encomienda['detalle'] ?></td>
+                        <td style="<?= App_Util_Statics::$printFontTableBodyP; ?> text-align: right;"><?= $encomienda['total'] ?></td>
+                    </tr>
+                    <?php //$total = $total + $encomienda['total'] ?>
+                <?php endif; ?>
+            <?php endforeach; ?>
+            <tr>
+                <td colspan="3" style="text-align: center;"><h5 style="<?= App_Util_Statics::$printFontH5; ?> padding: 5px; margin: 0;">POR PAGAR</h5></td>
+            </tr>
+            <?php foreach ($this->datos['encomiendas'] as $key => $encomienda): ?>
+                <?php if(strcmp($encomienda['tipo'], 'POR PAGAR') == 0): ?>
+                    <tr>
+                        <td style="<?= App_Util_Statics::$printFontTableBodyP; ?>"><?= $encomienda['guia'] ?></td>
+                        <td style="<?= App_Util_Statics::$printFontTableBodyP; ?>"><?= $encomienda['detalle'] ?></td>
+                        <td style="<?= App_Util_Statics::$printFontTableBodyP; ?> text-align: right;"><?= $encomienda['total'] ?></td>
+                    </tr>
+                    <?php //$total = $total + $encomienda['total'] ?>
+                <?php endif; ?>
+            <?php endforeach; ?>
+            </tbody>
+            <tfoot>
+            <tr>
+                <td colspan="2" style="text-align: right; <?= App_Util_Statics::$printFontTableFootP; ?>">TOTAL</td>
+                <td style="text-align: right; <?= App_Util_Statics::$printFontTableFootP; ?>"><?= $total ?></td>
+            </tr>
+            </tfoot>
+        </table>
+    </div>
+    <br>
+    <h5 style="<?= App_Util_Statics::$printFontH5; ?> text-align: center; padding: 5px; margin: 0;"><?= $this->datos['manifiesto']['chofer'] ?></h5>
+    <h5 style="<?= App_Util_Statics::$printFontH5; ?> text-align: center; padding: 5px; margin: 0;">RECIBI CONFORME</h5>
+    <p style="<?= App_Util_Statics::$printFontQuantumP; ?> font-size: 8px; text-align: center;">Mobius IT Solutions</p>
+</div>

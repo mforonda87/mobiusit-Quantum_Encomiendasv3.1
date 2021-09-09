@@ -1,0 +1,128 @@
+<?php
+$fechaActual = new DateTime();
+$total = 0;
+foreach ($this->datos['items'] as $key => $item){
+    $total += $item['monto'];
+}
+?>
+<style>
+    @page { margin: 2px; }
+    body { margin: 2px; }
+
+    .pdf_main{
+        width: 100%;
+        padding: 5px;
+        /*background-color: #1d5987;*/
+    }
+    .pdf_head{
+        text-align: center;
+    }
+
+    .pdf_head h2{
+        font-size: 14px;
+    }
+
+    .pdf_head h3{
+        font-size: 12px;
+    }
+
+    .pdf_head p {
+        font-size: 9px;
+        padding: 2px 1px;
+        margin: 0;
+    }
+
+    .pdf_datos p{
+        font-size: 10px;
+        padding: 2px 1px;
+        margin: 0;
+    }
+
+    .pdf_detalle table{
+        width: 100%;
+        border-collapse: collapse;
+    }
+
+    .pdf_detalle table, th, td{
+        border: 1px solid black;
+    }
+
+    .pdf_detalle table tbody tr td{
+        font-size: 10px;
+    }
+
+    .pdf_detalle table tfoot tr td{
+        font-size: 10px;
+        font-weight: bold;
+    }
+
+    .p-cabecera{
+        margin: 2px;
+        padding: 0;
+    }
+</style>
+<div class="pdf_main">
+    <div class="pdf_head">
+        <h4><?= $this->datos['cabecera']['title'] ?></h4>
+        <p class="p-cabecera">Sucursal: <?= $this->datos['cabecera']['numero'] ?> Telefono: <?= $this->datos['cabecera']['telefono'] ?></p>
+        <p class="p-cabecera"><?= $this->datos['cabecera']['direccion'] ?></p>
+        <p class="p-cabecera"><?= $this->datos['cabecera']['direccion2'] ?></p>
+        <p class="p-cabecera"><?= $this->datos['cabecera']['ciudad'] ?></p>
+        <h3><?= (strcmp($this->datos['encomienda']['tipo'], 'DE ENTREGA') == 0)? 'RECIBO DE ENTREGA' : 'RECIBO DE ENTREGA POR  PAGAR' ?></h3>
+    </div>
+    <div class="pdf_datos">
+        <p><b>Fecha:</b> <?= $fechaActual->format('Y-m-d') ?></p>
+        <p><b>Origen:</b> <?= $this->datos['encomienda']['origen'] ?></p>
+        <p><b>Destino:</b> <?= $this->datos['encomienda']['destino'] ?></p>
+
+        <p><b>Entregado en:</b> <?= $this->datos['encomienda']['destino'] ?></p>
+        <p><b>Guia:</b> <?= $this->datos['encomienda']['guia'] ?></p>
+        <p><b>Remitente:</b> <?= $this->datos['encomienda']['remitente'] ?></p>
+        <p><b>Destinatario:</b> <?= $this->datos['encomienda']['destinatario'] ?></p>
+        <p><b>Recoje:</b> <?= $this->datos['infoEntrega']['receptor'] ?></p>
+        <p><b>Documento:</b> <?= $this->datos['infoEntrega']['carnet'] ?></p>
+        <p><b>Telefono:</b> <?= $this->datos['encomienda']['telefonoRemitente'] ?></p>
+    </div>
+    <div class="pdf_detalle">
+        <table>
+            <thead>
+            <tr>
+                <th colspan="4" style="text-align: center; font-size: 12px"><b>DETALLE</b></th>
+            </tr>
+            <tr style="text-align: center;">
+                <th style="font-size: 10px;">Cant</th>
+                <th style="font-size: 10px;">Detalle</th>
+                <th style="font-size: 10px;">Peso</th>
+                <th style="font-size: 10px;">Mont</th>
+            </tr>
+            </thead>
+            <tbody>
+            <?php foreach ($this->datos['items'] as $key => $item): ?>
+                <tr>
+                    <td style="text-align: center;"><?= $item['cantidad'] ?></td>
+                    <td><?= $item['detalle'] ?></td>
+                    <td style="text-align: right;"><?= isset($item['peso'])? $item['peso'] : '0' ?></td>
+                    <td style="text-align: right;"><?= $item['monto'] ?></td>
+                </tr>
+            <?php endforeach; ?>
+            </tbody>
+            <tfoot>
+            <tr>
+                <td colspan="4" style="font-size: 9px; font-weight: normal;"><?= $this->datos['encomienda']['observacion']?></td>
+            </tr>
+            <tr>
+                <td colspan="3" style="text-align: right; font-size: 10px;">TOTAL</td>
+                <td style="text-align: right;"><?= $total ?></td>
+            </tr>
+            </tfoot>
+        </table>
+    </div>
+    <p style="font-size: 12px">Usuario: <?= $this->datos['cabecera']['user'] ?></p>
+    <br>
+    <br>
+    <br>
+    <p style="text-align: center;">-----------------------------------------</p>
+    <p style="font-size: 12px; text-align: center"><?= $this->datos['infoEntrega']['receptor'] ?></p>
+    <br>
+    <p style="font-size: 8px; text-align: center;">Mobius IT Solutions</p>
+</div>

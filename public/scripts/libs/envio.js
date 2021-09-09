@@ -42,9 +42,11 @@ $(function () {
                     if (numeroCopias == "" || numeroCopias == "0" || numeroCopias == 0) {
                         numeroCopias = 1;
                     }
-                    for (i = 0; i < numeroCopias; i++) {
-                        imprimimirLista(mani);
-                    }
+                    // for (i = 0; i < numeroCopias; i++) {
+                    //     // imprimimirLista(mani);
+                    //     imprimimirListaPrintjs(mani);
+                    // }
+                    imprimimirListaPrintjs(mani);
                 }
             });
         } else {

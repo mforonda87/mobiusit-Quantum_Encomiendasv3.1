@@ -69,19 +69,43 @@ class App_Util_Statics {
     
     
     public static $servidores = array("Cochabamba" => "cbba", "Santa Cruz" => "scz", "La Paz" => "lpz");
+//    public static $webService = array(
+//        "route" => "/test/WebService/public",
+//        "cochabamba" => array("ip" => "http://200.87.172.134"),
+//        "buenos aires" => array("ip" => "http://200.87.172.134"),
+//        "sucre" => array("ip" => "http://200.87.172.134"),
+//        "oruro" => array("ip" => "http://200.87.172.134"),
+//        "santa cruz" => array("ip" => "http://200.87.224.245"),
+//        "beni" => array("ip" => "http://200.87.172.134"),
+//        "tarija" => array("ip" => "http://200.87.172.134"),
+//        "la paz" => array("ip" => "http://200.87.104.50"),
+//        "potosi" => array("ip" => "http://200.87.172.134")
+//    );
+
     public static $webService = array(
         "route" => "/test/WebService/public",
         "cochabamba" => array("ip" => "http://200.87.172.134"),
         "buenos aires" => array("ip" => "http://200.87.172.134"),
         "sucre" => array("ip" => "http://200.87.172.134"),
         "oruro" => array("ip" => "http://200.87.172.134"),
-        "santa cruz" => array("ip" => "http://200.87.224.245"),
+        "santa cruz" => array("ip" => "http://200.87.172.134"),
         "beni" => array("ip" => "http://200.87.172.134"),
         "tarija" => array("ip" => "http://200.87.172.134"),
-        "la paz" => array("ip" => "http://200.87.104.50"),
+        "la paz" => array("ip" => "http://200.87.172.134"),
         "potosi" => array("ip" => "http://200.87.172.134")
     );
 
+    public static $docPdfSizeH = 550;
+    public static $docPdfSizeW = 240;
+    public static $printFontH2 = 'font-size: 16px;';
+    public static $printFontH5 = 'font-size: 14px;';
+    public static $printFontH3 = 'font-size: 14px;';
+    public static $printFontCabeceraP = 'font-size: 12px; padding: 2px 1px; margin: 0;';
+    public static $printFontDatosP = 'font-size: 12px; padding: 2px 1px; margin: 0;';
+    public static $printFontQuantumP = 'font-size: 10px; text-align: center; font-weight: 700;';
+    public static $printFontTableHeadP = 'font-size: 12px; padding: 2px 1px; margin: 0;';
+    public static $printFontTableBodyP = 'font-size: 12px; padding: 2px 1px; margin: 0;';
+    public static $printFontTableFootP = 'font-size: 12px; font-weight: normal; padding: 2px 1px; margin: 0;';
     /**
      * Convierte el numero de bus  formato de interno es decir
      * si el bus es el 5 lo conviente en 005

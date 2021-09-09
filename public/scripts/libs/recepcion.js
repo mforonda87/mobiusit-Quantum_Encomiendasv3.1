@@ -1140,6 +1140,69 @@ function imprimimirLista(type) {
     }
 }
 /**
+ * imprime la lista de encomiendas que se le pasa como parametro o la lista de la pantalla
+ */
+function imprimimirListaPrintjs(type) {
+    var objImp = new Object();
+    var i = 0;
+    // var printer = document.printerSystem;
+    // printer.typeDocument = "lista";
+    var cab = {};
+    var man = {
+        "chofer": $("#choferViaje option:selected").text(),
+        "fecha": "",
+        "hora": $("#selectedHora").val(),
+        "destino": $("#filtroCiudadDest option:selected").text(),
+        "numBus": $("#selectedBus").val()
+    };
+    if (type == "actual") {
+        $("#listaEncomiendas tr:not(:first) td:nth-child(2)").each(function () {
+            var obj = $(this);
+            objImp[i] = {
+                "guia": obj.text(),
+                "detalle": obj.next().text()
+            };
+            i++;
+        });
+        cab.title = "Por asignar";
+        cab.emp = "Lista encomiendas";
+    } else {
+
+        objImp = type.lista;
+        man = type.manifiesto;
+        cab = type.cabecera;
+
+    }
+    // printer.setCabecera("-", "-", cab.direccion, "-", "-", "-", cab.usuario, cab.title, cab.emp, "00");
+    // printer.setManifiesto(man.chofer, man.fecha, man.hora, man.destino, man.numBus);
+    // for (var p in objImp) {
+    //     var enc = objImp[p];
+    //     printer.addEncomienda(enc.guia, enc.detalle, enc.total.toString(), enc.tipo);
+    // }
+    try {
+        jsonDatosManifiesto = {
+            cabecera: cab,
+            manifiesto: man,
+            encomiendas: objImp
+        }
+
+        $.ajax({
+            type: "GET",
+            dataType: "json",
+            url: BaseUrl + "/recepcion/imprimir-manifiesto",
+            data: {datosM: jsonDatosManifiesto},
+            success: function (msg) {
+                printJS(msg);
+                // alert(JSON.stringify(msg));
+            }
+        });
+        // printer.imprimir();
+        // printer.clean();
+    } catch (ex) {
+        console.log("error en el applet de impresion", ex);
+    }
+}
+/**
  * manda a guardar las encomiendas seleccionadas a un manifiesto de un viaje seleccioando
  */
 function registrarAManifiesto() {
@@ -1329,7 +1392,8 @@ function cargarManifiestos(viaje, bus) {
                     },
                     success: function (data4) {
                         if (data4.error == false) {
-                            imprimimirLista(dm);
+                            // imprimimirLista(dm);
+                            imprimimirListaPrintjs();
                         }
                     }
                 });

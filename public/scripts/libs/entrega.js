@@ -106,13 +106,14 @@ function registerEntrega() {
         "suc": $("#fe5b095e2ffd3d49c668bb29d865e0e499826d45").val()
     };
     params = $.extend(params, formValues);
+    // alert(service);
     jsonP2(service, "resultEntrega", params);
 }
 function resultEntrega(json) {
     $.fn.block.close();
     if (json.response.error == false) {
-        var printer = window.printer ? window.printer : document.printerSystem;
-        printer.typeDocument = "factura";
+        // var printer = window.printer ? window.printer : document.printerSystem;
+        // printer.typeDocument = "factura";
         var result = json.response.info;
         if ($("#facturado").is(":visible")) {
             var encomiendaData = {
@@ -136,47 +137,50 @@ function resultEntrega(json) {
                 async: false,
                 success: function(data) {
 
+                    console.log(JSON.stringify(data));
+                    console.log(JSON.stringify(encomiendaData));
                     if (data.error == false) {
                         deleteRow();
                         if (data.info.tipoFactura == "Automatica") {
                             try {
                                 // verificamos is la impresion es desde el applet con con nuetra implementacion en javafx
-                                if (window.printer) {
-                                    printer.typeDocument = "facturaEncomienda";
-                                    printer.setJson(JSON.stringify(data.info.empresa), "empresa");
-                                    printer.setJson(JSON.stringify(data.info.encomienda), "encomienda");
-                                    printer.setJson(JSON.stringify(data.info.factura), "factura");
-                                    printer.setJson(JSON.stringify(data.info.cabecera), "sucursal");
-                                    for (var jk in data.info.items) {
-                                        var itm = data.info.items[jk];
-                                        printer.setJson(JSON.stringify(itm), "item");
-                                    }
 
-                                } else {
-
-                                    var info = json.response.info;
-                                    var c = info.cabecera;
-                                    var e = info.encomienda;
-
-                                    printer.setEncomienda(e.destinatario, e.destino, e.detalle, e.guia, e.origen, e.remitente, e.total, c.tipo, e.telefonoRemitente, e.declarado, e.observacion, e.ciudadDestino);
-                                    printer.addInfoEntrega(e.receptor, e.carnet);
-                                    var fact = data.info.factura;
-
-                                    //                        console.log(data.info);
-                                    printer.setFactura(fact.fecha, fact.hora, fact.nombre, fact.nit, fact.numerofactura, fact.autorizacion, fact.codigoControl, fact.fechaLimite, fact.total, fact.totalLiteral);
-                                    printer.setCabecera(userSucursal.numero, "0", userSucursal.direccion, userSucursal.direccion2, userSucursal.ciudad, userSucursal.telefono, c.user, info.empresa.title, info.empresa.nombre, info.empresa.nit);
-                                    var cab2 = data.info.cabecera;
-                                    printer.setInfoSucursal(cab2.municipio, cab2.leyendaActividad, cab2.tipoFactura, cab2.ciudadCapital, cab2.ciudad2);
-                                    for (var jk in info.items) {
-                                        var itm = info.items[jk];
-                                        var total = Math.round(itm.total);
-                                        printer.addItem(itm.cantidad, itm.detalle, total, total);
-                                    }
-                                }
-                                printer.imprimir();
-                                printer.typeDocument = "reciboEntregaPP";// imprimira un recibo de entrega de una encomienda por pagar
-                                printer.imprimir();
-                                printer.clean();
+                                // if (window.printer) {
+                                //     printer.typeDocument = "facturaEncomienda";
+                                //     printer.setJson(JSON.stringify(data.info.empresa), "empresa");
+                                //     printer.setJson(JSON.stringify(data.info.encomienda), "encomienda");
+                                //     printer.setJson(JSON.stringify(data.info.factura), "factura");
+                                //     printer.setJson(JSON.stringify(data.info.cabecera), "sucursal");
+                                //     for (var jk in data.info.items) {
+                                //         var itm = data.info.items[jk];
+                                //         printer.setJson(JSON.stringify(itm), "item");
+                                //     }
+                                //
+                                // } else {
+                                //
+                                //     var info = json.response.info;
+                                //     var c = info.cabecera;
+                                //     var e = info.encomienda;
+                                //
+                                //     printer.setEncomienda(e.destinatario, e.destino, e.detalle, e.guia, e.origen, e.remitente, e.total, c.tipo, e.telefonoRemitente, e.declarado, e.observacion, e.ciudadDestino);
+                                //     printer.addInfoEntrega(e.receptor, e.carnet);
+                                //     var fact = data.info.factura;
+                                //
+                                //     //                        console.log(data.info);
+                                //     printer.setFactura(fact.fecha, fact.hora, fact.nombre, fact.nit, fact.numerofactura, fact.autorizacion, fact.codigoControl, fact.fechaLimite, fact.total, fact.totalLiteral);
+                                //     printer.setCabecera(userSucursal.numero, "0", userSucursal.direccion, userSucursal.direccion2, userSucursal.ciudad, userSucursal.telefono, c.user, info.empresa.title, info.empresa.nombre, info.empresa.nit);
+                                //     var cab2 = data.info.cabecera;
+                                //     printer.setInfoSucursal(cab2.municipio, cab2.leyendaActividad, cab2.tipoFactura, cab2.ciudadCapital, cab2.ciudad2);
+                                //     for (var jk in info.items) {
+                                //         var itm = info.items[jk];
+                                //         var total = Math.round(itm.total);
+                                //         printer.addItem(itm.cantidad, itm.detalle, total, total);
+                                //     }
+                                // }
+                                // printer.imprimir();
+                                // printer.typeDocument = "reciboEntregaPP";// imprimira un recibo de entrega de una encomienda por pagar
+                                // printer.imprimir();
+                                // printer.clean();
                             } catch (ex) {
                                 alert(ex);
                                 console.log("Errores al imprimir", ex);
@@ -184,7 +188,7 @@ function resultEntrega(json) {
                         }
                         $("#entregaForm")[0].reset();
                         removeDialog("#dialogEntrega");
-                        document.location.reload();
+                        // document.location.reload();
                     } else {
                         alert(data.info);
                         rollBackEntregaPorPagar(encomiendaData.encomienda.id);
@@ -205,7 +209,35 @@ function resultEntrega(json) {
                 }
 
             } else {
+                var c = result.cabecera;
+                var emp = result.empresa;
+                var e = json.response.info.encomienda;
 
+                encomiendaAux = {destinatario: e.destinatario, destino: e.destino, detalle: e.detalle, guia: e.guia,
+                    origen: e.origen, remitente: e.remitente, total: e.total, tipo: c.tipo, telefonoRemitente: e.telefonoRemitente,
+                    declarado: e.declarado, observacion: e.observacion, ciudadDestino: e.ciudadDestino};
+                infoEntregaAux = {receptor: e.receptor, carnet: e.carnet};
+                cabeceraAux = {numero: userSucursal.numero, dato1: "0", direccion: userSucursal.direccion, direccion2: userSucursal.direccion2,
+                    cuidad: userSucursal.ciudad, telefono: userSucursal.telefono, user: result.cabecera.user, title: emp.title, nombre: emp.nombre, nit: emp.nit};
+                var itemsAux = [];
+                for (var jki in result.items) {
+                    var itmi = result.items[jki];
+                    itemsAux.push({cantidad: itmi.cantidad, detalle: itmi.detalle, peso: itmi.peso, total:itmi.total});
+                }
+                $.ajax({
+                    type: "GET",
+                    cache: false,
+                    url: BaseUrl + '/recepcion/generate-pdf-entrega',
+                    data: {datos: {encomienda: encomiendaAux, infoEntrega: infoEntregaAux, cabecera: cabeceraAux, items: itemsAux}},
+                    dataType: 'json',
+                    success: function(data) {
+                        // alert(JSON.stringify(data));
+                        printJS(data.pdfUrl);
+
+                    }
+                });
+
+                /*
                 printer.typeDocument = "reciboEntrega";
                 var c = result.cabecera;
                 var emp = result.empresa;
@@ -219,17 +251,20 @@ function resultEntrega(json) {
                     var itmi = result.items[jki];
                     printer.addItem(itmi.cantidad, itmi.detalle, itmi.peso, itmi.total);
                 }
+                 */
             }
 
             //printer.imprimir();
-            printer.clean();
+            //printer.clean();
             deleteRow();
             $("#entregaForm")[0].reset();
 //            $("#dialogEntrega").dialog("close");
 //            $("#dialogEntrega").dialog("destroy");
             //            alert(json.response.message);
             removeDialog("#dialogEntrega");
-            document.location.reload();
+
+
+            //document.location.reload();
         }
 
     } else {
