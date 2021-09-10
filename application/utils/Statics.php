@@ -95,16 +95,16 @@ class App_Util_Statics {
         "potosi" => array("ip" => "http://200.87.172.134")
     );
 
-    public static $docPdfSizeH = 550;
+    public static $docPdfSizeH = 800;
     public static $docPdfSizeW = 205;
     public static $printFontH2 = 'font-size: 15px;';
     public static $printFontH5 = 'font-size: 14px;';
     public static $printFontH3 = 'font-size: 15px;';
     public static $printFontCabeceraP = 'font-size: 12px; padding: 4px 3px; margin: 1;';
-    public static $printFontDatosP = 'font-size: 13px; padding: 4px 2px; margin: 2;';
+    public static $printFontDatosP = 'font-size: 15px;font-weight:900; padding: 8px 6px; margin: 2;';
     public static $printFontQuantumP = 'font-size: 10px; text-align: center; font-weight: 700;';
-    public static $printFontTableHeadP = 'font-size: 13px; padding: 4px 2px; margin: 3;';
-    public static $printFontTableBodyP = 'font-size: 13px; padding: 4px 2px; margin: 5;';
+    public static $printFontTableHeadP = 'font-size: 12px; padding: 8px 8px; margin: 3;';
+    public static $printFontTableBodyP = 'font-size: 13px; padding: 6px 4px; margin: 5;';
     public static $printFontTableFootP = 'font-size: 13px; font-weight: normal; padding: 2px 1px; margin: 0;';
     /**
      * Convierte el numero de bus  formato de interno es decir
