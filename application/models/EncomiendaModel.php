@@ -809,7 +809,6 @@ class App_Model_EncomiendaModel extends Zend_Db_Table_Abstract {
             /*             * *************************   FACTURACION ******************** */
             $tipoEncomienda = base64_decode($datos["tipoEncomienda"]);
             $numeroFactura = "";
-            /*
             if ($tipoEncomienda == "NORMAL" || $tipoEncomienda == "GIRO") {
 
                 $dosificacion = $dosificacionModel->findById($datos["dosificacion"]);
@@ -843,7 +842,6 @@ class App_Model_EncomiendaModel extends Zend_Db_Table_Abstract {
                 $literal = App_Util_Statics::convertNumber($totalFactura);
                 $codigoGuia = $datos["numeroFactura"];
             }
-            */
             /*             * *************************   FIN  FACTURACION ******************** */
 
             if ($datos['declarado'] != "" && $datos['declarado'] != 0 && $datos['declarado'] != "0") {
@@ -870,11 +868,10 @@ class App_Model_EncomiendaModel extends Zend_Db_Table_Abstract {
                 "valor_declarado" => $declarado,
                 "estado" => "RECIBIDO"
             );
-            /*
             if ($tipoEncomienda == "NORMAL" || $tipoEncomienda == "GIRO") {
                 $encomienda["factura"] = $facturaA->id_factura;
             }
-            */
+
             $this->insert($encomienda);
             $sql = $db->select();
             $sql->from($this->_name);

@@ -96,16 +96,16 @@ class App_Util_Statics {
     );
 
     public static $docPdfSizeH = 550;
-    public static $docPdfSizeW = 240;
-    public static $printFontH2 = 'font-size: 16px;';
+    public static $docPdfSizeW = 205;
+    public static $printFontH2 = 'font-size: 15px;';
     public static $printFontH5 = 'font-size: 14px;';
-    public static $printFontH3 = 'font-size: 14px;';
-    public static $printFontCabeceraP = 'font-size: 12px; padding: 2px 1px; margin: 0;';
-    public static $printFontDatosP = 'font-size: 12px; padding: 2px 1px; margin: 0;';
+    public static $printFontH3 = 'font-size: 15px;';
+    public static $printFontCabeceraP = 'font-size: 12px; padding: 4px 3px; margin: 1;';
+    public static $printFontDatosP = 'font-size: 13px; padding: 4px 2px; margin: 2;';
     public static $printFontQuantumP = 'font-size: 10px; text-align: center; font-weight: 700;';
-    public static $printFontTableHeadP = 'font-size: 12px; padding: 2px 1px; margin: 0;';
-    public static $printFontTableBodyP = 'font-size: 12px; padding: 2px 1px; margin: 0;';
-    public static $printFontTableFootP = 'font-size: 12px; font-weight: normal; padding: 2px 1px; margin: 0;';
+    public static $printFontTableHeadP = 'font-size: 13px; padding: 4px 2px; margin: 3;';
+    public static $printFontTableBodyP = 'font-size: 13px; padding: 4px 2px; margin: 5;';
+    public static $printFontTableFootP = 'font-size: 13px; font-weight: normal; padding: 2px 1px; margin: 0;';
     /**
      * Convierte el numero de bus  formato de interno es decir
      * si el bus es el 5 lo conviente en 005
