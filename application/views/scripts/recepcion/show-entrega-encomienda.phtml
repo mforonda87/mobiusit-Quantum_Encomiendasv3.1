@@ -17,25 +17,17 @@ foreach ($this->datos['items'] as $key => $item){
         text-align: center;
     }
 
-    .pdf_head h2{
-        font-size: 14px;
-    }
+    /*.pdf_head p {*/
+    /*    font-size: 9px;*/
+    /*    padding: 2px 1px;*/
+    /*    margin: 0;*/
+    /*}*/
 
-    .pdf_head h3{
-        font-size: 12px;
-    }
-
-    .pdf_head p {
-        font-size: 9px;
-        padding: 2px 1px;
-        margin: 0;
-    }
-
-    .pdf_datos p{
-        font-size: 10px;
-        padding: 2px 1px;
-        margin: 0;
-    }
+    /*.pdf_datos p{*/
+    /*    font-size: 10px;*/
+    /*    padding: 2px 1px;*/
+    /*    margin: 0;*/
+    /*}*/
 
     .pdf_detalle table{
         width: 100%;
@@ -45,89 +37,64 @@ foreach ($this->datos['items'] as $key => $item){
     .pdf_detalle table, th, td{
         border: 1px solid black;
     }
-
-    .pdf_detalle table tbody tr td{
-        font-size: 10px;
-    }
-
-    .pdf_detalle table tfoot tr td{
-        font-size: 10px;
-        font-weight: bold;
-    }
-
-    .quantum-print-h2 {
-        font-size: 16px;
-    }
 </style>
 <div class="pdf_main">
     <div class="pdf_head">
-        <h3><?= $this->datos['empresa']['title']?></h3>
-        <p>Sucursal: <?= $this->datos['cabecera']['numeroSuc'] ?></p>
-        <p>Telefono: <?= $this->datos['cabecera']['telefono'] ?></p>
-        <p><?= $this->datos['cabecera']['direccion'] ?></p>
-        <p>(<?= $this->datos['cabecera']['nombSuc'] ?>)</p>
-        <p><?= $this->datos['cabecera']['municipio'].' - '.$this->datos['cabecera']['ciudad'] ?></p>
-        <?php if(0==0): ?>
-        <h2 class="<?= App_Util_Statics::$fontH2; ?>">RECIBO DE ENTREGA</h2>
-        <?php else: ?>
-        <h2>RECIBO DE ENTREGA</h2>
-        <?php endif; ?>
+        <h3 style="<?= App_Util_Statics::$printFontH3; ?>"><?= $this->datos['empresa']['title']?></h3>
+        <p style="<?= App_Util_Statics::$printFontDatosP; ?>">Sucursal: <?= $this->datos['cabecera']['numeroSuc'] ?></p>
+        <p style="<?= App_Util_Statics::$printFontDatosP; ?>">Telefono: <?= $this->datos['cabecera']['telefono'] ?></p>
+        <p style="<?= App_Util_Statics::$printFontDatosP; ?>"><?= $this->datos['cabecera']['direccion'] ?></p>
+        <p style="<?= App_Util_Statics::$printFontDatosP; ?>">(<?= $this->datos['cabecera']['nombSuc'] ?>)</p>
+        <p style="<?= App_Util_Statics::$printFontDatosP; ?>"><?= $this->datos['cabecera']['municipio'].' - '.$this->datos['cabecera']['ciudad'] ?></p>
+        <h2 style="<?= App_Util_Statics::$printFontH2; ?>">RECIBO DE 123<?= $this->datos['encomienda']['tipo'] ?>123</h2>
     </div>
     <div class="pdf_datos">
-        <p><b>Fecha:</b> <?= 'sin fecha (no se de donde saca no esta en el json)' ?></p>
-        <p><b>Origen:</b> <?= $this->datos['encomienda']['origen'] ?></p>
-        <p><b>Destino:</b> <?= $this->datos['encomienda']['destino'] ?></p>
-        <p><b>Remitente:</b> <?= $this->datos['encomienda']['remitente'] ?></p>
-        <p><b>Destinatario:</b> <?= $this->datos['encomienda']['destinatario'] ?></p>
-        <p><b>Telefono:</b> <?= $this->datos['encomienda'][']telefonoDestinatario'] ?></p>
-        <p><b>Guia:</b> <?= $this->datos['encomienda']['guia'] ?></p>
+        <p style="<?= App_Util_Statics::$printFontDatosP; ?>"><b>Fecha:</b> <?= $this->fechaImpresion->format('Y-m-d H:i:s') ?></p>
+        <p style="<?= App_Util_Statics::$printFontDatosP; ?>"><b>Origen:</b> <?= $this->datos['encomienda']['origen'] ?></p>
+        <p style="<?= App_Util_Statics::$printFontDatosP; ?>"><b>Destino:</b> <?= $this->datos['encomienda']['destino'] ?></p>
+        <p style="<?= App_Util_Statics::$printFontDatosP; ?>"><b>Remitente:</b> <?= $this->datos['encomienda']['remitente'] ?></p>
+        <p style="<?= App_Util_Statics::$printFontDatosP; ?>"><b>Destinatario:</b> <?= $this->datos['encomienda']['destinatario'] ?></p>
+        <p style="<?= App_Util_Statics::$printFontDatosP; ?>"><b>Telefono:</b> <?= $this->datos['encomienda']['telefonoDestinatario'] ?></p>
+        <p style="<?= App_Util_Statics::$printFontDatosP; ?>"><b>Guia:</b> <?= $this->datos['encomienda']['guia'] ?></p>
     </div>
     <div class="pdf_detalle">
-        <table>
+        <table class="t_detalle">
             <thead>
             <tr>
-                <th colspan="4" style="text-align: center; font-size: 12px"><b>DETALLE</b></th>
+                <th colspan="4" style="text-align: center; <?= App_Util_Statics::$printFontTableHeadP; ?>"><b>DETALLE</b></th>
             </tr>
             <tr style="text-align: center;">
-                <th style="font-size: 10px;">Cant</th>
-                <th style="font-size: 10px;">Detalle</th>
-                <th style="font-size: 10px;">Peso</th>
-                <th style="font-size: 10px;">Mont</th>
+                <th style="<?= App_Util_Statics::$printFontTableHeadP; ?>">Cant</th>
+                <th style="<?= App_Util_Statics::$printFontTableHeadP; ?>">Detalle</th>
+                <th style="<?= App_Util_Statics::$printFontTableHeadP; ?>">Peso</th>
+                <th style="<?= App_Util_Statics::$printFontTableHeadP; ?>">Mont</th>
             </tr>
             </thead>
             <tbody>
             <?php foreach ($this->datos['items'] as $key => $item): ?>
                 <tr>
-                    <td style="text-align: center;"><?= $item['cantidad'] ?></td>
-                    <td><?= $item['detalle'] ?></td>
-                    <td style="text-align: right;"><?= $item['peso'] ?></td>
-                    <td style="text-align: right;"><?= $item['monto'] ?></td>
+                    <td style="text-align: center; <?= App_Util_Statics::$printFontTableBodyP; ?>"><?= $item['cantidad'] ?></td>
+                    <td style="<?= App_Util_Statics::$printFontTableBodyP; ?>"><?= $item['detalle'] ?></td>
+                    <td style="<?= App_Util_Statics::$printFontTableBodyP; ?>"><?= $item['peso'] ?></td>
+                    <td style="<?= App_Util_Statics::$printFontTableBodyP; ?>"><?= $item['monto'] ?></td>
                 </tr>
             <?php endforeach; ?>
-<!--            <tr>-->
-<!--                <td style="text-align: center;">1</td>-->
-<!--                <td>Sobre de documentos</td>-->
-<!--                <td style="text-align: right;">1</td>-->
-<!--                <td style="text-align: right;">10</td>-->
-<!--            </tr>-->
             </tbody>
             <tfoot>
             <tr>
-                <td colspan="4" style="font-size: 9px; font-weight: normal;"><?= $this->datos['encomienda']['observacion']?></td>
+                <td colspan="4" style="<?= App_Util_Statics::$printFontTableBodyP; ?>"><?= $this->datos['encomienda']['observacion']?></td>
             </tr>
             <tr>
-                <td colspan="3" style="text-align: right; font-size: 10px;">TOTAL</td>
-                <td style="text-align: right;"><?= $total ?></td>
+                <td colspan="3" style="<?= App_Util_Statics::$printFontTableBodyP; ?>">TOTAL</td>
+                <td style="text-align: right; <?= App_Util_Statics::$printFontTableBodyP; ?>"><?= $total ?></td>
             </tr>
             </tfoot>
         </table>
     </div>
-    <p style="font-size: 12px">Usuario: <?= $this->datos['cabecera']['usuario'] ?></p>
-    <br>
-    <br>
+    <p style="<?= App_Util_Statics::$printFontTableBodyP; ?>">Usuario: <?= $this->datos['cabecera']['usuario'] ?></p>
     <br>
     <p style="text-align: center;">-----------------------------------------</p>
-    <p style="font-size: 12px; text-align: center"><?= $this->datos['encomienda']['remitente'] ?></p>
+    <p style="<?= App_Util_Statics::$printFontTableBodyP; ?> text-align: center"><?= $this->datos['encomienda']['remitente'] ?></p>
     <br>
     <p style="font-size: 8px; text-align: center;">Mobius IT Solutions</p>
 </div>

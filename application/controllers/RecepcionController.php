@@ -1609,6 +1609,7 @@ class RecepcionController extends Zend_Controller_Action {
     function showEntregaEncomienda($datos) {
         $view = new Zend_View();
         $view->setScriptPath( APPLICATION_PATH . '/views/scripts/recepcion/' );
+        $view->fechaImpresion = new DateTime();
         $view->datos = $datos;
 //        die('eee: '.APPLICATION_PATH);
         return $view->render('show-entrega-encomienda.phtml');
@@ -1657,9 +1658,6 @@ class RecepcionController extends Zend_Controller_Action {
         $this->_helper->viewRenderer->setNoRender();
 
         $datos = $this->getRequest()->getParam("datos");
-
-//        var_dump($datos);
-//        die();
 
         require_once(__DIR__.'/../../library/dompdf/autoload.inc.php');
         $dompdf = new Dompdf\Dompdf();

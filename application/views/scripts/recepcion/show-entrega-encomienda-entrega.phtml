@@ -18,26 +18,6 @@ foreach ($this->datos['items'] as $key => $item){
         text-align: center;
     }
 
-    .pdf_head h2{
-        font-size: 14px;
-    }
-
-    .pdf_head h3{
-        font-size: 12px;
-    }
-
-    .pdf_head p {
-        font-size: 9px;
-        padding: 2px 1px;
-        margin: 0;
-    }
-
-    .pdf_datos p{
-        font-size: 10px;
-        padding: 2px 1px;
-        margin: 0;
-    }
-
     .pdf_detalle table{
         width: 100%;
         border-collapse: collapse;
@@ -47,15 +27,6 @@ foreach ($this->datos['items'] as $key => $item){
         border: 1px solid black;
     }
 
-    .pdf_detalle table tbody tr td{
-        font-size: 10px;
-    }
-
-    .pdf_detalle table tfoot tr td{
-        font-size: 10px;
-        font-weight: bold;
-    }
-
     .p-cabecera{
         margin: 2px;
         padding: 0;
@@ -63,66 +34,66 @@ foreach ($this->datos['items'] as $key => $item){
 </style>
 <div class="pdf_main">
     <div class="pdf_head">
-        <h4><?= $this->datos['cabecera']['title'] ?></h4>
-        <p class="p-cabecera">Sucursal: <?= $this->datos['cabecera']['numero'] ?> Telefono: <?= $this->datos['cabecera']['telefono'] ?></p>
-        <p class="p-cabecera"><?= $this->datos['cabecera']['direccion'] ?></p>
-        <p class="p-cabecera"><?= $this->datos['cabecera']['direccion2'] ?></p>
-        <p class="p-cabecera"><?= $this->datos['cabecera']['ciudad'] ?></p>
-        <h3><?= (strcmp($this->datos['encomienda']['tipo'], 'DE ENTREGA') == 0)? 'RECIBO DE ENTREGA' : 'RECIBO DE ENTREGA POR  PAGAR' ?></h3>
+        <h3 style="<?= App_Util_Statics::$printFontH3; ?>"><?= $this->datos['cabecera']['title'] ?></h3>
+        <p style="<?= App_Util_Statics::$printFontCabeceraP; ?>">Sucursal: <?= $this->datos['cabecera']['numero'] ?> Telefono: <?= $this->datos['cabecera']['telefono'] ?></p>
+        <p style="<?= App_Util_Statics::$printFontCabeceraP; ?>"><?= $this->datos['cabecera']['direccion'] ?></p>
+        <p style="<?= App_Util_Statics::$printFontCabeceraP; ?>"><?= $this->datos['cabecera']['direccion2'] ?></p>
+        <p style="<?= App_Util_Statics::$printFontCabeceraP; ?>"><?= $this->datos['cabecera']['ciudad'] ?></p>
+        <h2 style="<?= App_Util_Statics::$printFontH2; ?>"><?= (strcmp($this->datos['encomienda']['tipo'], 'DE ENTREGA') == 0)? 'RECIBO DE ENTREGA' : 'RECIBO DE ENTREGA POR  PAGAR' ?></h2>
     </div>
     <div class="pdf_datos">
-        <p><b>Fecha:</b> <?= $fechaActual->format('Y-m-d') ?></p>
-        <p><b>Origen:</b> <?= $this->datos['encomienda']['origen'] ?></p>
-        <p><b>Destino:</b> <?= $this->datos['encomienda']['destino'] ?></p>
+        <p style="<?= App_Util_Statics::$printFontDatosP; ?>"><b>Fecha:</b> <?= $fechaActual->format('Y-m-d') ?></p>
+        <p style="<?= App_Util_Statics::$printFontDatosP; ?>"><b>Origen:</b> <?= $this->datos['encomienda']['origen'] ?></p>
+        <p style="<?= App_Util_Statics::$printFontDatosP; ?>"><b>Destino:</b> <?= $this->datos['encomienda']['destino'] ?></p>
 
-        <p><b>Entregado en:</b> <?= $this->datos['encomienda']['destino'] ?></p>
-        <p><b>Guia:</b> <?= $this->datos['encomienda']['guia'] ?></p>
-        <p><b>Remitente:</b> <?= $this->datos['encomienda']['remitente'] ?></p>
-        <p><b>Destinatario:</b> <?= $this->datos['encomienda']['destinatario'] ?></p>
-        <p><b>Recoje:</b> <?= $this->datos['infoEntrega']['receptor'] ?></p>
-        <p><b>Documento:</b> <?= $this->datos['infoEntrega']['carnet'] ?></p>
-        <p><b>Telefono:</b> <?= $this->datos['encomienda']['telefonoRemitente'] ?></p>
+        <p style="<?= App_Util_Statics::$printFontDatosP; ?>"><b>Entregado en:</b> <?= $this->datos['encomienda']['destino'] ?></p>
+        <p style="<?= App_Util_Statics::$printFontDatosP; ?>"><b>Guia:</b> <?= $this->datos['encomienda']['guia'] ?></p>
+        <p style="<?= App_Util_Statics::$printFontDatosP; ?>"><b>Remitente:</b> <?= $this->datos['encomienda']['remitente'] ?></p>
+        <p style="<?= App_Util_Statics::$printFontDatosP; ?>"><b>Destinatario:</b> <?= $this->datos['encomienda']['destinatario'] ?></p>
+        <p style="<?= App_Util_Statics::$printFontDatosP; ?>"><b>Recoje:</b> <?= $this->datos['infoEntrega']['receptor'] ?></p>
+        <p style="<?= App_Util_Statics::$printFontDatosP; ?>"><b>Documento:</b> <?= $this->datos['infoEntrega']['carnet'] ?></p>
+        <p style="<?= App_Util_Statics::$printFontDatosP; ?>"><b>Telefono:</b> <?= $this->datos['encomienda']['telefonoRemitente'] ?></p>
     </div>
     <div class="pdf_detalle">
         <table>
             <thead>
             <tr>
-                <th colspan="4" style="text-align: center; font-size: 12px"><b>DETALLE</b></th>
+                <th colspan="4" style="text-align: center; <?= App_Util_Statics::$printFontTableHeadP; ?>"><b>DETALLE</b></th>
             </tr>
             <tr style="text-align: center;">
-                <th style="font-size: 10px;">Cant</th>
-                <th style="font-size: 10px;">Detalle</th>
-                <th style="font-size: 10px;">Peso</th>
-                <th style="font-size: 10px;">Mont</th>
+                <th style="<?= App_Util_Statics::$printFontTableHeadP; ?>">Cant</th>
+                <th style="<?= App_Util_Statics::$printFontTableHeadP; ?>">Detalle</th>
+                <th style="<?= App_Util_Statics::$printFontTableHeadP; ?>">Peso</th>
+                <th style="<?= App_Util_Statics::$printFontTableHeadP; ?>">Mont</th>
             </tr>
             </thead>
             <tbody>
             <?php foreach ($this->datos['items'] as $key => $item): ?>
                 <tr>
-                    <td style="text-align: center;"><?= $item['cantidad'] ?></td>
-                    <td><?= $item['detalle'] ?></td>
-                    <td style="text-align: right;"><?= isset($item['peso'])? $item['peso'] : '0' ?></td>
-                    <td style="text-align: right;"><?= $item['monto'] ?></td>
+                    <td style="<?= App_Util_Statics::$printFontTableBodyP; ?> text-align: center;"><?= $item['cantidad'] ?></td>
+                    <td style="<?= App_Util_Statics::$printFontTableBodyP; ?>"><?= $item['detalle'] ?></td>
+                    <td style="<?= App_Util_Statics::$printFontTableBodyP; ?> text-align: right;"><?= isset($item['peso'])? $item['peso'] : '0' ?></td>
+                    <td style="<?= App_Util_Statics::$printFontTableBodyP; ?> text-align: right;"><?= $item['monto'] ?></td>
                 </tr>
             <?php endforeach; ?>
             </tbody>
             <tfoot>
             <tr>
-                <td colspan="4" style="font-size: 9px; font-weight: normal;"><?= $this->datos['encomienda']['observacion']?></td>
+                <td colspan="4" style="<?= App_Util_Statics::$printFontTableFootP; ?>"><?= $this->datos['encomienda']['observacion']?></td>
             </tr>
             <tr>
-                <td colspan="3" style="text-align: right; font-size: 10px;">TOTAL</td>
-                <td style="text-align: right;"><?= $total ?></td>
+                <td colspan="3" style="text-align: right; <?= App_Util_Statics::$printFontTableFootP; ?>">TOTAL</td>
+                <td style="text-align: right; <?= App_Util_Statics::$printFontTableFootP; ?>"><?= $total ?></td>
             </tr>
             </tfoot>
         </table>
     </div>
-    <p style="font-size: 12px">Usuario: <?= $this->datos['cabecera']['user'] ?></p>
+    <p style="<?= App_Util_Statics::$printFontDatosP; ?>">Usuario: <?= $this->datos['cabecera']['user'] ?></p>
     <br>
     <br>
     <br>
-    <p style="text-align: center;">-----------------------------------------</p>
-    <p style="font-size: 12px; text-align: center"><?= $this->datos['infoEntrega']['receptor'] ?></p>
+    <p style="<?= App_Util_Statics::$printFontDatosP; ?> text-align: center;">-----------------------------------------</p>
+    <p style="<?= App_Util_Statics::$printFontDatosP; ?> text-align: center"><?= $this->datos['infoEntrega']['receptor'] ?></p>
     <br>
     <p style="font-size: 8px; text-align: center;">Mobius IT Solutions</p>
 </div>
