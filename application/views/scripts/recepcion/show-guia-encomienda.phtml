@@ -68,7 +68,7 @@ foreach ($this->datos['items'] as $key => $item){
         <h2 style="<?= App_Util_Statics::$printFontH2; ?>">GUIA DE ENCOMIENDAS <?= $this->datos['tipo'] ?></h2>
     </div>
     <div class="pdf_datos">
-        <p style="<?= App_Util_Statics::$printFontDatosP; ?>"><b>Fecha:</b> <?= 'sin fecha (no se de donde saca no esta en el json)' ?></p>
+        <p style="<?= App_Util_Statics::$printFontDatosP; ?>"><b>Fecha:</b> <?= $this->dateNow->format('Y-m-d') ?></p>
         <p style="<?= App_Util_Statics::$printFontDatosP; ?>"><b>Origen:</b> <?= $this->datos['encomienda']['origen'] ?></p>
         <p style="<?= App_Util_Statics::$printFontDatosP; ?>"><b>Destino:</b> <?= $this->datos['encomienda']['destino'] ?></p>
         <p style="<?= App_Util_Statics::$printFontDatosP; ?>"><b>Remitente:</b> <?= $this->datos['encomienda']['remitente'] ?></p>

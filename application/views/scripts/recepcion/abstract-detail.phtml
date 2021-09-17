@@ -84,13 +84,15 @@
                     $totalizar = 0;
                     foreach ($this->porPagar as $factura) {
                         $class = $row % 2 == 0 ? "par" : "impar";
-                        $class = $factura->estado == 'Anulado' ? "ui-state-error" : $class;
+//                        $class = $factura->estado == 'Anulado' ? "ui-state-error" : $class;
 
                         echo '<tr>';
-//                    echo '<td class="'.$class.'">' . $factura->estado . '</td>';
                         echo '<td class="' . $class . '">' . $factura->guia . '</td>';
-                        echo '<td class="' . $class . '">' . $factura->numero_factura . '</td>';
-                        echo '<td class="' . $class . '">' . $factura->nit . '</td>';
+//                        echo '<td class="' . $class . '">' . $factura->numero_factura . '</td>';
+//                        echo '<td class="' . $class . '">' . $factura->nit . '</td>';
+                        echo '<td class="' . $class . '">--</td>';
+                        echo '<td class="' . $class . '">--</td>';
+
                         echo '<td class="' . $class . '">' . $factura->nombre . '</td>';
                         echo '<td class="' . $class . '">' . $factura->vendio . '</td>';
                         echo '<td class="' . $class . '">' . $factura->fecha . '</td>';
@@ -126,13 +128,15 @@
                     $totalByTipo = 0;
                     foreach ($this->normales as $factura) {
                         $class = $row % 2 == 0 ? "par" : "impar";
-                        $class = $factura->estado == 'Anulado' ? "ui-state-error" : $class;
+//                        $class = $factura->estado == 'Anulado' ? "ui-state-error" : $class;
 
                         echo '<tr>';
-//                    echo '<td class="'.$class.'">' . $factura->estado . '</td>';
                         echo '<td class="' . $class . '">' . $factura->guia . '</td>';
-                        echo '<td class="' . $class . '">' . $factura->numero_factura . '</td>';
-                        echo '<td class="' . $class . '">' . $factura->nit . '</td>';
+//                        echo '<td class="' . $class . '">' . $factura->numero_factura . '</td>';
+//                        echo '<td class="' . $class . '">' . $factura->nit . '</td>';
+                        echo '<td class="' . $class . '">--</td>';
+                        echo '<td class="' . $class . '">--</td>';
+
                         echo '<td class="' . $class . '">' . $factura->nombre . '</td>';
                         echo '<td class="' . $class . '">' . $factura->vendio . '</td>';
                         echo '<td class="' . $class . '">' . $factura->fecha . '</td>';
@@ -160,47 +164,47 @@
                     echo "<tr><td colspan='8' class='ui-state-highlight center_align total'>Total Normales</td><td class='ui-state-highlight numeric'>$totalByTipo</td></tr>";
                 }
 
-                if (count($this->porAnular) > 0) {
-                    $row = 1;
-                    echo "<tr><td colspan='9' class='ui-dialog-titlebar ui-widget-header center_align'>Por Anular</td></tr>";
-                    $tipo = "";
-                    $totalizar = 0;
-                    $totalByTipo = 0;
-                    foreach ($this->porAnular as $factura) {
-                        $class = $row % 2 == 0 ? "par" : "impar";
-                        $class = $factura->estado == 'Anulado' ? "ui-state-error" : $class;
-
-                        echo '<tr>';
-//                    echo '<td class="'.$class.'">' . $factura->estado . '</td>';
-                        echo '<td class="' . $class . '">' . $factura->guia . '</td>';
-                        echo '<td class="' . $class . '">' . $factura->numero_factura . '</td>';
-                        echo '<td class="' . $class . '">' . $factura->nit . '</td>';
-                        echo '<td class="' . $class . '">' . $factura->nombre . '</td>';
-                        echo '<td class="' . $class . '">' . $factura->vendio . '</td>';
-                        echo '<td class="' . $class . '">' . $factura->fecha . '</td>';
-                        echo '<td class="' . $class . '">' . $factura->devolvio . '</td>';
-                        echo '<td class="' . $class . '"> ' . $factura->fechaDevolvio . '</td>';
-                        $total = $factura->total;
-                        if ($factura->vendedor == $factura->idDevolvio && $factura->fecha == $factura->fechaDevolvio) {
-                            $total = 0;
-                        }
-                        if ($factura->vendedor == $factura->idDevolvio && $factura->fecha != $factura->fechaDevolvio) {
-                            $total = 0;
-                        }
-
-                        if ($factura->vendedor != $factura->idDevolvio && $factura->idDevolvio != null) {
-                            $total = -$total;
-                        }
-                        echo '<td class="' . $class . ' numeric">' . $total . '</td>';
-                        echo '</tr>';
-
-                        $totalByTipo+=$total;
-
-                        $totalExtracto+=$total;
-                        $row++;
-                    }
-                    echo "<tr><td colspan='8' class='ui-state-highlight center_align total'>Total Por Anular</td><td class='ui-state-highlight numeric'>$totalByTipo</td></tr>";
-                }
+//                if (count($this->porAnular) > 0) {
+//                    $row = 1;
+//                    echo "<tr><td colspan='9' class='ui-dialog-titlebar ui-widget-header center_align'>Por Anular</td></tr>";
+//                    $tipo = "";
+//                    $totalizar = 0;
+//                    $totalByTipo = 0;
+//                    foreach ($this->porAnular as $factura) {
+//                        $class = $row % 2 == 0 ? "par" : "impar";
+//                        $class = $factura->estado == 'Anulado' ? "ui-state-error" : $class;
+//
+//                        echo '<tr>';
+////                    echo '<td class="'.$class.'">' . $factura->estado . '</td>';
+//                        echo '<td class="' . $class . '">' . $factura->guia . '</td>';
+//                        echo '<td class="' . $class . '">' . $factura->numero_factura . '</td>';
+//                        echo '<td class="' . $class . '">' . $factura->nit . '</td>';
+//                        echo '<td class="' . $class . '">' . $factura->nombre . '</td>';
+//                        echo '<td class="' . $class . '">' . $factura->vendio . '</td>';
+//                        echo '<td class="' . $class . '">' . $factura->fecha . '</td>';
+//                        echo '<td class="' . $class . '">' . $factura->devolvio . '</td>';
+//                        echo '<td class="' . $class . '"> ' . $factura->fechaDevolvio . '</td>';
+//                        $total = $factura->total;
+//                        if ($factura->vendedor == $factura->idDevolvio && $factura->fecha == $factura->fechaDevolvio) {
+//                            $total = 0;
+//                        }
+//                        if ($factura->vendedor == $factura->idDevolvio && $factura->fecha != $factura->fechaDevolvio) {
+//                            $total = 0;
+//                        }
+//
+//                        if ($factura->vendedor != $factura->idDevolvio && $factura->idDevolvio != null) {
+//                            $total = -$total;
+//                        }
+//                        echo '<td class="' . $class . ' numeric">' . $total . '</td>';
+//                        echo '</tr>';
+//
+//                        $totalByTipo+=$total;
+//
+//                        $totalExtracto+=$total;
+//                        $row++;
+//                    }
+//                    echo "<tr><td colspan='8' class='ui-state-highlight center_align total'>Total Por Anular</td><td class='ui-state-highlight numeric'>$totalByTipo</td></tr>";
+//                }
 
                 echo "<tr><td colspan='8' class='ui-state-highlight center_align total' >Total Entregar</td><td class='ui-state-highlight numeric'>$totalExtracto</td></tr>";
             } else {

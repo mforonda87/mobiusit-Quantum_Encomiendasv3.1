@@ -734,21 +734,32 @@ class RecepcionController extends Zend_Controller_Action {
                 $this->view->date = $configuraciones;
                 $this->view->date = $date;
                 $facturaModel = new App_Model_FacturaEncomienda();
+
                 $facturas = $facturaModel->getByAllVendedorFecha($date, $this->person->id_persona);
+//                echo count($facturas)." || wwww";
+//                die('eeeeww wwweee111222333444555');
                 $porPagar = array();
                 $porAnular = array();
                 $normal = array();
+
+//                foreach ($facturas as $fac) {
+//                    if ($fac->is_porpagar_entregada == true) {
+//                        $porPagar[] = $fac;
+//                    } elseif ($fac->estado == "POR ANULAR") {
+//                        $porAnular[] = $fac;
+//                    } else {
+//                        $normal[] = $fac;
+//                    }
+//                }
                 foreach ($facturas as $fac) {
                     if ($fac->is_porpagar_entregada == true) {
                         $porPagar[] = $fac;
-                    } elseif ($fac->estado == "POR ANULAR") {
-                        $porAnular[] = $fac;
                     } else {
                         $normal[] = $fac;
                     }
                 }
                 $this->view->porPagar = $porPagar;
-                $this->view->porAnular = $porAnular;
+//                $this->view->porAnular = $porAnular;
                 $this->view->normales = $normal;
                 $this->render('abstract-detail');
                 break;
@@ -1586,6 +1597,7 @@ class RecepcionController extends Zend_Controller_Action {
         $view = new Zend_View();
         $view->setScriptPath( APPLICATION_PATH . '/views/scripts/recepcion/' );
         $view->datos = $datos;
+        $view->dateNow = new DateTime();
 //        die('eee: '.APPLICATION_PATH);
         return $view->render('show-guia-encomienda.phtml');
     }
