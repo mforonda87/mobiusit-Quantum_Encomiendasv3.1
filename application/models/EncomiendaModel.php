@@ -105,75 +105,75 @@ class App_Model_EncomiendaModel extends Zend_Db_Table_Abstract {
             $datosFactura = null;
             /*             * *************************   FACTURACION ******************** */
             $tipoEncomienda = base64_decode($datos["tipoEncomienda"]);
-//            $numeroFactura = "";
-//
-//            if ($tipoEncomienda == "NORMAL" || $tipoEncomienda == "GIRO") {
-//
-//                $dosificacion = $dosificacionModel->getLastAutomaticoBySucursal($user->sucursal);
-//
-//                if (!isset($dosificacion) || !$dosificacion) {
-//                    throw new Zend_Db_Exception("No existe una dosificacion Activa");
-//                }
-//                if ($dosificacion->fecha_limite < $hoy) {
-//                    throw new Zend_Db_Exception(" La Fecha limite de facturacion ha expirado por favor registre una nueva dosificacion");
-//                }
-//                $nit = $datos['Nit'] == "" ? 0 : $datos['Nit'];
-//                $nombre = $datos['nombreFactura'] == "" ? "SIN NOMBRE" : strtoupper($datos['nombreFactura']);
-//                $facturacionBean = new App_Util_Facturacion();
-//                $factura["id_factura"] = "-1";
-//                $factura["vendedor"] = $user->id_persona;
-//                $factura["dosificacion"] = $dosificacion->id_datos_factura;
-//                $factura["nombre"] = $nombre;
-//                $factura["nit"] = $nit;
-//                $factura["fecha"] = $hoy;
-//                $factura["hora"] = $hora;
-//                $factura["monto"] = $totalFactura;
-//                $factura["texto_factura"] = "En proceso de codigo de control";
-//                $factura["fecha_limite"] = $dosificacion->fecha_limite;
-//                $factura["tipo"] = "Automatico";
-//                $factura["estado"] = "Activo";
-//                $factura["impresion"] = 1;
-//
-//
-//                $facModel->insert($factura);
-//                $whereFA [] = "vendedor='" . $user->id_persona . "'";
-//                $whereFA [] = "monto=" . $totalFactura;
-//                $whereFA [] = "tipo='Automatico'";
-//                $whereFA [] = "fecha='$hoy'";
-//                $whereFA [] = "texto_factura='En proceso de codigo de control'";
-//                $facturaA = $facModel->fetchRow($whereFA);
-//
-//                if (!isset($facturaA)) {
-//                    throw new Zend_Db_Exception(" No se Pudo Recuperar la Ultima Factura ");
-//                }
-//
-//                $updateFactura ["codigo_control"] = $facturacionBean->generarCodigoControl($dosificacion->autorizacion, $facturaA->numero_factura, $hoy, $totalFactura, $dosificacion->llave, $nit);
-//                $updateFactura ["texto_factura"] = "Finalizado";
-//                $whereFCC = array("id_factura='$facturaA->id_factura'");
-//                if ($facModel->update($updateFactura, $whereFCC) == 0) {
-//                    throw new Zend_Db_Exception(" No se Pudo Recuperar la Ultima Factura con codigo de control");
-//                }
-//                $ultimaFactura = $facModel->fetchRow($whereFCC);
-//
-//
-//                $literal = App_Util_Statics::convertNumber($totalFactura);
-//
-//                $fechaFactura = new Zend_Date($factura["fecha"], null, 'es_BO');
-//                $fechaPrint = $fechaFactura->toString("dd/MMM/YYYY");
-//                $datosFactura = array(
-//                    "fecha" => $fechaPrint,
-//                    "hora" => $factura["hora"],
-//                    "nombre" => strtoupper($factura["nombre"]),
-//                    "nit" => $factura["nit"],
-//                    "numerofactura" => "$ultimaFactura->numero_factura",
-//                    "autorizacion" => $dosificacion->autorizacion,
-//                    "codigoControl" => $ultimaFactura->codigo_control,
-//                    "fechaLimite" => $factura["fecha_limite"],
-//                    "total" => $factura["monto"],
-//                    "totalLiteral" => App_Util_Statics::num2letras($totalFactura, true, true, "Bolivianos")
-//                );
-//                $numeroFactura = "$ultimaFactura->numero_factura";
-//            }
+            $numeroFactura = "";
+
+            if ($tipoEncomienda == "NORMAL" || $tipoEncomienda == "GIRO") {
+
+                $dosificacion = $dosificacionModel->getLastAutomaticoBySucursal($user->sucursal);
+
+                if (!isset($dosificacion) || !$dosificacion) {
+                    throw new Zend_Db_Exception("No existe una dosificacion Activa");
+                }
+                if ($dosificacion->fecha_limite < $hoy) {
+                    throw new Zend_Db_Exception(" La Fecha limite de facturacion ha expirado por favor registre una nueva dosificacion");
+                }
+                $nit = $datos['Nit'] == "" ? 0 : $datos['Nit'];
+                $nombre = $datos['nombreFactura'] == "" ? "SIN NOMBRE" : strtoupper($datos['nombreFactura']);
+                $facturacionBean = new App_Util_Facturacion();
+                $factura["id_factura"] = "-1";
+                $factura["vendedor"] = $user->id_persona;
+                $factura["dosificacion"] = $dosificacion->id_datos_factura;
+                $factura["nombre"] = $nombre;
+                $factura["nit"] = $nit;
+                $factura["fecha"] = $hoy;
+                $factura["hora"] = $hora;
+                $factura["monto"] = $totalFactura;
+                $factura["texto_factura"] = "En proceso de codigo de control";
+                $factura["fecha_limite"] = $dosificacion->fecha_limite;
+                $factura["tipo"] = "Automatico";
+                $factura["estado"] = "Activo";
+                $factura["impresion"] = 1;
+
+
+                $facModel->insert($factura);
+                $whereFA [] = "vendedor='" . $user->id_persona . "'";
+                $whereFA [] = "monto=" . $totalFactura;
+                $whereFA [] = "tipo='Automatico'";
+                $whereFA [] = "fecha='$hoy'";
+                $whereFA [] = "texto_factura='En proceso de codigo de control'";
+                $facturaA = $facModel->fetchRow($whereFA);
+
+                if (!isset($facturaA)) {
+                    throw new Zend_Db_Exception(" No se Pudo Recuperar la Ultima Factura ");
+                }
+
+                $updateFactura ["codigo_control"] = $facturacionBean->generarCodigoControl($dosificacion->autorizacion, $facturaA->numero_factura, $hoy, $totalFactura, $dosificacion->llave, $nit);
+                $updateFactura ["texto_factura"] = "Finalizado";
+                $whereFCC = array("id_factura='$facturaA->id_factura'");
+                if ($facModel->update($updateFactura, $whereFCC) == 0) {
+                    throw new Zend_Db_Exception(" No se Pudo Recuperar la Ultima Factura con codigo de control");
+                }
+                $ultimaFactura = $facModel->fetchRow($whereFCC);
+
+
+                $literal = App_Util_Statics::convertNumber($totalFactura);
+
+                $fechaFactura = new Zend_Date($factura["fecha"], null, 'es_BO');
+                $fechaPrint = $fechaFactura->toString("dd/MMM/YYYY");
+                $datosFactura = array(
+                    "fecha" => $fechaPrint,
+                    "hora" => $factura["hora"],
+                    "nombre" => strtoupper($factura["nombre"]),
+                    "nit" => $factura["nit"],
+                    "numerofactura" => "$ultimaFactura->numero_factura",
+                    "autorizacion" => $dosificacion->autorizacion,
+                    "codigoControl" => $ultimaFactura->codigo_control,
+                    "fechaLimite" => $factura["fecha_limite"],
+                    "total" => $factura["monto"],
+                    "totalLiteral" => App_Util_Statics::num2letras($totalFactura, true, true, "Bolivianos")
+                );
+                $numeroFactura = "$ultimaFactura->numero_factura";
+            }
 
             $codigoGuia = $this->getCodigo($ciudadDestino['abreviacion'], $suc, $configuraciones[App_Util_Statics::$NUMERACION_GUIA]);
             $sucDestino = $sucursalModel->getById(base64_decode($datos['destinoSuc']));
@@ -209,7 +209,7 @@ class App_Model_EncomiendaModel extends Zend_Db_Table_Abstract {
                 "estado" => "RECIBIDO"
             );
             if (strtoupper($tipoEncomienda) == "NORMAL" || $tipoEncomienda == "GIRO") {
-//                $encomienda["factura"] = $facturaA->id_factura;
+                $encomienda["factura"] = $facturaA->id_factura;
             }
             $this->insert($encomienda);
             $sql = $db->select();

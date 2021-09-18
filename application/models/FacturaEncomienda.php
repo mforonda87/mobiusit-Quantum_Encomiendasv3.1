@@ -520,33 +520,19 @@ class App_Model_FacturaEncomienda extends Zend_Db_Table_Abstract {
         $db->setFetchMode(Zend_Db::FETCH_OBJ);
                 
         $select = $db->select();
-
-//        $select->from(array("f" => "factura_encomienda"), array("monto AS total", nit, nombre, estado, numero_factura,tipo,fecha,vendedor));
-//        $select->join(array(e=>encomienda), "e.factura=f.id_factura",array("id_encomienda","guia","is_porpagar_entregada"));
-//        $select->joinLeft(array("m"=>"movimiento_encomienda"), "e.id_encomienda=m.encomienda AND movimiento='Inactivo'",array("usuario AS idDevolvio","fecha as fechaDevolucion"));
-//        $select->joinLeft(array("p"=>"persona"), "m.usuario=p.id_persona",array("p.nombres as devolvio"));
-//        $select->joinLeft(array("vend"=>"persona"), "f.vendedor=vend.id_persona",array("vend.nombres as vendio"));
-
-//        $select->order("f.tipo");
-//        $select->order("f.fecha");
-//        $select->order("e.guia");
-//        $select->order("numero_factura");
-//
-//        $select->where("(f.fecha='$fecha' OR m.fecha='$fecha')");
-//        $select->where("vendedor=?", $idPersona);
-
-//        $select->from(array("f" => "factura_encomienda"), array("monto AS total", 'nit', 'nombre', 'estado', 'numero_factura','tipo','fecha','vendedor'));
-        $select->from(array('e'=>'encomienda'), array("id_encomienda","guia","is_porpagar_entregada", "total"));
-//        $select->joinLeft(array("m"=>"movimiento_encomienda"), "e.id_encomienda=m.encomienda AND movimiento='Inactivo'",array("usuario AS idDevolvio","fecha as fechaDevolucion", "usuario as m_usuario"));
-        $select->joinLeft(array("m"=>"movimiento_encomienda"), "e.id_encomienda=m.encomienda",array("usuario AS idDevolvio","fecha as fechaDevolucion", "usuario as m_usuario"));
+        $select->from(array("f" => "factura_encomienda"), array("monto AS total", nit, nombre, estado, numero_factura,tipo,fecha,vendedor));
+        $select->join(array(e=>encomienda), "e.factura=f.id_factura",array("id_encomienda","guia","is_porpagar_entregada"));
+        $select->joinLeft(array("m"=>"movimiento_encomienda"), "e.id_encomienda=m.encomienda AND movimiento='Inactivo'",array("usuario AS idDevolvio","fecha as fechaDevolucion"));
         $select->joinLeft(array("p"=>"persona"), "m.usuario=p.id_persona",array("p.nombres as devolvio"));
-        $select->joinLeft(array("vend"=>"persona"), "e.receptor=vend.id_persona",array("vend.nombres as vendio"));
+        $select->joinLeft(array("vend"=>"persona"), "f.vendedor=vend.id_persona",array("vend.nombres as vendio"));
 
-//        $select->order("e.fecha");
-//        $select->order("e.guia");
-//
-        $select->where("m.fecha='$fecha'");
-//        $select->where("m.usuario=?", $idPersona);
+        $select->order("f.tipo");
+        $select->order("f.fecha");
+        $select->order("e.guia");
+        $select->order("numero_factura");
+
+        $select->where("(f.fecha='$fecha' OR m.fecha='$fecha')");
+        $select->where("vendedor=?", $idPersona);
 
         return $db->fetchAll($select);
     }

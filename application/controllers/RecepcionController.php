@@ -169,24 +169,24 @@ class RecepcionController extends Zend_Controller_Action {
                     $items = str_replace("'", '"', $items);
                     $items = str_replace("\\", '', $items);
                     $objectJSON = Zend_Json::decode($items);
-
                     if (!is_null($objectJSON)) {
                         if ($datos["tipo"] == "Manual") {
-//                            if ($datos["dosificacion"] == "" && base64_decode($datos["tipoEncomienda"]) == "NORMAL") {
-//                                $mensaje = "Debe seleccionar una dosificacion para registrar una factura manual";
-//                                $error = true;
-//                            } elseif ($datos["numeroFactura"] == "" && $datos["numeroFactura"] == "0") {
-//                                $mensaje = "Debe introducir el numero de la factura manual";
-//                                $error = true;
-//                            } elseif ($datos["fecha"] == "") {
-//                                $mensaje = "Debe introducir La fecha para la factura";
-//                                $error = true;
-//                            } else {
-//                                $data = $encoModel->txSaveManual($datos, $objectJSON, $this->person, $this->ciudadOrigen);
-//                                $mensaje = "La encomienda se registro con exito";
-//                                $error = false;
-//                                $cabeceraF = "Manual";
-//                            }
+
+                            if ($datos["dosificacion"] == "" && base64_decode($datos["tipoEncomienda"]) == "NORMAL") {
+                                $mensaje = "Debe seleccionar una dosificacion para registrar una factura manual";
+                                $error = true;
+                            } elseif ($datos["numeroFactura"] == "" && $datos["numeroFactura"] == "0") {
+                                $mensaje = "Debe introducir el numero de la factura manual";
+                                $error = true;
+                            } elseif ($datos["fecha"] == "") {
+                                $mensaje = "Debe introducir La fecha para la factura";
+                                $error = true;
+                            } else {
+                                $data = $encoModel->txSaveManual($datos, $objectJSON, $this->person, $this->ciudadOrigen);
+                                $mensaje = "La encomienda se registro con exito";
+                                $error = false;
+                                $cabeceraF = "Manual";
+                            }
 
                             $data = $encoModel->txSaveManual($datos, $objectJSON, $this->person, $this->ciudadOrigen);
                             $mensaje = "La encomienda se registro con exito";
