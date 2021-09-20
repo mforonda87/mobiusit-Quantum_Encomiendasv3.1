@@ -585,6 +585,7 @@ function registrarEncomienda(tipo, obj) {
         type: "POST",
         url: BaseUrl + "/recepcion/save/tipo/" + tipo,
         data: datosJSON,
+
         dataType: 'json',
         success: function (msg) {
             if (msg.error === false) {
@@ -626,7 +627,25 @@ function registrarEncomienda(tipo, obj) {
                         }
                          */
                         console.log(JSON.stringify(msg));
-                        printJS(msg.pdf_encomienda);
+
+                        console.log('eeeee1:: '+msg.pdf_encomienda_porpagar_recibo);
+                        printJS({
+                            printable: msg.pdf_encomienda,
+                            type: 'pdf',
+                            onPrintDialogClose: function() {
+                                if(msg.pdf_encomienda_porpagar_recibo !== undefined){
+                                    console.log('eeeee2:: '+msg.pdf_encomienda_porpagar_recibo);
+                                    printJS(msg.pdf_encomienda_porpagar_recibo);
+                                }
+                            }
+                        });
+                        // printJS(msg.pdf_encomienda);
+                        // console.log('eeeee1:: '+msg.pdf_encomienda_porpagar_recibo);
+                        // if(msg.pdf_encomienda_porpagar_recibo !== undefined){
+                        //     console.log('eeeee2:: '+msg.pdf_encomienda_porpagar_recibo);
+                        //     printJS(msg.pdf_encomienda_porpagar_recibo);
+                        // }
+
                     }
 
                     // printer.imprimir();
