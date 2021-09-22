@@ -232,7 +232,17 @@ function resultEntrega(json) {
                     dataType: 'json',
                     success: function(data) {
                         // alert(JSON.stringify(data));
-                        printJS(data.pdfUrl);
+                        // printJS(data.pdfUrl);
+                        printJS({
+                            printable: data.entregaPdfUrl,
+                            type: 'pdf',
+                            onPrintDialogClose: function() {
+                                console.log('eeeee2:: '+data.reciboClientePdfUrl);
+                                if(data.reciboClientePdfUrl !== undefined){
+                                    printJS(data.reciboClientePdfUrl);
+                                }
+                            }
+                        });
 
                     }
                 });

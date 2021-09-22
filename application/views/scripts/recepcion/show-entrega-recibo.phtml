@@ -1,7 +1,7 @@
 <?php
 $total = 0;
 foreach ($this->datos['items'] as $key => $item){
-    $total += $item['monto'];
+    $total += $item['total'];
 }
 ?>
 <style>
@@ -26,13 +26,14 @@ foreach ($this->datos['items'] as $key => $item){
 </style>
 <div class="pdf_main">
     <div class="pdf_head">
-        <h3 style="<?= App_Util_Statics::$printFontH3; ?>"><?= $this->datos['empresa']['title']?></h3>
-        <p style="<?= App_Util_Statics::$printFontCabeceraP; ?>">Sucursal: <?= $this->datos['cabecera']['numeroSuc'] ?></p>
+        <h3 style="<?= App_Util_Statics::$printFontH3; ?>"><?= $this->datos['cabecera']['title'] ?></h3>
+        <p style="<?= App_Util_Statics::$printFontCabeceraP; ?>">Sucursal: <?= $this->datos['cabecera']['numero'] ?></p>
         <p style="<?= App_Util_Statics::$printFontCabeceraP; ?>">Telefono: <?= $this->datos['cabecera']['telefono'] ?></p>
         <p style="<?= App_Util_Statics::$printFontCabeceraP; ?>"><?= $this->datos['cabecera']['direccion'] ?></p>
-        <p style="<?= App_Util_Statics::$printFontCabeceraP; ?>">(<?= $this->datos['cabecera']['nombSuc'] ?>)</p>
+        <p style="<?= App_Util_Statics::$printFontCabeceraP; ?>"><?= $this->datos['cabecera']['direccion2'] ?></p>
+<!--        <p style="--><?//= App_Util_Statics::$printFontCabeceraP; ?><!--">(--><?//= $this->datos['cabecera']['nombSuc'] ?><!--)</p>-->
         <p style="<?= App_Util_Statics::$printFontCabeceraP; ?>"><?= $this->datos['cabecera']['municipio'].' - '.$this->datos['cabecera']['ciudad'] ?></p>
-        <h2 style="<?= App_Util_Statics::$printFontH2; ?>">RECIBO <?= $this->datos['tipo'] ?></h2>
+        <h2 style="<?= App_Util_Statics::$printFontH2; ?>">RECIBO <?= $this->datos['encomienda']['tipo'] ?></h2>
     </div>
     <div class="pdf_datos">
         <p style="<?= App_Util_Statics::$printFontDatosP; ?>"><b>Guia:</b> <?= $this->datos['encomienda']['guia'] ?></p>
@@ -60,8 +61,8 @@ foreach ($this->datos['items'] as $key => $item){
                 <tr>
                     <td style="<?= App_Util_Statics::$printFontTableBodyP; ?> text-align: center;"><?= $item['cantidad'] ?></td>
                     <td style="<?= App_Util_Statics::$printFontTableBodyP; ?>"><?= $item['detalle'] ?></td>
-                    <td style="<?= App_Util_Statics::$printFontTableBodyP; ?> text-align: right;"><?= $item['peso'] ?></td>
-                    <td style="<?= App_Util_Statics::$printFontTableBodyP; ?> text-align: right;"><?= $item['monto'] ?></td>
+                    <td style="<?= App_Util_Statics::$printFontTableBodyP; ?> text-align: right;"><?= isset($item['peso'])? $item['peso'] : '0' ?></td>
+                    <td style="<?= App_Util_Statics::$printFontTableBodyP; ?> text-align: right;"><?= $item['total'] ?></td>
                 </tr>
             <?php endforeach; ?>
             </tbody>
@@ -76,7 +77,7 @@ foreach ($this->datos['items'] as $key => $item){
             </tfoot>
         </table>
     </div>
-    <p style="<?= App_Util_Statics::$printFontDatosP; ?>">Usuario: <?= $this->datos['cabecera']['usuario'] ?></p>
+    <p style="<?= App_Util_Statics::$printFontDatosP; ?>">Usuario: <?= $this->datos['cabecera']['user'] ?></p>
     <br>
     <p style="<?= App_Util_Statics::$printFontQuantumP; ?>">Mobius IT Solutions</p>
 </div>
