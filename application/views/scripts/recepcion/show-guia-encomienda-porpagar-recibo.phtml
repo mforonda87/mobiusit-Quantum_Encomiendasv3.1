@@ -37,9 +37,18 @@ foreach ($this->datos['items'] as $key => $item){
     <div class="pdf_datos">
         <p style="<?= App_Util_Statics::$printFontDatosP; ?>"><b>Guia:</b> <?= $this->datos['encomienda']['guia'] ?></p>
 
-        <p style="<?= App_Util_Statics::$printFontDatosP; ?>"><b>Origen:</b> <?= $this->datos['encomienda']['origen'] ?></p>
-        <p style="<?= App_Util_Statics::$printFontDatosP; ?>"><b>Destino:</b> <?= $this->datos['encomienda']['destino'] ?></p>
-
+        <?php if(strlen($this->datos['encomienda']['origen']) > App_Util_Statics::$docPdfLimiteCaracteres): ?>
+            <p style="<?= App_Util_Statics::$printFontDatosP; ?>"><b>Origen:</b> <?= substr($this->datos['encomienda']['origen'], 0, App_Util_Statics::$docPdfLimiteCaracteres); ?></p>
+            <p style="<?= App_Util_Statics::$printFontDatosP; ?>"><?= substr($this->datos['encomienda']['origen'], App_Util_Statics::$docPdfLimiteCaracteres, strlen($this->datos['encomienda']['origen'])-1) ?></p>
+        <?php else:?>
+            <p style="<?= App_Util_Statics::$printFontDatosP; ?>"><b>Origen:</b> <?= $this->datos['encomienda']['origen'] ?></p>
+        <?php endif;?>
+        <?php if(strlen($this->datos['encomienda']['destino']) > App_Util_Statics::$docPdfLimiteCaracteres): ?>
+            <p style="<?= App_Util_Statics::$printFontDatosP; ?>"><b>Origen:</b> <?= substr($this->datos['encomienda']['destino'], 0, App_Util_Statics::$docPdfLimiteCaracteres); ?></p>
+            <p style="<?= App_Util_Statics::$printFontDatosP; ?>"><?= substr($this->datos['encomienda']['destino'], App_Util_Statics::$docPdfLimiteCaracteres, strlen($this->datos['encomienda']['destino'])-1) ?></p>
+        <?php else:?>
+            <p style="<?= App_Util_Statics::$printFontDatosP; ?>"><b>Destino:</b> <?= $this->datos['encomienda']['destino'] ?></p>
+        <?php endif;?>
 
     </div>
     <div class="pdf_detalle">

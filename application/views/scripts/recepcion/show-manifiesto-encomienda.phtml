@@ -33,7 +33,13 @@ $total = 0;
         <h2 style="<?= App_Util_Statics::$printFontH2; ?>"><?= $this->nombreEmpresa->value ?></h2>
     </div>
     <div class="pdf_datos">
-        <p style="<?= App_Util_Statics::$printFontDatosP; ?>"><b>Chofer:</b> <?= $this->datos['manifiesto']['chofer'] ?></p>
+        <?php if(strlen($this->datos['manifiesto']['chofer']) > App_Util_Statics::$docPdfLimiteCaracteres): ?>
+            <p style="<?= App_Util_Statics::$printFontDatosP; ?>"><b>Chofer:</b> <?= substr($this->datos['manifiesto']['chofer'], 0, App_Util_Statics::$docPdfLimiteCaracteres); ?></p>
+            <p style="<?= App_Util_Statics::$printFontDatosP; ?>"><?= substr($this->datos['manifiesto']['chofer'], App_Util_Statics::$docPdfLimiteCaracteres, strlen($this->datos['manifiesto']['chofer'])-1) ?></p>
+        <?php else:?>
+            <p style="<?= App_Util_Statics::$printFontDatosP; ?>"><b>Chofer:</b> <?= $this->datos['manifiesto']['chofer'] ?></p>
+        <?php endif;?>
+
         <p style="<?= App_Util_Statics::$printFontDatosP; ?>"><b>Bus:</b> <?= $this->datos['manifiesto']['numBus'] ?></p>
         <p style="<?= App_Util_Statics::$printFontDatosP; ?>"><b>Destino:</b> <?= $this->datos['manifiesto']['destino'] ?></p>
         <p style="<?= App_Util_Statics::$printFontDatosP; ?>"><b>Enviado por:</b> <?= $this->datos['cabecera']['usuario'] ?></p>
