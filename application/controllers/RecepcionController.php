@@ -211,8 +211,11 @@ class RecepcionController extends Zend_Controller_Action {
 
 
                         $result['pdf_encomienda'] = $this->generatePdfGuiaEncomienda($result);
+
                         if(strcmp($result['tipo'], 'POR PAGAR') == 0 ){
                             $result['pdf_encomienda_porpagar_recibo'] = $this->generatePdfGuiaEncomiendaPorpagarRecibo($result);
+                        } else {
+                            $result['pdf_encomienda_recibo'] = $this->generatePdfGuiaEncomiendaRecibo($result);
                         }
                     } else {
                         $result["mensaje"] = "Debe almenos registrar un item para la encomienda ";
@@ -1596,6 +1599,22 @@ class RecepcionController extends Zend_Controller_Action {
         return $this->_request->getBaseUrl().'/generate_pdf/guia_encomiendas/'.$nameFile;
     }
 
+    function generatePdfGuiaEncomiendaRecibo($datos){
+        require_once(__DIR__.'/../../library/dompdf/autoload.inc.php');
+        $dompdf = new Dompdf\Dompdf();
+        $height = App_Util_Statics::$docPdfSizeH + (count($datos['items'])*30);
+
+        $dompdf->set_paper(array(0, 0, App_Util_Statics::$docPdfSizeW, $height), "portrait");
+        $dompdf->load_html($this->showGuiaEncomiendaRecibo($datos));
+        $dompdf->render();
+        $output = $dompdf->output();
+        $dateNow = new DateTime();
+        $nameFile = 'guia-encomienda-recibo-'.$dateNow->format('YmdHis').'.pdf';
+        file_put_contents('../public/generate_pdf/guia_encomiendas/'.$nameFile, $output);
+
+        return $this->_request->getBaseUrl().'/generate_pdf/guia_encomiendas/'.$nameFile;
+    }
+
     function generatePdfGuiaEncomiendaPorpagarRecibo($datos){
         require_once(__DIR__.'/../../library/dompdf/autoload.inc.php');
         $dompdf = new Dompdf\Dompdf();
@@ -1618,8 +1637,15 @@ class RecepcionController extends Zend_Controller_Action {
         $view->setScriptPath( APPLICATION_PATH . '/views/scripts/recepcion/' );
         $view->datos = $datos;
         $view->dateNow = new DateTime();
-//        die('eee: '.APPLICATION_PATH);
         return $view->render('show-guia-encomienda.phtml');
+    }
+
+    function showGuiaEncomiendaRecibo($datos) {
+        $view = new Zend_View();
+        $view->setScriptPath( APPLICATION_PATH . '/views/scripts/recepcion/' );
+        $view->datos = $datos;
+        $view->dateNow = new DateTime();
+        return $view->render('show-guia-encomienda-recibo.phtml');
     }
 
     function showGuiaEncomiendaPorPagarRecibo($datos) {
@@ -1738,7 +1764,6 @@ class RecepcionController extends Zend_Controller_Action {
 
         $dompdf->set_paper(array(0, 0, App_Util_Statics::$docPdfSizeW, $height), "portrait");
         $dompdf->load_html($this->showGuiaEncomiendaRecibo($datos));
-//        $dompdf->load_html($html);
         $dompdf->render();
         $output = $dompdf->output();
         $dateNow = new DateTime();
@@ -1748,12 +1773,11 @@ class RecepcionController extends Zend_Controller_Action {
         return $this->_request->getBaseUrl().'/generate_pdf/guia_encomiendas/'.$nameFile;
     }
 
-    function showGuiaEncomiendaRecibo($datos) {
-        $view = new Zend_View();
-        $view->setScriptPath( APPLICATION_PATH . '/views/scripts/recepcion/' );
-        $view->datos = $datos;
-        $view->dateNow = new DateTime();
-//        die('eee: '.APPLICATION_PATH);
-        return $view->render('show-entrega-recibo.phtml');
-    }
+//    function showGuiaEncomiendaRecibo($datos) {
+//        $view = new Zend_View();
+//        $view->setScriptPath( APPLICATION_PATH . '/views/scripts/recepcion/' );
+//        $view->datos = $datos;
+//        $view->dateNow = new DateTime();
+//        return $view->render('show-entrega-recibo.phtml');
+//    }
 }

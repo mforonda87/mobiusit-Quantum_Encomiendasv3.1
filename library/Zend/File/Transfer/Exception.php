@@ -30,26 +30,4 @@ require_once 'Zend/Exception.php';
  * @category   Zend
  * @package    Zend_File_Transfer
  * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- */
-class Zend_File_Transfer_Exception extends Zend_Exception
-{
-    protected $_fileerror = null;
-
-    public function __construct($message, $fileerror = 0)
-    {
-        $this->_fileerror = $fileerror;
-        parent::__construct($message);
-    }
-
-    /**
-     * Returns the transfer error code for the exception
-     * This is not the exception code !!!
-     *
-     * @return integer
-     */
-    public function getFileError()
-    {
-        return $this->_fileerror;
-    }
-}
+ * @license    ht

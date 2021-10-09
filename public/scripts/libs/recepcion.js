@@ -606,54 +606,31 @@ function registrarEncomienda(tipo, obj) {
                             printer.setJson(JSON.stringify(itm), "item");
                         }
                     } else {
-                        /*
-                        printer.setDocument("factura");
-                        var c = msg.cabecera;
-                        var emp = msg.empresa;
-
-                        printer.setEncomienda(e.destinatario, e.destino,
-                                e.detalle, e.guia, e.origen, e.remitente, e.total,
-                                msg.tipo, e.telefonoDestinatario, e.declarado,
-                                e.observacion, e.ciudadDestino);
-                        printer.setCabecera(c.numeroSuc, c.autoimpresor, c.direccion, c.direccion2, c.ciudad, c.telefono, c.usuario, emp.title, emp.nombre, emp.nit);
-                        printer.setInfoSucursal(c.municipio, c.leyendaActividad, c.tipoFactura, c.ciudadCapital, c.ciudad2, c.leyendaSucursal);
-                        for (var jki in msg.items) {
-                            var itmi = msg.items[jki];
-                            printer.addItem(itmi.cantidad, itmi.detalle, itmi.peso, itmi.total);
-                        }
-                        if (msg.factura) {
-                            var f = msg.factura;
-                            printer.setFactura(f.fecha, f.hora, f.nombre, f.nit, f.numerofactura, f.autorizacion, f.codigoControl, f.fechaLimite, f.total, f.totalLiteral);
-                        }
-                         */
                         console.log(JSON.stringify(msg));
+                        var print2 = null;
+                        if(msg.pdf_encomienda_porpagar_recibo !== undefined){
+                            print2 = msg.pdf_encomienda_porpagar_recibo;
+                        } else {
+                            print2 = msg.pdf_encomienda_recibo;
+                        }
+                        // printJS({
+                        //     printable: msg.pdf_encomienda,
+                        //     type: 'pdf',
+                        //     onPrintDialogClose: function() {
+                        //         if(msg.pdf_encomienda_porpagar_recibo !== undefined){
+                        //             printJS(msg.pdf_encomienda_porpagar_recibo);
+                        //         } else {
+                        //             printJS(msg.pdf_encomienda_recibo);
+                        //         }
+                        //     }
+                        // });
 
-                        console.log('eeeee1:: '+msg.pdf_encomienda_porpagar_recibo);
                         printJS({
                             printable: msg.pdf_encomienda,
-                            type: 'pdf',
-                            onPrintDialogClose: function() {
-                                if(msg.pdf_encomienda_porpagar_recibo !== undefined){
-                                    console.log('eeeee2:: '+msg.pdf_encomienda_porpagar_recibo);
-                                    printJS(msg.pdf_encomienda_porpagar_recibo);
-                                }
-                            }
+                            type: 'pdf'
                         });
-                        // printJS(msg.pdf_encomienda);
-                        // console.log('eeeee1:: '+msg.pdf_encomienda_porpagar_recibo);
-                        // if(msg.pdf_encomienda_porpagar_recibo !== undefined){
-                        //     console.log('eeeee2:: '+msg.pdf_encomienda_porpagar_recibo);
-                        //     printJS(msg.pdf_encomienda_porpagar_recibo);
-                        // }
 
                     }
-
-                    // printer.imprimir();
-                    // printer.setDocument("guia");
-                    // printer.imprimir();
-
-                    // printer.clean();
-
                     removeDialog("#previewFacturacion");
                 }
                 removeDialog("#dataFactura");
