@@ -262,6 +262,7 @@ function resultEntrega(json) {
                     printer.addItem(itmi.cantidad, itmi.detalle, itmi.peso, itmi.total);
                 }
                  */
+
             }
 
             //printer.imprimir();

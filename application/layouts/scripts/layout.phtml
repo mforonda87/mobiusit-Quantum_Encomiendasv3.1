@@ -54,7 +54,55 @@ $nombreEmpresa = $confSistModel->getByKey(App_Util_Statics::$nombreEmpresa);
                 } 
             };
         </script>
+        <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
 
+        <style>
+            @media print {
+                @page{
+                    size: auto;
+                    margin: 0mm;
+                }
+                .pdf_head{
+                    text-align: center;
+                }
+
+                .pdf_head p {
+                    margin: 3px 0;
+                }
+
+                .pdf_datos p {
+                    margin: 3px 0;
+                }
+
+                .pdf_datos table {
+                    width: 95%;
+                    border: 1px solid black;
+                    border-collapse: collapse;
+                }
+
+                .pdf_datos table thead tr th {
+                    border: 1px solid black;
+                }
+
+                .pdf_datos table tbody tr td {
+                    border: 1px solid black;
+                }
+
+                .pdf_datos table tfoot tr td {
+                    border: 1px solid black;
+                }
+
+                .pdf_pie .pie_usuario {
+                    font-size: 12px;
+                }
+
+                .pdf_pie .pie_firma {
+                    margin: 2px 4px;
+                    text-align: center;
+                }
+
+            }
+        </style>
     </head>
     <body>
         <div class="header_bar">

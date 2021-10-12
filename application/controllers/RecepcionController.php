@@ -235,6 +235,8 @@ class RecepcionController extends Zend_Controller_Action {
 //        echo "val :".$objectJSON['nombreFactura']."  ---- ";
 //        $objectJSON;
 //        print_r($objectJSON);
+        $fechaActual = new DateTime();
+        $result['fechaActual'] = $fechaActual->format('d-m-Y');
         echo Zend_Json::encode($result);
     }
 

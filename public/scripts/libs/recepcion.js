@@ -613,22 +613,9 @@ function registrarEncomienda(tipo, obj) {
                         } else {
                             print2 = msg.pdf_encomienda_recibo;
                         }
-                        // printJS({
-                        //     printable: msg.pdf_encomienda,
-                        //     type: 'pdf',
-                        //     onPrintDialogClose: function() {
-                        //         if(msg.pdf_encomienda_porpagar_recibo !== undefined){
-                        //             printJS(msg.pdf_encomienda_porpagar_recibo);
-                        //         } else {
-                        //             printJS(msg.pdf_encomienda_recibo);
-                        //         }
-                        //     }
-                        // });
 
-                        printJS({
-                            printable: msg.pdf_encomienda,
-                            type: 'pdf'
-                        });
+                        loadImprEntrega(msg);
+                        location.reload();
 
                     }
                     removeDialog("#previewFacturacion");
