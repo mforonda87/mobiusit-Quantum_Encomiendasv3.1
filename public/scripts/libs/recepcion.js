@@ -615,6 +615,7 @@ function registrarEncomienda(tipo, obj) {
                         }
 
                         loadImprEntrega(msg);
+
                         location.reload();
 
                     }
