@@ -614,7 +614,7 @@ function registrarEncomienda(tipo, obj) {
                             print2 = msg.pdf_encomienda_recibo;
                         }
 
-                        loadImprEntrega(msg);
+                        loadImprRecepcion(msg);
 
                         location.reload();
 

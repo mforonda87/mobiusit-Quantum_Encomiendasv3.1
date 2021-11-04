@@ -136,55 +136,27 @@ function resultEntrega(json) {
                 dataType: 'json',
                 async: false,
                 success: function(data) {
-
+                    var f = new Date();
+                    console.log('ffff:: ' +f.getDate() + "-" + f.getMonth() + "-" + f.getFullYear());
+                    data.info.tipo = encomiendaData.cabecera.tipo + ' POR PAGAR';
+                    data.info.fechaActual = f.getDate() + "-" + f.getMonth() + "-" + f.getFullYear();
+                    // data.info.fechaActual = 'cc vvv rrrr';
+                    data.info.observacion = encomiendaData.encomienda.observacion;
+                    data.info.items = encomiendaData.items;
+                    data.info.infoEntrega = {
+                        receptor: encomiendaData.encomienda.receptor,
+                        carnet: encomiendaData.encomienda.carnet,
+                        telefonoRemitente: encomiendaData.encomienda.telefonoRemitente
+                    };
                     console.log(JSON.stringify(data));
+                    console.log(JSON.stringify(data.info));
                     console.log(JSON.stringify(encomiendaData));
                     if (data.error == false) {
                         deleteRow();
                         if (data.info.tipoFactura == "Automatica") {
-                            try {
-                                // verificamos is la impresion es desde el applet con con nuetra implementacion en javafx
-
-                                // if (window.printer) {
-                                //     printer.typeDocument = "facturaEncomienda";
-                                //     printer.setJson(JSON.stringify(data.info.empresa), "empresa");
-                                //     printer.setJson(JSON.stringify(data.info.encomienda), "encomienda");
-                                //     printer.setJson(JSON.stringify(data.info.factura), "factura");
-                                //     printer.setJson(JSON.stringify(data.info.cabecera), "sucursal");
-                                //     for (var jk in data.info.items) {
-                                //         var itm = data.info.items[jk];
-                                //         printer.setJson(JSON.stringify(itm), "item");
-                                //     }
-                                //
-                                // } else {
-                                //
-                                //     var info = json.response.info;
-                                //     var c = info.cabecera;
-                                //     var e = info.encomienda;
-                                //
-                                //     printer.setEncomienda(e.destinatario, e.destino, e.detalle, e.guia, e.origen, e.remitente, e.total, c.tipo, e.telefonoRemitente, e.declarado, e.observacion, e.ciudadDestino);
-                                //     printer.addInfoEntrega(e.receptor, e.carnet);
-                                //     var fact = data.info.factura;
-                                //
-                                //     //                        console.log(data.info);
-                                //     printer.setFactura(fact.fecha, fact.hora, fact.nombre, fact.nit, fact.numerofactura, fact.autorizacion, fact.codigoControl, fact.fechaLimite, fact.total, fact.totalLiteral);
-                                //     printer.setCabecera(userSucursal.numero, "0", userSucursal.direccion, userSucursal.direccion2, userSucursal.ciudad, userSucursal.telefono, c.user, info.empresa.title, info.empresa.nombre, info.empresa.nit);
-                                //     var cab2 = data.info.cabecera;
-                                //     printer.setInfoSucursal(cab2.municipio, cab2.leyendaActividad, cab2.tipoFactura, cab2.ciudadCapital, cab2.ciudad2);
-                                //     for (var jk in info.items) {
-                                //         var itm = info.items[jk];
-                                //         var total = Math.round(itm.total);
-                                //         printer.addItem(itm.cantidad, itm.detalle, total, total);
-                                //     }
-                                // }
-                                // printer.imprimir();
-                                // printer.typeDocument = "reciboEntregaPP";// imprimira un recibo de entrega de una encomienda por pagar
-                                // printer.imprimir();
-                                // printer.clean();
-                            } catch (ex) {
-                                alert(ex);
-                                console.log("Errores al imprimir", ex);
-                            }
+                            $("#entregaForm")[0].reset();
+                            loadImprEntrega(data.info);
+                            document.location.reload();
                         }
                         $("#entregaForm")[0].reset();
                         removeDialog("#dialogEntrega");
