@@ -2703,6 +2703,7 @@ function cancelCorporateDebt(client) {
                         dataType: "json",
                         success: function (msg) {
                             if (msg.error === false) {
+                                /*
                                 var printer = window.printer ? window.printer : document.printerSystem;
                                 printer.setDocument("factura");
                                 var c = msg.cabecera;
@@ -2729,6 +2730,54 @@ function cancelCorporateDebt(client) {
 
                                 printer.clean();
                                 removeDialog("#ClientDebt");
+                                */
+                                var c = msg.cabecera;
+                                var emp = msg.empresa;
+                                var e = msg.encomienda;
+                                var itemsP = [];
+                                console.log(JSON.stringify(msg.items));
+                                for (var jki in msg.items) {
+                                    var itmi = msg.items[jki];
+                                    // printer.addItem(itmi.cantidad, itmi.detalle, itmi.peso, itmi.total);
+                                    itemsP.push({
+                                        'cantidad': itmi.cantidad,
+                                        'detalle': itmi.detalle,
+                                        'total': itmi.total,
+                                        'peso': itmi.peso
+                                    });
+                                }
+
+                                var fe = new Date();
+                                var dataPrint = {
+                                    'empresa': emp.nombre,
+                                    'cabecera': {
+                                        'numeroSuc': c.numeroSuc,
+                                        'telefono': c.telefono,
+                                        'direccion': c.direccion,
+                                        'direccion2': c.direccion2,
+                                        'ciudad': c.ciudad,
+                                        'usuario': c.usuario
+                                    },
+                                    'tipo': emp.title,
+                                    'fechaActual': fe.getDate() + "-" + fe.getMonth() + "-" + fe.getFullYear(),
+                                    'encomienda': {
+                                        'origen': e.origen,
+                                        'destino': e.destino,
+                                        'guia': e.guia,
+                                        'remitente': e.remitente,
+                                        'destinatario': e.destinatario,
+                                        'telefonoRemitente': e.telefonoRemitente
+                                    },
+                                    'infoEntrega': {
+                                        'receptor': e.remitente,
+                                        'carnet': msg.factura.nit
+                                    },
+                                    'items': itemsP,
+                                    'observacion': e.observacion
+                                };
+
+                                loadImprEntrega(dataPrint);
+                                document.location.reload();
                             } else {
                                 console.log(msg);
                                 alert("No se puedo facturar");
