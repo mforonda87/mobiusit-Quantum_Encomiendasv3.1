@@ -1,7 +1,10 @@
 function loadImprRecepcion(data){
-    var vm = new Vue({
+    new Vue({
         el: '#print_v',
         data: data,
+        // components: {
+        //     'my-print-v': httpVueLoader('../scripts/encomienda/print_v.vue')
+        // },
         computed: {
             total: function () {
                 let sum = 0;
@@ -70,3 +73,11 @@ function printDiv(divName){
     document.body.innerHTML = originalContents;
     return false;
 }
+
+new Vue({
+    el: '#my-app',
+    data: { fecha: "pedro"},
+    components: {
+        'my-component': httpVueLoader('../scripts/encomienda/recibo.vue')
+    }
+});

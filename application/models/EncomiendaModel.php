@@ -1059,6 +1059,7 @@ class App_Model_EncomiendaModel extends Zend_Db_Table_Abstract {
         $select->where('manifiesto=?', $idManifiesto);
         $select->order('tipo');
         $select->order('fecha');
+        $select->order('nombre_destino');
         $select->order('guia');
 //        echo $select->__toString();
         return $db->fetchAll($select);

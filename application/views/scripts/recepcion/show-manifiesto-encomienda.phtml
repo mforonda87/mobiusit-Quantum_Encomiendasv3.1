@@ -3,6 +3,51 @@ $total = 0;
 //foreach ($this->datos['items'] as $key => $item){
 //    $total += $item['monto'];
 //}
+$destinosTem = array();
+foreach ($this->datos['encomiendas'] as $key => $encomienda){
+    array_push($destinosTem,$encomienda['destino']);
+}
+$destinos = array_unique($destinosTem);
+
+$tiposTem = array();
+foreach ($this->datos['encomiendas'] as $key => $encomienda){
+    array_push($tiposTem,$encomienda['tipo']);
+}
+$tipos = array_unique($tiposTem);
+
+$arr_destinos1 = array();
+foreach ($destinos as $destino) {
+    $enc = array();
+    foreach ($this->datos['encomiendas'] as $key => $encomienda){
+        if(strcmp($encomienda['destino'], $destino) == 0){
+            array_push($enc, $encomienda);
+        }
+    }
+    if(count($enc) > 0){
+        array_push($arr_destinos1, array('destino' => $destino, 'encomiendas' => $enc));
+    }
+}
+
+$arr_final1 = array();
+foreach ($arr_destinos1 as $adestino){
+    $adestinos = array();
+    foreach ($tipos as $tipo){
+        $aEncomiendas = array();
+        foreach ($adestino['encomiendas'] as $enc1){
+            if(strcmp($tipo, $enc1['tipo']) == 0){
+                array_push($aEncomiendas, $enc1);
+            }
+        }
+        if(count($aEncomiendas) > 0){
+            array_push($adestinos, array('tipo' => $tipo, 'encomiendas' => $aEncomiendas));
+        }
+    }
+    if(count($adestinos) > 0){
+        array_push($arr_final1, array('destino' => $adestino['destino'], 'tipos' => $adestinos) );
+    }
+}
+//echo json_encode($arr_final1);
+//die();
 ?>
 <style>
     @page { margin: 2px; }
@@ -64,58 +109,28 @@ $total = 0;
             </tr>
             </thead>
             <tbody>
-            <tr>
-                <td colspan="3" style="text-align: center;"><h5 style="<?= App_Util_Statics::$printFontH5; ?> padding: 5px; margin: 0;">NORMAL</h5></td>
-            </tr>
-            <?php foreach ($this->datos['encomiendas'] as $key => $encomienda): ?>
-            <?php if(strcmp($encomienda['tipo'], 'NORMAL') == 0): ?>
-            <tr>
-                <td style="<?= App_Util_Statics::$printFontTableBodyP; ?>"><?= $encomienda['guia'] ?></td>
-                <td style="<?= App_Util_Statics::$printFontTableBodyP; ?>"><?= $encomienda['detalle'] ?></td>
-                <td style="<?= App_Util_Statics::$printFontTableBodyP; ?> text-align: right;"><?= $encomienda['total'] ?></td>
-            </tr>
-            <?php $total = $total + $encomienda['total'] ?>
-            <?php endif; ?>
-            <?php endforeach; ?>
-            <tr>
-                <td colspan="3" style="text-align: center;"><h5 style="<?= App_Util_Statics::$printFontH5; ?> padding: 5px; margin: 0;">GIRO</h5></td>
-            </tr>
-            <?php foreach ($this->datos['encomiendas'] as $key => $encomienda): ?>
-                <?php if(strcmp($encomienda['tipo'], 'GIRO') == 0): ?>
+
+
+            <?php foreach ($arr_final1 as $destinos): ?>
+                <tr>
+                    <td colspan="3" style="text-align: center;"><h5 style="<?= App_Util_Statics::$printFontH5; ?> padding: 5px; margin: 0; background-color: #D1CDD8;"><?= $destinos['destino'] ?></h5></td>
+                </tr>
+                <?php foreach ($destinos['tipos'] as $tipos): ?>
                     <tr>
-                        <td style="<?= App_Util_Statics::$printFontTableBodyP; ?>"><?= $encomienda['guia'] ?></td>
-                        <td style="<?= App_Util_Statics::$printFontTableBodyP; ?>"><?= $encomienda['detalle'] ?></td>
-                        <td style="<?= App_Util_Statics::$printFontTableBodyP; ?> text-align: right;"><?= $encomienda['total'] ?></td>
+                        <td colspan="3" style="text-align: center;"><h5 style="font-size: 10px; padding: 5px; margin: 0;"><?= $tipos['tipo'] ?></h5></td>
                     </tr>
-                    <?php $total = $total + $encomienda['total'] ?>
-                <?php endif; ?>
+                    <?php foreach ($tipos['encomiendas'] as $encomienda1): ?>
+                        <tr>
+                            <td style="<?= App_Util_Statics::$printFontTableBodyP; ?>"><?= $encomienda1['guia'] ?></td>
+                            <td style="<?= App_Util_Statics::$printFontTableBodyP; ?>"><?= $encomienda1['detalle'] ?></td>
+                            <td style="<?= App_Util_Statics::$printFontTableBodyP; ?> text-align: right;"><?= $encomienda1['total'] ?></td>
+                        </tr>
+                        <?php $total = $total + $encomienda['total'] ?>
+                    <?php endforeach; ?>
+                <?php endforeach; ?>
             <?php endforeach; ?>
-            <tr>
-                <td colspan="3" style="text-align: center;"><h5 style="<?= App_Util_Statics::$printFontH5; ?> padding: 5px; margin: 0;">INTERNO</h5></td>
-            </tr>
-            <?php foreach ($this->datos['encomiendas'] as $key => $encomienda): ?>
-                <?php if(strcmp($encomienda['tipo'], 'INTERNO') == 0): ?>
-                    <tr>
-                        <td style="<?= App_Util_Statics::$printFontTableBodyP; ?>"><?= $encomienda['guia'] ?></td>
-                        <td style="<?= App_Util_Statics::$printFontTableBodyP; ?>"><?= $encomienda['detalle'] ?></td>
-                        <td style="<?= App_Util_Statics::$printFontTableBodyP; ?> text-align: right;"><?= $encomienda['total'] ?></td>
-                    </tr>
-                    <?php //$total = $total + $encomienda['total'] ?>
-                <?php endif; ?>
-            <?php endforeach; ?>
-            <tr>
-                <td colspan="3" style="text-align: center;"><h5 style="<?= App_Util_Statics::$printFontH5; ?> padding: 5px; margin: 0;">POR PAGAR</h5></td>
-            </tr>
-            <?php foreach ($this->datos['encomiendas'] as $key => $encomienda): ?>
-                <?php if(strcmp($encomienda['tipo'], 'POR PAGAR') == 0): ?>
-                    <tr>
-                        <td style="<?= App_Util_Statics::$printFontTableBodyP; ?>"><?= $encomienda['guia'] ?></td>
-                        <td style="<?= App_Util_Statics::$printFontTableBodyP; ?>"><?= $encomienda['detalle'] ?></td>
-                        <td style="<?= App_Util_Statics::$printFontTableBodyP; ?> text-align: right;"><?= $encomienda['total'] ?></td>
-                    </tr>
-                    <?php //$total = $total + $encomienda['total'] ?>
-                <?php endif; ?>
-            <?php endforeach; ?>
+
+
             </tbody>
             <tfoot>
             <tr>

@@ -106,7 +106,7 @@ class App_Util_Statics {
     public static $printFontDatosP = 'font-size: 15px;font-weight:900; padding: 8px 6px; margin: 2; line-height : 2px;';
     public static $printFontQuantumP = 'font-size: 10px; text-align: center; font-weight: 700;';
     public static $printFontTableHeadP = 'font-size: 12px; padding: 8px 8px; margin: 3; line-height : 1px';
-    public static $printFontTableBodyP = 'font-size: 13px; padding: 6px 4px; font-weight:600;  margin: 5;line-height : 10px';
+    public static $printFontTableBodyP = 'font-size: 12px; padding: 4px 2px; font-weight:600;  margin: 2;line-height : 10px';
     public static $printFontTableFootP = 'font-size: 13px; font-weight: 700; padding: 2px 1px; margin: 3;line-height : 12px; ';
     /**
      * Convierte el numero de bus  formato de interno es decir

@@ -1691,7 +1691,8 @@ class RecepcionController extends Zend_Controller_Action {
         $datosM = $this->getRequest()->getParam("datosM");
 
         $dompdf = new Dompdf\Dompdf();
-        $height = App_Util_Statics::$docPdfSizeH + (count($datosM['encomiendas'])*12);
+        //$height = App_Util_Statics::$docPdfSizeH + (count($datosM['encomiendas'])*12);
+        $height = 1000;
         $dompdf->set_paper(array(0, 0, App_Util_Statics::$docPdfSizeW, $height), "portrait");
 
         $dompdf->load_html($this->showManifiestoEncomienda($datosM));

@@ -2776,7 +2776,10 @@ function cancelCorporateDebt(client) {
                                     'observacion': e.observacion
                                 };
 
-                                loadImprEntrega(dataPrint);
+                                if(printFac)
+                                    loadImprEntrega(dataPrint);
+                                else
+
                                 document.location.reload();
                             } else {
                                 console.log(msg);
