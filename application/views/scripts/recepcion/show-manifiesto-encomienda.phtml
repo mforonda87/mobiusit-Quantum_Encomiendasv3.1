@@ -11,6 +11,11 @@ $destinos = array_unique($destinosTem);
 
 $tiposTem = array();
 foreach ($this->datos['encomiendas'] as $key => $encomienda){
+//    if(strcmp($encomienda['tipo'], 'POR PAGAR') != 0){
+//        $total = $total + $encomienda['total'];
+//    }
+    $total = $total + $encomienda['total'];
+
     array_push($tiposTem,$encomienda['tipo']);
 }
 $tipos = array_unique($tiposTem);
@@ -125,7 +130,7 @@ foreach ($arr_destinos1 as $adestino){
                             <td style="<?= App_Util_Statics::$printFontTableBodyP; ?>"><?= $encomienda1['detalle'] ?></td>
                             <td style="<?= App_Util_Statics::$printFontTableBodyP; ?> text-align: right;"><?= $encomienda1['total'] ?></td>
                         </tr>
-                        <?php $total = $total + $encomienda['total'] ?>
+                        <?php //$total = $total + $encomienda['total'] ?>
                     <?php endforeach; ?>
                 <?php endforeach; ?>
             <?php endforeach; ?>
