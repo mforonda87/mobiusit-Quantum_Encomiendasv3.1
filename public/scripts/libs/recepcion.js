@@ -607,14 +607,11 @@ function registrarEncomienda(tipo, obj) {
                         }
                     } else {
                         console.log(JSON.stringify(msg));
-                        var print2 = null;
-                        if(msg.pdf_encomienda_porpagar_recibo !== undefined){
-                            print2 = msg.pdf_encomienda_porpagar_recibo;
+                        if(PRINT_FACTURA){
+                            loadImprFactura(msg);
                         } else {
-                            print2 = msg.pdf_encomienda_recibo;
+                            loadImprRecepcion(msg);
                         }
-
-                        loadImprRecepcion(msg);
 
                         location.reload();
 

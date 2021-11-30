@@ -18,6 +18,9 @@ $this->jQuery()->addJavascriptFile($this->baseUrl() . '/scripts/libs/entrega.js'
 $session = Zend_Registry::get(App_Util_Statics::$SESSION);
 ?>
 <script type="text/javascript">
+
+    const PRINT_FACTURA = parseInt("<?= (App_Util_Statics::$printFactura)? '1' : '0'; ?>");
+
     var arrayDefault = <?= $this->predef ?>;
     var clientesDefault = <?= $this->clientes ?>;
     var userSucursal = <?= $this->userSucursal ?>;
@@ -67,6 +70,7 @@ $session = Zend_Registry::get(App_Util_Statics::$SESSION);
 </div>
 
 <?php require './scripts/printervue/print_recibo.php'?>
+<?php require './scripts/printervue/print_factura.php'?>
 <div id="my-app">
     <my-component :fecha="fecha"></my-component>
 </div>
@@ -76,3 +80,5 @@ $session = Zend_Registry::get(App_Util_Statics::$SESSION);
 <!--</div>-->
 
 <script src="../scripts/printervue/printvue.js"></script>
+<script>
+</script>

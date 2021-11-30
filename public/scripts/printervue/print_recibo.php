@@ -1,5 +1,3 @@
-<?php
-?>
 <!-- Primera impresion -->
 <div id="print_v" style="display: none;">
     <div style="max-width: 302px; min-width: 302px; width: 302px; border: 1px solid #000000; padding: 4px 8px;">

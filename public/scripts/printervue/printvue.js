@@ -74,6 +74,24 @@ function printDiv(divName){
     return false;
 }
 
+function loadImprFactura(data){
+    new Vue({
+        el: '#print_v_factura',
+        data: data,
+        computed: {
+            total: function () {
+                let sum = 0;
+                return this.items.reduce((sum, item) => sum + parseFloat(item.monto), 0 );
+
+            }
+        },
+        mounted () {
+        }
+    });
+
+    printDiv('print_v_factura');
+}
+
 new Vue({
     el: '#my-app',
     data: { fecha: "pedro"},

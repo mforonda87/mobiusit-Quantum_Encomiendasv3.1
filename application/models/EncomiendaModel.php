@@ -204,6 +204,7 @@ class App_Model_EncomiendaModel extends Zend_Db_Table_Abstract {
                 "tipo" => base64_decode($datos['tipoEncomienda']),
                 "total" => $datos['total'],
                 "detalle" => $datos['detalle'],
+                "carnet_recepcion" => (isset($datos['Nit'])? $datos['Nit'] : $datos['nitCliente']),
                 "valor_declarado" => $declarado,
                 "observacion" => $obsEncomienda,
                 "estado" => "RECIBIDO"
