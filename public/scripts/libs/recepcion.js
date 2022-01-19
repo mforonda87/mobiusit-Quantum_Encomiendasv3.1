@@ -14,6 +14,7 @@ var BUSQUEDA = "Busqueda";
 var TIPO_NORMAL = "Tk9STUFM";
 var TIPO_PORPAGAR = "UE9SIFBBR0FS";
 var TIPO_GIRO = "R0lSTw==";
+var TIPO_CORPORATIVO = "Q29vcnBvcmF0aXZv";
 
 var INFORMACION_VIAJE = {};
 // controles basicos equipajes
@@ -492,6 +493,7 @@ function previewRegister(tipo, obj) {
         buttons: {
             "Aceptar": function (a, e) {
                 $(a.target).attr("disabled", true).addClass("ui-state-disabled");
+                $(a).attr("disabled", true).addClass("ui-state-disabled");
                 registrarEncomienda(tipo, obj);
             },
             "Cerrar": function () {
@@ -592,30 +594,13 @@ function registrarEncomienda(tipo, obj) {
                 var e = msg.encomienda;
                 if (msg.cabecera != "Manual") {
                     var printer = window.printer ? window.printer : document.printerSystem;
-                    console.log("ddddddddd");
                     console.log(JSON.stringify(window.printer));
                     console.log(JSON.stringify(document.printerSystem));
-                    if (window.printer) {
-                        printer.setDocument("facturaEncomienda");
-                        printer.setJson(JSON.stringify(msg.empresa), "empresa");
-                        printer.setJson(JSON.stringify(msg.encomienda), "encomienda");
-                        printer.setJson(JSON.stringify(msg.factura), "factura");
-                        printer.setJson(JSON.stringify(msg.cabecera), "sucursal");
-                        for (var jk in msg.items) {
-                            var itm = msg.items[jk];
-                            printer.setJson(JSON.stringify(itm), "item");
-                        }
-                    } else {
-                        console.log(JSON.stringify(msg));
-                        if(PRINT_FACTURA){
-                            loadImprFactura(msg);
-                        } else {
-                            loadImprRecepcion(msg);
-                        }
 
-                        location.reload();
+                    console.log(JSON.stringify(msg));
+                    $('#f_show_print :input[name="datos"]').val(JSON.stringify(msg));
+                    $('#f_show_print').submit();
 
-                    }
                     removeDialog("#previewFacturacion");
                 }
                 removeDialog("#dataFactura");
@@ -963,7 +948,7 @@ function verificarTipo() {
     }
     $("#middleForm div.contentBox").css("background-color", color);
 
-    if (obj.val() == TIPO_NORMAL || obj.val() == TIPO_PORPAGAR) {//Normal
+    if (obj.val() == TIPO_NORMAL || obj.val() == TIPO_PORPAGAR || obj.val() == TIPO_CORPORATIVO) {//Normal
         $("#items div.row:not(:last)").each(function () {
             var cant = $(this).find("input[name=cantidad]").val();
             var peso = $(this).find("input[name=peso]").val();
@@ -2700,38 +2685,13 @@ function cancelCorporateDebt(client) {
                         dataType: "json",
                         success: function (msg) {
                             if (msg.error === false) {
-                                /*
-                                var printer = window.printer ? window.printer : document.printerSystem;
-                                printer.setDocument("factura");
-                                var c = msg.cabecera;
-                                var emp = msg.empresa;
-                                var e = msg.encomienda;                                
-                                printer.setEncomienda(e.destinatario, e.destino,
-                                        e.detalle, e.guia, e.origen, e.remitente, e.total,
-                                        e.tipo, e.telefonoDestinatario, e.declarado,
-                                        e.observacion, e.ciudadDestino);
-                                printer.setCabecera(c.numeroSuc, c.autoimpresor, c.direccion, c.direccion2, c.ciudad, c.telefono, c.usuario, emp.title, emp.nombre, emp.nit);
-                                printer.setInfoSucursal(c.municipio, c.leyendaActividad, c.tipoFactura, c.ciudadCapital, c.ciudad2, c.leyendaSucursal);
-                                for (var jki in msg.items) {
-                                    var itmi = msg.items[jki];
-                                    printer.addItem(itmi.cantidad, itmi.detalle, itmi.peso, itmi.total);
-                                }
-                                if (msg.factura) {
-                                    var f = msg.factura;
-                                    printer.setFactura(f.fecha, f.hora, f.nombre, f.nit, f.numerofactura, f.autorizacion, f.codigoControl, f.fechaLimite, f.total, f.totalLiteral);
-                                }
-
-                                printer.imprimir();
-                                printer.setDocument("guia");
-                                printer.imprimir();
-
-                                printer.clean();
-                                removeDialog("#ClientDebt");
-                                */
                                 var c = msg.cabecera;
                                 var emp = msg.empresa;
                                 var e = msg.encomienda;
+                                var f = msg.factura;
                                 var itemsP = [];
+                                console.log('rr pp wwa aaa1');
+                                console.log(JSON.stringify(msg));
                                 console.log(JSON.stringify(msg.items));
                                 for (var jki in msg.items) {
                                     var itmi = msg.items[jki];
@@ -2746,38 +2706,69 @@ function cancelCorporateDebt(client) {
 
                                 var fe = new Date();
                                 var dataPrint = {
-                                    'empresa': emp.nombre,
+                                    'factura': {
+                                        'numerofactura': f.numerofactura,
+                                        'autorizacion': f.autorizacion,
+                                        'fecha': f.fecha,
+                                        'nombre': f.nombre,
+                                        'nit': f.nit,
+                                        'total': f.total,
+                                        'totalLiteral': f.totalLiteral,
+                                        'codigoControl': f.codigoControl,
+                                        'fechaLimite': f.fechaLimite
+                                    },
+                                    'empresa': {
+                                        'title': emp.title,
+                                        'nombre': emp.nombre,
+                                        'nit': emp.nit
+
+                                    },
                                     'cabecera': {
                                         'numeroSuc': c.numeroSuc,
+                                        'nombSuc': c.nombSuc,
                                         'telefono': c.telefono,
                                         'direccion': c.direccion,
                                         'direccion2': c.direccion2,
                                         'ciudad': c.ciudad,
-                                        'usuario': c.usuario
+                                        'usuario': c.usuario,
+                                        'autoimpresor': c.autoimpresor,
+                                        'leyendaActividad': c.leyendaActividad,
+                                        'tipoFactura': c.tipoFactura,
+                                        'ciudadCapital': c.ciudadCapital,
+                                        'ciudad2': c.ciudad2,
+                                        'municipio': c.municipio,
+                                        'leyendaSucursal': c.leyendaSucursal
                                     },
-                                    'tipo': emp.title,
+                                    'tipo': e.tipo,
+                                    'url': '',
                                     'fechaActual': fe.getDate() + "-" + fe.getMonth() + "-" + fe.getFullYear(),
                                     'encomienda': {
-                                        'origen': e.origen,
-                                        'destino': e.destino,
-                                        'guia': e.guia,
                                         'remitente': e.remitente,
                                         'destinatario': e.destinatario,
-                                        'telefonoRemitente': e.telefonoRemitente
+                                        'telefonoRemitente': e.telefonoRemitente,
+                                        'origen': e.origen,
+                                        'destino': e.destino,
+                                        'ciudadDestino': e.ciudadDestino,
+                                        'guia': e.guia,
+                                        'detalle': e.guia,
+                                        'total': e.total,
+                                        'declarado': e.declarado,
+                                        'observacion': e.observacion,
+                                        'tipo': e.tipo
                                     },
                                     'infoEntrega': {
                                         'receptor': e.remitente,
                                         'carnet': msg.factura.nit
                                     },
                                     'items': itemsP,
-                                    'observacion': e.observacion
+                                    'observacion': e.observacion,
+                                    'url_qr': msg.url_qr
                                 };
-
-                                if(printFac)
-                                    loadImprEntrega(dataPrint);
-                                else
-
-                                document.location.reload();
+                                console.log('ssssssssss wwwww rrrrr');
+                                console.log(JSON.stringify(dataPrint));
+                                $('#f_show_print :input[name="datos"]').val(JSON.stringify(dataPrint));
+                                $('#f_show_print').submit();
+                                // document.location.reload();
                             } else {
                                 console.log(msg);
                                 alert("No se puedo facturar");

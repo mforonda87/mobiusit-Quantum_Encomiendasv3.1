@@ -63,6 +63,7 @@ class App_Form_Recepcion {
                             <option value="' . base64_encode("POR PAGAR") . '">POR PAGAR</option>
                             <option value="' . base64_encode("INTERNO") . '">SERVICIO INTERNO</option>
                             <option value="' . base64_encode("GIRO") . '">GIRO</option>
+                            <option value="' . base64_encode("Coorporativo") . '">Coorporativo</option>
                         </select>
                     </label>
                   </div>  

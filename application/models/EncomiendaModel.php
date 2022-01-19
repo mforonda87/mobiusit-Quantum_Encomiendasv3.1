@@ -440,11 +440,14 @@ class App_Model_EncomiendaModel extends Zend_Db_Table_Abstract {
             );
             $codigoGuia = $encomienda['guia'];
             $nombreDestino = $encomienda['destino'];
+
+//            die(strtoupper(urldecode($encomienda['remitente'])));
             $encomienda = array(
                 "id_encomienda" => "0",
                 "fecha" => $fecha,
                 "hora" => $hora,
-                "remitente" => strtoupper($encomienda['remitente']),
+                "remitente" => strtoupper(urldecode($encomienda['remitente'])),
+//                "remitente" => 'IMABOL S.R.L.',
                 "destinatario" => strtoupper($encomienda['destinatario']),
                 "receptor" => strtoupper($encomienda['receptor']),
                 "carnet" => strtoupper($encomienda['carnet']),
@@ -469,7 +472,7 @@ class App_Model_EncomiendaModel extends Zend_Db_Table_Abstract {
             $sql->from($this->_name);
             $where[] = "fecha='" . $fecha . "'";
             $where[] = "hora='" . $hora . "'";
-            $where[] = "remitente='" . strtoupper($encomienda['remitente']) . "'";
+            $where[] = "remitente='" . strtoupper(urldecode($encomienda['remitente'])) . "'";
             $where[] = "sucursal_de='" . $user->sucursal . "'";
             $where[] = "tipo='NORMAL'";
             $encomiendaR = $this->fetchRow($where);
@@ -505,6 +508,216 @@ class App_Model_EncomiendaModel extends Zend_Db_Table_Abstract {
                     }
                 }
             }
+            $db->commit();
+            $session = Zend_Registry::get(App_Util_Statics::$SESSION);
+            $datosEncomienda = array(
+                "idEncomienda" => base64_encode($encomiendaR->id_encomienda),
+                "remitente" => $encomienda["remitente"],
+                "destinatario" => $encomienda["destinatario"],
+                "origen" => $session->sucursalName,
+                "destino" => $nombreDestino,
+                "telefonoRemitente" => $encomienda['telefono_remitente'],
+                "telefonoDestinatario" => $encomienda['telefono_destinatario'],
+                "detalle" => $encomienda["detalle"],
+                "guia" => $encomienda["guia"],
+                "total" => $encomienda["total"]
+            );
+
+            $resp = array();
+            $resp["factura"] = $datosFactura;
+            $resp["encomienda"] = $datosEncomienda;
+            $resp["cabecera"] = $cabecera;
+            $resp["empresa"] = $empresa;
+            $resp["items"] = $items;
+
+            return $resp;
+        } catch (Zend_Db_Exception $zdbe) {
+            $db->rollBack();
+            $log->info($zdbe);
+            throw new Zend_Db_Exception($zdbe->getMessage(), 125);
+        }
+    }
+
+    /**
+     * Permite registrar una encomienda por pagar que se entrego
+     * para ello registrara una nueva encomienda que no tendra
+     * mas que un movimiento en de entrega
+     *
+     * @access public
+     * @author Poloche
+     * @author polochepu@gmail.com
+     * @copyright Mobius IT S.R.L.
+     * @copyright http://www.mobius.net.bo
+     * @version rc1
+     * @date $(2010-06-16)
+     */
+    function updatePorPagar($encomienda, $items, $user, $nombreCiudadVendedor) {
+        $db = $this->getAdapter();
+        $db->beginTransaction();
+
+        $facModel = new App_Model_FacturaEncomienda();
+        $dosificacionModel = new App_Model_DosificacionModel ( );
+        $sucursalModel = new App_Model_SucursalModel();
+        $movimientoModel = new App_Model_MovimientoEncomienda();
+        $configuracionSM = new App_Model_ConfiguracionSistema();
+        $configuraciones = $configuracionSM->getAll();
+
+        $hoy = date("Y-m-d");
+
+
+        $log = Zend_Registry::get("log");
+        try {
+            $suc = $sucursalModel->getById($user->sucursal);
+            $session = new Zend_Session_Namespace(App_Util_Statics::$SESSION);
+            $idCiudadDestino = $session->ciudadID;
+            $totalFactura = $encomienda['total'];
+            $fecha = date("Y-m-d");
+            $hora = date("H:i:s");
+            $cabecera = array(
+                "numeroSuc" => $suc->numero,
+                "nombSuc" => $suc->nombre,
+                "telefono" => $suc->telefono,
+                "direccion" => $suc->direccion,
+                "direccion2" => $suc->direccion2,
+                "ciudad" => $nombreCiudadVendedor,
+                "usuario" => $user->nombres,
+                "autoimpresor" => "",
+                "leyendaActividad" => App_Util_Statics::$leyendaActividad,
+                "tipoFactura" => "Encomienda",
+                "ciudadCapital" => $suc->capital,
+                "ciudad2" => $suc->nombre2,
+                "municipio" => "$suc->municipio"
+            );
+            $empresa = array(
+                "title" => $configuraciones[App_Util_Statics::$TITULO_FACTURA_1],
+                "nombre" => $configuraciones[App_Util_Statics::$TITULO_FACTURA_2],
+                "nit" => $configuraciones[App_Util_Statics::$nitEmpresa],
+            );
+            $datosFactura = null;
+            /*             * *************************   FACTURACION ******************** */
+            $log->info("Recuperando la dosificacion");
+            $dosificacion = $dosificacionModel->getLastAutomaticoBySucursal($user->sucursal);
+
+            if (!isset($dosificacion) || !$dosificacion) {
+                throw new Zend_Db_Exception("No existe una dosificacion Activa");
+            }
+            if ($dosificacion->fecha_limite < $hoy) {
+                throw new Zend_Db_Exception(" La Fecha limite de facturacion ha expirado por favor registre una nueva dosificacion");
+            }
+
+            $nit = $encomienda['nit'];
+            $nombre = strtoupper($encomienda['nombreFactura']);
+            $facturacionBean = new App_Util_Facturacion();
+            $factura["id_factura"] = "-1";
+            $factura["vendedor"] = $user->id_persona;
+            $factura["dosificacion"] = $dosificacion->id_datos_factura;
+            $factura["nombre"] = $nombre;
+            $factura["nit"] = $nit;
+            $factura["fecha"] = $hoy;
+            $factura["hora"] = $hora;
+            $factura["monto"] = $totalFactura;
+            $factura["texto_factura"] = "En proceso de codigo de control";
+            $factura["fecha_limite"] = $dosificacion->fecha_limite;
+            $factura["tipo"] = "Automatico";
+            $factura["estado"] = "Activo";
+            $factura["impresion"] = 1;
+
+
+            $log->info("Insertando la factura computarizada");
+            $facModel->insert($factura);
+            $whereFA [] = "vendedor='" . $user->id_persona . "'";
+            $whereFA [] = "monto=" . $totalFactura;
+            $whereFA [] = "tipo='Automatico'";
+            $whereFA [] = "fecha='$hoy'";
+            $whereFA [] = "texto_factura='En proceso de codigo de control'";
+            $facturaA = $facModel->fetchRow($whereFA);
+
+            if (!isset($facturaA)) {
+                $log->info("No se ha podido recuperar la ultima factura");
+                throw new Zend_Db_Exception(" No se Pudo Recuperar la Ultima Factura ");
+            }
+
+            $updateFactura ["codigo_control"] = $facturacionBean->generarCodigoControl($dosificacion->autorizacion, $facturaA->numero_factura, $hoy, $totalFactura, $dosificacion->llave, $nit);
+            $updateFactura ["texto_factura"] = "Finalizado";
+            $whereFCC = array("id_factura='$facturaA->id_factura'");
+            $log->info("Actualizando el codigo de control de la factura ");
+            if ($facModel->update($updateFactura, $whereFCC) == 0) {
+                $log->info("No se pudo Actualizar el codigo de control de la factura ");
+                throw new Zend_Db_Exception(" No se Pudo Recuperar la Ultima Factura con codigo de control");
+            }
+            $ultimaFactura = $facModel->fetchRow($whereFCC);
+
+
+            $literal = App_Util_Statics::convertNumber($totalFactura);
+            $fechaFactura = new Zend_Date($factura["fecha"], null, 'es_BO');
+            $fechaPrint = $fechaFactura->toString("dd/MMM/YYYY");
+            $datosFactura = array(
+                "fecha" => $fechaPrint,
+                "hora" => $factura["hora"],
+                "nombre" => strtoupper($factura["nombre"]),
+                "nit" => $factura["nit"],
+                "numerofactura" => "$ultimaFactura->numero_factura",
+                "autorizacion" => $dosificacion->autorizacion,
+                "codigoControl" => $ultimaFactura->codigo_control,
+                "fechaLimite" => $factura["fecha_limite"],
+                "total" => $factura["monto"],
+                "totalLiteral" => App_Util_Statics::num2letras($totalFactura)
+            );
+            $codigoGuia = $encomienda['guia'];
+            $nombreDestino = $encomienda['destino'];
+
+            $encomienda = array(
+//                "id_encomienda" => "0",
+                "fecha_recojo" => $fecha,
+                "hora_recojo" => $hora,
+//                "remitente" => strtoupper(urldecode($encomienda['remitente'])),
+//                "remitente" => 'IMABOL S.R.L.',
+//                "destinatario" => strtoupper($encomienda['destinatario']),
+//                "receptor" => strtoupper($encomienda['receptor']),
+//                "carnet" => strtoupper($encomienda['carnet']),
+//                "telefono_remitente" => $encomienda['telefonoRemitente'],
+//                "telefono_destinatario" => $encomienda['telefonoDestinatario'],
+//                "sucursal_or" => $user->sucursal,
+//                "sucursal_de" => $user->sucursal,
+//                "ciudad_de" => $idCiudadDestino,
+//                "nombre_destino" => $nombreCiudadVendedor,
+//                "nombre_ciudad_destino" => $nombreCiudadVendedor,
+//                "guia" => $codigoGuia,
+//                "tipo" => "NORMAL",
+//                "total" => $totalFactura,
+//                "detalle" => $encomienda['detalle'],
+                "detalle" => 'test detalle',
+                "factura" => $facturaA->id_factura,
+                "estado" => "ENTREGADO",
+                "is_porpagar_entregada" => "1"
+            );
+            $log->info("Registrando la encomienda...... ");
+            $whereUpdateEnc[] = "guia='" . $codigoGuia . "'";
+            $this->update($encomienda, $whereUpdateEnc);
+
+            $sql = $db->select();
+            $sql->from($this->_name);
+            $where[] = "guia='" . $codigoGuia . "'";
+//            $where[] = "hora_recojo='" . $hora . "'";
+//            $where[] = "remitente='" . strtoupper(urldecode($encomienda['remitente'])) . "'";
+//            $where[] = "sucursal_de='" . $user->sucursal . "'";
+//            $where[] = "tipo='POR PAGAR'";
+            $encomiendaR = $this->fetchRow($where);
+
+            $movimiento = array(
+                "id_movimiento" => "0",
+                "fecha" => $hoy,
+                "hora" => $hora,
+                "movimiento" => "ENTREGADO",
+                "usuario" => $user->id_persona,
+                "encomienda" => $encomiendaR->id_encomienda,
+                "sucursal" => $user->sucursal,
+                "observacion" => "ENTREGADO en sucursal " . $encomienda['sucEntrega'],
+            );
+
+            $log->info("Registrando El movimiento...... ");
+            $movimientoModel->insert($movimiento);
+
             $db->commit();
             $session = Zend_Registry::get(App_Util_Statics::$SESSION);
             $datosEncomienda = array(
@@ -666,7 +879,8 @@ class App_Model_EncomiendaModel extends Zend_Db_Table_Abstract {
                 "id_encomienda" => "0",
                 "fecha" => $fecha,
                 "hora" => $hora,
-                "remitente" => strtoupper($encomienda['remitente']),
+                "remitente" => strtoupper(urlencode($encomienda['remitente'])),
+//                "remitente" => 'eeee',
                 "destinatario" => strtoupper($encomienda['destinatario']),
                 "receptor" => strtoupper($encomienda['receptor']),
                 "carnet" => strtoupper($encomienda['carnet']),
@@ -691,7 +905,7 @@ class App_Model_EncomiendaModel extends Zend_Db_Table_Abstract {
             $sql->from($this->_name);
             $where[] = "fecha='" . $fecha . "'";
             $where[] = "hora='" . $hora . "'";
-            $where[] = "remitente='" . strtoupper($encomienda['remitente']) . "'";
+            $where[] = "remitente='" . strtoupper(urldecode($encomienda['remitente'])) . "'";
             $where[] = "sucursal_de='" . $user->sucursal . "'";
             $where[] = "tipo='NORMAL'";
             $encomiendaR = $this->fetchRow($where);

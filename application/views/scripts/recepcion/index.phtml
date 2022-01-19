@@ -69,6 +69,11 @@ $session = Zend_Registry::get(App_Util_Statics::$SESSION);
     </div>
 </div>
 
+<form id="f_show_print" action="<?= $this->baseUrl().'/recepcion/show-printer' ?>" method="post" target="_blank">
+    <input type="hidden" name="datos">
+<!--    <input type="submit" name="ver..." />-->
+</form>
+
 <?php require './scripts/printervue/print_recibo.php'?>
 <?php require './scripts/printervue/print_factura.php'?>
 <div id="my-app">

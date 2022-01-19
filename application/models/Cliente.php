@@ -177,6 +177,7 @@ class App_Model_Cliente extends Zend_Db_Table_Abstract {
     }
 
     function payPackages($clientId, $idEncomiendas) {
+        require_once(__DIR__.'/../../library/phpqrcode/qrlib.php');
         $db = $this->getAdapter();
         $db->beginTransaction();
         $client = $this->fetchRow(array("id_cliente='$clientId'"));
@@ -259,6 +260,21 @@ class App_Model_Cliente extends Zend_Db_Table_Abstract {
 
         $fechaFactura = new Zend_Date($factura["fecha"], null, 'es_BO');
         $fechaPrint = $fechaFactura->toString("dd/MMM/YYYY");
+
+
+        $fileName = 'qt_'.date("YmdHis").'.png';
+        $pngAbsoluteFilePath = dirname(dirname(dirname( __FILE__))).'/public/images/temp/qrs/'.$fileName;
+        $baseUrl = new Zend_View_Helper_BaseUrl();
+        $url_qr = $baseUrl->baseUrl().'/images/temp/qrs/'.$fileName;
+        if (!file_exists($pngAbsoluteFilePath)) {
+            $qr_string = $empresa['nit'].'|'.$empresa['title'].'|'.$factura['numerofactura'].'|'.$factura['autorizacion'];
+            $qr_string .= '|'.$factura['fecha'].'|'.$factura['total'].'|'.$factura['codigoControl'];
+            $qr_string .= '|'.$factura['fechaLimite'].'|0|0|'.$factura['nit'].'|'.$factura['nombre'];
+            QRcode::png($qr_string, $pngAbsoluteFilePath, QR_ECLEVEL_L, 5);
+        }
+        $result['url_qr'] = $url_qr;
+
+
         $datosFactura = array(
             "fecha" => $fechaPrint,
             "hora" => $factura["hora"],
@@ -287,7 +303,7 @@ class App_Model_Cliente extends Zend_Db_Table_Abstract {
             "guia"=>$guias,
             "remitente"=>"ClienteCoorporativo",
             "total" => $totalFactura,
-            "tipo"=>"Nornmal",
+            "tipo"=>"NORMAL",
             "telefonoDestinatario"=>"",
             "declarado"=>false,
             "observacion"=>"Facturacion coorporativa",
@@ -301,7 +317,9 @@ class App_Model_Cliente extends Zend_Db_Table_Abstract {
         $resp["cabecera"] = $cabecera;
         $resp["empresa"] = $empresa;
         $resp["items"] = $itemsReturn;
+        $resp["url_qr"] = $url_qr;
         $resp["error"] = false;
+
 
         return $resp;
     }

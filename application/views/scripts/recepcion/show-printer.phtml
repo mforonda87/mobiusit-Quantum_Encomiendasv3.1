@@ -1,0 +1,134 @@
+<?php
+//var_dump($this->datos);
+//$json = json_decode($this->datos);
+$this->headLink()->appendStylesheet($this->baseUrl() . '/scripts/printjs/print.min.css');
+$this->jQuery()->addJavascriptFile($this->baseUrl() . '/scripts/printjs/print.min.js');
+?>
+<!doctype html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <style>
+        @media print {
+            @page{
+                size: auto;
+                margin: 0mm;
+            }
+            .pdf_head{
+                text-align: center;
+            }
+
+            .pdf_head p {
+                margin: 3px 0;
+            }
+
+            .pdf_datos p {
+                margin: 3px 0;
+            }
+
+            .pdf_datos table {
+                width: 95%;
+                border: 1px solid black;
+                border-collapse: collapse;
+            }
+
+            .pdf_datos table thead tr th {
+                border: 1px solid black;
+            }
+
+            .pdf_datos table tbody tr td {
+                border: 1px solid black;
+            }
+
+            .pdf_datos table tfoot tr td {
+                border: 1px solid black;
+            }
+
+            .pdf_pie .pie_usuario {
+                font-size: 12px;
+            }
+
+            .pdf_pie .pie_firma {
+                margin: 2px 4px;
+                text-align: center;
+            }
+
+        }
+    </style>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/http-vue-loader@1.4.2/src/httpVueLoader.min.js"></script>
+
+    <title>Imprimir</title>
+</head>
+<body>
+
+<?php require './scripts/printervue/print_recibo.php'?>
+<?php require './scripts/printervue/print_factura.php'?>
+<div id="my-app">
+    <my-component :fecha="fecha"></my-component>
+</div>
+
+
+<script src="../scripts/printervue/printvue.js"></script>
+<script>
+    $( document ).ready(function() {
+        console.log('<?= $this->datos; ?>');
+        const PRINT_FACTURA = parseInt("<?php echo (App_Util_Statics::$printFactura)? '1' : '0'; ?>");
+        const facturaDatos = JSON.parse('<?= $this->datos; ?>');
+        switch (facturaDatos.tipo) {
+            case "NORMAL":
+                if(PRINT_FACTURA){
+                    loadImprFactura(facturaDatos);
+                } else {
+                    loadImprRecepcionClose(facturaDatos);
+                }
+                break;
+            // case "DE ENTREGA POR PAGAR":
+            case "POR PAGAR":
+                loadImprRecepcionClose(facturaDatos);
+                break;
+            case "DE ENTREGA":
+                loadImprRecepcionClose(facturaDatos);
+                break;
+            case "DE ENTREGA POR PAGAR":
+                if(PRINT_FACTURA){
+                    loadImprFactura(facturaDatos);
+                } else {
+                    loadImprRecepcionClose(facturaDatos);
+                }
+                break;
+            case "INTERNO":
+                loadImprRecepcionClose(facturaDatos);
+                break;
+            case "GIRO":
+                if(PRINT_FACTURA){
+                    loadImprFactura(facturaDatos);
+                } else {
+                    loadImprRecepcionClose(facturaDatos);
+                }
+                break;
+            case "Coorporativo":
+                if(facturaDatos.factura === null){
+                    loadImprRecepcionClose(facturaDatos);
+                } else {
+                    if(PRINT_FACTURA){
+                        loadImprFactura(facturaDatos);
+                    } else {
+                        loadImprRecepcionClose(facturaDatos);
+                    }
+                }
+
+                break;
+
+        }
+    });
+
+</script>
+</body>
+</html>

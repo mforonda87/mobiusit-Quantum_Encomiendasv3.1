@@ -125,6 +125,8 @@ class RecepcionController extends Zend_Controller_Action {
      */
 
     public function saveAction() {
+        require_once(__DIR__.'/../../library/phpqrcode/qrlib.php');
+
         $log = Zend_Registry::get("log");
         $this->_helper->layout->disableLayout();
         $this->_helper->viewRenderer->setNoRender();
@@ -207,15 +209,25 @@ class RecepcionController extends Zend_Controller_Action {
                         $result["error"] = $error;
                         $result["cabecera"] = $cabeceraF;
                         $result["empresa"] = $empresa;
+                        $result["empresa"]["leyendaActividad"] = App_Util_Statics::$leyendaActividad;
                         $result["tipo"] = base64_decode($datos['tipoEncomienda']);
-
 
                         $result['pdf_encomienda'] = $this->generatePdfGuiaEncomienda($result);
 
                         if(strcmp($result['tipo'], 'POR PAGAR') == 0 ){
                             $result['pdf_encomienda_porpagar_recibo'] = $this->generatePdfGuiaEncomiendaPorpagarRecibo($result);
                         } else {
-                            $result['pdf_encomienda_recibo'] = $this->generatePdfGuiaEncomiendaRecibo($result);
+                            $fileName = 'qt_'.date("YmdHis").'.png';
+                            $pngAbsoluteFilePath = dirname(dirname(dirname( __FILE__))).'/public/images/temp/qrs/'.$fileName;
+                            $url_qr = $this->baseURL.'/images/temp/qrs/'.$fileName;
+                            if (!file_exists($pngAbsoluteFilePath)) {
+                                $qr_string = $data["empresa"]['nit'].'|'.$data["empresa"]['title'].'|'.$data["factura"]['numerofactura'].'|'.$data["factura"]['autorizacion'];
+                                $qr_string .= '|'.$data['factura']['fecha'].'|'.$data['factura']['total'].'|'.$data['factura']['codigoControl'];
+                                $qr_string .= '|'.$data['factura']['fechaLimite'].'|0|0|'.$data["factura"]['nit'].'|'.$data["factura"]['nombre'];
+                                QRcode::png($qr_string, $pngAbsoluteFilePath, QR_ECLEVEL_L, 5);
+                            }
+                            $result['url_qr'] = $url_qr;
+
                         }
                     } else {
                         $result["mensaje"] = "Debe almenos registrar un item para la encomienda ";
@@ -1319,6 +1331,8 @@ class RecepcionController extends Zend_Controller_Action {
      * @date creation 2012-09-2012 11:48
      */
     function saveEntregaPorpagarAction() {
+        require_once(__DIR__.'/../../library/phpqrcode/qrlib.php');
+
         $this->_helper->layout->disableLayout();
         $this->_helper->viewRenderer->setNoRender();
 
@@ -1340,14 +1354,34 @@ class RecepcionController extends Zend_Controller_Action {
                 $dataPrint = $encomiendaModel->savePorPagarManual($data['encomienda'], $data['items'], $this->person, $this->nombreCiudadVendedor);
             } else {
                 $dataPrint = $encomiendaModel->savePorPagar($data['encomienda'], $data['items'], $this->person, $this->nombreCiudadVendedor);
+//                if(App_Util_Statics::$mismoIpWebservice){
+//                    $dataPrint = $encomiendaModel->updatePorPagar($data['encomienda'], $data['items'], $this->person, $this->nombreCiudadVendedor);
+//                } else {
+//                    $dataPrint = $encomiendaModel->savePorPagar($data['encomienda'], $data['items'], $this->person, $this->nombreCiudadVendedor);
+//                }
+
                 $dataPrint['tipoFactura'] = 'Automatica';
             }
             $error = false;
             $mensaje = $dataPrint;
+
+            $fileName = 'qt_'.date("YmdHis").'.png';
+            $pngAbsoluteFilePath = dirname(dirname(dirname( __FILE__))).'/public/images/temp/qrs/'.$fileName;
+            $url_qr = $this->baseURL.'/images/temp/qrs/'.$fileName;
+            if (!file_exists($pngAbsoluteFilePath)) {
+                $qr_string = $mensaje["empresa"]['nit'].'|'.$mensaje["empresa"]['title'].'|'.$mensaje["factura"]['numerofactura'].'|'.$mensaje["factura"]['autorizacion'];
+                $qr_string .= '|'.$mensaje['factura']['fecha'].'|'.$mensaje['factura']['total'].'|'.$mensaje['factura']['codigoControl'];
+                $qr_string .= '|'.$mensaje['factura']['fechaLimite'].'|0|0|'.$mensaje["factura"]['nit'].'|'.$mensaje["factura"]['nombre'];
+                QRcode::png($qr_string, $pngAbsoluteFilePath, QR_ECLEVEL_L, 5);
+            }
+            $mensaje['url_qr'] = $url_qr;
         } catch (Zend_Db_Exception $ze) {
             $error = true;
             $mensaje = $ze->getMessage();
         }
+
+
+
 
         $json = array();
         $json["error"] = $error;
@@ -1686,17 +1720,13 @@ class RecepcionController extends Zend_Controller_Action {
 
     function imprimirManifiestoAction(){
         require_once(__DIR__.'/../../library/dompdf/autoload.inc.php');
-
         $this->_helper->layout->disableLayout();
         $datosM = $this->getRequest()->getParam("datosM");
-
         $dompdf = new Dompdf\Dompdf();
         //$height = App_Util_Statics::$docPdfSizeH + (count($datosM['encomiendas'])*12);
         $height = 800;
         $dompdf->set_paper(array(0, 0, App_Util_Statics::$docPdfSizeW, $height), "portrait");
-
         $dompdf->load_html($this->showManifiestoEncomienda($datosM));
-
         $dompdf->render();
         $output = $dompdf->output();
         $dateNow = new DateTime();
@@ -1704,8 +1734,6 @@ class RecepcionController extends Zend_Controller_Action {
         file_put_contents('../public/generate_pdf/manifiesto_encomiendas/'.$nameFile, $output);
         echo json_encode($this->_request->getBaseUrl().'/generate_pdf/manifiesto_encomiendas/'.$nameFile);
         exit;
-//        echo "test pedro";
-//        exit;
     }
 
     function showManifiestoEncomienda($datos) {
@@ -1783,4 +1811,13 @@ class RecepcionController extends Zend_Controller_Action {
 //        $view->dateNow = new DateTime();
 //        return $view->render('show-entrega-recibo.phtml');
 //    }
+
+    function showPrinterAction() {
+        $this->_helper->layout->disableLayout();
+        $datos = $this->getRequest()->getParam('datos');
+
+//        var_dump($datos);
+//        die();
+        $this->view->datos = $datos;
+    }
 }

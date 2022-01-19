@@ -109,7 +109,9 @@ class App_Util_Statics {
     public static $printFontTableBodyP = 'font-size: 12px; padding: 4px 2px; font-weight:600;  margin: 2;line-height : 10px';
     public static $printFontTableFootP = 'font-size: 13px; font-weight: 700; padding: 2px 1px; margin: 3;line-height : 12px; ';
 
+    // IMPORTANTE PARA CONFIGURAR ENCOMIENDA PARA CHINOBUS Y BOLIVAR FACTURACION
     public static $printFactura = true;
+
     /**
      * Convierte el numero de bus  formato de interno es decir
      * si el bus es el 5 lo conviente en 005

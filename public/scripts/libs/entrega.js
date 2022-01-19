@@ -106,7 +106,7 @@ function registerEntrega() {
         "suc": $("#fe5b095e2ffd3d49c668bb29d865e0e499826d45").val()
     };
     params = $.extend(params, formValues);
-    // alert(service);
+    // alert(service); // ssssss hhh ee
     jsonP2(service, "resultEntrega", params);
 }
 function resultEntrega(json) {
@@ -154,13 +154,12 @@ function resultEntrega(json) {
                     if (data.error == false) {
                         deleteRow();
                         if (data.info.tipoFactura == "Automatica") {
-                            $("#entregaForm")[0].reset();
-                            loadImprEntrega(data.info);
-                            document.location.reload();
+                            $('#f_show_print :input[name="datos"]').val(JSON.stringify(data.info));
+                            $('#f_show_print').submit();
                         }
-                        $("#entregaForm")[0].reset();
-                        removeDialog("#dialogEntrega");
-                        // document.location.reload();
+                        // $("#entregaForm")[0].reset();
+                        // removeDialog("#dialogEntrega");
+                        window.location.reload();
                     } else {
                         alert(data.info);
                         rollBackEntregaPorPagar(encomiendaData.encomienda.id);
@@ -169,85 +168,46 @@ function resultEntrega(json) {
             });
         } else {
             //imprimir recibo de entrega
-            if (window.printer) {
-                printer.typeDocument = "reciboEntrega";
-                printer.setJson(JSON.stringify(result.empresa), "empresa");
-                printer.setJson(JSON.stringify(result.encomienda), "encomienda");
-                userSucursal.usuario = result.cabecera.user;
-                printer.setJson(JSON.stringify(userSucursal), "sucursal");
-                for (var jk in result.items) {
-                    var itm = result.items[jk];
-                    printer.setJson(JSON.stringify(itm), "item");
-                }
+            console.log('eeee lll');
+            console.log(JSON.stringify(result));
+            console.log(JSON.stringify(json.response));
+            var c = result.cabecera;
+            var emp = result.empresa;
+            var e = json.response.info.encomienda;
 
-            } else {
-                var c = result.cabecera;
-                var emp = result.empresa;
-                var e = json.response.info.encomienda;
-
-                encomiendaAux = {destinatario: e.destinatario, destino: e.destino, detalle: e.detalle, guia: e.guia,
-                    origen: e.origen, remitente: e.remitente, total: e.total, tipo: c.tipo, telefonoRemitente: e.telefonoRemitente,
-                    declarado: e.declarado, observacion: e.observacion, ciudadDestino: e.ciudadDestino};
-                infoEntregaAux = {receptor: e.receptor, carnet: e.carnet};
-                cabeceraAux = {numero: userSucursal.numero, dato1: "0", direccion: userSucursal.direccion, direccion2: userSucursal.direccion2,
-                    cuidad: userSucursal.ciudad, telefono: userSucursal.telefono, user: result.cabecera.user, title: emp.title, nombre: emp.nombre, nit: emp.nit};
-                var itemsAux = [];
-                for (var jki in result.items) {
-                    var itmi = result.items[jki];
-                    itemsAux.push({cantidad: itmi.cantidad, detalle: itmi.detalle, peso: itmi.peso, total:itmi.total});
-                }
-                $.ajax({
-                    type: "GET",
-                    cache: false,
-                    url: BaseUrl + '/recepcion/generate-pdf-entrega',
-                    data: {datos: {encomienda: encomiendaAux, infoEntrega: infoEntregaAux, cabecera: cabeceraAux, items: itemsAux}},
-                    dataType: 'json',
-                    success: function(data) {
-                        // alert(JSON.stringify(data));
-                        // printJS(data.pdfUrl);
-                        printJS({
-                            printable: data.entregaPdfUrl,
-                            type: 'pdf',
-                            onPrintDialogClose: function() {
-                                console.log('eeeee2:: '+data.reciboClientePdfUrl);
-                                if(data.reciboClientePdfUrl !== undefined){
-                                    printJS(data.reciboClientePdfUrl);
-                                }
-                            }
-                        });
-
-                    }
-                });
-
-                /*
-                printer.typeDocument = "reciboEntrega";
-                var c = result.cabecera;
-                var emp = result.empresa;
-                var e = json.response.info.encomienda;
-                printer.setEncomienda(e.destinatario, e.destino, e.detalle, e.guia, e.origen, e.remitente, e.total, c.tipo, e.telefonoRemitente, e.declarado, e.observacion, e.ciudadDestino);
-                printer.addInfoEntrega(e.receptor, e.carnet);
-//                console.log("cabecera", userSucursal, result.cabecera);
-                printer.setCabecera(userSucursal.numero, "0", userSucursal.direccion, userSucursal.direccion2, userSucursal.ciudad, userSucursal.telefono, result.cabecera.user, emp.title, emp.nombre, emp.nit);
-//                console.log(result.items);
-                for (var jki in result.items) {
-                    var itmi = result.items[jki];
-                    printer.addItem(itmi.cantidad, itmi.detalle, itmi.peso, itmi.total);
-                }
-                 */
-
+            encomiendaAux = {destinatario: e.destinatario, destino: e.destino, detalle: e.detalle, guia: e.guia,
+                origen: e.origen, remitente: e.remitente, total: e.total, tipo: c.tipo, telefonoRemitente: e.telefonoRemitente,
+                declarado: e.declarado, observacion: e.observacion, ciudadDestino: e.ciudadDestino};
+            infoEntregaAux = {receptor: e.receptor, carnet: e.carnet};
+            cabeceraAux = {numeroSuc: userSucursal.numero, dato1: "0", direccion: userSucursal.direccion, direccion2: userSucursal.direccion2,
+                nombSuc: result.encomienda.sucursalEntrega,
+                cuidad: userSucursal.ciudad, telefono: userSucursal.telefono, usuario: result.cabecera.user, title: emp.title, nombre: emp.nombre, nit: emp.nit};
+            var itemsAux = [];
+            for (var jki in result.items) {
+                var itmi = result.items[jki];
+                itemsAux.push({cantidad: itmi.cantidad, detalle: itmi.detalle, peso: itmi.peso, total:itmi.total, monto:itmi.total});
             }
 
-            //printer.imprimir();
-            //printer.clean();
+            var f = new Date();
+            let day = ("0"+f.getDate()).slice(-2); //("0"+date.getDate()).slice(-2);
+            let month = ("0"+(f.getMonth() + 1)).slice(-2);
+            let year = f.getFullYear();
+            var datosImp = {
+                encomienda: encomiendaAux,
+                cabecera: cabeceraAux,
+                empresa: emp,
+                items: itemsAux,
+                tipo: c.tipo,
+                observacion: e.detalle,
+                fechaActual: day + "-"+ month + "-" + year,
+                infoEntrega: infoEntregaAux};
+
+            $('#f_show_print :input[name="datos"]').val(JSON.stringify(datosImp));
+            $('#f_show_print').submit();
             deleteRow();
-            $("#entregaForm")[0].reset();
-//            $("#dialogEntrega").dialog("close");
-//            $("#dialogEntrega").dialog("destroy");
-            //            alert(json.response.message);
+            // $("#entregaForm")[0].reset();
             removeDialog("#dialogEntrega");
-
-
-            //document.location.reload();
+            window.location.reload();
         }
 
     } else {
