@@ -95,11 +95,43 @@ function loadImprFactura(data){
             }
         },
         mounted () {
+        },
+        filters: {
+            numeroDec: function (value) {
+                valueAux = parseFloat(value+'');
+                return valueAux.toFixed(2).replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,")
+            }
         }
     });
 
-    printDivMejorado('print_v_factura');
-    // window.close();
+    new Vue({
+        el: '#print_recibo_v',
+        data: data,
+        computed: {
+            total: function () {
+                let sum = 0;
+                for (let [key, value] of Object.entries(this.items)) {
+                    console.log('www pp mm kk');
+                    console.log(`${key}: ${value}`);
+                    sum += parseFloat(value.monto);
+                }
+                return sum;
+
+                // return this.items.reduce((sum, item) => sum + parseFloat(item.monto), 0 );
+
+            }
+        },
+        filters: {
+            numeroDec: function (value) {
+                valueAux = parseFloat(value+'');
+                return valueAux.toFixed(2).replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,")
+            }
+        }
+    });
+
+    printDiv('print_v_factura');
+    printDiv('print_recibo_v');
+    window.close();
 }
 
 function loadImprRecepcionClose(data){

@@ -2700,6 +2700,7 @@ function cancelCorporateDebt(client) {
                                         'cantidad': itmi.cantidad,
                                         'detalle': itmi.detalle,
                                         'total': itmi.total,
+                                        'monto': itmi.total,
                                         'peso': itmi.peso
                                     });
                                 }
@@ -2768,7 +2769,7 @@ function cancelCorporateDebt(client) {
                                 console.log(JSON.stringify(dataPrint));
                                 $('#f_show_print :input[name="datos"]').val(JSON.stringify(dataPrint));
                                 $('#f_show_print').submit();
-                                // document.location.reload();
+                                document.location.reload();
                             } else {
                                 console.log(msg);
                                 alert("No se puedo facturar");

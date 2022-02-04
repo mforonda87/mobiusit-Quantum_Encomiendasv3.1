@@ -65,7 +65,7 @@ class App_Util_Statics {
     public static $NUMERACION_GUIA = "NUMERACION_GUIA"; /// permite configurar si el numero de la factura sera la guia o se generara en base a la cantidad de encomiendas de una sucursal.
     
     public static $monedaLarga = "Bolivianos";
-    public static $leyendaActividad = "TRANSPORTE DE PASAJEROS INTERDEPARTAMENTAL Y LARGA DISTANCIA";
+    public static $leyendaActividad = "TRANSPORTE DE PASAJEROS INTERDEPARTAMENTAL Y LARGA DISTANCIA TEST";
     
     
     public static $servidores = array("Cochabamba" => "cbba", "Santa Cruz" => "scz", "La Paz" => "lpz");
@@ -470,6 +470,41 @@ class App_Util_Statics {
         }
         $tex = $neg . substr($tex, 1) . $fin;
         return ucfirst($tex) . " " . $centavos;
+    }
+
+    public static function numeroFormatearDecimales($numero){
+        $pos = strpos($numero, '.');
+        if ($pos === false) {
+            return $numero.'.00';
+        }
+        return round($numero, 2);
+    }
+
+    public static function numeroFormatearCeroIzq6($numero){
+        $index = strlen($numero);
+        $resultado = '';
+        switch ($index){
+            case 1:
+                $resultado = str_pad($numero, 5, "0", STR_PAD_LEFT);
+                break;
+            case 2:
+                $resultado = str_pad($numero, 4, "0", STR_PAD_LEFT);
+                break;
+            case 3:
+                $resultado = str_pad($numero, 3, "0", STR_PAD_LEFT);
+                break;
+            case 4:
+                $resultado = str_pad($numero, 2, "0", STR_PAD_LEFT);
+                break;
+            case 5:
+                $resultado = str_pad($numero, 1, "0", STR_PAD_LEFT);
+                break;
+            default:
+                $resultado = $numero;
+                break;
+
+        }
+        return $resultado;
     }
 
 }

@@ -198,6 +198,7 @@ class App_Model_Cliente extends Zend_Db_Table_Abstract {
         $itemsReturn = array();
         $i = 0;
         $guias = "";
+        $tipoAux = "";
         foreach ($encomiendaList as $encomienda) {
             $totalFactura += $encomienda->total;
             $newItem = array(
@@ -210,6 +211,7 @@ class App_Model_Cliente extends Zend_Db_Table_Abstract {
             );
             $newItem["total"] = $encomienda->total;
             $guias.=$encomienda->guia.", ";
+            $tipoAux = $encomienda->tipo;
             $itemsReturn[] = $newItem;
             unset($newItem);
         }
@@ -258,8 +260,9 @@ class App_Model_Cliente extends Zend_Db_Table_Abstract {
         }
         $ultimaFactura = $facModel->fetchRow($whereFCC);
 
-        $fechaFactura = new Zend_Date($factura["fecha"], null, 'es_BO');
-        $fechaPrint = $fechaFactura->toString("dd/MMM/YYYY");
+//        $fechaFactura = new Zend_Date($factura["fecha"], null, 'es_BO');
+//        $fechaPrint = $fechaFacd_Date($factura["fecha"], null, 'es_BO');
+        $fechaPrint = DateTime::createFromFormat('Y-m-d', $factura["fecha"])->format('d/m/Y');
 
 
         $fileName = 'qt_'.date("YmdHis").'.png';
@@ -267,9 +270,15 @@ class App_Model_Cliente extends Zend_Db_Table_Abstract {
         $baseUrl = new Zend_View_Helper_BaseUrl();
         $url_qr = $baseUrl->baseUrl().'/images/temp/qrs/'.$fileName;
         if (!file_exists($pngAbsoluteFilePath)) {
-            $qr_string = $empresa['nit'].'|'.$empresa['title'].'|'.$factura['numerofactura'].'|'.$factura['autorizacion'];
-            $qr_string .= '|'.$factura['fecha'].'|'.$factura['total'].'|'.$factura['codigoControl'];
-            $qr_string .= '|'.$factura['fechaLimite'].'|0|0|'.$factura['nit'].'|'.$factura['nombre'];
+//            $qr_string = $empresa['nit'].'|'.$empresa['title'].'|'.$factura['numerofactura'].'|'.$factura['autorizacion'];
+//            $qr_string .= '|'.$factura['fecha'].'|'.$factura['total'].'|'.$factura['codigoControl'];
+//            $qr_string .= '|'.$factura['fechaLimite'].'|0|0|'.$factura['nit'].'|'.$factura['nombre'];
+
+            $qr_string = $empresa['nit'].'|'.App_Util_Statics::numeroFormatearCeroIzq6($ultimaFactura->numero_factura).'|'.$dosificacion->autorizacion;
+            $qr_string .= '|'.$fechaPrint.'|'.App_Util_Statics::numeroFormatearDecimales($factura['monto']);
+            $qr_string .= '|'.App_Util_Statics::numeroFormatearDecimales($factura['monto']).'|'.$ultimaFactura->codigo_control;
+            $qr_string .= '|'.$factura['nit'].'|0.00|0.00|0.00|0.00|';
+
             QRcode::png($qr_string, $pngAbsoluteFilePath, QR_ECLEVEL_L, 5);
         }
         $result['url_qr'] = $url_qr;
@@ -283,7 +292,7 @@ class App_Model_Cliente extends Zend_Db_Table_Abstract {
             "numerofactura" => "$ultimaFactura->numero_factura",
             "autorizacion" => $dosificacion->autorizacion,
             "codigoControl" => $ultimaFactura->codigo_control,
-            "fechaLimite" => $factura["fecha_limite"],
+            "fechaLimite" => DateTime::createFromFormat('Y-m-d', $factura["fecha_limite"])->format('d/m/Y'),
             "total" => $factura["monto"],
             "totalLiteral" => App_Util_Statics::num2letras($totalFactura, true, true, "Bolivianos")
         );
@@ -303,7 +312,7 @@ class App_Model_Cliente extends Zend_Db_Table_Abstract {
             "guia"=>$guias,
             "remitente"=>"ClienteCoorporativo",
             "total" => $totalFactura,
-            "tipo"=>"NORMAL",
+            "tipo"=>$tipoAux,
             "telefonoDestinatario"=>"",
             "declarado"=>false,
             "observacion"=>"Facturacion coorporativa",

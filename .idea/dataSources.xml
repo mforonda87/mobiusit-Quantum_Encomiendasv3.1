@@ -7,5 +7,17 @@
       <jdbc-driver>org.postgresql.Driver</jdbc-driver>
       <jdbc-url>jdbc:postgresql://200.87.172.134:5432/qt_lsfb_preproduccion_p</jdbc-url>
     </data-source>
+    <data-source source="LOCAL" name="qt_lsfb_preproduccion_p@200.87.224.245" uuid="dd7fb1b9-f774-40f9-941d-be47146d4aed">
+      <driver-ref>postgresql</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>org.postgresql.Driver</jdbc-driver>
+      <jdbc-url>jdbc:postgresql://200.87.224.245:5432/qt_lsfb_preproduccion_p</jdbc-url>
+    </data-source>
+    <data-source source="LOCAL" name="qt_lsfb_preproduccion_p1@200.87.172.134" uuid="61ee9024-f055-4db5-8a58-f35b0f400fd8">
+      <driver-ref>postgresql</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>org.postgresql.Driver</jdbc-driver>
+      <jdbc-url>jdbc:postgresql://200.87.172.134:5432/qt_lsfb_preproduccion_p1</jdbc-url>
+    </data-source>
   </component>
 </project>

@@ -108,7 +108,8 @@ class App_Model_ConfiguracionSistema extends Zend_Db_Table_Abstract {
         $empresa = array(
             "title" => $configuraciones[App_Util_Statics::$TITULO_FACTURA_1],
             "nombre" => $configuraciones[App_Util_Statics::$TITULO_FACTURA_2],
-            "nit" => $configuraciones[App_Util_Statics::$nitEmpresa]
+            "nit" => $configuraciones[App_Util_Statics::$nitEmpresa],
+            "leyendaActividad" => App_Util_Statics::$leyendaActividad
         );
         return $empresa;
     }

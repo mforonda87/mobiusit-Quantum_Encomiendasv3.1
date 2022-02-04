@@ -221,9 +221,14 @@ class RecepcionController extends Zend_Controller_Action {
                             $pngAbsoluteFilePath = dirname(dirname(dirname( __FILE__))).'/public/images/temp/qrs/'.$fileName;
                             $url_qr = $this->baseURL.'/images/temp/qrs/'.$fileName;
                             if (!file_exists($pngAbsoluteFilePath)) {
-                                $qr_string = $data["empresa"]['nit'].'|'.$data["empresa"]['title'].'|'.$data["factura"]['numerofactura'].'|'.$data["factura"]['autorizacion'];
-                                $qr_string .= '|'.$data['factura']['fecha'].'|'.$data['factura']['total'].'|'.$data['factura']['codigoControl'];
-                                $qr_string .= '|'.$data['factura']['fechaLimite'].'|0|0|'.$data["factura"]['nit'].'|'.$data["factura"]['nombre'];
+//                                $qr_string = $data["empresa"]['nit'].'|'.$data["empresa"]['title'].'|'.$data["factura"]['numerofactura'].'|'.$data["factura"]['autorizacion'];
+//                                $qr_string .= '|'.$data['factura']['fecha'].'|'.$data['factura']['total'].'|'.$data['factura']['codigoControl'];
+//                                $qr_string .= '|'.$data['factura']['fechaLimite'].'|0|0|'.$data["factura"]['nit'].'|'.$data["factura"]['nombre'];
+
+                                $qr_string = $data["empresa"]['nit'].'|'.App_Util_Statics::numeroFormatearCeroIzq6($data["factura"]['numerofactura']).'|'.$data["factura"]['autorizacion'];
+                                $qr_string .= '|'.$data['factura']['fecha'].'|'.App_Util_Statics::numeroFormatearDecimales($data['factura']['total']).'|'.App_Util_Statics::numeroFormatearDecimales($data['factura']['total']).'|'.$data['factura']['codigoControl'];
+                                $qr_string .= '|'.$data["factura"]['nit'].'|0.00|0.00|0.00|0.00|';
+
                                 QRcode::png($qr_string, $pngAbsoluteFilePath, QR_ECLEVEL_L, 5);
                             }
                             $result['url_qr'] = $url_qr;
@@ -762,15 +767,15 @@ class RecepcionController extends Zend_Controller_Action {
                 $porAnular = array();
                 $normal = array();
 
-//                foreach ($facturas as $fac) {
-//                    if ($fac->is_porpagar_entregada == true) {
-//                        $porPagar[] = $fac;
-//                    } elseif ($fac->estado == "POR ANULAR") {
-//                        $porAnular[] = $fac;
-//                    } else {
-//                        $normal[] = $fac;
-//                    }
-//                }
+                foreach ($facturas as $fac) {
+                    if ($fac->is_porpagar_entregada == true) {
+                        $porPagar[] = $fac;
+                    } elseif ($fac->estado == "POR ANULAR") {
+                        $porAnular[] = $fac;
+                    } else {
+                        $normal[] = $fac;
+                    }
+                }
                 foreach ($facturas as $fac) {
                     if ($fac->is_porpagar_entregada == true) {
                         $porPagar[] = $fac;
@@ -1369,9 +1374,14 @@ class RecepcionController extends Zend_Controller_Action {
             $pngAbsoluteFilePath = dirname(dirname(dirname( __FILE__))).'/public/images/temp/qrs/'.$fileName;
             $url_qr = $this->baseURL.'/images/temp/qrs/'.$fileName;
             if (!file_exists($pngAbsoluteFilePath)) {
-                $qr_string = $mensaje["empresa"]['nit'].'|'.$mensaje["empresa"]['title'].'|'.$mensaje["factura"]['numerofactura'].'|'.$mensaje["factura"]['autorizacion'];
-                $qr_string .= '|'.$mensaje['factura']['fecha'].'|'.$mensaje['factura']['total'].'|'.$mensaje['factura']['codigoControl'];
-                $qr_string .= '|'.$mensaje['factura']['fechaLimite'].'|0|0|'.$mensaje["factura"]['nit'].'|'.$mensaje["factura"]['nombre'];
+//                $qr_string = $mensaje["empresa"]['nit'].'|'.$mensaje["empresa"]['title'].'|'.$mensaje["factura"]['numerofactura'].'|'.$mensaje["factura"]['autorizacion'];
+//                $qr_string .= '|'.$mensaje['factura']['fecha'].'|'.$mensaje['factura']['total'].'|'.$mensaje['factura']['codigoControl'];
+//                $qr_string .= '|'.$mensaje['factura']['fechaLimite'].'|0|0|'.$mensaje["factura"]['nit'].'|'.$mensaje["factura"]['nombre'];
+                $qr_string = $mensaje["empresa"]['nit'].'|'.App_Util_Statics::numeroFormatearCeroIzq6($mensaje["factura"]['numerofactura']).'|'.$mensaje["factura"]['autorizacion'];
+                $qr_string .= '|'.$mensaje['factura']['fecha'].'|'.App_Util_Statics::numeroFormatearDecimales($mensaje['factura']['total']);
+                $qr_string .= '|'.App_Util_Statics::numeroFormatearDecimales($mensaje['factura']['total']).'|'.$mensaje['factura']['codigoControl'];
+                $qr_string .= '|'.$mensaje["factura"]['nit'].'|0.00|0.00|0.00|0.00|';
+
                 QRcode::png($qr_string, $pngAbsoluteFilePath, QR_ECLEVEL_L, 5);
             }
             $mensaje['url_qr'] = $url_qr;

@@ -159,7 +159,8 @@ class App_Model_EncomiendaModel extends Zend_Db_Table_Abstract {
                 $literal = App_Util_Statics::convertNumber($totalFactura);
 
                 $fechaFactura = new Zend_Date($factura["fecha"], null, 'es_BO');
-                $fechaPrint = $fechaFactura->toString("dd/MMM/YYYY");
+//                $fechaPrint = $fechaFactura->toString("d/m/Y");
+                $fechaPrint = DateTime::createFromFormat('Y-m-d', $factura["fecha"])->format('d/m/Y');
                 $datosFactura = array(
                     "fecha" => $fechaPrint,
                     "hora" => $factura["hora"],
@@ -168,7 +169,7 @@ class App_Model_EncomiendaModel extends Zend_Db_Table_Abstract {
                     "numerofactura" => "$ultimaFactura->numero_factura",
                     "autorizacion" => $dosificacion->autorizacion,
                     "codigoControl" => $ultimaFactura->codigo_control,
-                    "fechaLimite" => $factura["fecha_limite"],
+                    "fechaLimite" => DateTime::createFromFormat('Y-m-d', $factura["fecha_limite"])->format('d/m/Y'),
                     "total" => $factura["monto"],
                     "totalLiteral" => App_Util_Statics::num2letras($totalFactura, true, true, "Bolivianos")
                 );
@@ -424,8 +425,9 @@ class App_Model_EncomiendaModel extends Zend_Db_Table_Abstract {
 
 
             $literal = App_Util_Statics::convertNumber($totalFactura);
-            $fechaFactura = new Zend_Date($factura["fecha"], null, 'es_BO');
-            $fechaPrint = $fechaFactura->toString("dd/MMM/YYYY");
+//            $fechaFactura = new Zend_Date($factura["fecha"], null, 'es_BO');
+//            $fechaPrint = $fechaFactura->toString("dd/MMM/YYYY");
+            $fechaPrint = DateTime::createFromFormat('Y-m-d', $factura["fecha"])->format('d/m/Y');
             $datosFactura = array(
                 "fecha" => $fechaPrint,
                 "hora" => $factura["hora"],
@@ -434,7 +436,7 @@ class App_Model_EncomiendaModel extends Zend_Db_Table_Abstract {
                 "numerofactura" => "$ultimaFactura->numero_factura",
                 "autorizacion" => $dosificacion->autorizacion,
                 "codigoControl" => $ultimaFactura->codigo_control,
-                "fechaLimite" => $factura["fecha_limite"],
+                "fechaLimite" => DateTime::createFromFormat('Y-m-d', $factura["fecha_limite"])->format('d/m/Y'),
                 "total" => $factura["monto"],
                 "totalLiteral" => App_Util_Statics::num2letras($totalFactura)
             );
@@ -861,14 +863,14 @@ class App_Model_EncomiendaModel extends Zend_Db_Table_Abstract {
 
             $literal = App_Util_Statics::convertNumber($totalFactura);
             $datosFactura = array(
-                "fecha" => $factura["fecha"],
+                "fecha" => DateTime::createFromFormat('Y-m-d', $factura["fecha"])->format('d/m/Y'),
                 "hora" => $factura["hora"],
                 "nombre" => strtoupper($factura["nombre"]),
                 "nit" => $factura["nit"],
                 "numerofactura" => "$ultimaFactura->numero_factura",
                 "autorizacion" => $dosificacion->autorizacion,
                 "codigoControl" => $ultimaFactura->codigo_control,
-                "fechaLimite" => $factura["fecha_limite"],
+                "fechaLimite" => DateTime::createFromFormat('Y-m-d', $factura["fecha_limite"])->format('d/m/Y'),
                 "total" => $factura["monto"],
                 "totalLiteral" => App_Util_Statics::num2letras($totalFactura)
             );
@@ -1529,7 +1531,7 @@ class App_Model_EncomiendaModel extends Zend_Db_Table_Abstract {
         $db = $this->getAdapter();
         $db->setFetchMode(Zend_Db::FETCH_OBJ);
         $select = $db->select();
-        $select->from(array('e' => 'encomienda'), array('fecha', 'hora', 'total', 'guia', 'detalle'));
+        $select->from(array('e' => 'encomienda'), array('fecha', 'hora', 'total', 'guia', 'detalle', 'tipo'));
         $select->where('id_encomienda in (?)', $ids);
         return $db->fetchAll($select);
     }

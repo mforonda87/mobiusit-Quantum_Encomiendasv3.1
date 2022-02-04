@@ -81,6 +81,7 @@ $this->jQuery()->addJavascriptFile($this->baseUrl() . '/scripts/printjs/print.mi
         console.log('<?= $this->datos; ?>');
         const PRINT_FACTURA = parseInt("<?php echo (App_Util_Statics::$printFactura)? '1' : '0'; ?>");
         const facturaDatos = JSON.parse('<?= $this->datos; ?>');
+        // alert(JSON.stringify(facturaDatos));
         switch (facturaDatos.tipo) {
             case "NORMAL":
                 if(PRINT_FACTURA){

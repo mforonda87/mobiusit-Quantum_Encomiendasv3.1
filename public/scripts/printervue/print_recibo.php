@@ -98,7 +98,7 @@
                     <td style="text-align: center;">{{ item.cantidad }}</td>
                     <td>{{ item.detalle }}</td>
                     <td style="text-align: right;">{{ item.peso }}</td>
-                    <td style="text-align: right;">{{ item.monto }}</td>
+                    <td style="text-align: right;">{{ item.monto | numeroDec }}</td>
                 </tr>
                 </tbody>
                 <tfoot>
@@ -107,7 +107,7 @@
                 </tr>
                 <tr>
                     <td colspan="3" style="text-align: right;"><p><b>TOTAL</b></p></td>
-                    <td style="text-align: right;"><p><b>{{ total }}</b></p></td>
+                    <td style="text-align: right;"><p><b>{{ total | numeroDec }}</b></p></td>
                 </tr>
                 </tfoot>
             </table>
