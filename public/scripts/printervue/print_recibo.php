@@ -54,7 +54,7 @@
             <p class="pie_usuario">Usuario: <span>{{cabecera.usuario}}</span></p>
             <br><br><br>
             <p class="pie_firma">-----------------------------------------</p>
-            <p class="pie_firma"><b>{{encomienda.remitente}}</b></p>
+            <p class="pie_firma"><b>{{ firma }}</b></p>
             <br>
             <p style="text-align: center;">Mobius IT Solutions</p>
         </div>
@@ -116,7 +116,7 @@
             <p class="pie_usuario">Usuario: <span>{{cabecera.usuario}}</span></p>
             <br><br><br>
             <p class="pie_firma">-----------------------------------------</p>
-            <p class="pie_firma"><b>{{encomienda.remitente}}</b></p>
+            <p class="pie_firma"><b>{{ firma }}</b></p>
         </div>
         <br>
         <p style="text-align: center;">Mobius IT Solutions</p>

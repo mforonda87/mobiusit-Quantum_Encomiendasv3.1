@@ -119,6 +119,30 @@ function loadImprFactura(data){
 
                 // return this.items.reduce((sum, item) => sum + parseFloat(item.monto), 0 );
 
+            },
+            firma: function () {
+                let fir = '';
+                switch (this.tipo) {
+                    case 'NORMAL':
+                        fir = this.encomienda.remitente;
+                        break;
+                    case 'POR PAGAR':
+                        fir = this.encomienda.remitente;
+                        break;
+                    case 'DE ENTREGA':
+                        // fir = this.encomienda.destinatario;
+                        fir = this.infoEntrega.receptor + '(ci: ' + this.infoEntrega.carnet + ')';
+                        break;
+                    case 'DE ENTREGA POR PAGAR':
+                        // fir = this.encomienda.destinatario;
+                        fir = this.infoEntrega.receptor + '(ci: ' + this.infoEntrega.carnet + ')';
+                        break;
+                    case 'GIRO':
+                        fir = this.encomienda.remitente;
+                        break;
+
+                }
+                return fir;
             }
         },
         filters: {
@@ -138,9 +162,6 @@ function loadImprRecepcionClose(data){
     new Vue({
         el: '#print_v',
         data: data,
-        // components: {
-        //     'my-print-v': httpVueLoader('../scripts/encomienda/print_v.vue')
-        // },
         computed: {
             total: function () {
                 let sum = 0;
@@ -153,6 +174,26 @@ function loadImprRecepcionClose(data){
                 return sum;
                 // return this.items.reduce((sum, item) => sum + parseFloat(item.monto), 0 );
 
+            },
+            firma: function () {
+                let fir = '';
+                switch (this.tipo) {
+                    case 'NORMAL':
+                        fir = this.encomienda.remitente;
+                        break;
+                    case 'POR PAGAR':
+                        fir = this.encomienda.remitente;
+                        break;
+                    case 'DE ENTREGA':
+                        // fir = this.encomienda.destinatario;
+                        fir = this.infoEntrega.receptor + '(ci: ' + this.infoEntrega.carnet + ')';
+                        break;
+                    case 'DE ENTREGA POR PAGAR':
+                        fir = this.encomienda.destinatario;
+                        break;
+
+                }
+                return fir;
             }
         }
     });
@@ -172,6 +213,27 @@ function loadImprRecepcionClose(data){
 
                 // return this.items.reduce((sum, item) => sum + parseFloat(item.monto), 0 );
 
+            },
+            firma: function () {
+                let fir = '';
+                switch (this.tipo) {
+                    case 'NORMAL':
+                        fir = this.encomienda.remitente;
+                        break;
+                    case 'POR PAGAR':
+                        fir = this.encomienda.remitente;
+                        break;
+                    case 'DE ENTREGA':
+                        // fir = this.encomienda.destinatario;
+                        fir = this.infoEntrega.receptor + '(ci: ' + this.infoEntrega.carnet + ')';
+                        break;
+                    case 'DE ENTREGA POR PAGAR':
+                        // fir = this.encomienda.destinatario;
+                        fir = this.infoEntrega.receptor + '(ci: ' + this.infoEntrega.carnet + ')';
+                        break;
+
+                }
+                return fir;
             }
         }
     });
@@ -180,10 +242,3 @@ function loadImprRecepcionClose(data){
     printDiv('print_recibo_v');
     window.close();
 }
-// new Vue({
-//     el: '#my-app',
-//     data: { fecha: "pedro"},
-//     components: {
-//         'my-component': httpVueLoader('../scripts/encomienda/recibo.vue')
-//     }
-// });

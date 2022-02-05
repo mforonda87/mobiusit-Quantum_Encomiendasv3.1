@@ -3,6 +3,7 @@
 //$json = json_decode($this->datos);
 $this->headLink()->appendStylesheet($this->baseUrl() . '/scripts/printjs/print.min.css');
 $this->jQuery()->addJavascriptFile($this->baseUrl() . '/scripts/printjs/print.min.js');
+$fechaA = new DateTime();
 ?>
 <!doctype html>
 <html lang="es">
@@ -80,7 +81,8 @@ $this->jQuery()->addJavascriptFile($this->baseUrl() . '/scripts/printjs/print.mi
     $( document ).ready(function() {
         console.log('<?= $this->datos; ?>');
         const PRINT_FACTURA = parseInt("<?php echo (App_Util_Statics::$printFactura)? '1' : '0'; ?>");
-        const facturaDatos = JSON.parse('<?= $this->datos; ?>');
+        let facturaDatos = JSON.parse('<?= $this->datos; ?>');
+        facturaDatos.fechaActual = '<?= $fechaA->format('Y-m-d'); ?>';
         // alert(JSON.stringify(facturaDatos));
         switch (facturaDatos.tipo) {
             case "NORMAL":

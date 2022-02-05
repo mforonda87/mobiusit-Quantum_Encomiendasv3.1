@@ -1814,20 +1814,13 @@ class RecepcionController extends Zend_Controller_Action {
         return $this->_request->getBaseUrl().'/generate_pdf/guia_encomiendas/'.$nameFile;
     }
 
-//    function showGuiaEncomiendaRecibo($datos) {
-//        $view = new Zend_View();
-//        $view->setScriptPath( APPLICATION_PATH . '/views/scripts/recepcion/' );
-//        $view->datos = $datos;
-//        $view->dateNow = new DateTime();
-//        return $view->render('show-entrega-recibo.phtml');
-//    }
-
     function showPrinterAction() {
+        $log = Zend_Registry::get("log");
         $this->_helper->layout->disableLayout();
         $datos = $this->getRequest()->getParam('datos');
 
-//        var_dump($datos);
-//        die();
+        $log->info('RecepcionController -> showPrinterAction:::');
+        $log->info($datos);
         $this->view->datos = $datos;
     }
 }
