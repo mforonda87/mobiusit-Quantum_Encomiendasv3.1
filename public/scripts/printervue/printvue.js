@@ -155,7 +155,7 @@ function loadImprFactura(data){
 
     printDiv('print_v_factura');
     printDiv('print_recibo_v');
-    window.close();
+    // window.close();
 }
 
 function loadImprRecepcionClose(data){

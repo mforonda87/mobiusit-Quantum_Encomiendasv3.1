@@ -166,7 +166,7 @@ class RecepcionController extends Zend_Controller_Action {
                        $log->err("Error inserting client".$ze->getTraceAsString()); 
                     }
                 }
-                $errorValidation = $this->isValidEncomienda($datos);
+                $errorValidation = $this->isValidEncomienda($datos, $tipoEncomienda);
                 if ($errorValidation['error'] == false) {
                     $items = str_replace("'", '"', $items);
                     $items = str_replace("\\", '', $items);
@@ -261,7 +261,7 @@ class RecepcionController extends Zend_Controller_Action {
      * Valida el formulario de la s encomiendas
      * 
      */
-    function isValidEncomienda($encomiendaForm) {
+    function isValidEncomienda($encomiendaForm, $tipoEncomienda) {
         $return = array("error" => false, "errors" => array());
         foreach ($encomiendaForm as $key => $value) {
             if ($value == "" && ($key != "Nit" && $key != "nombreFactura" && $key != "declarado")) {
@@ -273,6 +273,16 @@ class RecepcionController extends Zend_Controller_Action {
                 $return["errors"][$key] = "No existen sucursales de destino ";
                 $return["error"] = true;
             }
+        }
+
+        if($tipoEncomienda == 'Coorporativo') {
+            $clienteModel = new App_Model_Cliente();
+            $clienteResultado = $clienteModel->findByCoorporativoNIT($encomiendaForm['nitCliente']);
+            if(!$clienteResultado){
+                $return["errors"]['Coorporativo'] = "El NIT ".$encomiendaForm['nitCliente']." del cliente no esta registrado como Coorporativo";
+                $return["error"] = true;
+            }
+
         }
         return $return;
     }
@@ -761,21 +771,19 @@ class RecepcionController extends Zend_Controller_Action {
                 $facturaModel = new App_Model_FacturaEncomienda();
 
                 $facturas = $facturaModel->getByAllVendedorFecha($date, $this->person->id_persona);
-//                echo count($facturas)." || wwww";
-//                die('eeeeww wwweee111222333444555');
                 $porPagar = array();
                 $porAnular = array();
                 $normal = array();
 
-                foreach ($facturas as $fac) {
-                    if ($fac->is_porpagar_entregada == true) {
-                        $porPagar[] = $fac;
-                    } elseif ($fac->estado == "POR ANULAR") {
-                        $porAnular[] = $fac;
-                    } else {
-                        $normal[] = $fac;
-                    }
-                }
+//                foreach ($facturas as $fac) {
+//                    if ($fac->is_porpagar_entregada == true) {
+//                        $porPagar[] = $fac;
+//                    } elseif ($fac->estado == "POR ANULAR") {
+//                        $porAnular[] = $fac;
+//                    } else {
+//                        $normal[] = $fac;
+//                    }
+//                }
                 foreach ($facturas as $fac) {
                     if ($fac->is_porpagar_entregada == true) {
                         $porPagar[] = $fac;

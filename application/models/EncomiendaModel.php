@@ -359,6 +359,7 @@ class App_Model_EncomiendaModel extends Zend_Db_Table_Abstract {
                 "usuario" => $user->nombres,
                 "autoimpresor" => "",
                 "leyendaActividad" => App_Util_Statics::$leyendaActividad,
+                "leyendaSucursal" => $suc->leyenda,
                 "tipoFactura" => "Encomienda",
                 "ciudadCapital" => $suc->capital,
                 "ciudad2" => $suc->nombre2,

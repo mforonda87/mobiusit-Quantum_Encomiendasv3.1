@@ -94,8 +94,8 @@
             <p style="font-size: 14px;">Usuario: {{ cabecera.usuario }}</p>
         </div>
         <hr style="padding: 0; margin: 2px;">
-        <div id="f_qrcode" class="test-image-f">
-            <img width="150" v-bind:src="url_qr" alt="" style="display: block; max-width: 100%; height: auto; ">
+        <div id="f_qrcode" class="test-image-f" style="text-align: center;">
+            <img width="150" v-bind:src="url_qr" alt="" style="display: block; max-width: 100%; height: auto; margin-left:auto; margin-right:auto;">
         </div>
         <hr style="padding: 0; margin: 2px;">
         <div class="pdf_pie">

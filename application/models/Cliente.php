@@ -110,6 +110,19 @@ class App_Model_Cliente extends Zend_Db_Table_Abstract {
         return $results;
     }
 
+    function findByCoorporativoNIT($nit) {
+        $log = Zend_Registry::get("log");
+        $log->info("Finding by coorporativo nit " . $nit);
+        $db = $this->getAdapter();
+        $select = $db->select();
+        $select->from(array('cl' => 'cliente'), array('id' => 'id_cliente', 'nombre', 'nit', 'tipo', 'deuda'));
+        $select->where("cl.nit =? AND cl.tipo='Coorporativo'", $nit);
+        $select->order('nombre');
+        $results = $db->fetchRow($select);
+
+        return $results;
+    }
+
     /**
      * actualiza la informacion de un cliente
      *
