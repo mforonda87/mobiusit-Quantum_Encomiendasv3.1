@@ -208,7 +208,8 @@ class App_Model_EncomiendaModel extends Zend_Db_Table_Abstract {
                 "carnet_recepcion" => (isset($datos['Nit'])? $datos['Nit'] : $datos['nitCliente']),
                 "valor_declarado" => $declarado,
                 "observacion" => $obsEncomienda,
-                "estado" => "RECIBIDO"
+                "estado" => "RECIBIDO",
+                "puerta_puerta" => (isset($datos['puertaPuerta']))? $datos['puertaPuerta'] : 0
             );
             if (strtoupper($tipoEncomienda) == "NORMAL" || $tipoEncomienda == "GIRO") {
                 $encomienda["factura"] = $facturaA->id_factura;
@@ -1084,7 +1085,8 @@ class App_Model_EncomiendaModel extends Zend_Db_Table_Abstract {
                 "total" => $datos['total'],
                 "detalle" => $datos['detalle'],
                 "valor_declarado" => $declarado,
-                "estado" => "RECIBIDO"
+                "estado" => "RECIBIDO",
+                "puerta_puerta" => (isset($datos['puertaPuerta']))? $datos['puertaPuerta'] : 0
             );
             if ($tipoEncomienda == "NORMAL" || $tipoEncomienda == "GIRO") {
                 $encomienda["factura"] = $facturaA->id_factura;
@@ -1246,12 +1248,13 @@ class App_Model_EncomiendaModel extends Zend_Db_Table_Abstract {
         $db = $this->getAdapter();
         $db->setFetchMode(Zend_Db::FETCH_ASSOC);
         $select = $db->select();
-        $select->from(array('e' => 'encomienda'), array('id_encomienda', 'total', 'guia', 'sucursal_de', 'nombre_destino AS destino', 'ciudad_de', 'tipo', 'nombre_ciudad_destino'));
+        $select->from(array('e' => 'encomienda'), array('id_encomienda', 'total', 'guia', 'sucursal_de', 'nombre_destino AS destino', 'ciudad_de', 'tipo', 'nombre_ciudad_destino', 'puerta_puerta'));
         $select->join(array('i' => 'item_encomienda'), "i.encomienda=e.id_encomienda", array('id_item_encomienda', 'cantidad', 'detalle', 'monto', 'peso', 'estado'));
         $select->where('UPPER(e.estado)=?', strtoupper($estado));
         $select->where('e.sucursal_or=?', $origen);
         $select->order('tipo');
         $select->order('sucursal_de');
+        $select->order('puerta_puerta');
         $select->order('guia');
         $select->order('fecha');
 //        echo $select->__toString();
@@ -1273,7 +1276,7 @@ class App_Model_EncomiendaModel extends Zend_Db_Table_Abstract {
         $db = $this->getAdapter();
         $db->setFetchMode(Zend_Db::FETCH_OBJ);
         $select = $db->select();
-        $select->from(array('e' => 'encomienda'), array('id_encomienda', 'detalle', 'total', 'guia', 'sucursal_de', 'nombre_destino AS destino', 'tipo'));
+        $select->from(array('e' => 'encomienda'), array('id_encomienda', 'detalle', 'total', 'guia', 'sucursal_de', 'nombre_destino AS destino', 'tipo', 'puerta_puerta'));
         $select->where('manifiesto=?', $idManifiesto);
         $select->order('tipo');
         $select->order('fecha');

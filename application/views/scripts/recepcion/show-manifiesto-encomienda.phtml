@@ -37,14 +37,21 @@ foreach ($arr_destinos1 as $adestino){
     $adestinos = array();
     foreach ($tipos as $tipo){
         $aEncomiendas = array();
+        $aEncomiendasPP = array();
         foreach ($adestino['encomiendas'] as $enc1){
             if(strcmp($tipo, $enc1['tipo']) == 0){
-                array_push($aEncomiendas, $enc1);
+                if($enc1['puerta_puerta'] == 0){
+                    array_push($aEncomiendas, $enc1);
+                } else {
+                    array_push($aEncomiendasPP, $enc1);
+                }
+
             }
         }
-        if(count($aEncomiendas) > 0){
-            array_push($adestinos, array('tipo' => $tipo, 'encomiendas' => $aEncomiendas));
-        }
+//        if(count($aEncomiendas) > 0){
+//            array_push($adestinos, array('tipo' => $tipo, 'encomiendas' => $aEncomiendas, 'encomiendasPP' => $aEncomiendasPP));
+//        }
+        array_push($adestinos, array('tipo' => $tipo, 'encomiendas' => $aEncomiendas, 'encomiendasPP' => $aEncomiendasPP));
     }
     if(count($adestinos) > 0){
         array_push($arr_final1, array('destino' => $adestino['destino'], 'tipos' => $adestinos) );
@@ -119,6 +126,7 @@ foreach ($arr_destinos1 as $adestino){
                 <tr>
                     <td colspan="3" style="text-align: center;"><h5 style="<?= App_Util_Statics::$printFontH5; ?> padding: 5px; margin: 0; background-color: #D1CDD8;"><?= $destinos['destino'] ?></h5></td>
                 </tr>
+                <!-- Aqui va el mostrar puerta a puerta PROBAR -->
                 <?php foreach ($destinos['tipos'] as $tipos): ?>
                     <tr>
                         <td colspan="3" style="text-align: center;"><h5 style="font-size: 10px; padding: 5px; margin: 0;"><?= $tipos['tipo'] ?></h5></td>
@@ -129,8 +137,19 @@ foreach ($arr_destinos1 as $adestino){
                             <td style="<?= App_Util_Statics::$printFontTableBodyP; ?>"><?= $encomienda1['detalle'] ?></td>
                             <td style="<?= App_Util_Statics::$printFontTableBodyP; ?> text-align: right;"><?= $encomienda1['total'] ?></td>
                         </tr>
-                        <?php //$total = $total + $encomienda['total'] ?>
                     <?php endforeach; ?>
+                    <?php if(count($tipos['encomiendasPP']) > 0): ?>
+                    <tr>
+                        <td colspan="3" style="text-align: center;"><h3 style="font-size: 10px; padding: 5px; margin: 0;">Puerta Puerta</h3></td>
+                    </tr>
+                        <?php foreach ($tipos['encomiendasPP'] as $encomiendapp1): ?>
+                            <tr>
+                                <td style="<?= App_Util_Statics::$printFontTableBodyP; ?>"><?= $encomiendapp1['guia'] ?></td>
+                                <td style="<?= App_Util_Statics::$printFontTableBodyP; ?>"><?= $encomiendapp1['detalle'] ?></td>
+                                <td style="<?= App_Util_Statics::$printFontTableBodyP; ?> text-align: right;"><?= $encomiendapp1['total'] ?></td>
+                            </tr>
+                        <?php endforeach; ?>
+                    <?php endif; ?>
                 <?php endforeach; ?>
             <?php endforeach; ?>
 

@@ -523,6 +523,7 @@ function registrarEncomienda(tipo, obj) {
     var posItem = 0;
     $("#encomiendasForm label input,#encomiendasForm label select").each(function (pos) {
         var component = $(this);
+
         var nameC = component.attr("name");
         if (nameC != "montoGiro" && nameC != "totalGiro" && nameC != "detalleGiro") {
 
@@ -541,6 +542,17 @@ function registrarEncomienda(tipo, obj) {
                 var selectedFromCache = sucursalesRestCache[ciudadN][sucID];
                 datosJSON["abreviacionDestino"] = selectedFromCache.abreviacion;
             }
+
+            if (component.attr("name") == "puertaPuerta") {
+                if(component.is(':checked')){
+                    datosJSON[component.attr("name")] = component.val();
+                } else {
+                    datosJSON[component.attr("name")] = 0;
+                }
+
+            }
+
+
         }
     });
     var billData = getBillData();
@@ -937,14 +949,18 @@ function verificarTipo() {
     $("#itemsGiro").hide();
     if (obj.val() == TIPO_NORMAL) {//NORMAL
         color = "#DFE4EE";
+        $("#puertaPuerta").parent().css('display', 'inline-block');
     } else if (obj.val() == TIPO_PORPAGAR) {//POR PAGAR
         color = "#6D8874";
+        $("#puertaPuerta").parent().css('display', 'inline-block');
     } else if (obj.val() == TIPO_GIRO) {//GIRO
         color = "#CCFFCC";
         $("#itemsGiro").show();
         $("#itemsEncomienda").hide();
+        $("#puertaPuerta").parent().css('display', 'none');
     } else {
         color = "#627F96";
+        $("#puertaPuerta").parent().css('display', 'none');
     }
     $("#middleForm div.contentBox").css("background-color", color);
 
@@ -1126,7 +1142,8 @@ function imprimimirListaPrintjs(type) {
             var obj = $(this);
             objImp[i] = {
                 "guia": obj.text(),
-                "detalle": obj.next().text()
+                "detalle": obj.next().text(),
+                "puerta_puerta": obj.previous().find('input[name="puerta_puerta"]')
             };
             i++;
         });

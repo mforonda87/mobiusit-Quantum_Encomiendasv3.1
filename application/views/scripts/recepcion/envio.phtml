@@ -129,6 +129,7 @@
                                         <tbody>
                                             <?php
                                             $tipoEncomienda = "";
+                                            $puertaPuerta = "";
                                             foreach ($encomiendas as $enc) {
                                                 $i % 2 == 0 ? $clss = "par" : $clss = "impar";
                                                 if ($tipoEncomienda != $enc['tipo']) {
@@ -143,6 +144,14 @@
                                                     echo "<th class='$clss' colspan='4'>" . $enc['destino'] . "</th>";
                                                     echo "</tr>";
                                                     $destino = $enc['destino'];
+                                                    $puertaPuerta = "";
+                                                }
+
+                                                if($enc['puerta_puerta'] == 1 && strcmp($puertaPuerta, "") == 0){
+                                                    echo "<tr>";
+                                                    echo "<th class='$clss' colspan='4'>Puerta a puerta</th>";
+                                                    echo "</tr>";
+                                                    $puertaPuerta = 'puerta_puerta';
                                                 }
                                                 echo "<tr>";
                                                 echo "<td class='$clss'>";

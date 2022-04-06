@@ -244,7 +244,8 @@ function selectForManifiesto(viaje, interno, hora, destino, bus) {
                     var encomienda = data.encomiendas[i];
                     var fila = "<tr>";
                     fila += '<td class="' + clsTD + '"><input type="checkbox" value="' + encomienda.id + '" name="enviarEncomienda">';
-                    fila += '<input type="hidden" value="' + encomienda.idEncomienda + '"  name="idEncomienda"></td>';
+                    fila += '<input type="hidden" value="' + encomienda.idEncomienda + '"  name="idEncomienda">';
+                    fila += '<input type="hidden" value="' + encomienda.puerta_puerta + '"  name="puerta_puerta"></td>';
                     fila += '<td class="' + clsTD + '">' + encomienda.guia + '</td>';
                     fila += '<td class="' + clsTD + '">' + encomienda.detalle + '</td>';
                     fila += '</tr>';

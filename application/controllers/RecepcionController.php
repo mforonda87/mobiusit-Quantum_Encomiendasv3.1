@@ -668,7 +668,7 @@ class RecepcionController extends Zend_Controller_Action {
         $encomiendas = $encomiendaModel->getByManfiesto($manifiesto->id_manifiesto); //ViajeSucursal($viaje, $this->person->sucursal);
         $dataEncomienda = array();
         foreach ($encomiendas as $encomienda) {
-            $dataEncomienda[] = array("id" => base64_encode($encomienda->id_item_encomienda), "idEncomienda" => base64_encode($encomienda->id_encomienda), "guia" => $encomienda->guia, "detalle" => $encomienda->detalle);
+            $dataEncomienda[] = array("id" => base64_encode($encomienda->id_item_encomienda), "idEncomienda" => base64_encode($encomienda->id_encomienda), "guia" => $encomienda->guia, "detalle" => $encomienda->detalle, "puerta_puerta" => $encomienda->puerta_puerta);
         }
         foreach ($choferes as $id => $chofer) {
             $choferes[$id]["id_chofer"] = base64_encode($chofer["id_chofer"]);

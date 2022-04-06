@@ -66,6 +66,10 @@ class App_Form_Recepcion {
                             <option value="' . base64_encode("Coorporativo") . '">Coorporativo</option>
                         </select>
                     </label>
+                    <label class="porciento49">
+                        <span>Puerta a puerta</span>
+                        <input type="checkbox" name="puertaPuerta" id="puertaPuerta" value="1">
+                    </label>
                   </div>  
                     <br/>
                   <div class="contentBox">
