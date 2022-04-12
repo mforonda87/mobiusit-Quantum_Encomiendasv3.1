@@ -143,7 +143,7 @@ class RecepcionController extends Zend_Controller_Action {
         $encoModel = new App_Model_EncomiendaModel();
         $result = array();
         $tipoEncomienda = base64_decode($datos["tipoEncomienda"]);
-        if ($datos["total"] == "0" && ($tipoEncomienda == "NORMAL" || $tipoEncomienda == "GIRO")) {
+        if ($datos["total"] == "0" && ($tipoEncomienda == "NORMAL" || $tipoEncomienda == "Excedente" || $tipoEncomienda == "GIRO")) {
             $result["mensaje"] = "Una encomienda normal no puede tener costo '0'";
             $result["error"] = true;
         } else {

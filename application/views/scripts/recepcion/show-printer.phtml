@@ -92,7 +92,14 @@ $fechaA = new DateTime();
                     loadImprRecepcionClose(facturaDatos);
                 }
                 break;
-            // case "DE ENTREGA POR PAGAR":
+            case "Excedente":
+                if(PRINT_FACTURA){
+                    loadImprFactura(facturaDatos);
+                } else {
+                    loadImprRecepcionClose(facturaDatos);
+                }
+                break;
+                // case "DE ENTREGA POR PAGAR":
             case "POR PAGAR":
                 loadImprRecepcionClose(facturaDatos);
                 break;

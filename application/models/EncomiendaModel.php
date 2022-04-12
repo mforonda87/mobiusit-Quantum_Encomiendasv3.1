@@ -107,7 +107,7 @@ class App_Model_EncomiendaModel extends Zend_Db_Table_Abstract {
             $tipoEncomienda = base64_decode($datos["tipoEncomienda"]);
             $numeroFactura = "";
 
-            if ($tipoEncomienda == "NORMAL" || $tipoEncomienda == "GIRO") {
+            if ($tipoEncomienda == "NORMAL" || $tipoEncomienda == "GIRO" || $tipoEncomienda == "Excedente") {
 
                 $dosificacion = $dosificacionModel->getLastAutomaticoBySucursal($user->sucursal);
 
@@ -211,7 +211,7 @@ class App_Model_EncomiendaModel extends Zend_Db_Table_Abstract {
                 "estado" => "RECIBIDO",
                 "puerta_puerta" => (isset($datos['puertaPuerta']))? $datos['puertaPuerta'] : 0
             );
-            if (strtoupper($tipoEncomienda) == "NORMAL" || $tipoEncomienda == "GIRO") {
+            if (strtoupper($tipoEncomienda) == "NORMAL" || $tipoEncomienda == "GIRO" || $tipoEncomienda == "Excedente") {
                 $encomienda["factura"] = $facturaA->id_factura;
             }
             $this->insert($encomienda);

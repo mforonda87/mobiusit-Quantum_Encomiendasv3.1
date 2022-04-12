@@ -15,6 +15,7 @@ var TIPO_NORMAL = "Tk9STUFM";
 var TIPO_PORPAGAR = "UE9SIFBBR0FS";
 var TIPO_GIRO = "R0lSTw==";
 var TIPO_CORPORATIVO = "Q29vcnBvcmF0aXZv";
+var TIPO_EXCEDENTE = "RXhjZWRlbnRl";
 
 var INFORMACION_VIAJE = {};
 // controles basicos equipajes
@@ -325,7 +326,7 @@ function isNormalClient() {
 function showFacturaForm(tipo, formato) {
     var validacion = validarForm();
     if (validacion.encomienda == false && validacion.items == false && $("#destinoSuc").val() != 0) {
-        if (isNormalClient() && (tipo === TIPO_NORMAL || tipo === TIPO_GIRO)) {
+        if (isNormalClient() && (tipo === TIPO_NORMAL || tipo === TIPO_GIRO || tipo === TIPO_EXCEDENTE)) {
             showDialog("dataFactura", {
                 url: '/recepcion/show-form-factura/tipo/' + $("#tipoEncomienda").val() + "/formato/" + formato + "/nombre/" + $("#remitente").val(),
                 title: "Datos facturacion",
@@ -953,6 +954,9 @@ function verificarTipo() {
     } else if (obj.val() == TIPO_PORPAGAR) {//POR PAGAR
         color = "#6D8874";
         $("#puertaPuerta").parent().css('display', 'inline-block');
+    } else if (obj.val() == TIPO_EXCEDENTE) {//EXCEDENTE
+        color = "#94A9EC";
+        $("#puertaPuerta").parent().css('display', 'inline-block');
     } else if (obj.val() == TIPO_GIRO) {//GIRO
         color = "#CCFFCC";
         $("#itemsGiro").show();
@@ -964,7 +968,7 @@ function verificarTipo() {
     }
     $("#middleForm div.contentBox").css("background-color", color);
 
-    if (obj.val() == TIPO_NORMAL || obj.val() == TIPO_PORPAGAR || obj.val() == TIPO_CORPORATIVO) {//Normal
+    if (obj.val() == TIPO_NORMAL || obj.val() == TIPO_PORPAGAR || obj.val() == TIPO_CORPORATIVO || obj.val() == TIPO_EXCEDENTE) {//Normal
         $("#items div.row:not(:last)").each(function () {
             var cant = $(this).find("input[name=cantidad]").val();
             var peso = $(this).find("input[name=peso]").val();
